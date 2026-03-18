@@ -2,3 +2,4 @@ qFlask==3.0.3
 Flask-CORS==5.0.0
 pdf2docx==0.5.8
 PyMuPDF==1.24.12
+gunicorn==20.1.0
