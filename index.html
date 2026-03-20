@@ -12,11 +12,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <!-- JSZip -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <!-- Cropper.js -->
+  <!-- Cropper.js for image crop -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
   <style>
-    /* same styles as previous – keep for brevity, but ensure all classes exist */
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
     body{background-color:var(--bg-primary);color:var(--text-primary);transition:background-color .2s,color .2s;}
     :root{--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#334155;--border-light:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--dropzone-bg:#f1f5f9;}
@@ -28,7 +27,7 @@
     .nav-links a{text-decoration:none;color:var(--text-secondary);font-weight:500;}
     .nav-links a:hover{color:var(--accent);}
     .dark-toggle{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:40px;padding:0.5rem 1rem;cursor:pointer;display:flex;gap:0.5rem;}
-    .donate-button{background:#ff6b6b;color:white;border:none;border-radius:40px;padding:0.5rem 1.2rem;font-weight:600;display:inline-flex;gap:0.5rem;cursor:pointer;}
+    .donate-button{background:#ff6b6b;color:white;border:none;border-radius:40px;padding:0.5rem 1.2rem;font-weight:600;display:inline-flex;gap:0.5rem;cursor:pointer;transition:background .2s;text-decoration:none;}
     .donate-button:hover{background:#ff5252;}
     .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:0.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;gap:8px;}
     .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;justify-content:center;align-items:center;}
@@ -57,6 +56,8 @@
     .filter-badge.active{background:var(--accent);color:white;}
     .text-overlay-input{width:100%;padding:0.5rem;border-radius:8px;border:1px solid var(--border-light);margin:0.5rem 0;}
     .editor-toolbar{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0;}
+    .badge{background:var(--accent);color:white;font-size:0.7rem;padding:0.2rem 0.7rem;border-radius:20px;margin-left:0.5rem;}
+    .warning{background:#fffbeb;border-left:4px solid #f59e0b;padding:0.75rem;border-radius:8px;margin:0.5rem 0;font-size:0.9rem;}
     @media (max-width:600px){.container{padding:1rem;}}
   </style>
 </head>
@@ -64,7 +65,7 @@
   <!-- Feedback Button -->
   <button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
 
-  <!-- Feedback Modal (your Google Form) -->
+  <!-- Feedback Modal with your Google Form -->
   <div id="feedbackModal" class="modal">
     <div class="modal-content">
       <span class="modal-close" id="closeModal">&times;</span>
@@ -79,33 +80,23 @@
         <h1><i class="fas fa-exchange-alt"></i> Universal Converter Hub</h1>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-        <!-- Flutterwave Donation Button – worldwide, pays to Nigeria -->
-        <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
-          <input type="hidden" name="public_key" value="FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxx" /> <!-- Replace with your live key -->
-          <input type="hidden" name="customer[email]" value="donor@example.com" /> <!-- Collect email via your own form if needed -->
-          <input type="hidden" name="customer[name]" value="Support User" />
-          <input type="hidden" name="tx_ref" value="donation-" + Date.now() />
-          <input type="hidden" name="amount" value="1000" /> <!-- Amount in kobo (e.g., 1000 = 10.00) -->
-          <input type="hidden" name="currency" value="NGN" /> <!-- or USD, GBP etc -->
-          <input type="hidden" name="meta[source]" value="converter-hub" />
-          <input type="hidden" name="redirect_url" value="https://yourdomain.com/thank-you" /> <!-- Your thank you page -->
-          <button type="submit" class="donate-button">
-            <i class="fas fa-heart"></i> Donate (Flutterwave)
-          </button>
-        </form>
+        <!-- Direct Flutterwave donation link (opens in new tab) -->
+        <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button">
+          <i class="fas fa-heart"></i> Donate (Flutterwave)
+        </a>
         <div class="dark-toggle" id="darkToggle">
           <i class="fas fa-moon"></i><span>Dark mode</span>
         </div>
       </div>
     </div>
 
-    <!-- Adsterra Banner #1 (replace with your code) -->
-    <div class="ad-horizontal">Adsterra 728x90 placeholder</div>
+    <!-- Adsterra Banner #1 (replace with your ad code) -->
+    <div class="ad-horizontal">Adsterra 728x90 placeholder – replace with your code</div>
 
     <section id="file">
       <h2 class="section-title">File conversion tools</h2>
       <div class="card-grid">
-        <!-- PDF → Word (only direction) -->
+        <!-- PDF → Word (real backend) -->
         <div class="card">
           <div class="card-header"><i class="fas fa-file-pdf"></i><h3>PDF → Word <span class="badge">real</span></h3></div>
           <div class="drop-zone" id="pdfDrop">📄 Drop PDF here or click
@@ -122,7 +113,7 @@
             <input type="file" id="imageEditorInput" accept="image/*">
           </div>
           <div id="imageEditorContainer" style="display:none;">
-            <div class="crop-container"><img id="editorPreview" class="editor-preview"></div>
+            <div><img id="editorPreview" class="editor-preview"></div>
             <div class="editor-toolbar">
               <span class="filter-badge" data-filter="normal">Normal</span>
               <span class="filter-badge" data-filter="grayscale">Grayscale</span>
@@ -185,14 +176,18 @@
           <div class="result-area"></div>
         </div>
 
-        <!-- DWG → KMZ (UTM marker) unchanged -->
+        <!-- DWG → KMZ (UTM marker) -->
         <div class="card">
           <div class="card-header"><i class="fas fa-draw-polygon"></i><h3>DWG → KMZ <span class="badge">UTM marker</span></h3></div>
           <div class="drop-zone">🗺️ Drop .dwg<input type="file" class="file-input" accept=".dwg" multiple></div>
           <label>UTM Zone:</label>
-          <select class="format-select" id="utmZone">...</select>
-          <label>Easting:</label><input type="number" id="utmEasting" value="315000" class="format-select">
-          <label>Northing:</label><input type="number" id="utmNorthing" value="950000" class="format-select">
+          <select class="format-select" id="utmZone">
+            <option value="31N">31N (Nigeria / West Africa)</option>
+            <option value="32N">32N</option><option value="33N">33N</option><option value="34N">34N</option><option value="35N">35N</option><option value="36N">36N</option><option value="37N">37N</option><option value="38N">38N</option><option value="39N">39N</option><option value="40N">40N</option><option value="41N">41N</option><option value="42N">42N</option><option value="43N">43N</option><option value="44N">44N</option><option value="45N">45N</option><option value="46N">46N</option><option value="47N">47N</option><option value="48N">48N</option><option value="49N">49N</option><option value="50N">50N</option><option value="51N">51N</option><option value="52N">52N</option><option value="53N">53N</option><option value="54N">54N</option><option value="55N">55N</option><option value="56N">56N</option><option value="57N">57N</option><option value="58N">58N</option><option value="59N">59N</option><option value="60N">60N</option>
+            <option value="1S">1S</option><option value="2S">2S</option><option value="3S">3S</option><option value="4S">4S</option><option value="5S">5S</option><option value="6S">6S</option><option value="7S">7S</option><option value="8S">8S</option><option value="9S">9S</option><option value="10S">10S</option><option value="11S">11S</option><option value="12S">12S</option><option value="13S">13S</option><option value="14S">14S</option><option value="15S">15S</option><option value="16S">16S</option><option value="17S">17S</option><option value="18S">18S</option><option value="19S">19S</option><option value="20S">20S</option><option value="21S">21S</option><option value="22S">22S</option><option value="23S">23S</option><option value="24S">24S</option><option value="25S">25S</option><option value="26S">26S</option><option value="27S">27S</option><option value="28S">28S</option><option value="29S">29S</option><option value="30S">30S</option><option value="31S">31S</option><option value="32S">32S</option><option value="33S">33S</option><option value="34S">34S</option><option value="35S">35S</option><option value="36S">36S</option><option value="37S">37S</option><option value="38S">38S</option><option value="39S">39S</option><option value="40S">40S</option><option value="41S">41S</option><option value="42S">42S</option><option value="43S">43S</option><option value="44S">44S</option><option value="45S">45S</option><option value="46S">46S</option><option value="47S">47S</option><option value="48S">48S</option><option value="49S">49S</option><option value="50S">50S</option><option value="51S">51S</option><option value="52S">52S</option><option value="53S">53S</option><option value="54S">54S</option><option value="55S">55S</option><option value="56S">56S</option><option value="57S">57S</option><option value="58S">58S</option><option value="59S">59S</option><option value="60S">60S</option>
+          </select>
+          <label>Easting (X):</label><input type="number" id="utmEasting" value="315000" class="format-select">
+          <label>Northing (Y):</label><input type="number" id="utmNorthing" value="950000" class="format-select">
           <label>Datum:</label>
           <select class="format-select" id="utmDatum">
             <option value="WGS84">WGS84</option>
@@ -206,22 +201,63 @@
     </section>
 
     <!-- Adsterra Banner #2 -->
-    <div class="ad-horizontal">Adsterra 468x60 placeholder</div>
+    <div class="ad-horizontal">Adsterra 468x60 placeholder – replace with your code</div>
 
-    <!-- Unit converters (same as before) -->
+    <!-- Unit converters -->
     <section id="unit">
       <h2 class="section-title">Unit converters</h2>
-      <div class="card-grid">[... length, weight, volume, temp cards ...]</div>
+      <div class="card-grid">
+        <!-- Length -->
+        <div class="card"><div class="card-header"><i class="fas fa-arrows-alt-h"></i><h3>Length</h3></div>
+          <div class="input-group"><input type="number" id="lengthVal" value="1"><select id="lengthFrom"><option value="m">meter</option><option value="ft">feet</option><option value="km">km</option></select></div>
+          <div class="input-group"><span>to</span><select id="lengthTo"><option value="ft">feet</option><option value="m">meter</option><option value="mile">mile</option></select></div>
+          <button class="btn convert-unit" data-type="length">Convert</button>
+          <div class="result-area" id="lengthRes">1 m = 3.28084 ft</div>
+        </div>
+        <!-- Weight -->
+        <div class="card"><div class="card-header"><i class="fas fa-weight-hanging"></i><h3>Weight</h3></div>
+          <div class="input-group"><input type="number" id="weightVal" value="1"><select id="weightFrom"><option value="kg">kg</option><option value="lb">lb</option></select></div>
+          <div class="input-group"><span>to</span><select id="weightTo"><option value="lb">lb</option><option value="kg">kg</option></select></div>
+          <button class="btn convert-unit" data-type="weight">Convert</button><div class="result-area" id="weightRes">1 kg = 2.20462 lb</div>
+        </div>
+        <!-- Volume -->
+        <div class="card"><div class="card-header"><i class="fas fa-flask"></i><h3>Volume</h3></div>
+          <div class="input-group"><input type="number" id="volVal" value="1"><select id="volFrom"><option value="l">liter</option><option value="gal">gallon</option></select></div>
+          <div class="input-group"><span>to</span><select id="volTo"><option value="gal">gallon</option><option value="l">liter</option></select></div>
+          <button class="btn convert-unit" data-type="volume">Convert</button><div class="result-area" id="volRes">1 L = 0.264172 gal</div>
+        </div>
+        <!-- Temperature -->
+        <div class="card"><div class="card-header"><i class="fas fa-temperature-high"></i><h3>Temperature</h3></div>
+          <div class="input-group"><input type="number" id="tempVal" value="0"><select id="tempFrom"><option value="c">°C</option><option value="f">°F</option></select></div>
+          <div class="input-group"><span>to</span><select id="tempTo"><option value="f">°F</option><option value="c">°C</option></select></div>
+          <button class="btn convert-unit" data-type="temp">Convert</button><div class="result-area" id="tempRes">0 °C = 32 °F</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Adsterra square ad inside currency grid -->
+    <!-- Currency, time, date -->
     <section id="currency">
       <h2 class="section-title">Currency & time</h2>
       <div class="card-grid">
-        <div class="card"><div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency</h3></div>... </div>
-        <div class="card"><div class="card-header"><i class="fas fa-clock"></i><h3>Time zone</h3></div>... </div>
-        <div class="card"><div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date diff</h3></div>... </div>
-        <div class="card ad-square">Adsterra 300x250 placeholder</div>
+        <div class="card"><div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency</h3></div>
+          <div class="input-group"><input type="number" id="currAmt" value="1"><select id="currFrom"><option value="USD">USD</option><option value="EUR">EUR</option></select></div>
+          <div class="input-group"><span>→</span><select id="currTo"><option value="EUR">EUR</option><option value="GBP">GBP</option></select></div>
+          <button class="btn" id="convertCurrency">Get live rate</button>
+          <div class="result-area" id="currResult">1 USD ≈ 0.92 EUR</div>
+        </div>
+        <div class="card"><div class="card-header"><i class="fas fa-clock"></i><h3>Time zone</h3></div>
+          <div class="input-group"><select id="tz1"><option value="America/New_York">NY</option><option value="Europe/London">London</option></select></div>
+          <div class="input-group"><select id="tz2"><option value="Europe/London">London</option><option value="Asia/Tokyo">Tokyo</option></select></div>
+          <button class="btn" id="tzConvert">Show times</button>
+          <div class="result-area" id="tzResult"></div>
+        </div>
+        <div class="card"><div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date difference</h3></div>
+          <div class="input-group"><input type="date" id="date1" value="2025-03-01"><input type="date" id="date2" value="2025-03-15"></div>
+          <button class="btn" id="dateDiff">Difference</button>
+          <div class="result-area" id="dateRes">14 days</div>
+        </div>
+        <!-- Adsterra square ad -->
+        <div class="card ad-square">Adsterra 300x250 placeholder – replace with your code</div>
       </div>
     </section>
 
@@ -231,34 +267,24 @@
         <h3>Conversion log</h3>
         <div><button class="btn-outline btn" id="printLog">Print</button><button class="btn-outline btn" id="clearLog">Clear</button></div>
       </div>
-      <div class="log-entries" id="logContainer"><div class="log-entry">✅ Service ready.</div></div>
+      <div class="log-entries" id="logContainer"><div class="log-entry">✅ Service ready. PDF conversion active.</div></div>
     </div>
 
-    <footer>Universal Converter Hub</footer>
+    <footer>Universal Converter Hub — Professional file conversion tools</footer>
   </div>
 
   <script>
     // ---------- CONFIG ----------
     const BACKEND_URL = 'https://universal-converter-hub.onrender.com';
 
-    // Dark mode, modal, logging (same as before) – include full logic from previous answer
-    // For brevity, include the full script from the previous "professional image editor" version,
-    // but remove the word2pdf direction and keep only pdf2word.
-    // We'll paste the complete working script from the last answer, ensuring the PDF part is only one direction.
-
-    // (Full script from previous answer goes here – I'll include it in the final response)
-    // Since we need to keep the answer concise, I'll provide the complete code block.
-
-  </script>
-  <script>
-    // ---------- DARK MODE ----------
+    // Dark mode
     const toggle = document.getElementById('darkToggle');
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
       toggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i><span> Light mode</span>' : '<i class="fas fa-moon"></i><span> Dark mode</span>';
     });
 
-    // ---------- FEEDBACK MODAL ----------
+    // Feedback modal
     const modal = document.getElementById('feedbackModal');
     const feedbackBtn = document.getElementById('feedbackBtn');
     const closeBtn = document.getElementById('closeModal');
@@ -266,7 +292,7 @@
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-    // ---------- LOGGING ----------
+    // Logging
     const logDiv = document.getElementById('logContainer');
     function addLog(msg) {
       const entry = document.createElement('div');
@@ -283,7 +309,7 @@
     });
     document.getElementById('clearLog').addEventListener('click', () => logDiv.innerHTML = '<div class="log-entry">Log cleared.</div>');
 
-    // ---------- PDF → WORD (ONLY) ----------
+    // ---------- PDF → WORD ----------
     document.getElementById('pdfDrop').addEventListener('click', () => document.getElementById('pdfInput').click());
     document.getElementById('pdfDrop').addEventListener('dragover', e => e.preventDefault());
     document.getElementById('pdfDrop').addEventListener('drop', e => {
@@ -300,10 +326,7 @@
       const formData = new FormData();
       formData.append('file', file);
       try {
-        const response = await fetch(`${BACKEND_URL}/convert/pdf-to-word`, {
-          method: 'POST',
-          body: formData
-        });
+        const response = await fetch(`${BACKEND_URL}/convert/pdf-to-word`, { method: 'POST', body: formData });
         if (!response.ok) throw new Error('Conversion failed');
         const blob = await response.blob();
         saveAs(blob, file.name.replace('.pdf', '.docx'));
@@ -315,12 +338,227 @@
       }
     });
 
-    // ---------- IMAGE EDITOR (full professional features from previous answer) ----------
-    // (Include all the image editor code from the previous response – it's long but unchanged)
-    // For brevity, I'll reference that it's included. In a real answer we'd paste the whole block.
-    // We'll assume the reader copies the full script from the last version.
+    // ---------- IMAGE EDITOR (professional) ----------
+    let originalImage = null, currentImage = null;
+    let cropper = null;
+    let currentFilter = 'normal';
+    const editorDrop = document.getElementById('imageEditorDrop');
+    const editorInput = document.getElementById('imageEditorInput');
+    const editorContainer = document.getElementById('imageEditorContainer');
+    const editorPreview = document.getElementById('editorPreview');
+    const brightnessSlider = document.getElementById('brightnessSlider');
+    const contrastSlider = document.getElementById('contrastSlider');
+    const saturationSlider = document.getElementById('saturationSlider');
+    const blurSlider = document.getElementById('blurSlider');
+    const bgColorPicker = document.getElementById('bgColorPicker');
+    const brightnessSpan = document.getElementById('brightnessValue');
+    const contrastSpan = document.getElementById('contrastValue');
+    const saturationSpan = document.getElementById('saturationValue');
+    const blurSpan = document.getElementById('blurValue');
+    const resetBtn = document.getElementById('resetImage');
+    const downloadBtn = document.getElementById('downloadEditedImage');
+    const applyBgBtn = document.getElementById('applyBgRemoval');
+    const filterBadges = document.querySelectorAll('.filter-badge');
+    const rotateLeftBtn = document.getElementById('rotateLeftBtn');
+    const rotateRightBtn = document.getElementById('rotateRightBtn');
+    const flipHorizontalBtn = document.getElementById('flipHorizontalBtn');
+    const flipVerticalBtn = document.getElementById('flipVerticalBtn');
+    const cropBtn = document.getElementById('cropBtn');
+    const addTextBtn = document.getElementById('addTextBtn');
+    const overlayText = document.getElementById('overlayText');
+    const textColor = document.getElementById('textColor');
+    const textSize = document.getElementById('textSize');
+    const textX = document.getElementById('textX');
+    const textY = document.getElementById('textY');
 
-    // ---------- PLACEHOLDER CONVERTERS (CSV, EXCEL, DWG) ----------
+    function loadImage(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        originalImage = e.target.result;
+        currentImage = originalImage;
+        editorPreview.src = originalImage;
+        editorContainer.style.display = 'block';
+        resetSliders();
+        if (cropper) cropper.destroy();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function resetSliders() {
+      brightnessSlider.value = 0; brightnessSpan.textContent = 0;
+      contrastSlider.value = 0; contrastSpan.textContent = 0;
+      saturationSlider.value = 0; saturationSpan.textContent = 0;
+      blurSlider.value = 0; blurSpan.textContent = 0;
+      currentFilter = 'normal';
+      filterBadges.forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-filter="normal"]').classList.add('active');
+      if (originalImage) editorPreview.src = originalImage;
+    }
+
+    function applyFilters() {
+      if (!originalImage) return;
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width; canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        let filter = `brightness(${100 + +brightnessSlider.value}%) contrast(${100 + +contrastSlider.value}%) saturate(${100 + +saturationSlider.value}%) blur(${blurSlider.value}px)`;
+        if (currentFilter === 'grayscale') filter += ' grayscale(100%)';
+        else if (currentFilter === 'sepia') filter += ' sepia(100%)';
+        else if (currentFilter === 'invert') filter += ' invert(100%)';
+        else if (currentFilter === 'vintage') filter += ' sepia(50%) contrast(110%) brightness(90%)';
+        else if (currentFilter === 'cool') filter += ' saturate(150%) hue-rotate(10deg)';
+        else if (currentFilter === 'warm') filter += ' saturate(150%) hue-rotate(-10deg)';
+        ctx.filter = filter;
+        ctx.drawImage(img, 0, 0);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = originalImage;
+    }
+
+    brightnessSlider.addEventListener('input', () => { brightnessSpan.textContent = brightnessSlider.value; applyFilters(); });
+    contrastSlider.addEventListener('input', () => { contrastSpan.textContent = contrastSlider.value; applyFilters(); });
+    saturationSlider.addEventListener('input', () => { saturationSpan.textContent = saturationSlider.value; applyFilters(); });
+    blurSlider.addEventListener('input', () => { blurSpan.textContent = blurSlider.value; applyFilters(); });
+
+    filterBadges.forEach(badge => {
+      badge.addEventListener('click', () => {
+        filterBadges.forEach(b => b.classList.remove('active'));
+        badge.classList.add('active');
+        currentFilter = badge.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if (originalImage) { editorPreview.src = originalImage; currentImage = originalImage; resetSliders(); if (cropper) cropper.destroy(); }
+    });
+
+    rotateLeftBtn.addEventListener('click', () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.height; canvas.height = img.width;
+        const ctx = canvas.getContext('2d');
+        ctx.rotate(-90 * Math.PI / 180);
+        ctx.drawImage(img, -img.width, 0);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    rotateRightBtn.addEventListener('click', () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.height; canvas.height = img.width;
+        const ctx = canvas.getContext('2d');
+        ctx.rotate(90 * Math.PI / 180);
+        ctx.drawImage(img, 0, -img.height);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    flipHorizontalBtn.addEventListener('click', () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width; canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(-1, 1);
+        ctx.drawImage(img, -img.width, 0);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    flipVerticalBtn.addEventListener('click', () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width; canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(1, -1);
+        ctx.drawImage(img, 0, -img.height);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    cropBtn.addEventListener('click', () => {
+      if (cropper) {
+        const canvas = cropper.getCroppedCanvas();
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+        cropper.destroy();
+        cropper = null;
+        cropBtn.textContent = 'Crop';
+      } else {
+        cropper = new Cropper(editorPreview, { aspectRatio: NaN, viewMode: 1, autoCropArea: 1 });
+        cropBtn.textContent = 'Apply Crop';
+      }
+    });
+
+    addTextBtn.addEventListener('click', () => {
+      if (!overlayText.value) return;
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width; canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        ctx.font = `${textSize.value}px Arial`;
+        ctx.fillStyle = textColor.value;
+        ctx.fillText(overlayText.value, textX.value, textY.value);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    applyBgBtn.addEventListener('click', () => {
+      if (!currentImage) return;
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width; canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+        const data = imageData.data;
+        const col = bgColorPicker.value;
+        const r = parseInt(col.substr(1,2),16), g = parseInt(col.substr(3,2),16), b = parseInt(col.substr(5,2),16);
+        for (let i=0; i<data.length; i+=4) {
+          if (Math.abs(data[i]-r)<30 && Math.abs(data[i+1]-g)<30 && Math.abs(data[i+2]-b)<30)
+            data[i+3] = 0;
+        }
+        ctx.putImageData(imageData,0,0);
+        currentImage = canvas.toDataURL('image/png');
+        editorPreview.src = currentImage;
+      };
+      img.src = currentImage;
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (currentImage) saveAs(currentImage, 'edited_image.png');
+    });
+
+    editorDrop.addEventListener('click', () => editorInput.click());
+    editorDrop.addEventListener('dragover', e => e.preventDefault());
+    editorDrop.addEventListener('drop', e => {
+      e.preventDefault();
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) loadImage(file);
+    });
+    editorInput.addEventListener('change', () => { if (editorInput.files[0]) loadImage(editorInput.files[0]); });
+
+    // ---------- PLACEHOLDER CONVERTERS ----------
     async function generateXlsx() { const zip = new JSZip(); zip.file("dummy.txt", "placeholder"); return zip.generateAsync({type:"blob"}); }
     function generatePdf(text) { return new Blob([`%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>\ntrailer<</Root 1 0 R>>`], {type:'application/pdf'}); }
 
@@ -451,7 +689,7 @@
       addLog(`📅 Date diff: ${diff} days`);
     });
 
-    addLog('🚀 Converter ready – PDF→Word only, Flutterwave donations enabled.');
+    addLog('🚀 Converter ready – PDF→Word, Flutterwave donations integrated.');
   </script>
 </body>
 </html>
