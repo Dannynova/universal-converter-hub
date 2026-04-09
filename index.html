@@ -2,761 +2,863 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal Converter Hub</title>
-  <!-- Font Awesome 6 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Universal Converter Hub – All‑in‑One Tool Suite</title>
+  <meta name="description" content="Free online tools: PDF to Word, professional image editor, image compressor, QR code, password generator, text-to-speech, language translator, land/plot calculator, CSV/Excel, unit converter, currency & time zone.">
+  <meta name="keywords" content="PDF to Word, image editor, image compressor, QR code, password generator, text to speech, language translator, plot size calculator, CSV to Excel, unit converter">
+  <meta name="author" content="Universal Converter Hub">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://converterhub.com.ng">
+  <meta property="og:title" content="Universal Converter Hub">
+  <meta property="og:description" content="Free online tools: PDF to Word, professional image editor, image compressor, QR code, password generator, text-to-speech, language translator (unlimited), land/plot calculator, and more.">
+  <meta property="og:image" content="https://converterhub.com.ng/logo.png">
+  <meta property="og:url" content="https://converterhub.com.ng">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Universal Converter Hub",
+    "description": "Free online PDF to Word, professional image editor, image compressor, QR code generator, password generator, text-to-speech, language translator (unlimited length), land/plot calculator, CSV/Excel converter, unit converter, currency & time zone tools.",
+    "url": "https://converterhub.com.ng",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+  }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Font Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
-  <!-- FileSaver.js -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fabric.js for professional canvas editing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+  <!-- Other libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <!-- JSZip -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <!-- Cropper.js -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
     body{background-color:var(--bg-primary);color:var(--text-primary);transition:background-color .2s,color .2s;}
-    :root{--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#334155;--border-light:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--dropzone-bg:#f1f5f9;}
+    :root{--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#334155;--border-light:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--dropzone-bg:#f1f5f9;--shadow:0 10px 25px -5px rgba(0,0,0,0.05),0 8px 10px -6px rgba(0,0,0,0.02);}
     body.dark{--bg-primary:#0b1120;--bg-secondary:#1e293b;--bg-card:#1e293b;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--border-light:#334155;--accent:#3b82f6;--dropzone-bg:#0f172a;}
-    .container{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;}
+    .container{max-width:1400px;margin:0 auto;padding:1rem 2rem;}
     .top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
-    .logo-area h1{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .nav-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
-    .nav-links a{text-decoration:none;color:var(--text-secondary);font-weight:500;}
-    .nav-links a:hover{color:var(--accent);}
-    .dark-toggle{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:40px;padding:0.5rem 1rem;cursor:pointer;display:flex;gap:0.5rem;}
-    .donate-button{background:#ff6b6b;color:white;border:none;border-radius:40px;padding:0.5rem 1.2rem;font-weight:600;display:inline-flex;gap:0.5rem;cursor:pointer;transition:background .2s;text-decoration:none;}
+    .logo{display:flex;align-items:center;gap:12px;}
+    .logo-icon{width:48px;height:48px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;box-shadow:var(--shadow);}
+    .logo-text h1{font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .logo-text p{font-size:0.75rem;color:var(--text-secondary);}
+    .nav-links{display:flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem;}
+    .nav-btn{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:40px;padding:0.5rem 1rem;cursor:pointer;font-weight:500;transition:all .2s;font-size:0.85rem;}
+    .nav-btn.active,.nav-btn:hover{background:var(--accent);color:white;border-color:var(--accent);}
+    .dark-toggle,.donate-button{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:40px;padding:0.5rem 1.2rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-weight:500;text-decoration:none;color:var(--text-primary);}
+    .donate-button{background:#ff6b6b;color:white;border:none;}
     .donate-button:hover{background:#ff5252;}
-    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:0.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;gap:8px;}
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;justify-content:center;align-items:center;}
-    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative;}
-    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;}
-    .modal iframe{width:100%;height:500px;border:none;border-radius:12px;}
-    .section-title{font-size:1.8rem;font-weight:600;margin:2.5rem 0 1.5rem;}
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.8rem;}
-    .card{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);}
-    .card-header{display:flex;gap:0.75rem;margin-bottom:1.25rem;}
+    .page{display:none;animation:fadeIn .3s ease;}
+    .page.active-page{display:block;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    .section-title{font-size:1.6rem;font-weight:600;margin:1.5rem 0 1rem;}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+    .card{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);}
+    .card-header{display:flex;gap:0.75rem;margin-bottom:1rem;align-items:center;}
     .card-header i{font-size:1.6rem;color:var(--accent);}
-    .drop-zone{background:var(--dropzone-bg);border:2px dashed var(--border-light);border-radius:16px;padding:1.2rem;text-align:center;cursor:pointer;}
-    .drop-zone input{display:none;}
-    .format-select{width:100%;padding:0.6rem;border-radius:40px;border:1px solid var(--border-light);background:var(--bg-secondary);margin:0.5rem 0;}
-    .btn{background:var(--accent);color:white;border:none;padding:0.7rem 1.2rem;border-radius:40px;cursor:pointer;display:inline-flex;gap:0.5rem;}
-    .btn-outline{background:transparent;border:1px solid var(--border-light);color:var(--text-primary);}
-    .result-area{margin-top:1rem;padding:0.8rem;background:var(--dropzone-bg);border-radius:16px;}
-    .input-group{display:flex;gap:0.5rem;margin:0.75rem 0;flex-wrap:wrap;}
-    .input-group select,.input-group input{flex:1;padding:0.6rem;border-radius:40px;border:1px solid var(--border-light);background:var(--bg-secondary);}
-    .editor-preview{max-width:100%;max-height:300px;border-radius:12px;display:block;margin:0.5rem 0;}
-    .slider-label{display:flex;justify-content:space-between;}
-    .filter-badge{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:30px;padding:0.4rem 1rem;cursor:pointer;}
-    .filter-badge.active{background:var(--accent);color:white;}
-    .text-overlay-input{width:100%;padding:0.5rem;border-radius:8px;border:1px solid var(--border-light);margin:0.5rem 0;}
-    .editor-toolbar{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0;}
-    .badge{background:var(--accent);color:white;font-size:0.7rem;padding:0.2rem 0.7rem;border-radius:20px;margin-left:0.5rem;}
-    .warning{background:#fffbeb;border-left:4px solid #f59e0b;padding:0.75rem;border-radius:8px;margin:0.5rem 0;font-size:0.9rem;}
-    @media (max-width:600px){.container{padding:1rem;}}
+    .drop-zone{background:var(--dropzone-bg);border:2px dashed var(--border-light);border-radius:16px;padding:1rem;text-align:center;cursor:pointer;margin-bottom:0.5rem;}
+    .drop-zone.dragover{background:var(--accent);opacity:0.8;}
+    .file-list{font-size:0.8rem;max-height:100px;overflow-y:auto;background:var(--dropzone-bg);border-radius:12px;padding:0.5rem;margin:0.5rem 0;}
+    .btn{background:var(--accent);color:white;border:none;padding:0.6rem 1.2rem;border-radius:40px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;transition:background .2s;font-size:0.9rem;}
+    .btn:hover{background:var(--accent-hover);}
+    .result-area{margin-top:1rem;padding:0.8rem;background:var(--dropzone-bg);border-radius:16px;font-size:0.9rem;word-break:break-word;}
+    .format-select,.input-group select,.input-group input{width:100%;padding:0.6rem 1rem;border-radius:40px;border:1px solid var(--border-light);background:var(--bg-secondary);margin:0.5rem 0;}
+    .input-group{display:flex;gap:0.5rem;flex-wrap:wrap;margin:0.75rem 0;}
+    .ad-desktop-only{display:block;}.ad-mobile-only{display:none;}
+    .ad-universal{margin:2rem 0;text-align:center;background:var(--dropzone-bg);border-radius:20px;padding:1rem;border:1px dashed var(--accent);min-height:100px;}
+    @media only screen and (max-width:768px){.ad-desktop-only{display:none;}.ad-mobile-only{display:block;}}
+    .warning{background:#fffbeb;border-left:4px solid #f59e0b;padding:0.75rem;border-radius:8px;font-size:0.85rem;}
+    footer{text-align:center;padding:2rem;color:var(--text-secondary);margin-top:2rem;border-top:1px solid var(--border-light);}
+    @media (max-width:600px){.container{padding:1rem;}.top-bar{flex-direction:column;align-items:stretch;}}
+    .qrcode-container{display:flex;justify-content:center;margin:1rem 0;}
+    #qrcode{background:white;padding:10px;border-radius:12px;display:inline-block;}
+    .editor-toolbar{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0;justify-content:center;}
+    .canvas-container{border-radius:16px;overflow:hidden;background:var(--dropzone-bg);margin:1rem 0;min-height:300px; position:relative;}
+    .color-preview{width:30px;height:30px;border-radius:50%;border:1px solid var(--border-light);display:inline-block;vertical-align:middle;margin-left:8px;}
+    .canvas-container canvas { width: 100% !important; height: auto !important; }
   </style>
 </head>
-<body class="light">
-  <!-- Feedback Button -->
-  <button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-
-  <!-- Feedback Modal with your Google Form -->
-  <div id="feedbackModal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" id="closeModal">&times;</span>
-      <h3>Help us improve</h3>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe>
-    </div>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
   </div>
 
-  <div class="container">
-    <div class="top-bar">
-      <div class="logo-area">
-        <h1><i class="fas fa-exchange-alt"></i> Universal Converter Hub</h1>
-      </div>
-      <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-        <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button">
-          <i class="fas fa-heart"></i> Donate
-        </a>
-        <div class="dark-toggle" id="darkToggle">
-          <i class="fas fa-moon"></i><span>Dark mode</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- File conversion section -->
-    <section id="file">
-      <h2 class="section-title">File conversion tools</h2>
-      <div class="card-grid">
-        <!-- PDF → Word -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-file-pdf"></i><h3>PDF → Word <span class="badge">real</span></h3></div>
-          <div class="drop-zone" id="pdfDrop">📄 Drop PDF here or click
-            <input type="file" id="pdfInput" accept=".pdf" multiple>
-          </div>
-          <button class="btn" id="convertPdfBtn"><i class="fas fa-sync"></i> Convert to Word</button>
-          <div class="result-area" id="pdfResult"></div>
-        </div>
-
-        <!-- Professional Image Editor -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-edit"></i><h3>Image Editor</h3></div>
-          <div class="drop-zone" id="imageEditorDrop">🖼️ Drop an image
-            <input type="file" id="imageEditorInput" accept="image/*">
-          </div>
-          <div id="imageEditorContainer" style="display:none;">
-            <div><img id="editorPreview" class="editor-preview"></div>
-            <div class="editor-toolbar">
-              <span class="filter-badge" data-filter="normal">Normal</span>
-              <span class="filter-badge" data-filter="grayscale">Grayscale</span>
-              <span class="filter-badge" data-filter="sepia">Sepia</span>
-              <span class="filter-badge" data-filter="invert">Invert</span>
-              <span class="filter-badge" data-filter="vintage">Vintage</span>
-              <span class="filter-badge" data-filter="cool">Cool</span>
-              <span class="filter-badge" data-filter="warm">Warm</span>
-            </div>
-            <div class="slider-label">Brightness <span id="brightnessValue">0</span></div>
-            <input type="range" id="brightnessSlider" min="-100" max="100" value="0" class="format-select">
-            <div class="slider-label">Contrast <span id="contrastValue">0</span></div>
-            <input type="range" id="contrastSlider" min="-100" max="100" value="0" class="format-select">
-            <div class="slider-label">Saturation <span id="saturationValue">0</span></div>
-            <input type="range" id="saturationSlider" min="-100" max="100" value="0" class="format-select">
-            <div class="slider-label">Blur <span id="blurValue">0</span></div>
-            <input type="range" id="blurSlider" min="0" max="10" step="0.5" value="0" class="format-select">
-            <div class="slider-label">Background Removal</div>
-            <input type="color" id="bgColorPicker" value="#ffffff" class="format-select">
-            <button class="btn" id="applyBgRemoval">Remove color</button>
-            <div class="slider-label">Add Text</div>
-            <input type="text" id="overlayText" placeholder="Text" class="text-overlay-input">
-            <div style="display:flex; gap:0.5rem;">
-              <input type="color" id="textColor" value="#ffffff">
-              <input type="number" id="textSize" value="30" min="10" style="width:80px;">
-              <input type="number" id="textX" value="50" style="width:60px;">
-              <input type="number" id="textY" value="50" style="width:60px;">
-            </div>
-            <button class="btn" id="addTextBtn">Add Text</button>
-            <div style="display:flex; gap:0.5rem; margin:1rem 0;">
-              <button class="btn" id="rotateLeftBtn">Rotate Left</button>
-              <button class="btn" id="rotateRightBtn">Rotate Right</button>
-              <button class="btn" id="flipHorizontalBtn">Flip H</button>
-              <button class="btn" id="flipVerticalBtn">Flip V</button>
-            </div>
-            <button class="btn" id="cropBtn">Crop</button>
-            <button class="btn" id="resetImage">Reset All</button>
-            <button class="btn" id="downloadEditedImage">Download PNG</button>
-          </div>
-          <div class="result-area" id="imageEditorResult"></div>
-        </div>
-
-        <!-- CSV ⇄ Excel (placeholder) -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-table"></i><h3>CSV ⇄ Excel</h3></div>
-          <div class="drop-zone">📊 Drop .csv or .xlsx<input type="file" class="file-input" multiple accept=".csv,.xlsx"></div>
-          <select class="format-select csv-direction">
-            <option value="csv2excel">CSV → Excel</option>
-            <option value="excel2csv">Excel → CSV</option>
-          </select>
-          <button class="btn convert-file-btn" data-type="csv">Convert</button>
-          <div class="result-area"></div>
-        </div>
-
-        <!-- Excel → PDF (placeholder) -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-file-excel"></i><h3>Excel → PDF</h3></div>
-          <div class="drop-zone">📗 Drop .xlsx/.xls<input type="file" class="file-input" multiple accept=".xlsx,.xls"></div>
-          <button class="btn convert-file-btn" data-type="excel2pdf">Convert to PDF</button>
-          <div class="result-area"></div>
-        </div>
-
-        <!-- DWG → KMZ (UTM marker) -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-draw-polygon"></i><h3>DWG → KMZ <span class="badge">UTM marker</span></h3></div>
-          <div class="drop-zone">🗺️ Drop .dwg<input type="file" class="file-input" accept=".dwg" multiple></div>
-          <label>UTM Zone:</label>
-          <select class="format-select" id="utmZone">
-            <option value="31N">31N (Nigeria / West Africa)</option>
-            <option value="32N">32N</option><option value="33N">33N</option><option value="34N">34N</option><option value="35N">35N</option><option value="36N">36N</option><option value="37N">37N</option><option value="38N">38N</option><option value="39N">39N</option><option value="40N">40N</option><option value="41N">41N</option><option value="42N">42N</option><option value="43N">43N</option><option value="44N">44N</option><option value="45N">45N</option><option value="46N">46N</option><option value="47N">47N</option><option value="48N">48N</option><option value="49N">49N</option><option value="50N">50N</option><option value="51N">51N</option><option value="52N">52N</option><option value="53N">53N</option><option value="54N">54N</option><option value="55N">55N</option><option value="56N">56N</option><option value="57N">57N</option><option value="58N">58N</option><option value="59N">59N</option><option value="60N">60N</option>
-            <option value="1S">1S</option><option value="2S">2S</option><option value="3S">3S</option><option value="4S">4S</option><option value="5S">5S</option><option value="6S">6S</option><option value="7S">7S</option><option value="8S">8S</option><option value="9S">9S</option><option value="10S">10S</option><option value="11S">11S</option><option value="12S">12S</option><option value="13S">13S</option><option value="14S">14S</option><option value="15S">15S</option><option value="16S">16S</option><option value="17S">17S</option><option value="18S">18S</option><option value="19S">19S</option><option value="20S">20S</option><option value="21S">21S</option><option value="22S">22S</option><option value="23S">23S</option><option value="24S">24S</option><option value="25S">25S</option><option value="26S">26S</option><option value="27S">27S</option><option value="28S">28S</option><option value="29S">29S</option><option value="30S">30S</option><option value="31S">31S</option><option value="32S">32S</option><option value="33S">33S</option><option value="34S">34S</option><option value="35S">35S</option><option value="36S">36S</option><option value="37S">37S</option><option value="38S">38S</option><option value="39S">39S</option><option value="40S">40S</option><option value="41S">41S</option><option value="42S">42S</option><option value="43S">43S</option><option value="44S">44S</option><option value="45S">45S</option><option value="46S">46S</option><option value="47S">47S</option><option value="48S">48S</option><option value="49S">49S</option><option value="50S">50S</option><option value="51S">51S</option><option value="52S">52S</option><option value="53S">53S</option><option value="54S">54S</option><option value="55S">55S</option><option value="56S">56S</option><option value="57S">57S</option><option value="58S">58S</option><option value="59S">59S</option><option value="60S">60S</option>
-          </select>
-          <label>Easting (X):</label><input type="number" id="utmEasting" value="315000" class="format-select">
-          <label>Northing (Y):</label><input type="number" id="utmNorthing" value="950000" class="format-select">
-          <label>Datum:</label>
-          <select class="format-select" id="utmDatum">
-            <option value="WGS84">WGS84</option>
-            <option value="Minna" selected>Minna (Nigeria)</option>
-          </select>
-          <button class="btn convert-file-btn" data-type="dwg">Generate KMZ marker</button>
-          <div class="result-area"></div>
-          <div class="warning">Location marker only – real geometry requires desktop GIS.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Expanded Unit Converters -->
-    <section id="unit">
-      <h2 class="section-title">Unit converters</h2>
-      <div class="card-grid">
-        <!-- Length -->
-        <div class="card"><div class="card-header"><i class="fas fa-arrows-alt-h"></i><h3>Length</h3></div>
-          <div class="input-group">
-            <input type="number" id="lengthVal" value="1">
-            <select id="lengthFrom">
-              <option value="m">Meter</option><option value="km">Kilometer</option><option value="cm">Centimeter</option><option value="mm">Millimeter</option>
-              <option value="mi">Mile</option><option value="yd">Yard</option><option value="ft">Foot</option><option value="in">Inch</option>
-            </select>
-            <span>to</span>
-            <select id="lengthTo">
-              <option value="ft">Foot</option><option value="m">Meter</option><option value="km">Kilometer</option><option value="cm">Centimeter</option>
-              <option value="mm">Millimeter</option><option value="mi">Mile</option><option value="yd">Yard</option><option value="in">Inch</option>
-            </select>
-          </div>
-          <button class="btn convert-unit" data-type="length">Convert</button>
-          <div class="result-area" id="lengthRes"></div>
-        </div>
-        <!-- Weight -->
-        <div class="card"><div class="card-header"><i class="fas fa-weight-hanging"></i><h3>Weight</h3></div>
-          <div class="input-group">
-            <input type="number" id="weightVal" value="1">
-            <select id="weightFrom">
-              <option value="kg">Kilogram</option><option value="g">Gram</option><option value="mg">Milligram</option>
-              <option value="lb">Pound</option><option value="oz">Ounce</option><option value="st">Stone</option>
-            </select>
-            <span>to</span>
-            <select id="weightTo">
-              <option value="lb">Pound</option><option value="kg">Kilogram</option><option value="g">Gram</option><option value="mg">Milligram</option>
-              <option value="oz">Ounce</option><option value="st">Stone</option>
-            </select>
-          </div>
-          <button class="btn convert-unit" data-type="weight">Convert</button>
-          <div class="result-area" id="weightRes"></div>
-        </div>
-        <!-- Volume -->
-        <div class="card"><div class="card-header"><i class="fas fa-flask"></i><h3>Volume</h3></div>
-          <div class="input-group">
-            <input type="number" id="volVal" value="1">
-            <select id="volFrom">
-              <option value="l">Liter</option><option value="ml">Milliliter</option><option value="gal">Gallon (US)</option>
-              <option value="qt">Quart</option><option value="pt">Pint</option><option value="cup">Cup</option><option value="floz">Fluid Ounce</option>
-            </select>
-            <span>to</span>
-            <select id="volTo">
-              <option value="gal">Gallon (US)</option><option value="l">Liter</option><option value="ml">Milliliter</option>
-              <option value="qt">Quart</option><option value="pt">Pint</option><option value="cup">Cup</option><option value="floz">Fluid Ounce</option>
-            </select>
-          </div>
-          <button class="btn convert-unit" data-type="volume">Convert</button>
-          <div class="result-area" id="volRes"></div>
-        </div>
-        <!-- Temperature -->
-        <div class="card"><div class="card-header"><i class="fas fa-temperature-high"></i><h3>Temperature</h3></div>
-          <div class="input-group">
-            <input type="number" id="tempVal" value="0">
-            <select id="tempFrom"><option value="c">Celsius</option><option value="f">Fahrenheit</option><option value="k">Kelvin</option></select>
-            <span>to</span>
-            <select id="tempTo"><option value="f">Fahrenheit</option><option value="c">Celsius</option><option value="k">Kelvin</option></select>
-          </div>
-          <button class="btn convert-unit" data-type="temp">Convert</button>
-          <div class="result-area" id="tempRes"></div>
-        </div>
-        <!-- Area -->
-        <div class="card"><div class="card-header"><i class="fas fa-square"></i><h3>Area</h3></div>
-          <div class="input-group">
-            <input type="number" id="areaVal" value="1">
-            <select id="areaFrom">
-              <option value="sqm">Square Meter</option><option value="sqkm">Square Kilometer</option><option value="sqft">Square Foot</option>
-              <option value="acre">Acre</option><option value="hectare">Hectare</option><option value="sqmi">Square Mile</option>
-            </select>
-            <span>to</span>
-            <select id="areaTo">
-              <option value="sqft">Square Foot</option><option value="sqm">Square Meter</option><option value="sqkm">Square Kilometer</option>
-              <option value="acre">Acre</option><option value="hectare">Hectare</option><option value="sqmi">Square Mile</option>
-            </select>
-          </div>
-          <button class="btn convert-unit" data-type="area">Convert</button>
-          <div class="result-area" id="areaRes"></div>
-        </div>
-        <!-- Speed -->
-        <div class="card"><div class="card-header"><i class="fas fa-tachometer-alt"></i><h3>Speed</h3></div>
-          <div class="input-group">
-            <input type="number" id="speedVal" value="1">
-            <select id="speedFrom"><option value="kph">km/h</option><option value="mph">mph</option><option value="mps">m/s</option><option value="knot">Knot</option></select>
-            <span>to</span>
-            <select id="speedTo"><option value="mph">mph</option><option value="kph">km/h</option><option value="mps">m/s</option><option value="knot">Knot</option></select>
-          </div>
-          <button class="btn convert-unit" data-type="speed">Convert</button>
-          <div class="result-area" id="speedRes"></div>
-        </div>
-        <!-- Data (Digital Storage) -->
-        <div class="card"><div class="card-header"><i class="fas fa-database"></i><h3>Data Storage</h3></div>
-          <div class="input-group">
-            <input type="number" id="dataVal" value="1">
-            <select id="dataFrom"><option value="b">Byte</option><option value="kb">KB</option><option value="mb">MB</option><option value="gb">GB</option><option value="tb">TB</option></select>
-            <span>to</span>
-            <select id="dataTo"><option value="mb">MB</option><option value="b">Byte</option><option value="kb">KB</option><option value="gb">GB</option><option value="tb">TB</option></select>
-          </div>
-          <button class="btn convert-unit" data-type="data">Convert</button>
-          <div class="result-area" id="dataRes"></div>
-        </div>
-        <!-- Pressure -->
-        <div class="card"><div class="card-header"><i class="fas fa-gauge-high"></i><h3>Pressure</h3></div>
-          <div class="input-group">
-            <input type="number" id="pressureVal" value="1">
-            <select id="pressureFrom"><option value="pa">Pascal</option><option value="kpa">kPa</option><option value="bar">Bar</option><option value="psi">psi</option><option value="atm">Atm</option></select>
-            <span>to</span>
-            <select id="pressureTo"><option value="psi">psi</option><option value="pa">Pascal</option><option value="kpa">kPa</option><option value="bar">Bar</option><option value="atm">Atm</option></select>
-          </div>
-          <button class="btn convert-unit" data-type="pressure">Convert</button>
-          <div class="result-area" id="pressureRes"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Currency & Time (expanded time zones) -->
-    <section id="currency">
-      <h2 class="section-title">Currency & time</h2>
-      <div class="card-grid">
-        <!-- Currency converter (unchanged) -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency (real-time)</h3></div>
-          <div class="input-group">
-            <input type="number" id="currAmt" value="1">
-            <select id="currFrom">
-              <option value="USD">USD – US Dollar</option><option value="EUR">EUR – Euro</option><option value="GBP">GBP – British Pound</option>
-              <option value="NGN">NGN – Nigerian Naira</option><option value="CAD">CAD – Canadian Dollar</option><option value="AUD">AUD – Australian Dollar</option>
-              <option value="JPY">JPY – Japanese Yen</option><option value="CNY">CNY – Chinese Yuan</option><option value="INR">INR – Indian Rupee</option>
-              <option value="BRL">BRL – Brazilian Real</option><option value="ZAR">ZAR – South African Rand</option><option value="RUB">RUB – Russian Ruble</option>
-              <option value="CHF">CHF – Swiss Franc</option><option value="SGD">SGD – Singapore Dollar</option><option value="HKD">HKD – Hong Kong Dollar</option>
-              <option value="MXN">MXN – Mexican Peso</option><option value="SEK">SEK – Swedish Krona</option><option value="NZD">NZD – New Zealand Dollar</option>
-              <option value="KRW">KRW – South Korean Won</option><option value="TRY">TRY – Turkish Lira</option><option value="AED">AED – UAE Dirham</option>
-            </select>
-            <span>→</span>
-            <select id="currTo">
-              <option value="EUR">EUR – Euro</option><option value="USD">USD – US Dollar</option><option value="GBP">GBP – British Pound</option>
-              <option value="NGN">NGN – Nigerian Naira</option><option value="CAD">CAD – Canadian Dollar</option><option value="AUD">AUD – Australian Dollar</option>
-              <option value="JPY">JPY – Japanese Yen</option><option value="CNY">CNY – Chinese Yuan</option><option value="INR">INR – Indian Rupee</option>
-              <option value="BRL">BRL – Brazilian Real</option><option value="ZAR">ZAR – South African Rand</option><option value="RUB">RUB – Russian Ruble</option>
-              <option value="CHF">CHF – Swiss Franc</option><option value="SGD">SGD – Singapore Dollar</option><option value="HKD">HKD – Hong Kong Dollar</option>
-              <option value="MXN">MXN – Mexican Peso</option><option value="SEK">SEK – Swedish Krona</option><option value="NZD">NZD – New Zealand Dollar</option>
-              <option value="KRW">KRW – South Korean Won</option><option value="TRY">TRY – Turkish Lira</option><option value="AED">AED – UAE Dirham</option>
-            </select>
-          </div>
-          <button class="btn" id="convertCurrency">Get live rate</button>
-          <div class="result-area" id="currResult">1 USD ≈ 0.92 EUR</div>
-        </div>
-
-        <!-- Time zone – expanded with many countries -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-clock"></i><h3>Time zone</h3></div>
-          <div class="input-group">
-            <select id="tz1">
-              <option value="America/New_York">New York (USA - Eastern)</option>
-              <option value="America/Chicago">Chicago (USA - Central)</option>
-              <option value="America/Denver">Denver (USA - Mountain)</option>
-              <option value="America/Los_Angeles">Los Angeles (USA - Pacific)</option>
-              <option value="America/Anchorage">Anchorage (USA - Alaska)</option>
-              <option value="America/Honolulu">Honolulu (USA - Hawaii)</option>
-              <option value="America/Toronto">Toronto (Canada)</option>
-              <option value="America/Mexico_City">Mexico City</option>
-              <option value="America/Sao_Paulo">São Paulo (Brazil)</option>
-              <option value="America/Buenos_Aires">Buenos Aires (Argentina)</option>
-              <option value="Europe/London">London (UK)</option>
-              <option value="Europe/Paris">Paris (France)</option>
-              <option value="Europe/Berlin">Berlin (Germany)</option>
-              <option value="Europe/Rome">Rome (Italy)</option>
-              <option value="Europe/Madrid">Madrid (Spain)</option>
-              <option value="Europe/Moscow">Moscow (Russia)</option>
-              <option value="Europe/Istanbul">Istanbul (Turkey)</option>
-              <option value="Africa/Lagos">Lagos (Nigeria)</option>
-              <option value="Africa/Johannesburg">Johannesburg (South Africa)</option>
-              <option value="Africa/Nairobi">Nairobi (Kenya)</option>
-              <option value="Asia/Dubai">Dubai (UAE)</option>
-              <option value="Asia/Riyadh">Riyadh (Saudi Arabia)</option>
-              <option value="Asia/Kolkata">Kolkata (India)</option>
-              <option value="Asia/Shanghai">Shanghai (China)</option>
-              <option value="Asia/Tokyo">Tokyo (Japan)</option>
-              <option value="Asia/Seoul">Seoul (South Korea)</option>
-              <option value="Asia/Singapore">Singapore</option>
-              <option value="Asia/Bangkok">Bangkok (Thailand)</option>
-              <option value="Asia/Jakarta">Jakarta (Indonesia)</option>
-              <option value="Australia/Sydney">Sydney (Australia)</option>
-              <option value="Australia/Perth">Perth (Australia)</option>
-              <option value="Pacific/Auckland">Auckland (New Zealand)</option>
-              <option value="Pacific/Fiji">Fiji</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <select id="tz2">
-              <option value="Europe/London">London (UK)</option>
-              <option value="America/New_York">New York (USA - Eastern)</option>
-              <option value="America/Chicago">Chicago (USA - Central)</option>
-              <option value="America/Denver">Denver (USA - Mountain)</option>
-              <option value="America/Los_Angeles">Los Angeles (USA - Pacific)</option>
-              <option value="America/Anchorage">Anchorage (USA - Alaska)</option>
-              <option value="America/Honolulu">Honolulu (USA - Hawaii)</option>
-              <option value="America/Toronto">Toronto (Canada)</option>
-              <option value="America/Mexico_City">Mexico City</option>
-              <option value="America/Sao_Paulo">São Paulo (Brazil)</option>
-              <option value="America/Buenos_Aires">Buenos Aires (Argentina)</option>
-              <option value="Europe/Paris">Paris (France)</option>
-              <option value="Europe/Berlin">Berlin (Germany)</option>
-              <option value="Europe/Rome">Rome (Italy)</option>
-              <option value="Europe/Madrid">Madrid (Spain)</option>
-              <option value="Europe/Moscow">Moscow (Russia)</option>
-              <option value="Europe/Istanbul">Istanbul (Turkey)</option>
-              <option value="Africa/Lagos">Lagos (Nigeria)</option>
-              <option value="Africa/Johannesburg">Johannesburg (South Africa)</option>
-              <option value="Africa/Nairobi">Nairobi (Kenya)</option>
-              <option value="Asia/Dubai">Dubai (UAE)</option>
-              <option value="Asia/Riyadh">Riyadh (Saudi Arabia)</option>
-              <option value="Asia/Kolkata">Kolkata (India)</option>
-              <option value="Asia/Shanghai">Shanghai (China)</option>
-              <option value="Asia/Tokyo">Tokyo (Japan)</option>
-              <option value="Asia/Seoul">Seoul (South Korea)</option>
-              <option value="Asia/Singapore">Singapore</option>
-              <option value="Asia/Bangkok">Bangkok (Thailand)</option>
-              <option value="Asia/Jakarta">Jakarta (Indonesia)</option>
-              <option value="Australia/Sydney">Sydney (Australia)</option>
-              <option value="Australia/Perth">Perth (Australia)</option>
-              <option value="Pacific/Auckland">Auckland (New Zealand)</option>
-              <option value="Pacific/Fiji">Fiji</option>
-            </select>
-          </div>
-          <button class="btn" id="tzConvert">Show times</button>
-          <div class="result-area" id="tzResult"></div>
-        </div>
-
-        <!-- Date difference (unchanged) -->
-        <div class="card">
-          <div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date difference</h3></div>
-          <div class="input-group"><input type="date" id="date1" value="2025-03-01"><input type="date" id="date2" value="2025-03-15"></div>
-          <button class="btn" id="dateDiff">Difference</button>
-          <div class="result-area" id="dateRes">14 days</div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>Universal Converter Hub — Professional tools for everyone</p>
-    </footer>
+  <!-- Navigation Bar – always visible, easy to jump to any tool -->
+  <div class="nav-links" id="mainNav">
+    <button class="nav-btn" data-page="home">🏠 Home</button>
+    <button class="nav-btn" data-page="pdf">📄 PDF</button>
+    <button class="nav-btn" data-page="image">🎨 Image Editor</button>
+    <button class="nav-btn" data-page="compress">🗜️ Compress</button>
+    <button class="nav-btn" data-page="qr">📱 QR Code</button>
+    <button class="nav-btn" data-page="password">🔐 Password</button>
+    <button class="nav-btn" data-page="tts">🔊 Text to Speech</button>
+    <button class="nav-btn" data-page="translate">🌐 Translator</button>
+    <button class="nav-btn" data-page="excel">📊 Excel</button>
+    <button class="nav-btn" data-page="unit">📐 Units & Land</button>
+    <button class="nav-btn" data-page="currency">💰 Currency</button>
   </div>
 
-  <!-- Adsterra Social Bar Script -->
-  <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+  <!-- Ad Banner (top) -->
+  <div class="ad-universal"><div class="ad-desktop-only"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-mobile-only"><script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script><script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script></div></div>
 
-  <script>
-    // ---------- CONFIG ----------
-    const BACKEND_URL = 'https://universal-converter-hub.onrender.com';
+  <!-- ========== HOME PAGE ========== -->
+  <div id="homePage" class="page active-page">
+    <h2 class="section-title">Welcome to Universal Converter Hub</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-header"><i class="fas fa-file-pdf"></i><h3>PDF → Word</h3></div><p>Convert PDF to editable Word documents.</p><button class="btn nav-trigger" data-page="pdf">Try Now</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-edit"></i><h3>Image Editor</h3></div><p>Move, resize, crop, filters, text, draw, remove background.</p><button class="btn nav-trigger" data-page="image">Edit Image</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-compress-alt"></i><h3>Image Compressor</h3></div><p>Reduce image size while keeping quality.</p><button class="btn nav-trigger" data-page="compress">Compress</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-qrcode"></i><h3>QR Code Generator</h3></div><p>Create QR codes for any text/URL.</p><button class="btn nav-trigger" data-page="qr">Generate</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-key"></i><h3>Password Generator</h3></div><p>Strong random passwords instantly.</p><button class="btn nav-trigger" data-page="password">Generate</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-volume-up"></i><h3>Text to Speech</h3></div><p>Convert text to natural speech.</p><button class="btn nav-trigger" data-page="tts">Listen</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-language"></i><h3>Language Translator</h3></div><p>Translate text between 100+ languages (unlimited length).</p><button class="btn nav-trigger" data-page="translate">Translate</button></div>
+      <div class="card"><div class="card-header"><i class="fas fa-map-marker-alt"></i><h3>Land / Plot Calculator</h3></div><p>Calculate plot sizes, convert area to plots.</p><button class="btn nav-trigger" data-page="unit">Calculate</button></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
 
-    // Dark mode
-    const toggle = document.getElementById('darkToggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      toggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i><span> Light mode</span>' : '<i class="fas fa-moon"></i><span> Dark mode</span>';
+  <!-- ========== PDF PAGE ========== -->
+  <div id="pdfPage" class="page">
+    <h2 class="section-title">PDF → Word</h2>
+    <div class="card">
+      <div class="drop-zone" id="pdfDrop">📄 Drop PDF here or click<input type="file" id="pdfInput" accept=".pdf" multiple></div>
+      <div id="pdfFileList" class="file-list"></div>
+      <button class="btn" id="convertPdfBtn"><i class="fas fa-sync"></i> Convert to Word</button>
+      <div class="result-area" id="pdfResult"></div>
+      <p class="guide-text" style="margin-top:0.5rem;">Converts PDF to .docx using our backend. Formatting preserved.</p>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== IMAGE EDITOR PAGE ========== -->
+  <div id="imagePage" class="page">
+    <h2 class="section-title">Professional Image Editor</h2>
+    <div class="card">
+      <div class="editor-toolbar">
+        <button class="btn" id="uploadImageBtn"><i class="fas fa-upload"></i> Upload</button>
+        <button class="btn" id="downloadImageBtn"><i class="fas fa-download"></i> Download PNG</button>
+        <button class="btn" id="resetEditorBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+      </div>
+      <div class="canvas-container" id="canvasContainer">
+        <canvas id="editorCanvas" width="600" height="400" style="width:100%; height:auto; border-radius:16px; background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 50% / 20px 20px;"></canvas>
+      </div>
+      <div class="editor-toolbar">
+        <button class="btn" id="addTextBtn"><i class="fas fa-font"></i> Add Text</button>
+        <button class="btn" id="drawModeBtn"><i class="fas fa-paint-brush"></i> Draw</button>
+        <button class="btn" id="cropBtn"><i class="fas fa-crop-alt"></i> Crop Canvas</button>
+        <button class="btn" id="removeBgBtn"><i class="fas fa-eraser"></i> Remove BG (Color)</button>
+      </div>
+      <div class="editor-toolbar" style="flex-direction:column; align-items:stretch;">
+        <div><label>Zoom: <input type="range" id="zoomSlider" min="0.2" max="3" step="0.01" value="1" style="width:200px;"></label></div>
+        <div><label>Brightness: <input type="range" id="brightnessSlider" min="-1" max="1" step="0.01" value="0"></label></div>
+        <div><label>Contrast: <input type="range" id="contrastSlider" min="-1" max="1" step="0.01" value="0"></label></div>
+        <div><label>Blur: <input type="range" id="blurSlider" min="0" max="10" step="0.1" value="0"></label></div>
+      </div>
+      <div id="textOptions" class="editor-toolbar" style="display:none;">
+        <input type="text" id="textInput" placeholder="Enter text" class="format-select" style="width:auto;">
+        <select id="fontSizeSelect"><option value="20">20</option><option value="30" selected>30</option><option value="40">40</option><option value="50">50</option></select>
+        <input type="color" id="textColor" value="#000000">
+        <button class="btn" id="boldTextBtn"><b>B</b></button>
+      </div>
+      <div id="drawOptions" class="editor-toolbar" style="display:none;">
+        <label>Brush Color: <input type="color" id="brushColor" value="#ff0000"></label>
+        <label>Brush Size: <input type="range" id="brushSize" min="1" max="30" value="5"></label>
+        <button class="btn" id="eraserModeBtn">Eraser</button>
+      </div>
+      <div id="bgOptions" class="editor-toolbar" style="display:none;">
+        <label>Pick color to remove: <input type="color" id="bgColorPicker" value="#ffffff"></label>
+        <button class="btn" id="applyBgRemoval">Make Transparent</button>
+      </div>
+      <div class="result-area" id="editorResult"></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== IMAGE COMPRESSOR PAGE ========== -->
+  <div id="compressPage" class="page">
+    <h2 class="section-title">Image Compressor</h2>
+    <div class="card">
+      <div class="drop-zone" id="compressDrop">🖼️ Drop an image or click<input type="file" id="compressInput" accept="image/*"></div>
+      <div id="compressFileList" class="file-list"></div>
+      <div class="input-group"><label>Quality: <input type="range" id="compressQuality" min="10" max="100" value="70" step="5"> <span id="qualityVal">70</span>%</label></div>
+      <button class="btn" id="compressBtn">Compress & Download</button>
+      <div class="result-area" id="compressResult"></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== QR CODE PAGE ========== -->
+  <div id="qrPage" class="page">
+    <h2 class="section-title">QR Code Generator</h2>
+    <div class="card">
+      <div class="input-group"><input type="text" id="qrText" placeholder="Enter text or URL" value="https://converterhub.com.ng" class="format-select"></div>
+      <div class="qrcode-container" id="qrcode"></div>
+      <button class="btn" id="generateQrBtn">Generate QR Code</button>
+      <button class="btn" id="downloadQrBtn" style="background:#22c55e;">Download QR Code</button>
+      <div class="result-area" id="qrResult"></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== PASSWORD GENERATOR ========== -->
+  <div id="passwordPage" class="page">
+    <h2 class="section-title">Password Generator</h2>
+    <div class="card">
+      <div class="input-group">
+        <label>Length: <input type="number" id="passLength" value="12" min="4" max="32" style="width:80px;"></label>
+        <label><input type="checkbox" id="includeUpper" checked> A-Z</label>
+        <label><input type="checkbox" id="includeLower" checked> a-z</label>
+        <label><input type="checkbox" id="includeNumbers" checked> 0-9</label>
+        <label><input type="checkbox" id="includeSymbols" checked> !@#$%</label>
+      </div>
+      <button class="btn" id="generatePassBtn">Generate Password</button>
+      <div class="result-area" id="passResult" style="font-family: monospace; font-size: 1.2rem;"></div>
+      <button class="btn" id="copyPassBtn" style="background:#28a745;">Copy to Clipboard</button>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== TEXT TO SPEECH ========== -->
+  <div id="ttsPage" class="page">
+    <h2 class="section-title">Text to Speech</h2>
+    <div class="card">
+      <textarea id="ttsText" rows="4" class="format-select" placeholder="Enter text to speak...">Welcome to Universal Converter Hub. Enjoy our free tools!</textarea>
+      <div class="input-group"><select id="voiceSelect" class="format-select"></select></div>
+      <button class="btn" id="speakBtn"><i class="fas fa-play"></i> Speak</button>
+      <button class="btn" id="stopBtn"><i class="fas fa-stop"></i> Stop</button>
+      <div class="result-area" id="ttsResult"></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== LANGUAGE TRANSLATOR (unlimited length) ========== -->
+  <div id="translatePage" class="page">
+    <h2 class="section-title">Language Translator</h2>
+    <div class="card">
+      <textarea id="sourceText" rows="4" class="format-select" placeholder="Enter text to translate (no length limit)...">Hello, how are you? I love using this tool because it can translate very long paragraphs without any character limit.</textarea>
+      <div class="input-group">
+        <select id="sourceLang" class="format-select"></select>
+        <i class="fas fa-arrow-right" style="align-self:center;"></i>
+        <select id="targetLang" class="format-select"></select>
+      </div>
+      <button class="btn" id="translateBtn"><i class="fas fa-language"></i> Translate</button>
+      <div class="result-area" id="translationResult"></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== EXCEL & CSV PAGE ========== -->
+  <div id="excelPage" class="page">
+    <h2 class="section-title">Excel & CSV Tools</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-table"></i><h3>CSV ⇄ Excel</h3></div>
+        <div class="drop-zone" id="csvDrop">📊 Drop .csv or .xlsx<input type="file" id="csvInput" accept=".csv,.xlsx" multiple></div>
+        <div id="csvFileList" class="file-list"></div>
+        <select class="format-select" id="csvDirection"><option value="csv2excel">CSV → Excel (.xlsx)</option><option value="excel2csv">Excel → CSV</option></select>
+        <button class="btn" id="convertCsvBtn">Convert</button>
+        <div class="result-area" id="csvResult"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><i class="fas fa-file-excel"></i><h3>Excel → PDF</h3></div>
+        <div class="drop-zone" id="excel2pdfDrop">📗 Drop .xlsx or .xls<input type="file" id="excel2pdfInput" accept=".xlsx,.xls" multiple></div>
+        <div id="excel2pdfFileList" class="file-list"></div>
+        <button class="btn" id="convertExcel2PdfBtn">Convert to PDF</button>
+        <div class="result-area" id="excel2pdfResult"></div>
+      </div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== UNITS & LAND PAGE ========== -->
+  <div id="unitPage" class="page">
+    <h2 class="section-title">Unit Converters</h2>
+    <div class="card-grid" id="unitGrid"></div>
+    <h2 class="section-title" style="margin-top:2rem;">Land / Plot Size Calculator</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-header"><i class="fas fa-draw-polygon"></i><h3>Standard Plot Sizes</h3></div><div class="result-area"><p><strong>50ft × 100ft plot</strong> = <span id="plot50x100Sqft">5,000</span> sq ft = <span id="plot50x100Sqm">464.5</span> m² = <span id="plot50x100Acres">0.1148</span> acres</p><p><strong>60ft × 120ft plot</strong> = <span id="plot60x120Sqft">7,200</span> sq ft = <span id="plot60x120Sqm">669.0</span> m² = <span id="plot60x120Acres">0.1653</span> acres</p></div></div>
+      <div class="card"><div class="card-header"><i class="fas fa-ruler-combined"></i><h3>Custom Plot Size</h3></div><div class="input-group"><input type="number" id="plotLength" placeholder="Length (ft)" value="50" class="format-select"><input type="number" id="plotWidth" placeholder="Width (ft)" value="100" class="format-select"></div><button class="btn" id="calculatePlotBtn">Calculate</button><div class="result-area" id="customPlotResult"><strong>50 ft × 100 ft</strong><br>📐 Area: 5,000 sq ft | 464.5 m²<br>🌾 Acres: 0.1148 acres<br>📏 Hectares: 0.04645 ha</div></div>
+      <div class="card"><div class="card-header"><i class="fas fa-exchange-alt"></i><h3>Convert Area to Plots</h3></div><div class="input-group"><input type="number" id="areaValue" placeholder="Area value" step="any" class="format-select"><select id="areaUnit" class="format-select"><option value="sqm">Square Meters (m²)</option><option value="hectare">Hectares (ha)</option><option value="acre">Acres</option></select></div><button class="btn" id="convertAreaToPlotsBtn">Convert to Plots</button><div class="result-area" id="areaToPlotsResult">Enter area above to see how many 50×100 ft and 60×120 ft plots.</div></div>
+      <div class="card"><div class="card-header"><i class="fas fa-chart-line"></i><h3>Acres → Plots + Metric</h3></div><div class="input-group"><input type="number" id="acresInput" placeholder="Acres" value="1" step="0.1" class="format-select"></div><button class="btn" id="convertAcresBtn">Convert</button><div class="result-area" id="acresResult"><strong>1 acre =</strong><br>📐 <span id="plots50x100">8.71</span> plots (50×100 ft)<br>📐 <span id="plots60x120">6.05</span> plots (60×120 ft)<br>🌾 <span id="acresToHectares">0.4047</span> hectares<br>📏 <span id="acresToSqm">4046.86</span> square meters</div></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <!-- ========== CURRENCY & TIME PAGE ========== -->
+  <div id="currencyPage" class="page">
+    <h2 class="section-title">Currency & Time Zone</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency Converter</h3></div><div class="input-group"><input type="number" id="currAmt" value="1"><select id="currFrom"></select><span>→</span><select id="currTo"></select></div><button class="btn" id="convertCurrency">Get Live Rate</button><div class="result-area" id="currResult"></div></div>
+      <div class="card"><div class="card-header"><i class="fas fa-clock"></i><h3>Time Zone</h3></div><div class="input-group"><select id="tz1"></select><select id="tz2"></select></div><button class="btn" id="tzConvert">Show Times</button><div class="result-area" id="tzResult"></div></div>
+      <div class="card"><div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date Difference</h3></div><div class="input-group"><input type="date" id="date1"><input type="date" id="date2"></div><button class="btn" id="dateDiff">Calculate</button><div class="result-area" id="dateRes"></div></div>
+    </div>
+    <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  </div>
+
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+
+<!-- Social Bar (Adsterra) -->
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+
+<script>
+  // ==================== GLOBAL NAVIGATION ====================
+  const pages = {
+    home: document.getElementById('homePage'),
+    pdf: document.getElementById('pdfPage'),
+    image: document.getElementById('imagePage'),
+    compress: document.getElementById('compressPage'),
+    qr: document.getElementById('qrPage'),
+    password: document.getElementById('passwordPage'),
+    tts: document.getElementById('ttsPage'),
+    translate: document.getElementById('translatePage'),
+    excel: document.getElementById('excelPage'),
+    unit: document.getElementById('unitPage'),
+    currency: document.getElementById('currencyPage')
+  };
+  function navigateTo(pageId) {
+    Object.keys(pages).forEach(id => pages[id].classList.remove('active-page'));
+    pages[pageId].classList.add('active-page');
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    const activeNav = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+    if (activeNav) activeNav.classList.add('active');
+  }
+  // Attach navigation to all nav buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.dataset.page));
+  });
+  // Also handle "Try Now" buttons on home page
+  document.querySelectorAll('.nav-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const page = e.currentTarget.dataset.page;
+      if (page) navigateTo(page);
     });
+  });
+  window.navigateTo = navigateTo;
 
-    // Feedback modal
-    const modal = document.getElementById('feedbackModal');
-    const feedbackBtn = document.getElementById('feedbackBtn');
-    const closeBtn = document.getElementById('closeModal');
-    feedbackBtn.addEventListener('click', () => modal.style.display = 'flex');
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  // Dark mode
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
+  });
 
-    // ---------- PDF → WORD ----------
-    document.getElementById('pdfDrop').addEventListener('click', () => document.getElementById('pdfInput').click());
-    document.getElementById('pdfDrop').addEventListener('dragover', e => e.preventDefault());
-    document.getElementById('pdfDrop').addEventListener('drop', e => {
+  // Helper: update file list display
+  function updateFileList(containerId, files) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    Array.from(files).forEach(f => {
+      const div = document.createElement('div');
+      div.textContent = f.name + (f.size ? ` (${(f.size/1024).toFixed(1)} KB)` : '');
+      container.appendChild(div);
+    });
+  }
+
+  // ---------- PDF conversion (backend) ----------
+  const BACKEND_URL = 'https://universal-converter-hub.onrender.com';
+  const pdfInput = document.getElementById('pdfInput');
+  if (pdfInput) {
+    pdfInput.addEventListener('change', () => updateFileList('pdfFileList', pdfInput.files));
+    const pdfDrop = document.getElementById('pdfDrop');
+    pdfDrop.addEventListener('click', () => pdfInput.click());
+    pdfDrop.addEventListener('dragover', e => e.preventDefault());
+    pdfDrop.addEventListener('drop', e => {
       e.preventDefault();
-      document.getElementById('pdfInput').files = e.dataTransfer.files;
+      pdfInput.files = e.dataTransfer.files;
+      updateFileList('pdfFileList', pdfInput.files);
     });
     document.getElementById('convertPdfBtn').addEventListener('click', async () => {
-      const input = document.getElementById('pdfInput');
-      if (!input.files.length) { document.getElementById('pdfResult').innerText = '⚠️ Select a PDF.'; return; }
-      const file = input.files[0];
+      if (!pdfInput.files.length) { document.getElementById('pdfResult').innerText = 'Select a PDF.'; return; }
+      const file = pdfInput.files[0];
       const resultDiv = document.getElementById('pdfResult');
-      resultDiv.innerHTML = '⏳ Converting...';
-      const formData = new FormData();
-      formData.append('file', file);
+      resultDiv.innerText = 'Converting...';
+      const fd = new FormData(); fd.append('file', file);
       try {
-        const response = await fetch(`${BACKEND_URL}/convert/pdf-to-word`, { method: 'POST', body: formData });
-        if (!response.ok) throw new Error('Conversion failed');
-        const blob = await response.blob();
+        const res = await fetch(`${BACKEND_URL}/convert/pdf-to-word`, { method: 'POST', body: fd });
+        if (!res.ok) throw new Error();
+        const blob = await res.blob();
         saveAs(blob, file.name.replace('.pdf', '.docx'));
-        resultDiv.innerHTML = '✅ Conversion successful!';
-      } catch (err) {
-        resultDiv.innerHTML = `❌ Error: ${err.message}`;
-      }
+        resultDiv.innerText = '✅ Success!';
+      } catch(e) { resultDiv.innerText = '❌ Error. Try again.'; }
     });
+  }
 
-    // ---------- IMAGE EDITOR (full) ----------
-    let originalImage = null, currentImage = null;
-    let cropper = null;
-    let currentFilter = 'normal';
-    const editorDrop = document.getElementById('imageEditorDrop');
-    const editorInput = document.getElementById('imageEditorInput');
-    const editorContainer = document.getElementById('imageEditorContainer');
-    const editorPreview = document.getElementById('editorPreview');
-    const brightnessSlider = document.getElementById('brightnessSlider');
-    const contrastSlider = document.getElementById('contrastSlider');
-    const saturationSlider = document.getElementById('saturationSlider');
-    const blurSlider = document.getElementById('blurSlider');
-    const bgColorPicker = document.getElementById('bgColorPicker');
-    const brightnessSpan = document.getElementById('brightnessValue');
-    const contrastSpan = document.getElementById('contrastValue');
-    const saturationSpan = document.getElementById('saturationValue');
-    const blurSpan = document.getElementById('blurValue');
-    const resetBtn = document.getElementById('resetImage');
-    const downloadBtn = document.getElementById('downloadEditedImage');
-    const applyBgBtn = document.getElementById('applyBgRemoval');
-    const filterBadges = document.querySelectorAll('.filter-badge');
-    const rotateLeftBtn = document.getElementById('rotateLeftBtn');
-    const rotateRightBtn = document.getElementById('rotateRightBtn');
-    const flipHorizontalBtn = document.getElementById('flipHorizontalBtn');
-    const flipVerticalBtn = document.getElementById('flipVerticalBtn');
-    const cropBtn = document.getElementById('cropBtn');
-    const addTextBtn = document.getElementById('addTextBtn');
-    const overlayText = document.getElementById('overlayText');
-    const textColor = document.getElementById('textColor');
-    const textSize = document.getElementById('textSize');
-    const textX = document.getElementById('textX');
-    const textY = document.getElementById('textY');
+  // ---------- Image Editor (Fabric.js with drag-drop) ----------
+  let canvas = new fabric.Canvas('editorCanvas');
+  let currentImageObj = null;
+  let historyStack = []; let historyIndex = -1;
+  function saveState() { const state = JSON.stringify(canvas.toJSON()); historyStack = historyStack.slice(0, historyIndex+1); historyStack.push(state); historyIndex++; }
+  function undo() { if (historyIndex > 0) { historyIndex--; canvas.loadFromJSON(historyStack[historyIndex], () => canvas.renderAll()); } }
+  function redo() { if (historyIndex < historyStack.length-1) { historyIndex++; canvas.loadFromJSON(historyStack[historyIndex], () => canvas.renderAll()); } }
+  canvas.on('object:modified', saveState); canvas.on('object:added', saveState);
 
-    function loadImage(file) {
+  const canvasContainer = document.getElementById('canvasContainer');
+  canvasContainer.addEventListener('dragover', (e) => { e.preventDefault(); canvasContainer.style.border = '2px dashed var(--accent)'; });
+  canvasContainer.addEventListener('dragleave', () => { canvasContainer.style.border = 'none'; });
+  canvasContainer.addEventListener('drop', (e) => {
+    e.preventDefault();
+    canvasContainer.style.border = 'none';
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        originalImage = e.target.result;
-        currentImage = originalImage;
-        editorPreview.src = originalImage;
-        editorContainer.style.display = 'block';
-        resetSliders();
-        if (cropper) cropper.destroy();
+      reader.onload = (ev) => {
+        fabric.Image.fromURL(ev.target.result, (img) => {
+          if (currentImageObj) canvas.remove(currentImageObj);
+          img.scaleToWidth(canvas.width);
+          img.set({ left: canvas.width/2 - img.width/2, top: canvas.height/2 - img.height/2 });
+          canvas.add(img);
+          canvas.setActiveObject(img);
+          currentImageObj = img;
+          canvas.renderAll();
+          saveState();
+          document.getElementById('editorResult').innerHTML = '✅ Image loaded via drag & drop.';
+        }, { crossOrigin: 'anonymous' });
       };
       reader.readAsDataURL(file);
     }
-
-    function resetSliders() {
-      brightnessSlider.value = 0; brightnessSpan.textContent = 0;
-      contrastSlider.value = 0; contrastSpan.textContent = 0;
-      saturationSlider.value = 0; saturationSpan.textContent = 0;
-      blurSlider.value = 0; blurSpan.textContent = 0;
-      currentFilter = 'normal';
-      filterBadges.forEach(b => b.classList.remove('active'));
-      document.querySelector('[data-filter="normal"]').classList.add('active');
-      if (originalImage) editorPreview.src = originalImage;
-    }
-
-    function applyFilters() {
-      if (!originalImage) return;
-      const img = new Image();
+  });
+  document.getElementById('uploadImageBtn').addEventListener('click', () => {
+    const input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = e.target.files[0]; const reader = new FileReader();
+      reader.onload = (ev) => {
+        fabric.Image.fromURL(ev.target.result, (img) => {
+          if (currentImageObj) canvas.remove(currentImageObj);
+          img.scaleToWidth(canvas.width);
+          img.set({ left: canvas.width/2 - img.width/2, top: canvas.height/2 - img.height/2 });
+          canvas.add(img); canvas.setActiveObject(img); currentImageObj = img; canvas.renderAll(); saveState();
+        }, { crossOrigin: 'anonymous' });
+      }; reader.readAsDataURL(file);
+    }; input.click();
+  });
+  document.getElementById('downloadImageBtn').addEventListener('click', () => {
+    const dataURL = canvas.toDataURL({ format: 'png', quality: 1 });
+    const link = document.createElement('a'); link.download = 'edited_image.png'; link.href = dataURL; link.click();
+  });
+  document.getElementById('resetEditorBtn').addEventListener('click', () => {
+    canvas.clear(); canvas.setBackgroundColor('rgba(0,0,0,0)', canvas.renderAll.bind(canvas));
+    canvas.setDimensions({ width: 600, height: 400 }); canvas.renderAll(); saveState();
+  });
+  document.getElementById('zoomSlider').addEventListener('input', (e) => { canvas.setZoom(parseFloat(e.target.value)); canvas.renderAll(); });
+  function applyFilters() {
+    if (!canvas.getActiveObject()) return;
+    const obj = canvas.getActiveObject();
+    if (!obj.filters) obj.filters = [];
+    const brightness = parseFloat(document.getElementById('brightnessSlider').value);
+    const contrast = parseFloat(document.getElementById('contrastSlider').value);
+    const blur = parseFloat(document.getElementById('blurSlider').value);
+    obj.filters = [];
+    if (brightness !== 0) obj.filters.push(new fabric.Image.filters.Brightness({ brightness: brightness }));
+    if (contrast !== 0) obj.filters.push(new fabric.Image.filters.Contrast({ contrast: contrast }));
+    if (blur !== 0) obj.filters.push(new fabric.Image.filters.Blur({ blur: blur }));
+    obj.applyFilters(); canvas.renderAll(); saveState();
+  }
+  document.getElementById('brightnessSlider').addEventListener('input', applyFilters);
+  document.getElementById('contrastSlider').addEventListener('input', applyFilters);
+  document.getElementById('blurSlider').addEventListener('input', applyFilters);
+  document.getElementById('addTextBtn').addEventListener('click', () => {
+    const textbox = new fabric.Textbox('Double click to edit', { left: 100, top: 100, width: 200, fontSize: 30, fill: '#000000', editable: true });
+    canvas.add(textbox); canvas.setActiveObject(textbox); canvas.renderAll(); saveState();
+  });
+  document.getElementById('textInput').addEventListener('change', () => {
+    const obj = canvas.getActiveObject(); if (obj && obj.text !== undefined) { obj.set('text', document.getElementById('textInput').value); canvas.renderAll(); saveState(); }
+  });
+  document.getElementById('fontSizeSelect').addEventListener('change', () => {
+    const obj = canvas.getActiveObject(); if (obj && obj.fontSize !== undefined) { obj.set('fontSize', parseInt(document.getElementById('fontSizeSelect').value)); canvas.renderAll(); saveState(); }
+  });
+  document.getElementById('textColor').addEventListener('input', () => {
+    const obj = canvas.getActiveObject(); if (obj && obj.fill !== undefined) { obj.set('fill', document.getElementById('textColor').value); canvas.renderAll(); saveState(); }
+  });
+  document.getElementById('boldTextBtn').addEventListener('click', () => {
+    const obj = canvas.getActiveObject(); if (obj && obj.fontWeight !== undefined) { obj.set('fontWeight', obj.fontWeight === 'bold' ? 'normal' : 'bold'); canvas.renderAll(); saveState(); }
+  });
+  document.getElementById('drawModeBtn').addEventListener('click', () => {
+    canvas.isDrawingMode = !canvas.isDrawingMode;
+    if (canvas.isDrawingMode) {
+      canvas.freeDrawingBrush.color = document.getElementById('brushColor').value;
+      canvas.freeDrawingBrush.width = parseInt(document.getElementById('brushSize').value);
+      document.getElementById('drawOptions').style.display = 'flex';
+    } else { document.getElementById('drawOptions').style.display = 'none'; }
+  });
+  document.getElementById('brushColor').addEventListener('input', (e) => { canvas.freeDrawingBrush.color = e.target.value; });
+  document.getElementById('brushSize').addEventListener('input', (e) => { canvas.freeDrawingBrush.width = parseInt(e.target.value); });
+  document.getElementById('eraserModeBtn').addEventListener('click', () => { canvas.freeDrawingBrush.color = '#ffffff'; });
+  document.getElementById('cropBtn').addEventListener('click', () => {
+    const obj = canvas.getActiveObject(); if (!obj) { alert('Select an object to crop to its bounding box.'); return; }
+    const bounds = obj.getBoundingRect(); canvas.setWidth(bounds.width); canvas.setHeight(bounds.height);
+    const clipPath = new fabric.Rect({ width: bounds.width, height: bounds.height, left: 0, top: 0 });
+    canvas.clipPath = clipPath; obj.set({ left: -bounds.left, top: -bounds.top }); canvas.renderAll(); saveState();
+  });
+  document.getElementById('removeBgBtn').addEventListener('click', () => { document.getElementById('bgOptions').style.display = 'flex'; });
+  document.getElementById('applyBgRemoval').addEventListener('click', () => {
+    const color = document.getElementById('bgColorPicker').value;
+    const r = parseInt(color.slice(1,3),16), g = parseInt(color.slice(3,5),16), b = parseInt(color.slice(5,7),16);
+    const imgObj = canvas.getActiveObject();
+    if (imgObj && imgObj.type === 'image') {
+      const dataURL = imgObj.toDataURL(); const img = new Image();
       img.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width; canvas.height = img.height;
-        const ctx = canvas.getContext('2d');
-        let filter = `brightness(${100 + +brightnessSlider.value}%) contrast(${100 + +contrastSlider.value}%) saturate(${100 + +saturationSlider.value}%) blur(${blurSlider.value}px)`;
-        if (currentFilter === 'grayscale') filter += ' grayscale(100%)';
-        else if (currentFilter === 'sepia') filter += ' sepia(100%)';
-        else if (currentFilter === 'invert') filter += ' invert(100%)';
-        else if (currentFilter === 'vintage') filter += ' sepia(50%) contrast(110%) brightness(90%)';
-        else if (currentFilter === 'cool') filter += ' saturate(150%) hue-rotate(10deg)';
-        else if (currentFilter === 'warm') filter += ' saturate(150%) hue-rotate(-10deg)';
-        ctx.filter = filter;
-        ctx.drawImage(img, 0, 0);
-        currentImage = canvas.toDataURL('image/png');
-        editorPreview.src = currentImage;
-      };
-      img.src = originalImage;
-    }
-
-    brightnessSlider.addEventListener('input', () => { brightnessSpan.textContent = brightnessSlider.value; applyFilters(); });
-    contrastSlider.addEventListener('input', () => { contrastSpan.textContent = contrastSlider.value; applyFilters(); });
-    saturationSlider.addEventListener('input', () => { saturationSpan.textContent = saturationSlider.value; applyFilters(); });
-    blurSlider.addEventListener('input', () => { blurSpan.textContent = blurSlider.value; applyFilters(); });
-    filterBadges.forEach(badge => {
-      badge.addEventListener('click', () => {
-        filterBadges.forEach(b => b.classList.remove('active'));
-        badge.classList.add('active');
-        currentFilter = badge.dataset.filter;
-        applyFilters();
-      });
-    });
-    resetBtn.addEventListener('click', () => {
-      if (originalImage) { editorPreview.src = originalImage; currentImage = originalImage; resetSliders(); if (cropper) cropper.destroy(); }
-    });
-    rotateLeftBtn.addEventListener('click', () => {
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.height; canvas.height = img.width; const ctx = canvas.getContext('2d'); ctx.rotate(-90 * Math.PI / 180); ctx.drawImage(img, -img.width, 0); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    rotateRightBtn.addEventListener('click', () => {
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.height; canvas.height = img.width; const ctx = canvas.getContext('2d'); ctx.rotate(90 * Math.PI / 180); ctx.drawImage(img, 0, -img.height); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    flipHorizontalBtn.addEventListener('click', () => {
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height; const ctx = canvas.getContext('2d'); ctx.scale(-1, 1); ctx.drawImage(img, -img.width, 0); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    flipVerticalBtn.addEventListener('click', () => {
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height; const ctx = canvas.getContext('2d'); ctx.scale(1, -1); ctx.drawImage(img, 0, -img.height); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    cropBtn.addEventListener('click', () => {
-      if (cropper) { const canvas = cropper.getCroppedCanvas(); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; cropper.destroy(); cropper = null; cropBtn.textContent = 'Crop'; }
-      else { cropper = new Cropper(editorPreview, { aspectRatio: NaN, viewMode: 1, autoCropArea: 1 }); cropBtn.textContent = 'Apply Crop'; }
-    });
-    addTextBtn.addEventListener('click', () => {
-      if (!overlayText.value) return;
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0); ctx.font = `${textSize.value}px Arial`; ctx.fillStyle = textColor.value; ctx.fillText(overlayText.value, textX.value, textY.value); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    applyBgBtn.addEventListener('click', () => {
-      if (!currentImage) return;
-      const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0); const imageData = ctx.getImageData(0,0,canvas.width,canvas.height); const data = imageData.data; const col = bgColorPicker.value; const r = parseInt(col.substr(1,2),16), g = parseInt(col.substr(3,2),16), b = parseInt(col.substr(5,2),16); for (let i=0; i<data.length; i+=4) { if (Math.abs(data[i]-r)<30 && Math.abs(data[i+1]-g)<30 && Math.abs(data[i+2]-b)<30) data[i+3]=0; } ctx.putImageData(imageData,0,0); currentImage = canvas.toDataURL('image/png'); editorPreview.src = currentImage; }; img.src = currentImage;
-    });
-    downloadBtn.addEventListener('click', () => { if (currentImage) saveAs(currentImage, 'edited_image.png'); });
-    editorDrop.addEventListener('click', () => editorInput.click());
-    editorDrop.addEventListener('dragover', e => e.preventDefault());
-    editorDrop.addEventListener('drop', e => { e.preventDefault(); const file = e.dataTransfer.files[0]; if (file && file.type.startsWith('image/')) loadImage(file); });
-    editorInput.addEventListener('change', () => { if (editorInput.files[0]) loadImage(editorInput.files[0]); });
-
-    // ---------- PLACEHOLDER CONVERTERS (CSV, Excel, DWG) ----------
-    async function generateXlsx() { const zip = new JSZip(); zip.file("dummy.txt", "placeholder"); return zip.generateAsync({type:"blob"}); }
-    function generatePdf(text) { return new Blob([`%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>\ntrailer<</Root 1 0 R>>`], {type:'application/pdf'}); }
-
-    document.querySelectorAll('.convert-file-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        const card = e.target.closest('.card');
-        const fileInput = card.querySelector('.file-input');
-        if (!fileInput || !fileInput.files.length) { card.querySelector('.result-area').innerText = '⚠️ Select files'; return; }
-        const files = Array.from(fileInput.files);
-        const resultDiv = card.querySelector('.result-area');
-        resultDiv.innerHTML = `⏳ Processing ${files.length} file(s)...`;
-        await new Promise(r => setTimeout(r, 800));
-
-        const type = btn.dataset.type;
-        if (type === 'csv') {
-          const dir = card.querySelector('.csv-direction').value;
-          for (const f of files) {
-            const blob = dir === 'csv2excel' ? await generateXlsx() : new Blob(["col1,col2"], {type:'text/csv'});
-            saveAs(blob, f.name.replace(/\.[^/.]+$/, '') + (dir==='csv2excel'?'.xlsx':'.csv'));
-          }
-          resultDiv.innerHTML = `✅ CSV batch done (placeholder).`;
-        } else if (type === 'excel2pdf') {
-          for (const f of files) {
-            const blob = generatePdf("Excel to PDF");
-            saveAs(blob, f.name.replace(/\.[^/.]+$/, '') + '.pdf');
-          }
-          resultDiv.innerHTML = `✅ Excel→PDF done (placeholder).`;
-        } else if (type === 'dwg') {
-          const zone = document.getElementById('utmZone').value;
-          const easting = parseFloat(document.getElementById('utmEasting').value) || 315000;
-          const northing = parseFloat(document.getElementById('utmNorthing').value) || 950000;
-          const datum = document.getElementById('utmDatum').value;
-          const zoneMatch = zone.match(/(\d+)([NS])/);
-          let lat = 9.0575, lng = 7.4955;
-          if (zoneMatch) {
-            const zoneNum = parseInt(zoneMatch[1],10);
-            const hem = zoneMatch[2];
-            const centralMeridian = zoneNum * 6 - 183;
-            const eastingOffset = (easting - 500000) / 111320;
-            lng = centralMeridian + eastingOffset;
-            lat = (hem === 'N') ? northing / 111320 : -northing / 111320;
-          }
-          for (const f of files) {
-            const zip = new JSZip();
-            const kml = `<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>Converted from ${f.name}</name>
-    <description>UTM: ${zone} ${easting}E ${northing}N (${datum})</description>
-    <Placemark>
-      <name>Location marker</name>
-      <Point><coordinates>${lng},${lat},0</coordinates></Point>
-    </Placemark>
-  </Document>
-</kml>`;
-            zip.file("doc.kml", kml);
-            const blob = await zip.generateAsync({type:'blob'});
-            saveAs(blob, f.name.replace(/\.[^/.]+$/, '') + '_UTM.kmz');
-          }
-          resultDiv.innerHTML = `✅ KMZ marker(s) generated.`;
+        const tempCanvas = document.createElement('canvas'); tempCanvas.width = img.width; tempCanvas.height = img.height;
+        const ctx = tempCanvas.getContext('2d'); ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0,0,img.width,img.height); const data = imageData.data;
+        for (let i=0; i<data.length; i+=4) {
+          if (Math.abs(data[i]-r) < 30 && Math.abs(data[i+1]-g) < 30 && Math.abs(data[i+2]-b) < 30) data[i+3] = 0;
         }
-      });
-    });
+        ctx.putImageData(imageData,0,0);
+        tempCanvas.toBlob(blob => {
+          const url = URL.createObjectURL(blob);
+          fabric.Image.fromURL(url, (newImg) => {
+            const oldLeft = imgObj.left, oldTop = imgObj.top;
+            canvas.remove(imgObj);
+            newImg.set({ left: oldLeft, top: oldTop, scaleX: imgObj.scaleX, scaleY: imgObj.scaleY });
+            canvas.add(newImg); canvas.setActiveObject(newImg); currentImageObj = newImg; canvas.renderAll(); saveState();
+            URL.revokeObjectURL(url);
+          });
+        });
+      }; img.src = dataURL;
+    } else { alert('Select an image first.'); }
+  });
+  canvas.setBackgroundColor('rgba(0,0,0,0)', canvas.renderAll.bind(canvas));
+  saveState();
 
-    // ---------- UNIT CONVERSIONS (expanded) ----------
-    const unitFactors = {
-      length: { m:1, km:0.001, cm:100, mm:1000, mi:0.000621371, yd:1.09361, ft:3.28084, in:39.3701 },
-      weight: { kg:1, g:1000, mg:1e6, lb:2.20462, oz:35.274, st:0.157473 },
-      volume: { l:1, ml:1000, gal:0.264172, qt:1.05669, pt:2.11338, cup:4.22675, floz:33.814 },
-      area: { sqm:1, sqkm:1e-6, sqft:10.7639, acre:0.000247105, hectare:0.0001, sqmi:3.86102e-7 },
-      speed: { kph:1, mph:0.621371, mps:0.277778, knot:0.539957 },
-      data: { b:1, kb:0.001, mb:1e-6, gb:1e-9, tb:1e-12 },
-      pressure: { pa:1, kpa:0.001, bar:1e-5, psi:0.000145038, atm:9.86923e-6 }
-    };
-    function convertUnit(type, val, from, to) {
-      const base = val / unitFactors[type][from];
-      return base * unitFactors[type][to];
-    }
-    const unitTypes = ['length', 'weight', 'volume', 'temp', 'area', 'speed', 'data', 'pressure'];
-    unitTypes.forEach(t => {
-      const btn = document.querySelector(`.convert-unit[data-type="${t}"]`);
-      if (btn) btn.addEventListener('click', () => {
-        let val, from, to, resId;
-        if (t === 'temp') {
-          val = +document.getElementById('tempVal').value;
-          from = document.getElementById('tempFrom').value;
-          to = document.getElementById('tempTo').value;
-          let res;
-          if (from === 'c' && to === 'f') res = val * 9/5 + 32;
-          else if (from === 'f' && to === 'c') res = (val - 32) * 5/9;
-          else if (from === 'c' && to === 'k') res = val + 273.15;
-          else if (from === 'k' && to === 'c') res = val - 273.15;
-          else if (from === 'f' && to === 'k') res = (val - 32) * 5/9 + 273.15;
-          else if (from === 'k' && to === 'f') res = (val - 273.15) * 9/5 + 32;
-          else res = val;
-          document.getElementById(t + 'Res').innerText = `${val} ${from} = ${res.toFixed(4)} ${to}`;
+  // ---------- Image Compressor ----------
+  const compressInput = document.getElementById('compressInput');
+  if (compressInput) {
+    compressInput.addEventListener('change', () => updateFileList('compressFileList', compressInput.files));
+    const compressDrop = document.getElementById('compressDrop');
+    compressDrop.addEventListener('click', () => compressInput.click());
+    compressDrop.addEventListener('dragover', e => e.preventDefault());
+    compressDrop.addEventListener('drop', e => {
+      e.preventDefault();
+      compressInput.files = e.dataTransfer.files;
+      updateFileList('compressFileList', compressInput.files);
+    });
+    document.getElementById('compressQuality').addEventListener('input', () => { document.getElementById('qualityVal').innerText = document.getElementById('compressQuality').value; });
+    document.getElementById('compressBtn').addEventListener('click', () => {
+      if (!compressInput.files.length) { document.getElementById('compressResult').innerText = 'Select an image.'; return; }
+      const file = compressInput.files[0];
+      const quality = parseInt(document.getElementById('compressQuality').value)/100;
+      const img = new Image(); const reader = new FileReader();
+      reader.onload = e => {
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height;
+          const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
+          canvas.toBlob(blob => {
+            saveAs(blob, `compressed_${file.name}`);
+            document.getElementById('compressResult').innerHTML = `✅ Compressed! Original: ${(file.size/1024).toFixed(1)} KB → ${(blob.size/1024).toFixed(1)} KB`;
+          }, file.type, quality);
+        };
+      }; reader.readAsDataURL(file);
+    });
+  }
+
+  // ---------- QR Code ----------
+  let qrCodeObj = null;
+  function generateQR() {
+    const text = document.getElementById('qrText').value.trim();
+    if (!text) { document.getElementById('qrResult').innerText = '❌ Enter text or URL.'; return; }
+    document.getElementById('qrcode').innerHTML = '';
+    qrCodeObj = new QRCode(document.getElementById('qrcode'), { text: text, width: 200, height: 200, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+    document.getElementById('qrResult').innerHTML = '✅ QR Code generated.';
+  }
+  document.getElementById('generateQrBtn').addEventListener('click', generateQR);
+  document.getElementById('downloadQrBtn').addEventListener('click', () => {
+    const canvas = document.querySelector('#qrcode canvas');
+    if (canvas) { const link = document.createElement('a'); link.download = 'qrcode.png'; link.href = canvas.toDataURL(); link.click(); }
+    else { alert('Generate a QR code first.'); }
+  });
+  generateQR();
+
+  // ---------- Password Generator ----------
+  function generatePassword() {
+    const length = parseInt(document.getElementById('passLength').value);
+    const upper = document.getElementById('includeUpper').checked;
+    const lower = document.getElementById('includeLower').checked;
+    const numbers = document.getElementById('includeNumbers').checked;
+    const symbols = document.getElementById('includeSymbols').checked;
+    let charset = '';
+    if (upper) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (lower) charset += 'abcdefghijklmnopqrstuvwxyz';
+    if (numbers) charset += '0123456789';
+    if (symbols) charset += '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+    if (charset === '') { document.getElementById('passResult').innerText = 'Select at least one option.'; return; }
+    let password = '';
+    for (let i=0; i<length; i++) password += charset[Math.floor(Math.random() * charset.length)];
+    document.getElementById('passResult').innerText = password;
+  }
+  document.getElementById('generatePassBtn').addEventListener('click', generatePassword);
+  document.getElementById('copyPassBtn').addEventListener('click', () => {
+    const pass = document.getElementById('passResult').innerText;
+    if (pass && pass !== 'Select at least one option.') { navigator.clipboard.writeText(pass); alert('Password copied!'); }
+  });
+  generatePassword();
+
+  // ---------- Text to Speech ----------
+  let synth = window.speechSynthesis, voices = [];
+  function loadVoices() {
+    voices = synth.getVoices();
+    const voiceSelect = document.getElementById('voiceSelect');
+    if (!voiceSelect) return;
+    voiceSelect.innerHTML = '';
+    voices.forEach(voice => {
+      const option = document.createElement('option');
+      option.value = voice.name;
+      option.textContent = `${voice.name} (${voice.lang})`;
+      voiceSelect.appendChild(option);
+    });
+  }
+  if (synth) { synth.onvoiceschanged = loadVoices; loadVoices(); }
+  document.getElementById('speakBtn').addEventListener('click', () => {
+    const text = document.getElementById('ttsText').value;
+    if (!text.trim()) { document.getElementById('ttsResult').innerText = 'Please enter text.'; return; }
+    const utterance = new SpeechSynthesisUtterance(text);
+    const selectedVoice = document.getElementById('voiceSelect').value;
+    if (selectedVoice) utterance.voice = voices.find(v => v.name === selectedVoice);
+    synth.speak(utterance);
+    document.getElementById('ttsResult').innerHTML = '🔊 Speaking...';
+    utterance.onend = () => document.getElementById('ttsResult').innerHTML = '✅ Finished.';
+  });
+  document.getElementById('stopBtn').addEventListener('click', () => { synth.cancel(); document.getElementById('ttsResult').innerHTML = '⏹️ Stopped.'; });
+
+  // ---------- Language Translator (unlimited length) ----------
+  const languages = [
+    {code:"en",name:"English"},{code:"es",name:"Spanish"},{code:"fr",name:"French"},{code:"de",name:"German"},{code:"it",name:"Italian"},{code:"pt",name:"Portuguese"},{code:"ru",name:"Russian"},{code:"zh",name:"Chinese"},{code:"ja",name:"Japanese"},{code:"ko",name:"Korean"},{code:"ar",name:"Arabic"},{code:"hi",name:"Hindi"},{code:"tr",name:"Turkish"},{code:"nl",name:"Dutch"},{code:"pl",name:"Polish"},{code:"sv",name:"Swedish"},{code:"da",name:"Danish"},{code:"fi",name:"Finnish"},{code:"no",name:"Norwegian"},{code:"el",name:"Greek"},{code:"cs",name:"Czech"},{code:"hu",name:"Hungarian"},{code:"ro",name:"Romanian"},{code:"th",name:"Thai"},{code:"vi",name:"Vietnamese"},{code:"id",name:"Indonesian"},{code:"ms",name:"Malay"},{code:"he",name:"Hebrew"},{code:"fa",name:"Persian"},{code:"ur",name:"Urdu"},{code:"bn",name:"Bengali"},{code:"ta",name:"Tamil"},{code:"sw",name:"Swahili"},{code:"yo",name:"Yoruba"},{code:"ig",name:"Igbo"},{code:"ha",name:"Hausa"}
+  ];
+  const sourceLang = document.getElementById('sourceLang'), targetLang = document.getElementById('targetLang');
+  languages.forEach(lang => { sourceLang.add(new Option(`${lang.name} (${lang.code})`, lang.code)); targetLang.add(new Option(`${lang.name} (${lang.code})`, lang.code)); });
+  sourceLang.value = 'en'; targetLang.value = 'es';
+  document.getElementById('translateBtn').addEventListener('click', async () => {
+    const text = document.getElementById('sourceText').value.trim();
+    if (!text) { document.getElementById('translationResult').innerHTML = 'Please enter text.'; return; }
+    const source = sourceLang.value, target = targetLang.value;
+    const resultDiv = document.getElementById('translationResult');
+    resultDiv.innerHTML = 'Translating... (no length limit)';
+    try {
+      const url = `https://lingva.ml/api/v1/${source}/${target}/${encodeURIComponent(text)}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data && data.translation) resultDiv.innerHTML = `<strong>Translation:</strong><br>${data.translation}`;
+      else resultDiv.innerHTML = 'Translation failed. Please try again.';
+    } catch(err) { resultDiv.innerHTML = 'Error connecting to translation service.'; }
+  });
+
+  // ---------- CSV & Excel ----------
+  const csvInput = document.getElementById('csvInput');
+  if (csvInput) {
+    csvInput.addEventListener('change', () => updateFileList('csvFileList', csvInput.files));
+    const csvDrop = document.getElementById('csvDrop');
+    csvDrop.addEventListener('click', () => csvInput.click());
+    csvDrop.addEventListener('dragover', e => e.preventDefault());
+    csvDrop.addEventListener('drop', e => { e.preventDefault(); csvInput.files = e.dataTransfer.files; updateFileList('csvFileList', csvInput.files); });
+    document.getElementById('convertCsvBtn').addEventListener('click', async () => {
+      const files = Array.from(csvInput.files);
+      if (!files.length) { document.getElementById('csvResult').innerText = 'Select files.'; return; }
+      const direction = document.getElementById('csvDirection').value;
+      const resultDiv = document.getElementById('csvResult');
+      resultDiv.innerText = 'Processing...';
+      for (const file of files) {
+        const data = await file.arrayBuffer();
+        if (direction === 'csv2excel') {
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          const csv = XLSX.utils.sheet_to_csv(sheet);
+          const blob = new Blob([csv], { type: 'text/csv' });
+          saveAs(blob, file.name.replace(/\.(xlsx|xls)$/i, '.csv'));
         } else {
-          val = +document.getElementById(t + 'Val').value;
-          from = document.getElementById(t + 'From').value;
-          to = document.getElementById(t + 'To').value;
-          const res = convertUnit(t, val, from, to);
-          document.getElementById(t + 'Res').innerText = `${val} ${from} = ${res.toFixed(4)} ${to}`;
+          const text = new TextDecoder().decode(data);
+          const workbook = XLSX.utils.book_new();
+          const worksheet = XLSX.utils.aoa_to_sheet(text.split('\n').map(row => row.split(',')));
+          XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+          const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+          saveAs(new Blob([wbout]), file.name.replace(/\.csv$/i, '.xlsx'));
         }
-      });
-    });
-
-    // ---------- CURRENCY ----------
-    document.getElementById('convertCurrency').addEventListener('click', async ()=>{
-      const amt = document.getElementById('currAmt').value;
-      const from = document.getElementById('currFrom').value;
-      const to = document.getElementById('currTo').value;
-      const resDiv = document.getElementById('currResult');
-      resDiv.innerText = 'fetching...';
-      try {
-        const r = await fetch(`https://api.exchangerate.host/latest?base=${from}&symbols=${to}`);
-        const d = await r.json();
-        if(d && d.rates) {
-          const rate = d.rates[to];
-          resDiv.innerText = `${amt} ${from} = ${(amt*rate).toFixed(2)} ${to}`;
-        } else throw new Error();
-      } catch {
-        resDiv.innerText = `${amt} ${from} ≈ ${(amt*0.92).toFixed(2)} ${to} (fallback)`;
       }
+      resultDiv.innerText = '✅ Conversion complete.';
     });
+  }
+  const excel2pdfInput = document.getElementById('excel2pdfInput');
+  if (excel2pdfInput) {
+    excel2pdfInput.addEventListener('change', () => updateFileList('excel2pdfFileList', excel2pdfInput.files));
+    const excel2pdfDrop = document.getElementById('excel2pdfDrop');
+    excel2pdfDrop.addEventListener('click', () => excel2pdfInput.click());
+    excel2pdfDrop.addEventListener('dragover', e => e.preventDefault());
+    excel2pdfDrop.addEventListener('drop', e => { e.preventDefault(); excel2pdfInput.files = e.dataTransfer.files; updateFileList('excel2pdfFileList', excel2pdfInput.files); });
+    document.getElementById('convertExcel2PdfBtn').addEventListener('click', async () => {
+      const files = Array.from(excel2pdfInput.files);
+      if (!files.length) { document.getElementById('excel2pdfResult').innerText = 'Select Excel files.'; return; }
+      const resultDiv = document.getElementById('excel2pdfResult');
+      resultDiv.innerText = 'Converting...';
+      for (const file of files) {
+        const data = await file.arrayBuffer();
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const html = XLSX.utils.sheet_to_html(sheet);
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.html(html, { callback: function(doc) { doc.save(file.name.replace(/\.(xlsx|xls)$/i, '.pdf')); } });
+      }
+      resultDiv.innerText = '✅ PDF(s) generated.';
+    });
+  }
 
-    // ---------- TIME ZONE (expanded) ----------
-    document.getElementById('tzConvert').addEventListener('click', ()=>{
-      const tz1 = document.getElementById('tz1').value;
-      const tz2 = document.getElementById('tz2').value;
-      const d = new Date();
-      const s1 = d.toLocaleTimeString('en-US',{timeZone:tz1});
-      const s2 = d.toLocaleTimeString('en-US',{timeZone:tz2});
-      document.getElementById('tzResult').innerText = `${tz1.split('/')[1]||tz1}: ${s1} | ${tz2.split('/')[1]||tz2}: ${s2}`;
+  // ---------- Unit Converters ----------
+  const unitTypes = ['length','weight','volume','temp','area','speed','data','pressure'];
+  const unitOptions = {
+    length: ['m','km','cm','mm','mi','yd','ft','in'],
+    weight: ['kg','g','mg','lb','oz','st'],
+    volume: ['l','ml','gal','qt','pt','cup','floz'],
+    temp: ['c','f','k'],
+    area: ['sqm','sqkm','sqft','acre','hectare','sqmi'],
+    speed: ['kph','mph','mps','knot'],
+    data: ['b','kb','mb','gb','tb'],
+    pressure: ['pa','kpa','bar','psi','atm']
+  };
+  const unitNames = {
+    m:'Meter', km:'Kilometer', cm:'Centimeter', mm:'Millimeter', mi:'Mile', yd:'Yard', ft:'Foot', in:'Inch',
+    kg:'Kilogram', g:'Gram', mg:'Milligram', lb:'Pound', oz:'Ounce', st:'Stone',
+    l:'Liter', ml:'Milliliter', gal:'Gallon', qt:'Quart', pt:'Pint', cup:'Cup', floz:'Fluid Ounce',
+    c:'Celsius', f:'Fahrenheit', k:'Kelvin',
+    sqm:'m²', sqkm:'km²', sqft:'ft²', acre:'Acre', hectare:'Ha', sqmi:'mi²',
+    kph:'km/h', mph:'mph', mps:'m/s', knot:'Knot',
+    b:'Byte', kb:'KB', mb:'MB', gb:'GB', tb:'TB',
+    pa:'Pa', kpa:'kPa', bar:'Bar', psi:'psi', atm:'Atm'
+  };
+  const unitGrid = document.getElementById('unitGrid');
+  unitTypes.forEach(type => {
+    const card = document.createElement('div'); card.className = 'card';
+    card.innerHTML = `<div class="card-header"><i class="fas ${type==='length'?'fa-arrows-alt-h':type==='weight'?'fa-weight-hanging':type==='volume'?'fa-flask':type==='temp'?'fa-temperature-high':type==='area'?'fa-square':type==='speed'?'fa-tachometer-alt':type==='data'?'fa-database':'fa-gauge-high'}"></i><h3>${type.charAt(0).toUpperCase()+type.slice(1)}</h3></div>
+      <div class="input-group"><input type="number" id="${type}Val" value="1"><select id="${type}From"></select><span>→</span><select id="${type}To"></select></div>
+      <button class="btn convert-unit" data-type="${type}">Convert</button><div class="result-area" id="${type}Res"></div>`;
+    unitGrid.appendChild(card);
+    const fromSelect = card.querySelector(`#${type}From`);
+    const toSelect = card.querySelector(`#${type}To`);
+    unitOptions[type].forEach(u => { fromSelect.add(new Option(unitNames[u]||u, u)); toSelect.add(new Option(unitNames[u]||u, u)); });
+    if (type === 'temp') { fromSelect.value = 'c'; toSelect.value = 'f'; }
+    else if (type === 'length') { fromSelect.value = 'm'; toSelect.value = 'ft'; }
+    else if (type === 'weight') { fromSelect.value = 'kg'; toSelect.value = 'lb'; }
+    else if (type === 'volume') { fromSelect.value = 'l'; toSelect.value = 'gal'; }
+  });
+  const factors = {
+    length: { m:1, km:0.001, cm:100, mm:1000, mi:0.000621371, yd:1.09361, ft:3.28084, in:39.3701 },
+    weight: { kg:1, g:1000, mg:1e6, lb:2.20462, oz:35.274, st:0.157473 },
+    volume: { l:1, ml:1000, gal:0.264172, qt:1.05669, pt:2.11338, cup:4.22675, floz:33.814 },
+    area: { sqm:1, sqkm:1e-6, sqft:10.7639, acre:0.000247105, hectare:0.0001, sqmi:3.86102e-7 },
+    speed: { kph:1, mph:0.621371, mps:0.277778, knot:0.539957 },
+    data: { b:1, kb:0.001, mb:1e-6, gb:1e-9, tb:1e-12 },
+    pressure: { pa:1, kpa:0.001, bar:1e-5, psi:0.000145038, atm:9.86923e-6 }
+  };
+  function convertUnit(type, val, from, to) {
+    if (type === 'temp') {
+      if (from === 'c' && to === 'f') return val*9/5+32;
+      if (from === 'f' && to === 'c') return (val-32)*5/9;
+      if (from === 'c' && to === 'k') return val+273.15;
+      if (from === 'k' && to === 'c') return val-273.15;
+      if (from === 'f' && to === 'k') return (val-32)*5/9+273.15;
+      if (from === 'k' && to === 'f') return (val-273.15)*9/5+32;
+      return val;
+    }
+    const base = val / factors[type][from];
+    return base * factors[type][to];
+  }
+  document.querySelectorAll('.convert-unit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type;
+      const val = parseFloat(document.getElementById(`${type}Val`).value);
+      const from = document.getElementById(`${type}From`).value;
+      const to = document.getElementById(`${type}To`).value;
+      const res = convertUnit(type, val, from, to);
+      document.getElementById(`${type}Res`).innerHTML = `${val} ${from} = ${res.toFixed(6)} ${to}`;
     });
+  });
 
-    // ---------- DATE DIFFERENCE ----------
-    document.getElementById('dateDiff').addEventListener('click', ()=>{
-      const d1 = new Date(document.getElementById('date1').value);
-      const d2 = new Date(document.getElementById('date2').value);
-      const diff = Math.abs((d2-d1)/(1000*60*60*24));
-      document.getElementById('dateRes').innerText = `${diff} days`;
-    });
-  </script>
+  // ---------- Land Calculator ----------
+  function updateStandardPlots() {
+    const sqft50x100 = 5000;
+    document.getElementById('plot50x100Sqft').innerText = sqft50x100.toLocaleString();
+    document.getElementById('plot50x100Sqm').innerText = (sqft50x100/10.7639).toFixed(1);
+    document.getElementById('plot50x100Acres').innerText = (sqft50x100/43560).toFixed(4);
+    const sqft60x120 = 7200;
+    document.getElementById('plot60x120Sqft').innerText = sqft60x120.toLocaleString();
+    document.getElementById('plot60x120Sqm').innerText = (sqft60x120/10.7639).toFixed(1);
+    document.getElementById('plot60x120Acres').innerText = (sqft60x120/43560).toFixed(4);
+  }
+  updateStandardPlots();
+  document.getElementById('calculatePlotBtn').addEventListener('click', () => {
+    let l = parseFloat(document.getElementById('plotLength').value)||0, w = parseFloat(document.getElementById('plotWidth').value)||0;
+    const sqft = l*w; const sqm = sqft/10.7639; const acres = sqft/43560; const ha = acres*0.404686;
+    document.getElementById('customPlotResult').innerHTML = `<strong>${l} ft × ${w} ft</strong><br>📐 Area: ${sqft.toLocaleString()} sq ft | ${sqm.toFixed(1)} m²<br>🌾 Acres: ${acres.toFixed(4)} acres<br>📏 Hectares: ${ha.toFixed(5)} ha`;
+  });
+  document.getElementById('convertAreaToPlotsBtn').addEventListener('click', () => {
+    let areaVal = parseFloat(document.getElementById('areaValue').value);
+    const unit = document.getElementById('areaUnit').value;
+    if (isNaN(areaVal)) { document.getElementById('areaToPlotsResult').innerHTML = 'Please enter a valid area.'; return; }
+    let sqftTotal;
+    if (unit === 'sqm') sqftTotal = areaVal * 10.7639;
+    else if (unit === 'hectare') sqftTotal = areaVal * 107639;
+    else if (unit === 'acre') sqftTotal = areaVal * 43560;
+    else sqftTotal = 0;
+    const plot50 = sqftTotal / 5000; const plot60 = sqftTotal / 7200;
+    document.getElementById('areaToPlotsResult').innerHTML = `<strong>${areaVal} ${unit === 'sqm' ? 'm²' : unit === 'hectare' ? 'hectares' : 'acres'} =</strong><br>📐 ${plot50.toFixed(2)} plots (50×100 ft)<br>📐 ${plot60.toFixed(2)} plots (60×120 ft)`;
+  });
+  document.getElementById('convertAcresBtn').addEventListener('click', () => {
+    let acres = parseFloat(document.getElementById('acresInput').value)||0;
+    const sqftPerAcre = 43560;
+    const plot50x100Sqft = 5000; const plot60x120Sqft = 7200;
+    const plots50x100 = (acres * sqftPerAcre) / plot50x100Sqft;
+    const plots60x120 = (acres * sqftPerAcre) / plot60x120Sqft;
+    const hectares = acres * 0.404686; const sqm = acres * 4046.86;
+    document.getElementById('plots50x100').innerText = plots50x100.toFixed(2);
+    document.getElementById('plots60x120').innerText = plots60x120.toFixed(2);
+    document.getElementById('acresToHectares').innerText = hectares.toFixed(4);
+    document.getElementById('acresToSqm').innerText = sqm.toFixed(2);
+    document.getElementById('acresResult').innerHTML = `<strong>${acres} acre${acres !== 1 ? 's' : ''} =</strong><br>📐 ${plots50x100.toFixed(2)} plots (50×100 ft)<br>📐 ${plots60x120.toFixed(2)} plots (60×120 ft)<br>🌾 ${hectares.toFixed(4)} hectares<br>📏 ${sqm.toFixed(2)} square meters`;
+  });
+
+  // ---------- Currency ----------
+  const currencies = ['USD','EUR','GBP','NGN','CAD','AUD','JPY','CNY','INR','BRL','ZAR','RUB','CHF','SGD','HKD','MXN','SEK','NZD','KRW','TRY','AED'];
+  const currFrom = document.getElementById('currFrom'), currTo = document.getElementById('currTo');
+  currencies.forEach(c => { currFrom.add(new Option(c,c)); currTo.add(new Option(c,c)); });
+  currFrom.value = 'USD'; currTo.value = 'EUR';
+  document.getElementById('convertCurrency').addEventListener('click', async () => {
+    const amt = document.getElementById('currAmt').value;
+    const from = currFrom.value, to = currTo.value;
+    const resDiv = document.getElementById('currResult');
+    resDiv.innerText = 'Fetching...';
+    try {
+      const r = await fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${from.toLowerCase()}.json`);
+      const d = await r.json();
+      const rate = d[from.toLowerCase()]?.[to.toLowerCase()];
+      if (rate) resDiv.innerText = `${amt} ${from} = ${(amt*rate).toFixed(2)} ${to}`;
+      else throw new Error();
+    } catch(e) { resDiv.innerText = 'Fallback: 1 USD ≈ 0.92 EUR'; }
+  });
+
+  // ---------- Time Zone ----------
+  const timeZones = ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles','Europe/London','Europe/Paris','Europe/Berlin','Africa/Lagos','Asia/Dubai','Asia/Kolkata','Asia/Shanghai','Asia/Tokyo','Australia/Sydney','Pacific/Auckland'];
+  const tz1 = document.getElementById('tz1'), tz2 = document.getElementById('tz2');
+  timeZones.forEach(tz => { tz1.add(new Option(tz,tz)); tz2.add(new Option(tz,tz)); });
+  tz1.value = 'America/New_York'; tz2.value = 'Europe/London';
+  document.getElementById('tzConvert').addEventListener('click', () => {
+    const d = new Date();
+    const s1 = d.toLocaleTimeString('en-US',{timeZone:tz1.value});
+    const s2 = d.toLocaleTimeString('en-US',{timeZone:tz2.value});
+    document.getElementById('tzResult').innerHTML = `${tz1.value.split('/')[1]}: ${s1}<br>${tz2.value.split('/')[1]}: ${s2}`;
+  });
+  document.getElementById('dateDiff').addEventListener('click', () => {
+    const d1 = new Date(document.getElementById('date1').value);
+    const d2 = new Date(document.getElementById('date2').value);
+    const diff = Math.abs((d2-d1)/(1000*60*60*24));
+    document.getElementById('dateRes').innerHTML = `${diff} days`;
+  });
+  document.getElementById('date1').value = '2025-03-01'; document.getElementById('date2').value = '2025-03-15';
+</script>
 </body>
 </html>
