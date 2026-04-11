@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compress Images Online Free – Reduce Image Size | Universal Converter Hub</title>
+  <meta name="description" content="Free online image compressor. Reduce JPG, PNG, WEBP file size while preserving quality. No registration, no watermark.">
+  <meta name="keywords" content="image compressor, compress image online, reduce image size, JPG compressor, PNG compressor">
+  <link rel="canonical" href="https://converterhub.com.ng/image-compressor.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn active">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+
+  <h2 class="section-title">Image Compressor – Reduce File Size, Keep Quality</h2>
+  <div class="card">
+    <div class="drop-zone" id="compressDrop">🖼️ Drop an image or click<input type="file" id="compressInput" accept="image/*"></div>
+    <div id="compressFileList" class="file-list"></div>
+    <div class="input-group"><label>Quality: <input type="range" id="compressQuality" min="10" max="100" value="70" step="5"> <span id="qualityVal">70</span>%</label></div>
+    <button class="btn" id="compressBtn"><i class="fas fa-compress-alt"></i> Compress & Download</button>
+    <div class="result-area" id="compressResult"></div>
+    <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-secondary);">✅ Works with JPG, PNG, WEBP. Lower quality = smaller file.</p>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  const compressInput = document.getElementById('compressInput');
+  const compressDrop = document.getElementById('compressDrop');
+  compressInput.addEventListener('change', () => updateFileList('compressFileList', compressInput.files));
+  compressDrop.addEventListener('click', () => compressInput.click());
+  compressDrop.addEventListener('dragover', e => e.preventDefault());
+  compressDrop.addEventListener('drop', e => { e.preventDefault(); compressInput.files = e.dataTransfer.files; updateFileList('compressFileList', compressInput.files); });
+  document.getElementById('compressQuality').addEventListener('input', () => { document.getElementById('qualityVal').innerText = document.getElementById('compressQuality').value; });
+  document.getElementById('compressBtn').addEventListener('click', () => {
+    if (!compressInput.files.length) { document.getElementById('compressResult').innerText = 'Select an image.'; return; }
+    const file = compressInput.files[0];
+    const quality = parseInt(document.getElementById('compressQuality').value) / 100;
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = e => {
+      img.src = e.target.result;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(blob => {
+          saveAs(blob, `compressed_${file.name}`);
+          document.getElementById('compressResult').innerHTML = `✅ Compressed! Original: ${(file.size / 1024).toFixed(1)} KB → ${(blob.size / 1024).toFixed(1)} KB`;
+        }, file.type, quality);
+      };
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+</body>
+</html>

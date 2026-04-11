@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel to PDF Converter – Free Online | Universal Converter Hub</title>
+  <meta name="description" content="Convert Excel spreadsheets (XLSX, XLS) to PDF instantly. High-quality output, no registration.">
+  <meta name="keywords" content="Excel to PDF, XLSX to PDF, convert Excel to PDF, free PDF converter, spreadsheet to PDF">
+  <link rel="canonical" href="https://converterhub.com.ng/excel-to-pdf.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn active">📄 Excel→PDF</a>
+    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+
+  <h2 class="section-title">Excel to PDF Converter – Print‑Ready PDFs</h2>
+  <div class="card">
+    <div class="drop-zone" id="excel2pdfDrop">📗 Drop .xlsx or .xls files here or click<input type="file" id="excel2pdfInput" accept=".xlsx,.xls" multiple></div>
+    <div id="excel2pdfFileList" class="file-list"></div>
+    <button class="btn" id="convertExcel2PdfBtn">Convert to PDF</button>
+    <div class="result-area" id="excel2pdfResult"></div>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  const excel2pdfInput = document.getElementById('excel2pdfInput');
+  const excel2pdfDrop = document.getElementById('excel2pdfDrop');
+  excel2pdfInput.addEventListener('change', () => updateFileList('excel2pdfFileList', excel2pdfInput.files));
+  excel2pdfDrop.addEventListener('click', () => excel2pdfInput.click());
+  excel2pdfDrop.addEventListener('dragover', e => e.preventDefault());
+  excel2pdfDrop.addEventListener('drop', e => { e.preventDefault(); excel2pdfInput.files = e.dataTransfer.files; updateFileList('excel2pdfFileList', excel2pdfInput.files); });
+  document.getElementById('convertExcel2PdfBtn').addEventListener('click', async () => {
+    const files = Array.from(excel2pdfInput.files);
+    if (!files.length) { document.getElementById('excel2pdfResult').innerText = 'Select Excel files.'; return; }
+    const resultDiv = document.getElementById('excel2pdfResult');
+    resultDiv.innerText = 'Converting...';
+    for (const file of files) {
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const html = XLSX.utils.sheet_to_html(sheet);
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.html(html, {
+        callback: function(doc) {
+          doc.save(file.name.replace(/\.(xlsx|xls)$/i, '.pdf'));
+        },
+        x: 10,
+        y: 10,
+        width: 180,
+        windowWidth: 800
+      });
+    }
+    resultDiv.innerText = '✅ PDF(s) generated.';
+  });
+</script>
+</body>
+</html>

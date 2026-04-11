@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter – Length, Weight, Volume, Temperature, Area, Speed, Data, Pressure | Universal Converter Hub</title>
+  <meta name="description" content="Free online unit converter: length, weight, volume, temperature, area, speed, data storage, pressure. Fast and accurate.">
+  <meta name="keywords" content="unit converter, length converter, weight converter, volume converter, temperature converter, area converter, speed converter, data converter, pressure converter">
+  <link rel="canonical" href="https://converterhub.com.ng/unit-converter.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
+    <a href="unit-converter.html" class="nav-btn active">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+
+  <h2 class="section-title">Unit Converter – All Units in One Place</h2>
+  <div class="card-grid" id="unitGrid"></div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  const unitTypes = ['length', 'weight', 'volume', 'temp', 'area', 'speed', 'data', 'pressure'];
+  const unitOptions = {
+    length: ['m', 'km', 'cm', 'mm', 'mi', 'yd', 'ft', 'in'],
+    weight: ['kg', 'g', 'mg', 'lb', 'oz', 'st'],
+    volume: ['l', 'ml', 'gal', 'qt', 'pt', 'cup', 'floz'],
+    temp: ['c', 'f', 'k'],
+    area: ['sqm', 'sqkm', 'sqft', 'acre', 'hectare', 'sqmi'],
+    speed: ['kph', 'mph', 'mps', 'knot'],
+    data: ['b', 'kb', 'mb', 'gb', 'tb'],
+    pressure: ['pa', 'kpa', 'bar', 'psi', 'atm']
+  };
+  const unitNames = {
+    m: 'Meter', km: 'Kilometer', cm: 'Centimeter', mm: 'Millimeter', mi: 'Mile', yd: 'Yard', ft: 'Foot', in: 'Inch',
+    kg: 'Kilogram', g: 'Gram', mg: 'Milligram', lb: 'Pound', oz: 'Ounce', st: 'Stone',
+    l: 'Liter', ml: 'Milliliter', gal: 'Gallon', qt: 'Quart', pt: 'Pint', cup: 'Cup', floz: 'Fluid Ounce',
+    c: 'Celsius', f: 'Fahrenheit', k: 'Kelvin',
+    sqm: 'm²', sqkm: 'km²', sqft: 'ft²', acre: 'Acre', hectare: 'Ha', sqmi: 'mi²',
+    kph: 'km/h', mph: 'mph', mps: 'm/s', knot: 'Knot',
+    b: 'Byte', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB',
+    pa: 'Pa', kpa: 'kPa', bar: 'Bar', psi: 'psi', atm: 'Atm'
+  };
+  const factors = {
+    length: { m: 1, km: 0.001, cm: 100, mm: 1000, mi: 0.000621371, yd: 1.09361, ft: 3.28084, in: 39.3701 },
+    weight: { kg: 1, g: 1000, mg: 1e6, lb: 2.20462, oz: 35.274, st: 0.157473 },
+    volume: { l: 1, ml: 1000, gal: 0.264172, qt: 1.05669, pt: 2.11338, cup: 4.22675, floz: 33.814 },
+    area: { sqm: 1, sqkm: 1e-6, sqft: 10.7639, acre: 0.000247105, hectare: 0.0001, sqmi: 3.86102e-7 },
+    speed: { kph: 1, mph: 0.621371, mps: 0.277778, knot: 0.539957 },
+    data: { b: 1, kb: 0.001, mb: 1e-6, gb: 1e-9, tb: 1e-12 },
+    pressure: { pa: 1, kpa: 0.001, bar: 1e-5, psi: 0.000145038, atm: 9.86923e-6 }
+  };
+  function convertUnit(type, val, from, to) {
+    if (type === 'temp') {
+      if (from === 'c' && to === 'f') return val * 9/5 + 32;
+      if (from === 'f' && to === 'c') return (val - 32) * 5/9;
+      if (from === 'c' && to === 'k') return val + 273.15;
+      if (from === 'k' && to === 'c') return val - 273.15;
+      if (from === 'f' && to === 'k') return (val - 32) * 5/9 + 273.15;
+      if (from === 'k' && to === 'f') return (val - 273.15) * 9/5 + 32;
+      return val;
+    }
+    const base = val / factors[type][from];
+    return base * factors[type][to];
+  }
+  const unitGrid = document.getElementById('unitGrid');
+  unitTypes.forEach(type => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header"><i class="fas ${type === 'length' ? 'fa-arrows-alt-h' : type === 'weight' ? 'fa-weight-hanging' : type === 'volume' ? 'fa-flask' : type === 'temp' ? 'fa-temperature-high' : type === 'area' ? 'fa-square' : type === 'speed' ? 'fa-tachometer-alt' : type === 'data' ? 'fa-database' : 'fa-gauge-high'}"></i><h3>${type.charAt(0).toUpperCase() + type.slice(1)}</h3></div>
+      <div class="input-group"><input type="number" id="${type}Val" value="1"><select id="${type}From"></select><span>→</span><select id="${type}To"></select></div>
+      <button class="btn convert-unit" data-type="${type}">Convert</button>
+      <div class="result-area" id="${type}Res"></div>
+    `;
+    unitGrid.appendChild(card);
+    const fromSelect = card.querySelector(`#${type}From`);
+    const toSelect = card.querySelector(`#${type}To`);
+    unitOptions[type].forEach(u => {
+      fromSelect.add(new Option(unitNames[u] || u, u));
+      toSelect.add(new Option(unitNames[u] || u, u));
+    });
+    if (type === 'temp') { fromSelect.value = 'c'; toSelect.value = 'f'; }
+    else if (type === 'length') { fromSelect.value = 'm'; toSelect.value = 'ft'; }
+    else if (type === 'weight') { fromSelect.value = 'kg'; toSelect.value = 'lb'; }
+    else if (type === 'volume') { fromSelect.value = 'l'; toSelect.value = 'gal'; }
+  });
+  document.querySelectorAll('.convert-unit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type;
+      const val = parseFloat(document.getElementById(`${type}Val`).value);
+      const from = document.getElementById(`${type}From`).value;
+      const to = document.getElementById(`${type}To`).value;
+      const res = convertUnit(type, val, from, to);
+      document.getElementById(`${type}Res`).innerHTML = `${val} ${from} = ${res.toFixed(6)} ${to}`;
+    });
+  });
+</script>
+</body>
+</html>

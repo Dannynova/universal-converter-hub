@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Currency Converter – Exchange Rates, Time Zone, Date Difference | Universal Converter Hub</title>
+  <meta name="description" content="Real‑time currency converter with 20+ currencies. Also includes time zone converter and date difference calculator. Free, accurate, no signup.">
+  <meta name="keywords" content="currency converter, live exchange rates, time zone converter, date difference calculator, forex, USD to EUR, NGN to USD">
+  <link rel="canonical" href="https://converterhub.com.ng/currency-converter.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
+    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="currency-converter.html" class="nav-btn active">💰 Currency</a>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+
+  <h2 class="section-title">Currency, Time Zone & Date Tools</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency Converter</h3></div>
+      <div class="input-group"><input type="number" id="currAmt" value="1"><select id="currFrom"></select><span>→</span><select id="currTo"></select></div>
+      <button class="btn" id="convertCurrency">Get Live Rate</button>
+      <div class="result-area" id="currResult"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><i class="fas fa-clock"></i><h3>Time Zone Converter</h3></div>
+      <div class="input-group"><select id="tz1"></select><select id="tz2"></select></div>
+      <button class="btn" id="tzConvert">Show Times</button>
+      <div class="result-area" id="tzResult"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date Difference</h3></div>
+      <div class="input-group"><input type="date" id="date1"><input type="date" id="date2"></div>
+      <button class="btn" id="dateDiff">Calculate</button>
+      <div class="result-area" id="dateRes"></div>
+    </div>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  // Currency
+  const currencies = ['USD', 'EUR', 'GBP', 'NGN', 'CAD', 'AUD', 'JPY', 'CNY', 'INR', 'BRL', 'ZAR', 'RUB', 'CHF', 'SGD', 'HKD', 'MXN', 'SEK', 'NZD', 'KRW', 'TRY', 'AED'];
+  const currFrom = document.getElementById('currFrom');
+  const currTo = document.getElementById('currTo');
+  currencies.forEach(c => { currFrom.add(new Option(c, c)); currTo.add(new Option(c, c)); });
+  currFrom.value = 'USD';
+  currTo.value = 'EUR';
+  document.getElementById('convertCurrency').addEventListener('click', async () => {
+    const amt = document.getElementById('currAmt').value;
+    const from = currFrom.value;
+    const to = currTo.value;
+    const resDiv = document.getElementById('currResult');
+    resDiv.innerText = 'Fetching...';
+    try {
+      const r = await fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${from.toLowerCase()}.json`);
+      const d = await r.json();
+      const rate = d[from.toLowerCase()]?.[to.toLowerCase()];
+      if (rate) resDiv.innerText = `${amt} ${from} = ${(amt * rate).toFixed(2)} ${to}`;
+      else throw new Error();
+    } catch (e) {
+      resDiv.innerText = 'Fallback: 1 USD ≈ 0.92 EUR';
+    }
+  });
+
+  // Time Zone
+  const timeZones = [
+    'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
+    'Europe/London', 'Europe/Paris', 'Europe/Berlin', 'Africa/Lagos',
+    'Asia/Dubai', 'Asia/Kolkata', 'Asia/Shanghai', 'Asia/Tokyo',
+    'Australia/Sydney', 'Pacific/Auckland'
+  ];
+  const tz1 = document.getElementById('tz1');
+  const tz2 = document.getElementById('tz2');
+  timeZones.forEach(tz => { tz1.add(new Option(tz, tz)); tz2.add(new Option(tz, tz)); });
+  tz1.value = 'America/New_York';
+  tz2.value = 'Europe/London';
+  document.getElementById('tzConvert').addEventListener('click', () => {
+    const d = new Date();
+    const s1 = d.toLocaleTimeString('en-US', { timeZone: tz1.value });
+    const s2 = d.toLocaleTimeString('en-US', { timeZone: tz2.value });
+    document.getElementById('tzResult').innerHTML = `${tz1.value.split('/')[1]}: ${s1}<br>${tz2.value.split('/')[1]}: ${s2}`;
+  });
+
+  // Date Difference
+  document.getElementById('dateDiff').addEventListener('click', () => {
+    const d1 = new Date(document.getElementById('date1').value);
+    const d2 = new Date(document.getElementById('date2').value);
+    const diff = Math.abs((d2 - d1) / (1000 * 60 * 60 * 24));
+    document.getElementById('dateRes').innerHTML = `${diff} days`;
+  });
+  document.getElementById('date1').value = '2025-03-01';
+  document.getElementById('date2').value = '2025-03-15';
+</script>
+</body>
+</html>
