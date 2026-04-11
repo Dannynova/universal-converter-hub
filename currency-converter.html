@@ -10,14 +10,56 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "How often are exchange rates updated?","acceptedAnswer": {"@type": "Answer","text": "Rates are fetched in real‑time from a reliable API and updated daily. The fallback rate is 1 USD ≈ 0.92 EUR."}},
+      {"@type": "Question","name": "How many currencies are supported?","acceptedAnswer": {"@type": "Answer","text": "Over 20 major currencies including USD, EUR, GBP, NGN, CAD, AUD, JPY, CNY, INR, BRL, ZAR, RUB, CHF, SGD, HKD, MXN, SEK, NZD, KRW, TRY, AED."}},
+      {"@type": "Question","name": "Is the currency converter free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration, no hidden fees."}},
+      {"@type": "Question","name": "Does the time zone converter work for any city?","acceptedAnswer": {"@type": "Answer","text": "It includes 14 major time zones. You can manually select from the dropdown."}},
+      {"@type": "Question","name": "How accurate is the date difference calculator?","acceptedAnswer": {"@type": "Answer","text": "It calculates exact calendar days between two dates, accounting for month lengths and leap years."}}
+    ]
+  }
+  </script>
+  <style>
+    /* FAQ Accordion Styles (same as previous pages) */
+    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
+    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
+    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
+    .faq-answer p { padding-bottom: 1rem; }
+    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
+    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
+    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
+    /* Feedback Button & Modal */
+    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
+    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+    .modal-close:hover { color: var(--accent); }
+    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+    /* Currency & Time card grid */
+    .ct-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .ct-card { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); }
+  </style>
 </head>
 <body>
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
+</div>
 <div class="container">
   <div class="top-bar">
     <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
   </div>
-
   <div class="nav-links">
     <a href="index.html" class="nav-btn">🏠 Home</a>
     <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
@@ -31,41 +73,52 @@
     <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
     <a href="unit-converter.html" class="nav-btn">📐 Units</a>
     <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">🗺️ DWG→KMZ</a>
     <a href="currency-converter.html" class="nav-btn active">💰 Currency</a>
   </div>
-
   <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
-
   <h2 class="section-title">Currency, Time Zone & Date Tools</h2>
-  <div class="card-grid">
-    <div class="card">
+  <div class="ct-card-grid">
+    <div class="ct-card">
       <div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency Converter</h3></div>
       <div class="input-group"><input type="number" id="currAmt" value="1"><select id="currFrom"></select><span>→</span><select id="currTo"></select></div>
       <button class="btn" id="convertCurrency">Get Live Rate</button>
       <div class="result-area" id="currResult"></div>
     </div>
-    <div class="card">
+    <div class="ct-card">
       <div class="card-header"><i class="fas fa-clock"></i><h3>Time Zone Converter</h3></div>
       <div class="input-group"><select id="tz1"></select><select id="tz2"></select></div>
       <button class="btn" id="tzConvert">Show Times</button>
       <div class="result-area" id="tzResult"></div>
     </div>
-    <div class="card">
+    <div class="ct-card">
       <div class="card-header"><i class="fas fa-calendar-alt"></i><h3>Date Difference</h3></div>
       <div class="input-group"><input type="date" id="date1"><input type="date" id="date2"></div>
       <button class="btn" id="dateDiff">Calculate</button>
       <div class="result-area" id="dateRes"></div>
     </div>
   </div>
-
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How often are exchange rates updated?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Rates are fetched in real‑time from a reliable API and updated daily. The fallback rate is 1 USD ≈ 0.92 EUR.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How many currencies are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Over 20 major currencies including USD, EUR, GBP, NGN, CAD, AUD, JPY, CNY, INR, BRL, ZAR, RUB, CHF, SGD, HKD, MXN, SEK, NZD, KRW, TRY, AED.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the currency converter free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration, no hidden fees.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Does the time zone converter work for any city?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>It includes 14 major time zones. You can manually select from the dropdown.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How accurate is the date difference calculator?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>It calculates exact calendar days between two dates, accounting for month lengths and leap years.</p></div></div>
+    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
+  </section>
   <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
-
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
 </div>
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
 <script src="js/common.js"></script>
 <script>
-  // Currency
+  // Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
+  // Modal logic
+  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  // Currency logic
   const currencies = ['USD', 'EUR', 'GBP', 'NGN', 'CAD', 'AUD', 'JPY', 'CNY', 'INR', 'BRL', 'ZAR', 'RUB', 'CHF', 'SGD', 'HKD', 'MXN', 'SEK', 'NZD', 'KRW', 'TRY', 'AED'];
   const currFrom = document.getElementById('currFrom');
   const currTo = document.getElementById('currTo');
@@ -88,8 +141,7 @@
       resDiv.innerText = 'Fallback: 1 USD ≈ 0.92 EUR';
     }
   });
-
-  // Time Zone
+  // Time Zone logic
   const timeZones = [
     'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
     'Europe/London', 'Europe/Paris', 'Europe/Berlin', 'Africa/Lagos',
@@ -107,8 +159,7 @@
     const s2 = d.toLocaleTimeString('en-US', { timeZone: tz2.value });
     document.getElementById('tzResult').innerHTML = `${tz1.value.split('/')[1]}: ${s1}<br>${tz2.value.split('/')[1]}: ${s2}`;
   });
-
-  // Date Difference
+  // Date Difference logic
   document.getElementById('dateDiff').addEventListener('click', () => {
     const d1 = new Date(document.getElementById('date1').value);
     const d2 = new Date(document.getElementById('date2').value);

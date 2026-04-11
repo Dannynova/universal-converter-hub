@@ -13,14 +13,53 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "What Excel formats are supported?","acceptedAnswer": {"@type": "Answer","text": "We support .xlsx and .xls files. Both modern and legacy Excel formats work."}},
+      {"@type": "Question","name": "Will my formulas be visible in the PDF?","acceptedAnswer": {"@type": "Answer","text": "Yes, the resulting PDF will show the calculated values as they appear in Excel. Formulas themselves are not visible."}},
+      {"@type": "Question","name": "Can I convert multiple Excel files at once?","acceptedAnswer": {"@type": "Answer","text": "Yes, you can select multiple files. Each will be converted to its own PDF."}},
+      {"@type": "Question","name": "Is there a file size limit?","acceptedAnswer": {"@type": "Answer","text": "Files up to 50MB are accepted. Larger files may take longer to process."}},
+      {"@type": "Question","name": "Do I need to sign up?","acceptedAnswer": {"@type": "Answer","text": "No. The converter is completely free, no registration required."}}
+    ]
+  }
+  </script>
+  <style>
+    /* FAQ Accordion Styles (same as previous pages) */
+    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
+    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
+    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
+    .faq-answer p { padding-bottom: 1rem; }
+    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
+    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
+    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
+    /* Feedback Button & Modal */
+    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
+    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+    .modal-close:hover { color: var(--accent); }
+    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+  </style>
 </head>
 <body>
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
+</div>
 <div class="container">
   <div class="top-bar">
     <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
   </div>
-
   <div class="nav-links">
     <a href="index.html" class="nav-btn">🏠 Home</a>
     <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
@@ -34,11 +73,10 @@
     <a href="excel-to-pdf.html" class="nav-btn active">📄 Excel→PDF</a>
     <a href="unit-converter.html" class="nav-btn">📐 Units</a>
     <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">🗺️ DWG→KMZ</a>
     <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
   </div>
-
   <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
-
   <h2 class="section-title">Excel to PDF Converter – Print‑Ready PDFs</h2>
   <div class="card">
     <div class="drop-zone" id="excel2pdfDrop">📗 Drop .xlsx or .xls files here or click<input type="file" id="excel2pdfInput" accept=".xlsx,.xls" multiple></div>
@@ -46,16 +84,28 @@
     <button class="btn" id="convertExcel2PdfBtn">Convert to PDF</button>
     <div class="result-area" id="excel2pdfResult"></div>
   </div>
-
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What Excel formats are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>We support .xlsx and .xls files. Both modern and legacy Excel formats work.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Will my formulas be visible in the PDF?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, the resulting PDF will show the calculated values as they appear in Excel. Formulas themselves are not visible.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I convert multiple Excel files at once?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, you can select multiple files. Each will be converted to its own PDF.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Files up to 50MB are accepted. Larger files may take longer to process.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Do I need to sign up?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>No. The converter is completely free, no registration required.</p></div></div>
+    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
+  </section>
   <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
-
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
 </div>
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
 <script src="js/common.js"></script>
 <script>
-  const excel2pdfInput = document.getElementById('excel2pdfInput');
-  const excel2pdfDrop = document.getElementById('excel2pdfDrop');
+  // Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
+  // Modal logic
+  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  // Excel to PDF logic
+  const excel2pdfInput = document.getElementById('excel2pdfInput'); const excel2pdfDrop = document.getElementById('excel2pdfDrop');
   excel2pdfInput.addEventListener('change', () => updateFileList('excel2pdfFileList', excel2pdfInput.files));
   excel2pdfDrop.addEventListener('click', () => excel2pdfInput.click());
   excel2pdfDrop.addEventListener('dragover', e => e.preventDefault());

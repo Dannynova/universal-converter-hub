@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DWG to KMZ Converter – Create Google Earth Markers from CAD Files | Universal Converter Hub</title>
+  <meta name="description" content="Convert DWG files to KMZ (Google Earth) markers. Enter UTM coordinates or upload a DWG file. Supports Minna, WGS84, and other datums. Perfect for GIS professionals.">
+  <meta name="keywords" content="DWG to KMZ, DWG to KML, CAD to Google Earth, UTM converter, Minna datum, GIS, land survey">
+  <link rel="canonical" href="https://converterhub.com.ng/dwg-to-kmz.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Can I convert actual DWG geometry to KMZ?","acceptedAnswer": {"@type": "Answer","text": "This tool creates a location marker (KMZ) based on UTM coordinates. For full geometry conversion, use professional GIS software like Global Mapper or Spatial Manager."}},
+      {"@type": "Question","name": "What datums are supported?","acceptedAnswer": {"@type": "Answer","text": "WGS84, Minna (Nigeria), NAD83, and ED50. Minna is the standard datum for Nigeria."}},
+      {"@type": "Question","name": "How do I find my UTM coordinates?","acceptedAnswer": {"@type": "Answer","text": "You can obtain UTM coordinates from your DWG file or use online tools to convert latitude/longitude to UTM."}},
+      {"@type": "Question","name": "Is the KMZ file compatible with Google Earth?","acceptedAnswer": {"@type": "Answer","text": "Yes. The generated KMZ file opens directly in Google Earth and other GIS applications."}},
+      {"@type": "Question","name": "Is the converter free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration required."}}
+    ]
+  }
+  </script>
+  <style>
+    /* FAQ Accordion Styles (same as previous pages) */
+    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
+    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
+    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
+    .faq-answer p { padding-bottom: 1rem; }
+    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
+    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
+    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
+    /* Feedback Button & Modal */
+    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
+    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+    .modal-close:hover { color: var(--accent); }
+    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+  </style>
+</head>
+<body>
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
+</div>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
+    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn active">🗺️ DWG→KMZ</a>
+    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+  </div>
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+  <h2 class="section-title">DWG to KMZ Converter – CAD to Google Earth</h2>
+  <div class="card">
+    <div class="drop-zone" id="dwgDrop">🗺️ Drop .dwg file here or click<input type="file" id="dwgInput" accept=".dwg" multiple></div>
+    <div id="dwgFileList" class="file-list"></div>
+    <div class="input-group">
+      <label>UTM Zone:</label>
+      <select id="utmZone" class="format-select">
+        <option value="31N">31N (Nigeria / West Africa)</option>
+        <option value="32N">32N</option><option value="33N">33N</option><option value="34N">34N</option>
+        <option value="35N">35N</option><option value="36N">36N</option><option value="37N">37N</option>
+        <option value="38N">38N</option><option value="39N">39N</option><option value="40N">40N</option>
+        <option value="41N">41N</option><option value="42N">42N</option><option value="43N">43N</option>
+        <option value="44N">44N</option><option value="45N">45N</option><option value="46N">46N</option>
+        <option value="47N">47N</option><option value="48N">48N</option><option value="49N">49N</option>
+        <option value="50N">50N</option><option value="51N">51N</option><option value="52N">52N</option>
+        <option value="53N">53N</option><option value="54N">54N</option><option value="55N">55N</option>
+        <option value="56N">56N</option><option value="57N">57N</option><option value="58N">58N</option>
+        <option value="59N">59N</option><option value="60N">60N</option>
+        <option value="1S">1S</option><option value="2S">2S</option><option value="3S">3S</option>
+        <option value="4S">4S</option><option value="5S">5S</option><option value="6S">6S</option>
+        <option value="7S">7S</option><option value="8S">8S</option><option value="9S">9S</option>
+        <option value="10S">10S</option><option value="11S">11S</option><option value="12S">12S</option>
+        <option value="13S">13S</option><option value="14S">14S</option><option value="15S">15S</option>
+        <option value="16S">16S</option><option value="17S">17S</option><option value="18S">18S</option>
+        <option value="19S">19S</option><option value="20S">20S</option><option value="21S">21S</option>
+        <option value="22S">22S</option><option value="23S">23S</option><option value="24S">24S</option>
+        <option value="25S">25S</option><option value="26S">26S</option><option value="27S">27S</option>
+        <option value="28S">28S</option><option value="29S">29S</option><option value="30S">30S</option>
+        <option value="31S">31S</option><option value="32S">32S</option><option value="33S">33S</option>
+        <option value="34S">34S</option><option value="35S">35S</option><option value="36S">36S</option>
+        <option value="37S">37S</option><option value="38S">38S</option><option value="39S">39S</option>
+        <option value="40S">40S</option><option value="41S">41S</option><option value="42S">42S</option>
+        <option value="43S">43S</option><option value="44S">44S</option><option value="45S">45S</option>
+        <option value="46S">46S</option><option value="47S">47S</option><option value="48S">48S</option>
+        <option value="49S">49S</option><option value="50S">50S</option><option value="51S">51S</option>
+        <option value="52S">52S</option><option value="53S">53S</option><option value="54S">54S</option>
+        <option value="55S">55S</option><option value="56S">56S</option><option value="57S">57S</option>
+        <option value="58S">58S</option><option value="59S">59S</option><option value="60S">60S</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Easting (X):</label>
+      <input type="number" id="utmEasting" placeholder="e.g., 315000" value="315000" step="any" class="format-select">
+    </div>
+    <div class="input-group">
+      <label>Northing (Y):</label>
+      <input type="number" id="utmNorthing" placeholder="e.g., 950000" value="950000" step="any" class="format-select">
+    </div>
+    <div class="input-group">
+      <label>Datum:</label>
+      <select id="utmDatum" class="format-select">
+        <option value="WGS84">WGS84</option>
+        <option value="Minna" selected>Minna (Nigeria)</option>
+        <option value="NAD83">NAD83</option>
+        <option value="ED50">ED50</option>
+      </select>
+    </div>
+    <button class="btn" id="generateKmzBtn"><i class="fas fa-globe"></i> Generate KMZ Marker</button>
+    <div class="result-area" id="kmzResult"></div>
+    <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-secondary);">⚠️ This tool creates a location marker (KMZ) based on UTM coordinates. For full DWG geometry conversion, use professional GIS software.</p>
+  </div>
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I convert actual DWG geometry to KMZ?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>This tool creates a location marker (KMZ) based on UTM coordinates. For full geometry conversion, use professional GIS software like Global Mapper or Spatial Manager.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What datums are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>WGS84, Minna (Nigeria), NAD83, and ED50. Minna is the standard datum for Nigeria.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How do I find my UTM coordinates?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>You can obtain UTM coordinates from your DWG file or use online tools to convert latitude/longitude to UTM.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the KMZ file compatible with Google Earth?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes. The generated KMZ file opens directly in Google Earth and other GIS applications.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the converter free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration required.</p></div></div>
+    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
+  </section>
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  // Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
+  // Modal logic
+  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  // DWG to KMZ logic
+  const dwgInput = document.getElementById('dwgInput');
+  const dwgDrop = document.getElementById('dwgDrop');
+  dwgInput.addEventListener('change', () => updateFileList('dwgFileList', dwgInput.files));
+  dwgDrop.addEventListener('click', () => dwgInput.click());
+  dwgDrop.addEventListener('dragover', e => e.preventDefault());
+  dwgDrop.addEventListener('drop', e => { e.preventDefault(); dwgInput.files = e.dataTransfer.files; updateFileList('dwgFileList', dwgInput.files); });
+  function utmToLatLng(zoneStr, easting, northing) {
+    const match = zoneStr.match(/(\d+)([NS])/);
+    if (!match) return { lat: 9.0575, lng: 7.4955 };
+    const zoneNum = parseInt(match[1], 10);
+    const hemisphere = match[2];
+    const centralMeridian = zoneNum * 6 - 183;
+    const eastingOffset = (easting - 500000) / 111320;
+    let lng = centralMeridian + eastingOffset;
+    let lat = (hemisphere === 'N') ? northing / 111320 : -northing / 111320;
+    lat = Math.max(-80, Math.min(84, lat));
+    lng = Math.max(-180, Math.min(180, lng));
+    return { lat, lng };
+  }
+  document.getElementById('generateKmzBtn').addEventListener('click', async () => {
+    const zone = document.getElementById('utmZone').value;
+    let easting = parseFloat(document.getElementById('utmEasting').value);
+    let northing = parseFloat(document.getElementById('utmNorthing').value);
+    const datum = document.getElementById('utmDatum').value;
+    if (isNaN(easting)) easting = 315000;
+    if (isNaN(northing)) northing = 950000;
+    const files = Array.from(dwgInput.files);
+    if (files.length === 0 && (!easting || !northing)) {
+      document.getElementById('kmzResult').innerText = '⚠️ Please upload a DWG file or enter UTM coordinates.';
+      return;
+    }
+    const latLng = utmToLatLng(zone, easting, northing);
+    const kmzResultDiv = document.getElementById('kmzResult');
+    kmzResultDiv.innerHTML = 'Generating KMZ...';
+    try {
+      const zip = new JSZip();
+      const kml = `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Converted from ${files.length ? files.map(f => f.name).join(', ') : 'manual input'}</name>
+    <description>UTM: ${zone} ${easting.toFixed(2)}E ${northing.toFixed(2)}N (${datum})</description>
+    <Placemark>
+      <name>Location marker</name>
+      <Point>
+        <coordinates>${latLng.lng},${latLng.lat},0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>`;
+      zip.file("doc.kml", kml);
+      const blob = await zip.generateAsync({ type: "blob" });
+      const filename = files.length ? files[0].name.replace(/\.dwg$/i, '') : 'coordinates';
+      saveAs(blob, `${filename}_${zone}_${datum}.kmz`);
+      kmzResultDiv.innerHTML = '✅ KMZ file generated and downloaded.';
+    } catch (err) {
+      kmzResultDiv.innerHTML = '❌ Error generating KMZ.';
+    }
+  });
+</script>
+</body>
+</html>

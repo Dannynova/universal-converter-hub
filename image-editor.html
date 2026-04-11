@@ -3,217 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online Image Editor – Remove Background, Crop, Filters | Universal Converter Hub</title>
-  <meta name="description" content="Professional free online image editor. Remove background, cartoon effect, crop, rotate, add text, draw, adjust brightness/contrast/blur. Works on mobile and desktop.">
-  <meta name="keywords" content="image editor, remove background, cartoon effect, crop image, add text to image, free online photo editor">
-  <link rel="canonical" href="https://converterhub.com.ng/image-editor.html">
+  <title>Image Converter – Universal Converter Hub</title>
+  <meta name="description" content="Free online image converter. Convert JPEG, PNG, GIF, SVG to any format. Preserves quality. Drag & drop.">
+  <meta name="keywords" content="image converter, convert PNG to JPEG, JPEG to PNG, SVG to PNG, GIF converter">
+  <link rel="canonical" href="https://converterhub.com.ng/image-converter.html">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+    body{background-color:var(--bg-primary);color:var(--text-primary);transition:background-color .2s,color .2s;}
+    :root{--bg-primary:#f8fafc;--bg-secondary:#fff;--bg-card:#fff;--text-primary:#0f172a;--text-secondary:#334155;--border-light:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--dropzone-bg:#f1f5f9;--shadow:0 10px 25px -5px rgba(0,0,0,0.05),0 8px 10px -6px rgba(0,0,0,0.02);--ad-bg:#eef2ff;}
+    body.dark{--bg-primary:#0b1120;--bg-secondary:#1e293b;--bg-card:#1e293b;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--border-light:#334155;--accent:#3b82f6;--accent-hover:#2563eb;--dropzone-bg:#0f172a;--ad-bg:#1e1e3f;}
+    .container{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;}
+    .top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
+    .logo-area h1{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .nav-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem;}
+    .nav-links a{text-decoration:none;color:var(--text-secondary);font-weight:500;padding:0.5rem 1rem;border-radius:40px;transition:all .2s;}
+    .nav-links a:hover,.nav-links a.active{background:var(--accent);color:white;}
+    .dark-toggle,.donate-button{background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:40px;padding:0.5rem 1.2rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-weight:500;text-decoration:none;color:var(--text-primary);}
+    .donate-button{background:#ff6b6b;color:white;border:none;}
+    .donate-button:hover{background:#ff5252;}
+    .ad-universal{margin:2rem 0;text-align:center;background:var(--dropzone-bg);border-radius:20px;padding:1rem;border:1px dashed var(--accent);min-height:100px;}
+    .section-title{font-size:1.8rem;font-weight:600;margin:2rem 0 1rem;}
+    .card{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);}
+    .card-header{display:flex;gap:0.75rem;margin-bottom:1rem;align-items:center;}
+    .card-header i{font-size:1.6rem;color:var(--accent);}
+    .drop-zone{background:var(--dropzone-bg);border:2px dashed var(--border-light);border-radius:16px;padding:1.2rem;text-align:center;cursor:pointer;margin-bottom:0.5rem;}
+    .drop-zone.dragover{background:var(--accent);opacity:0.8;}
+    .drop-zone input{display:none;}
+    .file-list{font-size:0.8rem;max-height:100px;overflow-y:auto;background:var(--dropzone-bg);border-radius:12px;padding:0.5rem;margin:0.5rem 0;}
+    .file-list div{padding:0.2rem 0;border-bottom:1px solid var(--border-light);}
+    .format-select{width:100%;padding:0.6rem 1rem;border-radius:40px;border:1px solid var(--border-light);background:var(--bg-secondary);margin:0.5rem 0;}
+    .btn{background:var(--accent);color:white;border:none;padding:0.7rem 1.2rem;border-radius:40px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;transition:background .2s;}
+    .btn:hover{background:var(--accent-hover);}
+    .result-area{margin-top:1rem;padding:0.8rem;background:var(--dropzone-bg);border-radius:16px;font-size:0.9rem;}
+    .guide-toggle summary{cursor:pointer;color:var(--accent);font-weight:500;margin-top:0.8rem;}
+    .guide-text{margin-top:0.5rem;padding:0.5rem;background:var(--bg-secondary);border-radius:12px;border-left:3px solid var(--accent);}
+    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);margin:2rem 0;}
+    .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center;}
+    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:0.5rem;}
+    .faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+    .faq-question:hover{color:var(--accent);}
+    .faq-question .icon{font-size:1.2rem;transition:transform .2s;}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease-out;color:var(--text-secondary);line-height:1.6;}
+    .faq-answer p{padding-bottom:1rem;}
+    .faq-item.active .faq-answer{max-height:300px;transition:max-height 0.4s ease-in;}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg);}
+    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light);}
+    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer;}
+    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:0.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;justify-content:center;align-items:center;}
+    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative;}
+    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;}
+    .modal iframe{width:100%;height:500px;border:none;border-radius:12px;}
+    footer{text-align:center;padding:2rem;color:var(--text-secondary);border-top:1px solid var(--border-light);margin-top:2rem;}
+    @media (max-width:600px){.container{padding:1rem;}}
+    .quality-slider{margin:0.5rem 0;width:100%;}
+  </style>
 </head>
 <body>
+<!-- Feedback Button & Modal -->
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal"><div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div></div>
+
 <div class="container">
   <div class="top-bar">
-    <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+    <div class="logo-area"><h1><i class="fas fa-exchange-alt" style="color:#2563eb;"></i> Universal Converter Hub</h1></div>
+    <div style="display:flex;gap:1rem;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i><span>Dark mode</span></div></div>
   </div>
-
   <div class="nav-links">
-    <a href="index.html" class="nav-btn">🏠 Home</a>
-    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
-    <a href="image-editor.html" class="nav-btn active">🎨 Image Editor</a>
-    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
-    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
-    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
-    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
-    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
-    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+    <a href="index.html">🏠 Home</a> <a href="pdf-to-word.html">📄 PDF to Word</a> <a href="image-editor.html">🎨 Image Editor</a>
+    <a href="image-converter.html" class="active">🖼️ Image Converter</a> <a href="image-compressor.html">🗜️ Compress</a>
+    <a href="qr-code-generator.html">📱 QR Code</a> <a href="password-generator.html">🔐 Password</a> <a href="text-to-speech.html">🔊 TTS</a>
+    <a href="language-translator.html">🌐 Translator</a> <a href="csv-to-excel.html">📊 Excel</a> <a href="unit-converter.html">📐 Units</a>
+    <a href="land-calculator.html">🏞️ Land</a> <a href="dwg-to-kmz.html">🗺️ DWG→KMZ</a> <a href="currency-converter.html">💰 Currency</a>
   </div>
-
   <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
 
-  <h2 class="section-title">Professional Image Editor – Free & Powerful</h2>
+  <h2 class="section-title"><i class="fas fa-image"></i> Image Converter – Real Conversion</h2>
   <div class="card">
-    <div class="editor-toolbar" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin:1rem 0; justify-content:center;">
-      <button class="btn" id="uploadImageBtn"><i class="fas fa-upload"></i> Upload</button>
-      <button class="btn" id="downloadImageBtn"><i class="fas fa-download"></i> Download PNG</button>
-      <button class="btn" id="resetEditorBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+    <div class="drop-zone" id="dropZone">🖼️ Drop images here or click<br><small>JPEG, PNG, GIF, SVG supported</small><input type="file" id="fileInput" multiple accept="image/*"></div>
+    <div id="fileList" class="file-list"></div>
+    <div class="input-group" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+      <label>Output format:</label>
+      <select id="outputFormat" class="format-select" style="width:auto;">
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/gif">GIF</option>
+      </select>
+      <div id="qualityGroup" style="display:flex; align-items:center; gap:0.5rem;">
+        <label>Quality (JPEG only):</label>
+        <input type="range" id="jpegQuality" min="10" max="100" value="90" style="width:150px;">
+        <span id="qualityVal">90%</span>
+      </div>
     </div>
-    <div class="canvas-container" id="canvasContainer" style="position:relative; min-height:300px;">
-      <canvas id="editorCanvas" width="600" height="400" style="width:100%; height:auto; border-radius:16px; background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 50% / 20px 20px;"></canvas>
-    </div>
-    <div class="editor-toolbar" style="flex-wrap:wrap;">
-      <button class="btn" id="addTextBtn"><i class="fas fa-font"></i> Add Text</button>
-      <button class="btn" id="drawModeBtn"><i class="fas fa-paint-brush"></i> Draw</button>
-      <button class="btn" id="cropBtn"><i class="fas fa-crop-alt"></i> Crop Canvas</button>
-      <button class="btn" id="removeBgBtn"><i class="fas fa-eraser"></i> Remove BG (Color)</button>
-    </div>
-    <div style="flex-direction:column; align-items:stretch;">
-      <div><label>Zoom: <input type="range" id="zoomSlider" min="0.2" max="3" step="0.01" value="1" style="width:200px;"></label></div>
-      <div><label>Brightness: <input type="range" id="brightnessSlider" min="-1" max="1" step="0.01" value="0"></label></div>
-      <div><label>Contrast: <input type="range" id="contrastSlider" min="-1" max="1" step="0.01" value="0"></label></div>
-      <div><label>Blur: <input type="range" id="blurSlider" min="0" max="10" step="0.1" value="0"></label></div>
-    </div>
-    <div id="textOptions" style="display:none; margin-top:1rem;">
-      <input type="text" id="textInput" placeholder="Enter text" class="format-select" style="width:auto;">
-      <select id="fontSizeSelect"><option value="20">20</option><option value="30" selected>30</option><option value="40">40</option><option value="50">50</option></select>
-      <input type="color" id="textColor" value="#000000">
-      <button class="btn" id="boldTextBtn"><b>B</b></button>
-    </div>
-    <div id="drawOptions" style="display:none; margin-top:1rem;">
-      <label>Brush Color: <input type="color" id="brushColor" value="#ff0000"></label>
-      <label>Brush Size: <input type="range" id="brushSize" min="1" max="30" value="5"></label>
-      <button class="btn" id="eraserModeBtn">Eraser</button>
-    </div>
-    <div id="bgOptions" style="display:none; margin-top:1rem;">
-      <label>Pick color to remove: <input type="color" id="bgColorPicker" value="#ffffff"></label>
-      <button class="btn" id="applyBgRemoval">Make Transparent</button>
-    </div>
-    <div class="result-area" id="editorResult"></div>
+    <button class="btn" id="convertBtn"><i class="fas fa-sync-alt"></i> Convert & Download</button>
+    <div class="result-area" id="result"></div>
+    <details class="guide-toggle"><summary>📘 guide</summary><div class="guide-text">Real conversion: your image is drawn on canvas and exported to the selected format. JPEG quality can be adjusted.</div></details>
   </div>
 
-  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Does this actually convert my image?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes. The image is loaded, drawn onto a canvas, and exported to your chosen format – no placeholders.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Will SVG be converted correctly?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>SVG files are rendered onto a canvas and exported as PNG/JPEG/GIF. The original SVG vector data is not preserved.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I convert multiple images at once?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes. Select multiple files; each will be converted and downloaded individually.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Large images may take a few seconds but no hard limit (browser memory applies).</p></div></div>
+    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
+  </section>
 
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
 </div>
+
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
-<script src="js/common.js"></script>
 <script>
-  let canvas = new fabric.Canvas('editorCanvas');
-  let currentImageObj = null;
-  let historyStack = []; let historyIndex = -1;
-  function saveState() { const state = JSON.stringify(canvas.toJSON()); historyStack = historyStack.slice(0, historyIndex+1); historyStack.push(state); historyIndex++; }
-  canvas.on('object:modified', saveState); canvas.on('object:added', saveState);
-
-  const canvasContainer = document.getElementById('canvasContainer');
-  canvasContainer.addEventListener('dragover', (e) => { e.preventDefault(); canvasContainer.style.border = '2px dashed var(--accent)'; });
-  canvasContainer.addEventListener('dragleave', () => { canvasContainer.style.border = 'none'; });
-  canvasContainer.addEventListener('drop', (e) => {
-    e.preventDefault(); canvasContainer.style.border = 'none';
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        fabric.Image.fromURL(ev.target.result, (img) => {
-          if (currentImageObj) canvas.remove(currentImageObj);
-          img.scaleToWidth(canvas.width);
-          img.set({ left: canvas.width/2 - img.width/2, top: canvas.height/2 - img.height/2 });
-          canvas.add(img); canvas.setActiveObject(img); currentImageObj = img; canvas.renderAll(); saveState();
-          document.getElementById('editorResult').innerHTML = '✅ Image loaded via drag & drop.';
-        }, { crossOrigin: 'anonymous' });
-      };
-      reader.readAsDataURL(file);
-    }
+  // Dark mode
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i><span> Light mode</span>' : '<i class="fas fa-moon"></i><span> Dark mode</span>';
   });
 
-  document.getElementById('uploadImageBtn').addEventListener('click', () => {
-    const input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*';
-    input.onchange = (e) => {
-      const file = e.target.files[0]; const reader = new FileReader();
-      reader.onload = (ev) => {
-        fabric.Image.fromURL(ev.target.result, (img) => {
-          if (currentImageObj) canvas.remove(currentImageObj);
-          img.scaleToWidth(canvas.width);
-          img.set({ left: canvas.width/2 - img.width/2, top: canvas.height/2 - img.height/2 });
-          canvas.add(img); canvas.setActiveObject(img); currentImageObj = img; canvas.renderAll(); saveState();
-        }, { crossOrigin: 'anonymous' });
-      }; reader.readAsDataURL(file);
-    }; input.click();
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const icon = btn.querySelector('.icon i');
+    btn.addEventListener('click', () => {
+      const active = item.classList.contains('active');
+      if (!active) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+      } else {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+      }
+    });
   });
-  document.getElementById('downloadImageBtn').addEventListener('click', () => {
-    const dataURL = canvas.toDataURL({ format: 'png', quality: 1 });
-    const link = document.createElement('a'); link.download = 'edited_image.png'; link.href = dataURL; link.click();
+
+  // Feedback modal
+  const modal = document.getElementById('feedbackModal');
+  const feedbackBtn = document.getElementById('feedbackBtn');
+  const closeModal = document.getElementById('closeModal');
+  const supportLink = document.getElementById('supportLink');
+  const openModal = () => modal.style.display = 'flex';
+  feedbackBtn.addEventListener('click', openModal);
+  if (supportLink) supportLink.addEventListener('click', openModal);
+  closeModal.addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+  // File handling
+  const dropZone = document.getElementById('dropZone');
+  const fileInput = document.getElementById('fileInput');
+  const fileListDiv = document.getElementById('fileList');
+  const outputFormat = document.getElementById('outputFormat');
+  const qualitySlider = document.getElementById('jpegQuality');
+  const qualityVal = document.getElementById('qualityVal');
+  const convertBtn = document.getElementById('convertBtn');
+  const resultDiv = document.getElementById('result');
+
+  qualitySlider.addEventListener('input', () => { qualityVal.innerText = qualitySlider.value + '%'; });
+  outputFormat.addEventListener('change', () => {
+    const isJpeg = outputFormat.value === 'image/jpeg';
+    document.getElementById('qualityGroup').style.display = isJpeg ? 'flex' : 'none';
   });
-  document.getElementById('resetEditorBtn').addEventListener('click', () => {
-    canvas.clear(); canvas.setBackgroundColor('rgba(0,0,0,0)', canvas.renderAll.bind(canvas));
-    canvas.setDimensions({ width: 600, height: 400 }); canvas.renderAll(); saveState();
-  });
-  document.getElementById('zoomSlider').addEventListener('input', (e) => { canvas.setZoom(parseFloat(e.target.value)); canvas.renderAll(); });
-  function applyFilters() {
-    if (!canvas.getActiveObject()) return;
-    const obj = canvas.getActiveObject();
-    if (!obj.filters) obj.filters = [];
-    const brightness = parseFloat(document.getElementById('brightnessSlider').value);
-    const contrast = parseFloat(document.getElementById('contrastSlider').value);
-    const blur = parseFloat(document.getElementById('blurSlider').value);
-    obj.filters = [];
-    if (brightness !== 0) obj.filters.push(new fabric.Image.filters.Brightness({ brightness: brightness }));
-    if (contrast !== 0) obj.filters.push(new fabric.Image.filters.Contrast({ contrast: contrast }));
-    if (blur !== 0) obj.filters.push(new fabric.Image.filters.Blur({ blur: blur }));
-    obj.applyFilters(); canvas.renderAll(); saveState();
+
+  function updateFileList() {
+    const files = Array.from(fileInput.files);
+    fileListDiv.innerHTML = '';
+    files.forEach(f => {
+      const div = document.createElement('div');
+      div.textContent = `${f.name} (${(f.size/1024).toFixed(1)} KB)`;
+      fileListDiv.appendChild(div);
+    });
   }
-  document.getElementById('brightnessSlider').addEventListener('input', applyFilters);
-  document.getElementById('contrastSlider').addEventListener('input', applyFilters);
-  document.getElementById('blurSlider').addEventListener('input', applyFilters);
-  document.getElementById('addTextBtn').addEventListener('click', () => {
-    const textbox = new fabric.Textbox('Double click to edit', { left: 100, top: 100, width: 200, fontSize: 30, fill: '#000000', editable: true });
-    canvas.add(textbox); canvas.setActiveObject(textbox); canvas.renderAll(); saveState();
-    document.getElementById('textOptions').style.display = 'flex';
+  fileInput.addEventListener('change', updateFileList);
+  dropZone.addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    fileInput.files = e.dataTransfer.files;
+    updateFileList();
   });
-  document.getElementById('textInput').addEventListener('change', () => {
-    const obj = canvas.getActiveObject(); if (obj && obj.text !== undefined) { obj.set('text', document.getElementById('textInput').value); canvas.renderAll(); saveState(); }
-  });
-  document.getElementById('fontSizeSelect').addEventListener('change', () => {
-    const obj = canvas.getActiveObject(); if (obj && obj.fontSize !== undefined) { obj.set('fontSize', parseInt(document.getElementById('fontSizeSelect').value)); canvas.renderAll(); saveState(); }
-  });
-  document.getElementById('textColor').addEventListener('input', () => {
-    const obj = canvas.getActiveObject(); if (obj && obj.fill !== undefined) { obj.set('fill', document.getElementById('textColor').value); canvas.renderAll(); saveState(); }
-  });
-  document.getElementById('boldTextBtn').addEventListener('click', () => {
-    const obj = canvas.getActiveObject(); if (obj && obj.fontWeight !== undefined) { obj.set('fontWeight', obj.fontWeight === 'bold' ? 'normal' : 'bold'); canvas.renderAll(); saveState(); }
-  });
-  document.getElementById('drawModeBtn').addEventListener('click', () => {
-    canvas.isDrawingMode = !canvas.isDrawingMode;
-    if (canvas.isDrawingMode) {
-      canvas.freeDrawingBrush.color = document.getElementById('brushColor').value;
-      canvas.freeDrawingBrush.width = parseInt(document.getElementById('brushSize').value);
-      document.getElementById('drawOptions').style.display = 'flex';
-    } else { document.getElementById('drawOptions').style.display = 'none'; }
-  });
-  document.getElementById('brushColor').addEventListener('input', (e) => { canvas.freeDrawingBrush.color = e.target.value; });
-  document.getElementById('brushSize').addEventListener('input', (e) => { canvas.freeDrawingBrush.width = parseInt(e.target.value); });
-  document.getElementById('eraserModeBtn').addEventListener('click', () => { canvas.freeDrawingBrush.color = '#ffffff'; });
-  document.getElementById('cropBtn').addEventListener('click', () => {
-    const obj = canvas.getActiveObject(); if (!obj) { alert('Select an object to crop to its bounding box.'); return; }
-    const bounds = obj.getBoundingRect(); canvas.setWidth(bounds.width); canvas.setHeight(bounds.height);
-    const clipPath = new fabric.Rect({ width: bounds.width, height: bounds.height, left: 0, top: 0 });
-    canvas.clipPath = clipPath; obj.set({ left: -bounds.left, top: -bounds.top }); canvas.renderAll(); saveState();
-  });
-  document.getElementById('removeBgBtn').addEventListener('click', () => { document.getElementById('bgOptions').style.display = 'flex'; });
-  document.getElementById('applyBgRemoval').addEventListener('click', () => {
-    const color = document.getElementById('bgColorPicker').value;
-    const r = parseInt(color.slice(1,3),16), g = parseInt(color.slice(3,5),16), b = parseInt(color.slice(5,7),16);
-    const imgObj = canvas.getActiveObject();
-    if (imgObj && imgObj.type === 'image') {
-      const dataURL = imgObj.toDataURL(); const img = new Image();
+
+  // Real conversion
+  async function convertImage(file, targetMime, quality) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
       img.onload = () => {
-        const tempCanvas = document.createElement('canvas'); tempCanvas.width = img.width; tempCanvas.height = img.height;
-        const ctx = tempCanvas.getContext('2d'); ctx.drawImage(img, 0, 0);
-        const imageData = ctx.getImageData(0,0,img.width,img.height); const data = imageData.data;
-        for (let i=0; i<data.length; i+=4) {
-          if (Math.abs(data[i]-r) < 30 && Math.abs(data[i+1]-g) < 30 && Math.abs(data[i+2]-b) < 30) data[i+3] = 0;
-        }
-        ctx.putImageData(imageData,0,0);
-        tempCanvas.toBlob(blob => {
-          const url = URL.createObjectURL(blob);
-          fabric.Image.fromURL(url, (newImg) => {
-            const oldLeft = imgObj.left, oldTop = imgObj.top;
-            canvas.remove(imgObj);
-            newImg.set({ left: oldLeft, top: oldTop, scaleX: imgObj.scaleX, scaleY: imgObj.scaleY });
-            canvas.add(newImg); canvas.setActiveObject(newImg); currentImageObj = newImg; canvas.renderAll(); saveState();
-            URL.revokeObjectURL(url);
-          });
-        });
-      }; img.src = dataURL;
-    } else { alert('Select an image first.'); }
+        URL.revokeObjectURL(url);
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(blob => {
+          if (blob) resolve(blob);
+          else reject('Conversion failed');
+        }, targetMime, quality);
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject('Failed to load image');
+      };
+      img.src = url;
+    });
+  }
+
+  convertBtn.addEventListener('click', async () => {
+    const files = Array.from(fileInput.files);
+    if (files.length === 0) {
+      resultDiv.innerText = '⚠️ Please select images.';
+      return;
+    }
+    const targetMime = outputFormat.value;
+    const quality = targetMime === 'image/jpeg' ? parseFloat(qualitySlider.value) / 100 : 1;
+    resultDiv.innerHTML = `⏳ Converting ${files.length} file(s)...`;
+    let successCount = 0;
+    for (const file of files) {
+      try {
+        const convertedBlob = await convertImage(file, targetMime, quality);
+        const ext = targetMime.split('/')[1];
+        const newName = file.name.replace(/\.[^/.]+$/, '') + '.' + (ext === 'jpeg' ? 'jpg' : ext);
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(convertedBlob);
+        link.download = newName;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        successCount++;
+      } catch (err) {
+        console.error(err);
+        resultDiv.innerHTML += `<br>❌ Error converting ${file.name}`;
+      }
+    }
+    resultDiv.innerHTML = `✅ ${successCount} of ${files.length} image(s) converted and downloaded.`;
   });
-  canvas.setBackgroundColor('rgba(0,0,0,0)', canvas.renderAll.bind(canvas));
-  saveState();
 </script>
 </body>
 </html>

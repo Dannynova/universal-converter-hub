@@ -10,14 +10,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Which voices are available?","acceptedAnswer": {"@type": "Answer","text": "All voices supported by your browser are available, including many languages and accents. You can select from the dropdown."}},
+      {"@type": "Question","name": "Can I download the audio?","acceptedAnswer": {"@type": "Answer","text": "Currently, the tool plays speech directly in your browser. For downloading, you may use browser extensions or record the audio."}},
+      {"@type": "Question","name": "Is there a limit on text length?","acceptedAnswer": {"@type": "Answer","text": "Most browsers support up to several thousand characters. Very long texts may be truncated – try splitting into smaller parts."}},
+      {"@type": "Question","name": "Is the text to speech free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration, no hidden costs."}},
+      {"@type": "Question","name": "Does it work on mobile devices?","acceptedAnswer": {"@type": "Answer","text": "Yes, modern mobile browsers support speech synthesis. Voice availability may vary by operating system."}}
+    ]
+  }
+  </script>
+  <style>
+    /* FAQ Accordion Styles (same as previous pages) */
+    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
+    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
+    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
+    .faq-answer p { padding-bottom: 1rem; }
+    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
+    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
+    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
+    /* Feedback Button & Modal */
+    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
+    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+    .modal-close:hover { color: var(--accent); }
+    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+  </style>
 </head>
 <body>
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
+</div>
 <div class="container">
   <div class="top-bar">
     <div class="logo"><div class="logo-icon"><i class="fas fa-arrows-spin"></i></div><div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div></div>
     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
   </div>
-
   <div class="nav-links">
     <a href="index.html" class="nav-btn">🏠 Home</a>
     <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
@@ -28,13 +67,13 @@
     <a href="text-to-speech.html" class="nav-btn active">🔊 Text to Speech</a>
     <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
     <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
     <a href="unit-converter.html" class="nav-btn">📐 Units</a>
     <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">🗺️ DWG→KMZ</a>
     <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
   </div>
-
   <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
-
   <h2 class="section-title">Text to Speech – Listen to Any Text</h2>
   <div class="card">
     <textarea id="ttsText" rows="4" class="format-select" placeholder="Enter text to speak...">Welcome to Universal Converter Hub. Enjoy our free tools!</textarea>
@@ -43,19 +82,33 @@
     <button class="btn" id="stopBtn"><i class="fas fa-stop"></i> Stop</button>
     <div class="result-area" id="ttsResult"></div>
   </div>
-
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Which voices are available?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>All voices supported by your browser are available, including many languages and accents. You can select from the dropdown.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I download the audio?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Currently, the tool plays speech directly in your browser. For downloading, you may use browser extensions or record the audio.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a limit on text length?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Most browsers support up to several thousand characters. Very long texts may be truncated – try splitting into smaller parts.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the text to speech free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration, no hidden costs.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Does it work on mobile devices?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, modern mobile browsers support speech synthesis. Voice availability may vary by operating system.</p></div></div>
+    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
+  </section>
   <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
-
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
 </div>
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
 <script src="js/common.js"></script>
 <script>
+  // Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
+  // Modal logic
+  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  // Text to Speech logic
   let synth = window.speechSynthesis;
   let voices = [];
   function loadVoices() {
     voices = synth.getVoices();
     const voiceSelect = document.getElementById('voiceSelect');
+    if (!voiceSelect) return;
     voiceSelect.innerHTML = '';
     voices.forEach(voice => {
       const option = document.createElement('option');
