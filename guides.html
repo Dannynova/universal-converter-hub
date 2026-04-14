@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides on How to Make Use of Our Tools | Universal Converter Hub</title>
+  <meta name="description" content="Step‑by‑step guides: how to convert PDF to Word, edit images, compress files, generate QR codes, translate text, and more. Free, easy, no registration.">
+  <meta name="keywords" content="how to convert PDF to Word, image editing tutorial, QR code guide, password generator tips, text to speech help, language translator guide, unit converter tutorial, land calculator how‑to, DWG to KMZ guide, currency converter help">
+  <link rel="canonical" href="https://converterhub.com.ng/guides.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .guide-section {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow);
+    }
+    .guide-section h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .guide-section p, .guide-section ul, .guide-section ol {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .guide-section ul, .guide-section ol {
+      padding-left: 2rem;
+    }
+    .guide-section li {
+      margin-bottom: 0.5rem;
+    }
+    .guide-section a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .guide-section a:hover {
+      text-decoration: underline;
+    }
+    /* Fixed Back to Top button */
+    .back-to-top-fixed {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+      font-size: 0.9rem;
+    }
+    .back-to-top-fixed:hover {
+      transform: scale(1.05);
+      background: var(--accent-hover);
+    }
+    /* Feedback button */
+    .feedback-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .feedback-btn:hover {
+      transform: scale(1.05);
+      background: var(--accent-hover);
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: var(--bg-secondary);
+      border-radius: 24px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 20px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+    }
+    .modal-close:hover {
+      color: var(--accent);
+    }
+    .modal iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+    @media (max-width: 600px) {
+      .back-to-top-fixed {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        bottom: 80px;
+      }
+      .feedback-btn {
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .skip-link {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<!-- Feedback Button -->
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+
+<!-- Feedback Modal -->
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback form"></iframe>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top-fixed" id="backToTopBtn"><i class="fas fa-arrow-up"></i> Top</button>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="logo">
+      <div class="logo-icon" aria-label="Universal Converter Hub logo"><i class="fas fa-arrows-spin"></i></div>
+      <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+    </div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button" aria-label="Donate via Flutterwave"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle" role="button" tabindex="0" aria-label="Toggle dark mode"><i class="fas fa-moon"></i> Dark</div>
+    </div>
+  </div>
+
+  <div class="nav-links" aria-label="Main navigation">
+    <a href="index.html" class="nav-btn">🏠 Home</a>
+    <a href="guides.html" class="nav-btn active">📘 Guides</a>
+    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html" class="nav-btn">🔊 Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
+    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">🗺️ DWG→KMZ</a>
+    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
+
+  <main id="main-content">
+    <h1 class="section-title">Guides on How to Make Use of Our Tools</h1>
+    <p class="seo-intro" style="margin-bottom: 1rem;">Learn how to use each tool step by step. All guides are free, no registration required.</p>
+
+    <!-- Guide 1: PDF to Word -->
+    <section class="guide-section">
+      <h2>How to Convert PDF to Word Online – Free & Fast</h2>
+      <p>Converting a PDF to an editable Word document is easy with our free tool. Follow these steps:</p>
+      <ol>
+        <li>Go to the <a href="pdf-to-word.html">PDF to Word converter page</a>.</li>
+        <li>Drag and drop your PDF file into the upload area, or click to select it.</li>
+        <li>Wait a few seconds while the file is processed securely.</li>
+        <li>Click the "Download" button to save your new Word document.</li>
+      </ol>
+      <p>Our converter preserves text layout, tables, images, and basic formatting. Files are automatically deleted after conversion for your privacy.</p>
+    </section>
+
+    <!-- Guide 2: Image Editor -->
+    <section class="guide-section">
+      <h2>How to Edit Images Online – Crop, Resize, Add Text & More</h2>
+      <p>Use our professional image editor to enhance your photos without installing software.</p>
+      <ol>
+        <li>Visit the <a href="image-editor.html">Image Editor page</a>.</li>
+        <li>Upload an image (JPG, PNG, WEBP, or GIF).</li>
+        <li>Use the toolbar to:
+          <ul>
+            <li>Crop or resize the image</li>
+            <li>Adjust brightness, contrast, saturation, or blur</li>
+            <li>Apply filters (grayscale, sepia, invert, vintage)</li>
+            <li>Add text with custom font, size, and color</li>
+            <li>Draw with brush or eraser</li>
+            <li>Remove background by selecting a color</li>
+          </ul>
+        </li>
+        <li>Click "Download PNG" to save your edited image.</li>
+      </ol>
+      <p>All editing happens directly in your browser – no upload to external servers (except background removal, which is client‑side).</p>
+    </section>
+
+    <!-- Guide 3: Image Compressor -->
+    <section class="guide-section">
+      <h2>How to Compress Images – Reduce File Size Without Losing Quality</h2>
+      <ol>
+        <li>Open the <a href="image-compressor.html">Image Compressor</a>.</li>
+        <li>Drag and drop your image (JPG, PNG, WEBP).</li>
+        <li>Adjust the quality slider – lower quality gives smaller file size.</li>
+        <li>Click "Compress & Download".</li>
+      </ol>
+      <p>Use this tool to speed up your website or save storage space.</p>
+    </section>
+
+    <!-- Guide 4: QR Code Generator -->
+    <section class="guide-section">
+      <h2>How to Generate a QR Code – For URLs, Text, or Contacts</h2>
+      <ol>
+        <li>Go to the <a href="qr-code-generator.html">QR Code Generator</a>.</li>
+        <li>Enter your text, URL, or any information.</li>
+        <li>Click "Generate QR Code".</li>
+        <li>Download the QR code as PNG and use it anywhere.</li>
+      </ol>
+      <p>Ideal for business cards, flyers, social media, and product packaging.</p>
+    </section>
+
+    <!-- Guide 5: Password Generator -->
+    <section class="guide-section">
+      <h2>How to Create a Strong Password – Secure Random Password Generator</h2>
+      <ol>
+        <li>Visit the <a href="password-generator.html">Password Generator</a>.</li>
+        <li>Choose the password length (4–32 characters).</li>
+        <li>Select which character types to include (uppercase, lowercase, numbers, symbols).</li>
+        <li>Click "Generate Password".</li>
+        <li>Copy the password to your clipboard.</li>
+      </ol>
+      <p>Use this to create unique, hack‑resistant passwords for your accounts.</p>
+    </section>
+
+    <!-- Guide 6: Text to Speech -->
+    <section class="guide-section">
+      <h2>How to Convert Text to Speech – Listen to Any Text</h2>
+      <ol>
+        <li>Open the <a href="text-to-speech.html">Text to Speech tool</a>.</li>
+        <li>Type or paste your text into the box.</li>
+        <li>Select a voice from the dropdown (many languages available).</li>
+        <li>Click "Speak" – your browser will read the text aloud.</li>
+        <li>Click "Stop" to end early.</li>
+      </ol>
+      <p>Great for proofreading, language learning, or accessibility.</p>
+    </section>
+
+    <!-- Guide 7: Language Translator -->
+    <section class="guide-section">
+      <h2>How to Translate Text – 100+ Languages, No Length Limit</h2>
+      <ol>
+        <li>Go to the <a href="language-translator.html">Language Translator</a>.</li>
+        <li>Enter the text you want to translate (any length).</li>
+        <li>Select the source and target languages.</li>
+        <li>Click "Translate".</li>
+      </ol>
+      <p>Powered by Google Translate via Lingva – completely free and private.</p>
+    </section>
+
+    <!-- Guide 8: CSV to Excel -->
+    <section class="guide-section">
+      <h2>How to Convert CSV to Excel (XLSX) or Excel to CSV</h2>
+      <ol>
+        <li>Open the <a href="csv-to-excel.html">CSV/Excel converter</a>.</li>
+        <li>Select the conversion direction (CSV → Excel or Excel → CSV).</li>
+        <li>Upload your file(s).</li>
+        <li>Click "Convert" – each file will be downloaded automatically.</li>
+      </ol>
+      <p>Perfect for data analysis, reporting, and migrating between spreadsheet programs.</p>
+    </section>
+
+    <!-- Guide 9: Excel to PDF -->
+    <section class="guide-section">
+      <h2>How to Convert Excel to PDF – Preserve Layout</h2>
+      <ol>
+        <li>Visit the <a href="excel-to-pdf.html">Excel to PDF converter</a>.</li>
+        <li>Upload your .xlsx or .xls file.</li>
+        <li>Click "Convert to PDF".</li>
+        <li>Download the resulting PDF.</li>
+      </ol>
+      <p>Ideal for sharing spreadsheets without allowing edits.</p>
+    </section>
+
+    <!-- Guide 10: Unit Converter -->
+    <section class="guide-section">
+      <h2>How to Convert Units – Length, Weight, Volume, Temperature, Area, Speed, Data, Pressure</h2>
+      <ol>
+        <li>Open the <a href="unit-converter.html">Unit Converter</a>.</li>
+        <li>Select the category (e.g., length, weight).</li>
+        <li>Enter the value and choose the source unit.</li>
+        <li>Choose the target unit.</li>
+        <li>Click "Convert" to see the result.</li>
+      </ol>
+      <p>Accurate conversions for everyday and scientific use.</p>
+    </section>
+
+    <!-- Guide 11: Land Calculator -->
+    <section class="guide-section">
+      <h2>How to Calculate Land Area – Plots, Acres, Hectares, Square Meters</h2>
+      <ol>
+        <li>Go to the <a href="land-calculator.html">Land Calculator</a>.</li>
+        <li>Use one of the options:
+          <ul>
+            <li><strong>Standard Plot Sizes</strong>: see pre‑calculated 50×100 ft and 60×120 ft plots.</li>
+            <li><strong>Custom Plot Size</strong>: enter length and width in feet.</li>
+            <li><strong>Convert Area to Plots</strong>: enter area in m², hectares, or acres.</li>
+            <li><strong>Acres to Plots + Metric</strong>: convert acres to plots, hectares, and m².</li>
+          </ul>
+        </li>
+        <li>Click the corresponding "Calculate" or "Convert" button.</li>
+      </ol>
+      <p>Essential for real estate, farming, and property development.</p>
+    </section>
+
+    <!-- Guide 12: DWG to KMZ -->
+    <section class="guide-section">
+      <h2>How to Convert DWG to KMZ – Create Google Earth Markers</h2>
+      <ol>
+        <li>Open the <a href="dwg-to-kmz.html">DWG to KMZ converter</a>.</li>
+        <li>Upload your DWG file (or leave empty to use manual coordinates).</li>
+        <li>Select the UTM zone, enter easting/northing, and choose datum (WGS84, Minna, etc.).</li>
+        <li>Click "Generate KMZ Marker".</li>
+        <li>Download the KMZ file and open it in Google Earth.</li>
+      </ol>
+      <p>Note: This creates a location marker. For full geometry conversion, use desktop GIS software.</p>
+    </section>
+
+    <!-- Guide 13: Currency Converter -->
+    <section class="guide-section">
+      <h2>How to Convert Currency – Live Exchange Rates, Time Zone & Date Difference</h2>
+      <ol>
+        <li>Visit the <a href="currency-converter.html">Currency & Time page</a>.</li>
+        <li>For currency: enter amount, choose from/to currencies, click "Get Live Rate".</li>
+        <li>For time zone: select two cities, click "Show Times".</li>
+        <li>For date difference: pick two dates, click "Calculate".</li>
+      </ol>
+      <p>Rates are updated daily. Perfect for travellers, freelancers, and global teams.</p>
+    </section>
+  </main>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
+</div>
+
+<!-- ADSTERRA SOCIAL BAR -->
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<script>
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
+      });
+      darkToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          darkToggle.click();
+        }
+      });
+    }
+
+    // Back to Top button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        console.log('Back to top clicked'); // for debugging
+      });
+    } else {
+      console.error('Back to top button not found');
+    }
+
+    // Feedback modal logic
+    const modal = document.getElementById('feedbackModal');
+    const feedbackBtn = document.getElementById('feedbackBtn');
+    const closeModal = document.getElementById('closeModal');
+    
+    if (feedbackBtn && modal) {
+      feedbackBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        console.log('Feedback button clicked'); // debugging
+      });
+    } else {
+      console.error('Feedback button or modal not found');
+    }
+    
+    if (closeModal) {
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+    }
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>
