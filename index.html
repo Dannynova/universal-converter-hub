@@ -3,15 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online File Converter & Tools – Fast, Secure & Unlimited | Universal Converter Hub</title>
-  <meta name="description" content="Free online tools: Convert PDF to Word, edit images, compress files, generate QR codes, translate languages, and more. No registration, fast and secure. Used worldwide.">
+  <title>Universal Converter Hub – Free Online Conversion Tools</title>
+  <meta name="description" content="Free online tools: PDF to Word, image editor, image compressor, QR code generator, password generator, text-to-speech, language translator, CSV/Excel, unit converter, land calculator, currency converter, DWG to KMZ.">
   <meta name="keywords" content="free online converter, PDF to Word, image editor, QR code generator, password generator, text to speech, language translator, unit converter, currency converter, DWG to KMZ">
   <link rel="canonical" href="https://converterhub.com.ng/">
+  <!-- Favicon for browser tab and Google search result icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <!-- Open Graph tags for social sharing -->
+  <meta property="og:title" content="Universal Converter Hub – Free Online File Converter & Tools">
+  <meta property="og:description" content="Convert PDF to Word, edit images, compress files, generate QR codes, and more. No registration, fast and secure.">
+  <meta property="og:image" content="https://converterhub.com.ng/logo.png">
+  <meta property="og:url" content="https://converterhub.com.ng">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Schema markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Universal Converter Hub",
+    "description": "Free online PDF to Word, image editor, image compressor, QR code generator, password generator, text-to-speech, language translator, CSV/Excel converter, unit converter, land calculator, currency converter, DWG to KMZ.",
+    "url": "https://converterhub.com.ng",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Do I need to create an account?","acceptedAnswer": {"@type": "Answer","text": "No. All our tools are completely free and require no registration."}},
+      {"@type": "Question","name": "Is my data secure?","acceptedAnswer": {"@type": "Answer","text": "Yes. Files are processed securely and automatically deleted after conversion."}},
+      {"@type": "Question","name": "Are there any file size limits?","acceptedAnswer": {"@type": "Answer","text": "Most tools accept files up to 50MB. Larger files may take longer to process."}},
+      {"@type": "Question","name": "Can I use these tools on my phone?","acceptedAnswer": {"@type": "Answer","text": "Absolutely. Our website is fully responsive and works on all devices."}}
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* All existing styles (kept as before) */
+    /* Logo styles */
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-icon svg {
+      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    .logo-text h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo-text p {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 600px) {
+      .logo-icon svg {
+        width: 36px;
+        height: 36px;
+      }
+      .logo-text h1 {
+        font-size: 1.2rem;
+      }
+    }
+    /* Hero section (unchanged) */
     .hero {
       background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
       border-radius: 32px;
@@ -178,7 +248,7 @@
     .donate-button:hover {
       background: #c62828 !important;
     }
-    /* Feedback button & modal - guaranteed working with no external interference */
+    /* Feedback button & modal - working version */
     .feedback-btn {
       position: fixed;
       bottom: 20px;
@@ -266,10 +336,29 @@
 </div>
 
 <div class="container">
+  <!-- Header with Logo -->
   <div class="top-bar">
     <div class="logo">
-      <div class="logo-icon" aria-label="Universal Converter Hub logo"><i class="fas fa-arrows-spin"></i></div>
-      <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+      <a href="index.html" aria-label="Universal Converter Hub home">
+        <div class="logo-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
+            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
+            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2563eb"/>
+                <stop offset="1" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Universal Converter Hub</h1>
+          <p>Convert Anything, Anywhere</p>
+        </div>
+      </a>
     </div>
     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
       <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button" aria-label="Donate via Flutterwave"><i class="fas fa-heart"></i> Donate</a>
@@ -277,6 +366,7 @@
     </div>
   </div>
 
+  <!-- Navigation -->
   <div class="nav-links" aria-label="Main navigation">
     <a href="index.html" class="nav-btn">🏠 Home</a>
     <a href="guides.html" class="nav-btn">📘 Guides</a>
@@ -295,8 +385,10 @@
     <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
   </div>
 
+  <!-- Top Ad Banner -->
   <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>Universal Converter Hub</h1>
     <p>Universal Converter Hub is a powerful all-in-one platform designed to make file conversion and digital tasks simple, fast, and accessible. Whether you need to convert PDF to Word, compress images, edit photos, generate QR codes, or translate text, our tools are built to deliver accurate results instantly.</p>
@@ -316,10 +408,12 @@
     </div>
   </section>
 
+  <!-- SEO Intro -->
   <div class="seo-intro">
     <p><strong>Universal Converter Hub</strong> is your all‑in‑one platform for free online tools. Easily convert PDF to Word, edit images, compress files, generate QR codes, and more — all from your browser. No downloads, no registration, just instant results.</p>
   </div>
 
+  <!-- Main Content -->
   <main id="main-content">
     <h2 class="section-title">All-in-One Online Tools</h2>
     <div class="card-grid">
@@ -338,6 +432,7 @@
       <div class="card"><div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency Converter</h3></div><p>Live exchange rates, time zone converter, date difference calculator.</p><a href="currency-converter.html" class="btn">Convert</a></div>
     </div>
 
+    <!-- Why Choose Us -->
     <div class="why-choose">
       <h2>Why Choose Universal Converter Hub?</h2>
       <div class="features-grid">
@@ -349,6 +444,7 @@
       </div>
     </div>
 
+    <!-- FAQ Section -->
     <section class="faq-accordion">
       <h2>Frequently Asked Questions</h2>
       <details class="faq-item"><summary>Do I need to create an account?</summary><div class="faq-answer"><p>No. All our tools are completely free and require no registration.</p></div></details>
@@ -358,15 +454,15 @@
       <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
     </section>
 
+    <!-- Bottom Ad Banner -->
     <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
   </main>
 
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
 </div>
 
-<!-- Adsterra Social Bar (kept, but feedback button script runs independently) -->
+<!-- Adsterra Social Bar -->
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
-<!-- No external common.js to avoid conflicts. All scripts are inline. -->
 <script>
   // Dark mode toggle
   const darkToggle = document.getElementById('darkToggle');
@@ -383,7 +479,7 @@
     });
   }
 
-  // Feedback modal logic – completely independent, no external dependencies
+  // Feedback modal logic (standalone)
   (function() {
     const modal = document.getElementById('feedbackModal');
     const feedbackBtn = document.getElementById('feedbackBtn');
@@ -393,19 +489,12 @@
     function openModal(e) {
       if (e) e.preventDefault();
       if (modal) modal.style.display = 'flex';
-      console.log('Feedback modal opened'); // for debugging
     }
     function closeModalFunc() {
       if (modal) modal.style.display = 'none';
-      console.log('Feedback modal closed');
     }
 
-    if (feedbackBtn) {
-      feedbackBtn.addEventListener('click', openModal);
-      console.log('Feedback button listener attached');
-    } else {
-      console.error('Feedback button not found');
-    }
+    if (feedbackBtn) feedbackBtn.addEventListener('click', openModal);
     if (supportLink) supportLink.addEventListener('click', openModal);
     if (closeModal) closeModal.addEventListener('click', closeModalFunc);
     window.addEventListener('click', (e) => {
