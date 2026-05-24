@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Word to PDF Converter | Universal Converter Hub</title>
+<meta name="description" content="Convert Word documents (.doc, .docx) to PDF free online. Preserves formatting, fonts, tables and images. No signup, no watermark, instant download.">
+<meta name="keywords" content="word to pdf, docx to pdf, convert word to pdf free, doc to pdf online, free word to pdf converter">
+<link rel="canonical" href="https://converterhub.com.ng/word-to-pdf.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
+.faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
+.faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
+.faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.faq-question:hover{color:var(--accent)}
+.faq-question .icon{font-size:1.2rem;transition:transform .2s;flex-shrink:0}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;color:var(--text-secondary);line-height:1.6}
+.faq-answer p{padding-bottom:1rem}
+.faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
+.faq-item.active .faq-question .icon{transform:rotate(45deg)}
+.support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
+.support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
+.feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s;font-family:inherit}
+.feedback-btn:hover{transform:scale(1.05)}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
+.modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
+.modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary);background:none;border:none;line-height:1}
+.modal iframe{width:100%;height:500px;border:none;border-radius:12px}
+/* UPLOAD BOX */
+.upload-box{border:3px dashed #2563eb;border-radius:18px;padding:2.8rem 1.5rem;text-align:center;background:#f0f5ff;transition:all .2s;margin-bottom:1rem}
+.upload-box:hover,.upload-box.over{background:#dbeafe;border-color:#1d4ed8}
+.upload-box .ub-icon{font-size:3rem;margin-bottom:.8rem;display:block;pointer-events:none}
+.upload-box p{color:#555;margin:0;font-size:.95rem;pointer-events:none}
+.upload-box strong{color:#1a1a1a}
+.upload-box .ub-btn{display:inline-block;margin-top:1rem;padding:.6rem 1.4rem;background:#2563eb;color:#fff;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:background .2s}
+.upload-box .ub-btn:hover{background:#1d4ed8}
+/* FILE BAR */
+.file-bar{display:none;align-items:center;gap:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-bottom:1rem;font-size:.9rem}
+.file-bar.show{display:flex}
+.file-bar .fb-icon{font-size:1.6rem;flex-shrink:0}
+.file-bar .fb-name{flex:1;font-weight:600;color:#111;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-bar .fb-size{color:#555;font-size:.82rem;white-space:nowrap;flex-shrink:0}
+.file-bar .fb-remove{background:none;border:none;cursor:pointer;font-size:1.3rem;color:#888;padding:0 4px;flex-shrink:0}
+.file-bar .fb-remove:hover{color:#dc2626}
+/* CONVERT BTN */
+.conv-btn{width:100%;padding:.9rem;background:#2563eb;color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s;margin-bottom:1rem}
+.conv-btn:hover{background:#1d4ed8}
+.conv-btn:disabled{background:#93c5fd;cursor:not-allowed}
+/* PROGRESS */
+.prog-wrap{display:none;margin:.5rem 0 1rem}
+.prog-wrap.show{display:block}
+.prog-bg{height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;margin-bottom:6px}
+.prog-fill{height:100%;background:#2563eb;border-radius:4px;width:0%;transition:width .4s ease}
+.prog-lbl{font-size:.85rem;color:#666;text-align:center}
+/* STATUS */
+.status-box{display:none;padding:12px 16px;border-radius:12px;font-size:.9rem;margin:.5rem 0;line-height:1.5}
+.status-box.info{display:block;background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.status-box.success{display:block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.status-box.error{display:block;background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+/* RESULT */
+.result-box{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:16px;margin-top:1rem}
+.result-box.show{display:block}
+.result-box p{margin:0 0 12px;font-size:.95rem;color:#111;line-height:1.6}
+.result-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-save{background:#16a34a;color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.btn-save:hover{background:#15803d}
+.btn-reset{background:#e5e7eb;color:#111;border:none;border-radius:10px;padding:10px 20px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.btn-reset:hover{background:#d1d5db}
+/* PREVIEW */
+.preview-box{display:none;margin-top:1rem;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden}
+.preview-box.show{display:block}
+.preview-header{background:#f8f9fa;padding:10px 16px;font-size:.85rem;color:#555;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center}
+.preview-body{width:100%;min-height:400px;max-height:600px;overflow-y:auto;background:#fff;padding:40px 50px;font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.5;color:#111;box-sizing:border-box}
+.preview-body h1{font-size:2em;font-weight:700;margin:.6em 0 .3em}
+.preview-body h2{font-size:1.5em;font-weight:700;margin:.5em 0 .3em}
+.preview-body h3{font-size:1.3em;font-weight:600;margin:.5em 0 .2em}
+.preview-body h4,.preview-body h5,.preview-body h6{font-size:1.1em;font-weight:600;margin:.4em 0 .2em}
+.preview-body p{margin:0 0 .6em}
+.preview-body table{border-collapse:collapse;width:100%;margin:.8em 0}
+.preview-body td,.preview-body th{border:1px solid #aaa;padding:6px 10px;vertical-align:top}
+.preview-body th{background:#f0f0f0;font-weight:600}
+.preview-body ul,.preview-body ol{margin:.4em 0 .6em 1.5em;padding:0}
+.preview-body li{margin-bottom:.3em}
+.preview-body img{max-width:100%;height:auto;display:block;margin:.5em 0}
+.preview-body strong{font-weight:700}
+.preview-body em{font-style:italic}
+/* SECTIONS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.2rem 0 2rem}
+.step-card{background:var(--bg-secondary,#f8f9fa);border-radius:14px;padding:1.1rem;text-align:center;border:1px solid var(--border-light)}
+.step-num{width:30px;height:30px;border-radius:50%;background:#2563eb;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.step-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.2rem 0 2rem}
+.feat-card{background:var(--bg-secondary,#f8f9fa);border-radius:14px;padding:1.1rem;border:1px solid var(--border-light)}
+.feat-icon{font-size:1.4rem;margin-bottom:7px}
+.feat-card h4{font-size:.95rem;font-weight:600;margin-bottom:5px;color:var(--text-primary)}
+.feat-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.related-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0 2rem}
+.related-tools a{background:var(--bg-secondary,#f8f9fa);border:1px solid var(--border-light);border-radius:12px;padding:.8rem 1rem;font-size:.9rem;color:var(--text-primary);text-decoration:none;display:block;transition:all .15s;text-align:center}
+.related-tools a:hover{border-color:#2563eb;color:#2563eb;background:#eff6ff}
+.sub-heading{font-size:1.3rem;font-weight:700;margin:2rem 0 .6rem;color:var(--text-primary)}
+.ad-label-txt{display:block;text-align:center;font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.ad-desktop{display:block}.ad-mobile{display:none}
+@media(max-width:760px){.ad-desktop{display:none}.ad-mobile{display:block}}
+@media(max-width:480px){.preview-body{padding:20px}}
+</style>
+</head>
+<body>
+
+<!-- FEEDBACK -->
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback Form"></iframe>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html" aria-label="Universal Converter Hub home">
+        <div class="logo-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="url(#lg)"/>
+            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
+            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+      </a>
+    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" rel="noopener" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
+    <a href="word-to-pdf.html" class="nav-btn active">&#128221; Word to PDF</a>
+    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
+    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
+    <a href="password-generator.html" class="nav-btn">&#128274; Password</a>
+    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel to PDF</a>
+    <a href="unit-converter.html" class="nav-btn">&#128207; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127774; Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">&#128506; DWG to KMZ</a>
+    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+  </div>
+
+  <!-- AD #1 TOP BANNER -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <h2 class="section-title">&#128221; Free Word to PDF Converter</h2>
+  <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem;">
+    Convert your <strong>.doc</strong> or <strong>.docx</strong> Word files to PDF instantly &mdash; free, no signup, no watermark.
+    Fonts, tables, headings and images are preserved. Everything runs in your browser. Your file never leaves your device.
+  </p>
+
+  <!-- TOOL CARD -->
+  <div class="card">
+
+    <!-- File input — completely outside upload box, triggered by JS only -->
+    <input type="file" id="fileInput" accept=".doc,.docx" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;">
+
+    <!-- Upload box -->
+    <div class="upload-box" id="uploadBox">
+      <span class="ub-icon">&#128196;</span>
+      <p><strong>Drag &amp; drop your Word file here</strong></p>
+      <p style="margin-top:4px;">Supports .doc and .docx &nbsp;&middot;&nbsp; Max 50MB</p>
+      <button type="button" class="ub-btn" id="pickFileBtn">
+        <i class="fas fa-folder-open"></i> Choose File
+      </button>
+    </div>
+
+    <!-- File info bar -->
+    <div class="file-bar" id="fileBar">
+      <span class="fb-icon">&#128196;</span>
+      <span class="fb-name" id="fbName">document.docx</span>
+      <span class="fb-size" id="fbSize">0 KB</span>
+      <button type="button" class="fb-remove" id="fbRemove" title="Remove file">&#10005;</button>
+    </div>
+
+    <!-- Convert button -->
+    <button type="button" class="conv-btn" id="convertBtn" disabled>
+      <i class="fas fa-file-pdf"></i> Convert to PDF
+    </button>
+
+    <!-- Progress bar -->
+    <div class="prog-wrap" id="progWrap">
+      <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-lbl" id="progLbl">Processing...</div>
+    </div>
+
+    <!-- Status message -->
+    <div class="status-box" id="statusBox"></div>
+
+    <!-- Preview pane -->
+    <div class="preview-box" id="previewBox">
+      <div class="preview-header">
+        <strong>Document Preview</strong>
+        <span style="font-size:.8rem;">Review before saving</span>
+      </div>
+      <div class="preview-body" id="previewBody"></div>
+    </div>
+
+    <!-- Result / download -->
+    <div class="result-box" id="resultBox">
+      <p>
+        <strong>&#9989; Conversion complete!</strong> Your document is ready.<br>
+        Click <strong>Save as PDF</strong> &mdash; when the print dialog opens, choose <em>&ldquo;Save as PDF&rdquo;</em> as the destination.
+      </p>
+      <div class="result-btns">
+        <button type="button" class="btn-save" id="savePdfBtn"><i class="fas fa-download"></i> Save as PDF</button>
+        <button type="button" class="btn-reset" id="resetBtn"><i class="fas fa-redo"></i> Convert Another</button>
+      </div>
+    </div>
+
+    <p style="font-size:.8rem;color:var(--text-secondary);margin-top:1rem;text-align:center;">
+      &#10003; Formatting preserved &nbsp;&middot;&nbsp; &#10003; 100% private &nbsp;&middot;&nbsp; &#10003; No watermarks
+    </p>
+  </div>
+
+  <!-- AD #2 -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
+  </div>
+
+  <!-- HOW TO USE -->
+  <h3 class="sub-heading">How to Convert Word to PDF</h3>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><p>Click <strong>Choose File</strong> or drag your .doc / .docx file into the box</p></div>
+    <div class="step-card"><div class="step-num">2</div><p>Click <strong>Convert to PDF</strong> and wait a few seconds</p></div>
+    <div class="step-card"><div class="step-num">3</div><p>Preview your document to check formatting</p></div>
+    <div class="step-card"><div class="step-num">4</div><p>Click <strong>Save as PDF</strong> and select &ldquo;Save as PDF&rdquo; in the print dialog</p></div>
+  </div>
+
+  <!-- AD #3 NATIVE -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
+    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
+  </div>
+
+  <!-- FEATURES -->
+  <h3 class="sub-heading">Features</h3>
+  <div class="features-grid">
+    <div class="feat-card"><div class="feat-icon">&#127912;</div><h4>Formatting Preserved</h4><p>Fonts, headings, tables, bullet lists and images are kept exactly as in your Word file.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#128274;</div><h4>100% Private</h4><p>Conversion happens entirely in your browser. Your file never leaves your device.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#9889;</div><h4>Fast &amp; Free</h4><p>No signup, no waiting, no watermarks. Ready in seconds on any device.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#128241;</div><h4>All Devices</h4><p>Works on Windows, Mac, Android and iOS in any modern browser.</p></div>
+  </div>
+
+  <!-- AD #4 MID LEADERBOARD -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <h3 class="sub-heading">Related Tools</h3>
+  <div class="related-tools">
+    <a href="pdf-to-word.html">&#128196; PDF to Word</a>
+    <a href="excel-to-pdf.html">&#128202; Excel to PDF</a>
+    <a href="file-compressor.html">&#128230; File Compressor</a>
+    <a href="image-compressor.html">&#128247; Image Compressor</a>
+    <a href="qr-code-generator.html">&#128241; QR Code Generator</a>
+    <a href="text-to-speech.html">&#128266; Text to Speech</a>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>What Word formats are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Both <strong>.docx</strong> (Word 2007 and later) and <strong>.doc</strong> (Word 97&ndash;2003) are supported.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Will my formatting be preserved in the PDF?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. The converter preserves fonts, font sizes, bold, italic, headings, tables, bullet lists, numbered lists and embedded images from your original Word document.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Files up to 50MB are accepted. Most Word documents are well under this limit.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is it completely free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes, completely free. No registration, no watermarks on the output PDF, no hidden fees.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is my document secure?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Absolutely. All conversion happens in your browser using JavaScript. Your file is never uploaded to any server.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Does it work on mobile?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. Works on Chrome for Android and Safari on iPhone/iPad. Tap <strong>Choose File</strong> to pick a document from your device or cloud storage.</p></div>
+    </div>
+    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
+  </section>
+
+  <!-- AD #5 BOTTOM -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
+  </div>
+
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border-light);font-size:.9rem;color:var(--text-secondary);line-height:1.8;">
+    <strong style="color:var(--text-primary);">Free Word to PDF Converter &mdash; Available Anywhere</strong><br>
+    Used by students, professionals and businesses across Nigeria, Ghana, Kenya, South Africa, the UK, US, Canada and beyond.
+    No software installation needed &mdash; just upload, convert and download your PDF in seconds.
+  </div>
+
+  <footer>&copy; 2025 Universal Converter Hub &ndash; All tools are free. Ads help us improve.</footer>
+</div>
+
+<!-- Hidden print iframe -->
+<iframe id="printFrame" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;border:none;" title="print"></iframe>
+
+<!-- Adsterra social bars -->
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+
+<!-- Common site JS (dark mode etc.) -->
+<script src="js/common.js"></script>
+
+<!-- Mammoth.js: converts DOCX to HTML in the browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- FAQ ---- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn  = item.querySelector('.faq-question');
+    var icon = btn.querySelector('.icon i');
+    btn.addEventListener('click', function () {
+      var active = item.classList.contains('active');
+      item.classList.toggle('active', !active);
+      btn.setAttribute('aria-expanded', String(!active));
+      icon.classList.toggle('fa-plus', active);
+      icon.classList.toggle('fa-minus', !active);
+    });
+  });
+
+  /* ---- MODAL ---- */
+  var modal = document.getElementById('feedbackModal');
+  document.getElementById('feedbackBtn').addEventListener('click', function () { modal.style.display = 'flex'; });
+  document.getElementById('supportLink').addEventListener('click', function () { modal.style.display = 'flex'; });
+  document.getElementById('closeModal').addEventListener('click', function () { modal.style.display = 'none'; });
+  window.addEventListener('click', function (e) { if (e.target === modal) modal.style.display = 'none'; });
+
+  /* ---- ELEMENTS ---- */
+  var fileInput   = document.getElementById('fileInput');
+  var uploadBox   = document.getElementById('uploadBox');
+  var pickFileBtn = document.getElementById('pickFileBtn');
+  var fileBar     = document.getElementById('fileBar');
+  var fbName      = document.getElementById('fbName');
+  var fbSize      = document.getElementById('fbSize');
+  var fbRemove    = document.getElementById('fbRemove');
+  var convertBtn  = document.getElementById('convertBtn');
+  var progWrap    = document.getElementById('progWrap');
+  var progFill    = document.getElementById('progFill');
+  var progLbl     = document.getElementById('progLbl');
+  var statusBox   = document.getElementById('statusBox');
+  var previewBox  = document.getElementById('previewBox');
+  var previewBody = document.getElementById('previewBody');
+  var resultBox   = document.getElementById('resultBox');
+  var savePdfBtn  = document.getElementById('savePdfBtn');
+  var resetBtn    = document.getElementById('resetBtn');
+  var printFrame  = document.getElementById('printFrame');
+
+  var currentFile   = null;
+  var convertedHTML = '';
+
+  /* ---- FILE PICKING ---- */
+  /* The file input is invisible and off-screen.
+     Only the dedicated button triggers it — this avoids
+     any click-conflict with the upload box itself. */
+  pickFileBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files.length > 0) {
+      handleFile(fileInput.files[0]);
+      fileInput.value = ''; /* reset so same file can be re-selected */
+    }
+  });
+
+  /* ---- DRAG AND DROP ---- */
+  uploadBox.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uploadBox.classList.add('over');
+  });
+  uploadBox.addEventListener('dragleave', function (e) {
+    e.preventDefault();
+    uploadBox.classList.remove('over');
+  });
+  uploadBox.addEventListener('drop', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uploadBox.classList.remove('over');
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  /* ---- HANDLE SELECTED FILE ---- */
+  function handleFile(file) {
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (ext !== 'doc' && ext !== 'docx') {
+      setStatus('Please upload a .doc or .docx Word file.', 'error');
+      return;
+    }
+    if (file.size > 52428800) {
+      setStatus('File is too large. Maximum allowed size is 50MB.', 'error');
+      return;
+    }
+    currentFile   = file;
+    convertedHTML = '';
+
+    fbName.textContent = file.name;
+    fbSize.textContent = fmtBytes(file.size);
+
+    uploadBox.style.display = 'none';
+    fileBar.classList.add('show');
+    convertBtn.disabled = false;
+
+    setStatus('File ready! Click "Convert to PDF" to proceed.', 'success');
+    hidEl(progWrap);
+    hidEl(previewBox);
+    hidEl(resultBox);
+    previewBody.innerHTML = '';
+  }
+
+  /* ---- REMOVE FILE ---- */
+  fbRemove.addEventListener('click', resetTool);
+  resetBtn.addEventListener('click', resetTool);
+
+  function resetTool() {
+    currentFile = null;
+    convertedHTML = '';
+    fileInput.value = '';
+    fileBar.classList.remove('show');
+    uploadBox.style.display = '';
+    convertBtn.disabled = true;
+    setStatus('', '');
+    hidEl(progWrap);
+    hidEl(previewBox);
+    hidEl(resultBox);
+    previewBody.innerHTML = '';
+  }
+
+  /* ---- CONVERT ---- */
+  convertBtn.addEventListener('click', function () {
+    if (!currentFile) return;
+
+    if (typeof mammoth === 'undefined') {
+      setStatus('Conversion library is still loading. Please wait a moment and try again.', 'error');
+      return;
+    }
+
+    convertBtn.disabled = true;
+    hidEl(resultBox);
+    hidEl(previewBox);
+    setStatus('Converting your document...', 'info');
+    showProg(true, 'Reading file...');
+    setProg(10);
+
+    var reader = new FileReader();
+
+    reader.onerror = function () {
+      setStatus('Could not read the file. Please try again.', 'error');
+      showProg(false);
+      convertBtn.disabled = false;
+    };
+
+    reader.onload = function (e) {
+      setProg(30);
+      progLbl.textContent = 'Parsing Word document...';
+
+      var opts = {
+        styleMap: [
+          "p[style-name='Heading 1'] => h1:fresh",
+          "p[style-name='Heading 2'] => h2:fresh",
+          "p[style-name='Heading 3'] => h3:fresh",
+          "p[style-name='Heading 4'] => h4:fresh",
+          "p[style-name='Title']     => h1:fresh",
+          "p[style-name='Subtitle']  => h2:fresh"
+        ],
+        convertImage: mammoth.images.imgElement(function (img) {
+          return img.read('base64').then(function (data) {
+            return { src: 'data:' + img.contentType + ';base64,' + data };
+          });
+        })
+      };
+
+      mammoth.convertToHtml({ arrayBuffer: e.target.result }, opts)
+        .then(function (result) {
+          if (!result || !result.value) {
+            throw new Error('Empty result');
+          }
+          convertedHTML = result.value;
+          setProg(85);
+          progLbl.textContent = 'Rendering preview...';
+          previewBody.innerHTML = convertedHTML;
+          showEl(previewBox);
+          setProg(100);
+          setTimeout(function () {
+            showProg(false);
+            setStatus('', '');
+            showEl(resultBox);
+            convertBtn.disabled = false;
+          }, 400);
+        })
+        .catch(function () {
+          setStatus('Could not parse this file. Please make sure it is a valid .docx or .doc Word document.', 'error');
+          showProg(false);
+          convertBtn.disabled = false;
+        });
+    };
+
+    reader.readAsArrayBuffer(currentFile);
+  });
+
+  /* ---- SAVE AS PDF ---- */
+  savePdfBtn.addEventListener('click', function () {
+    if (!convertedHTML) return;
+
+    var name = currentFile ? currentFile.name.replace(/\.(doc|docx)$/i, '') : 'document';
+
+    var doc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + name + '</title>'
+      + '<style>'
+      + '@page{margin:2cm;size:A4}'
+      + '*{box-sizing:border-box}'
+      + 'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.5;color:#111;margin:0;padding:0}'
+      + 'h1{font-size:2em;font-weight:700;margin:.6em 0 .3em;page-break-after:avoid}'
+      + 'h2{font-size:1.5em;font-weight:700;margin:.5em 0 .3em;page-break-after:avoid}'
+      + 'h3{font-size:1.3em;font-weight:600;margin:.5em 0 .2em;page-break-after:avoid}'
+      + 'h4,h5,h6{font-size:1.1em;font-weight:600;margin:.4em 0 .2em;page-break-after:avoid}'
+      + 'p{margin:0 0 .6em;orphans:3;widows:3}'
+      + 'table{border-collapse:collapse;width:100%;margin:.8em 0;page-break-inside:avoid}'
+      + 'td,th{border:1px solid #aaa;padding:6px 10px;vertical-align:top}'
+      + 'th{background:#f0f0f0;font-weight:600}'
+      + 'ul,ol{margin:.4em 0 .6em 1.5em;padding:0}'
+      + 'li{margin-bottom:.3em}'
+      + 'img{max-width:100%;height:auto;display:block;margin:.5em 0;page-break-inside:avoid}'
+      + 'strong{font-weight:700}em{font-style:italic}'
+      + '@media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact}}'
+      + '</style></head><body>' + convertedHTML + '</body></html>';
+
+    printFrame.srcdoc = doc;
+    printFrame.onload = function () {
+      try {
+        printFrame.contentWindow.focus();
+        printFrame.contentWindow.print();
+      } catch (err) {
+        var w = window.open('', '_blank');
+        if (w) { w.document.write(doc); w.document.close(); w.print(); }
+        else { setStatus('Popup blocked. Please allow popups for this site and try again.', 'error'); }
+      }
+    };
+
+    setStatus('In the print dialog, choose <strong>"Save as PDF"</strong> as the destination to download your file.', 'info');
+  });
+
+  /* ---- HELPERS ---- */
+  function fmtBytes(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+    return (b / 1048576).toFixed(1) + ' MB';
+  }
+  function showEl(el) { el.classList.add('show'); }
+  function hidEl(el)  { el.classList.remove('show'); }
+  function showProg(on, label) {
+    progWrap.classList.toggle('show', on);
+    if (label) progLbl.textContent = label;
+  }
+  function setProg(pct) { progFill.style.width = pct + '%'; }
+  function setStatus(msg, type) {
+    statusBox.innerHTML = msg;
+    statusBox.className = 'status-box' + (type ? ' ' + type : '');
+  }
+
+})();
+</script>
+</body>
+</html>

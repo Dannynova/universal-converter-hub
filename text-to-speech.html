@@ -3,62 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Text to Speech – Natural Voice Reader | Universal Converter Hub</title>
-  <meta name="description" content="Convert text to natural speech online. Choose from multiple voices, adjust speed. Free, no download required.">
-  <meta name="keywords" content="text to speech, TTS, read aloud, natural voice, online text reader, speech synthesis">
+  <title>Free Text to Speech – Natural Voice Reader &amp; MP3 Download | Universal Converter Hub</title>
+  <meta name="description" content="Free online text to speech converter. Type or paste any text, choose from 50+ voices and languages, adjust speed and pitch, then download as MP3. No signup required.">
+  <meta name="keywords" content="text to speech, TTS, read aloud, natural voice, online text reader, speech synthesis, MP3 download, voice converter">
   <link rel="canonical" href="https://converterhub.com.ng/text-to-speech.html">
-  <!-- Favicon for browser tab and Google search result icon -->
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
   <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question","name": "Which voices are available?","acceptedAnswer": {"@type": "Answer","text": "All voices supported by your browser are available, including many languages and accents. You can select from the dropdown."}},
-      {"@type": "Question","name": "Can I download the audio?","acceptedAnswer": {"@type": "Answer","text": "Currently, the tool plays speech directly in your browser. For downloading, you may use browser extensions or record the audio."}},
-      {"@type": "Question","name": "Is there a limit on text length?","acceptedAnswer": {"@type": "Answer","text": "Most browsers support up to several thousand characters. Very long texts may be truncated – try splitting into smaller parts."}},
-      {"@type": "Question","name": "Is the text to speech free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration, no hidden costs."}},
-      {"@type": "Question","name": "Does it work on mobile devices?","acceptedAnswer": {"@type": "Answer","text": "Yes, modern mobile browsers support speech synthesis. Voice availability may vary by operating system."}}
+      {"@type":"Question","name":"Which voices are available?","acceptedAnswer":{"@type":"Answer","text":"All voices supported by your browser are available, including many languages and accents. You can select from the dropdown."}},
+      {"@type":"Question","name":"Can I download the audio as MP3?","acceptedAnswer":{"@type":"Answer","text":"Yes! Click Download MP3. The tool records speech in real time and saves the file automatically. Works best on Chrome and Edge."}},
+      {"@type":"Question","name":"Is there a limit on text length?","acceptedAnswer":{"@type":"Answer","text":"You can enter up to 5,000 characters. For longer texts, split into sections and convert each separately."}},
+      {"@type":"Question","name":"Is the text to speech free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No registration, no hidden costs."}},
+      {"@type":"Question","name":"Does it work on mobile devices?","acceptedAnswer":{"@type":"Answer","text":"Yes, modern mobile browsers support speech synthesis. Voice availability may vary by operating system."}}
     ]
   }
   </script>
+
   <style>
-    /* FAQ Accordion Styles (same as previous pages) */
+    /* FAQ Accordion */
     .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
     .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
     .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
-    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
     .faq-question:hover { color: var(--accent); }
-    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; flex-shrink: 0; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
     .faq-answer p { padding-bottom: 1rem; }
     .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
     .faq-item.active .faq-question .icon { transform: rotate(45deg); }
     .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
     .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
-    /* Feedback Button & Modal */
-    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
-    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
+
+    /* Feedback button & modal */
+    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; font-family: inherit; }
+    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover, #1d4ed8); }
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
     .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
-    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); background: none; border: none; line-height: 1; }
     .modal-close:hover { color: var(--accent); }
     .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    /* TTS tool styles */
+    .tts-textarea { width: 100%; min-height: 140px; resize: vertical; border: 1.5px solid var(--border-light); border-radius: 12px; padding: 14px 16px 30px; font-size: 1rem; font-family: inherit; color: var(--text-primary); background: var(--bg-secondary, #f8f9fa); line-height: 1.6; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+    .tts-textarea:focus { border-color: var(--accent); }
+    .char-wrap { position: relative; margin-bottom: 1rem; }
+    .char-count { position: absolute; bottom: 8px; right: 12px; font-size: 11px; color: var(--text-secondary); pointer-events: none; }
+    .char-count.warn { color: #d97706; }
+
+    .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+    @media (max-width: 540px) { .controls-grid { grid-template-columns: 1fr; } }
+
+    .ctrl-label { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block; }
+
+    .tts-select { width: 100%; height: 42px; border: 1.5px solid var(--border-light); border-radius: 10px; background: var(--bg-secondary, #f8f9fa); color: var(--text-primary); font-size: 0.95rem; font-family: inherit; padding: 0 12px; outline: none; cursor: pointer; }
+    .tts-select:focus { border-color: var(--accent); }
+
+    .slider-row { display: flex; align-items: center; gap: 10px; height: 42px; }
+    .tts-slider { flex: 1; height: 4px; border-radius: 2px; background: var(--border-light, #ddd); cursor: pointer; -webkit-appearance: none; appearance: none; accent-color: var(--accent); }
+    .tts-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; }
+    .tts-slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
+    .slider-val { font-size: 0.85rem; font-weight: 700; color: var(--accent); min-width: 44px; text-align: right; }
+
+    .tts-btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tts-btn-row .btn { display: inline-flex; align-items: center; gap: 7px; padding: 0.7rem 1.3rem; font-size: 0.95rem; font-weight: 600; border-radius: 10px; cursor: pointer; border: none; font-family: inherit; transition: all 0.15s; touch-action: manipulation; white-space: nowrap; }
+    .btn-speak  { background: var(--accent); color: #fff; }
+    .btn-speak:hover { background: var(--accent-hover, #1d4ed8); }
+    .btn-speak:disabled { background: #93c5fd; cursor: not-allowed; }
+    .btn-stop  { background: var(--bg-secondary, #f0f0f0); color: var(--text-primary); border: 1.5px solid var(--border-light) !important; }
+    .btn-stop:hover { background: var(--border-light); }
+    .btn-stop:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-pause { background: var(--bg-secondary, #f0f0f0); color: var(--text-primary); border: 1.5px solid var(--border-light) !important; }
+    .btn-pause:hover { background: var(--border-light); }
+    .btn-pause:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-dl    { background: #f0fdf4; color: #16a34a; border: 1.5px solid #bbf7d0 !important; }
+    .btn-dl:hover { background: #dcfce7; }
+    .btn-dl:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .tts-progress { display: none; margin-top: 10px; }
+    .tts-progress.show { display: block; }
+    .prog-bar-bg { height: 4px; background: var(--border-light, #ddd); border-radius: 2px; overflow: hidden; }
+    .prog-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width 0.3s ease; }
+    .prog-label { font-size: 12px; color: var(--text-secondary); margin-top: 5px; }
+
+    .tts-status { display: none; margin-top: 10px; padding: 10px 14px; border-radius: 10px; font-size: 0.9rem; }
+    .tts-status.info    { display: block; background: #eff6ff; color: #2563eb; }
+    .tts-status.success { display: block; background: #f0fdf4; color: #16a34a; }
+    .tts-status.error   { display: block; background: #fef2f2; color: #dc2626; }
+
+    .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #dc2626; display: inline-block; animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.2rem 0 2rem; }
+    .step-card { background: var(--bg-secondary, #f8f9fa); border-radius: 14px; padding: 1.1rem; text-align: center; border: 1px solid var(--border-light); }
+    .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .step-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.2rem 0 2rem; }
+    .feat-card { background: var(--bg-secondary, #f8f9fa); border-radius: 14px; padding: 1.1rem; border: 1px solid var(--border-light); }
+    .feat-icon { font-size: 1.4rem; margin-bottom: 7px; }
+    .feat-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; color: var(--text-primary); }
+    .feat-card p  { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+    .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 1.2rem 0 2rem; }
+    .use-card { background: var(--bg-secondary, #f8f9fa); border-radius: 14px; padding: 1rem; text-align: center; border: 1px solid var(--border-light); }
+    .use-card .use-icon { font-size: 1.6rem; margin-bottom: 6px; }
+    .use-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+    .use-card p  { font-size: 0.8rem; color: var(--text-secondary); }
+
+    .feat-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1.2rem 0 2rem; border-radius: 12px; overflow: hidden; }
+    .feat-table th, .feat-table td { padding: 10px 14px; border: 1px solid var(--border-light); text-align: left; }
+    .feat-table th { background: var(--bg-secondary, #f8f9fa); font-weight: 600; color: var(--text-primary); }
+    .feat-table td:last-child { color: #16a34a; font-weight: 600; }
+
+    .sub-heading { font-size: 1.3rem; font-weight: 700; margin: 2rem 0 0.6rem; color: var(--text-primary); }
+    .ad-label-txt { display: block; text-align: center; font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+    .ad-desktop { display: block; }
+    .ad-mobile  { display: none; }
+    @media (max-width: 760px) { .ad-desktop { display: none; } .ad-mobile { display: block; } }
+    @media (max-width: 380px) { .tts-btn-row { flex-direction: column; } .tts-btn-row .btn { width: 100%; justify-content: center; } }
   </style>
 </head>
 <body>
+
+<!-- FEEDBACK BUTTON + MODAL -->
 <button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
 <div id="feedbackModal" class="modal">
-  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback Form"></iframe>
+  </div>
 </div>
+
 <div class="container">
+
+  <!-- TOP BAR -->
   <div class="top-bar">
-        <div class="logo">
+    <div class="logo">
       <a href="index.html" aria-label="Universal Converter Hub home">
         <div class="logo-icon">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,87 +173,482 @@
         </div>
       </a>
     </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" rel="noopener noreferrer" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
+    </div>
   </div>
+
+  <!-- NAV LINKS -->
   <div class="nav-links">
-    <a href="index.html" class="nav-btn">🏠 Home</a>
-    <a href="pdf-to-word.html" class="nav-btn">📄 PDF to Word</a>
-    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
-    <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
-    <a href="password-generator.html" class="nav-btn">🔐 Password</a>
-    <a href="text-to-speech.html" class="nav-btn active">🔊 Text to Speech</a>
+    <a href="index.html"               class="nav-btn">🏠 Home</a>
+    <a href="pdf-to-word.html"         class="nav-btn">📄 PDF to Word</a>
+    <a href="image-editor.html"        class="nav-btn">🎨 Image Editor</a>
+    <a href="image-compressor.html"    class="nav-btn">🗜️ Image Compressor</a>
+    <a href="qr-code-generator.html"   class="nav-btn">📱 QR Code</a>
+    <a href="password-generator.html"  class="nav-btn">🔐 Password</a>
+    <a href="text-to-speech.html"      class="nav-btn active">🔊 Text to Speech</a>
     <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">📊 Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">📄 Excel→PDF</a>
-    <a href="unit-converter.html" class="nav-btn">📐 Units</a>
-    <a href="land-calculator.html" class="nav-btn">🏞️ Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">🗺️ DWG→KMZ</a>
-    <a href="currency-converter.html" class="nav-btn">💰 Currency</a>
+    <a href="csv-to-excel.html"        class="nav-btn">📊 Excel</a>
+    <a href="excel-to-pdf.html"        class="nav-btn">📄 Excel→PDF</a>
+    <a href="unit-converter.html"      class="nav-btn">📐 Units</a>
+    <a href="land-calculator.html"     class="nav-btn">🏞️ Land</a>
+    <a href="dwg-to-kmz.html"          class="nav-btn">🗺️ DWG→KMZ</a>
+    <a href="currency-converter.html"  class="nav-btn">💰 Currency</a>
+      <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+      <a href="youtube-thumbnail-downloader.html" class="nav-btn">📸 YouTube Thumbnail</a>
+      <a href="file-compressor.html" class="nav-btn active">&#128230; File Compressor</a>
   </div>
-  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
-  <h2 class="section-title">Text to Speech – Listen to Any Text</h2>
+
+  <!-- AD #1 — TOP BANNER: 728x90 desktop / 320x50 mobile -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <!-- PAGE TITLE -->
+  <h2 class="section-title">🔊 Text to Speech – Natural Voice Reader &amp; MP3 Download</h2>
+
+  <!-- TOOL CARD -->
   <div class="card">
-    <textarea id="ttsText" rows="4" class="format-select" placeholder="Enter text to speak...">Welcome to Universal Converter Hub. Enjoy our free tools!</textarea>
-    <div class="input-group"><select id="voiceSelect" class="format-select"></select></div>
-    <button class="btn" id="speakBtn"><i class="fas fa-play"></i> Speak</button>
-    <button class="btn" id="stopBtn"><i class="fas fa-stop"></i> Stop</button>
-    <div class="result-area" id="ttsResult"></div>
+
+    <!-- Textarea -->
+    <div class="char-wrap">
+      <textarea id="ttsText" class="tts-textarea" placeholder="Type or paste your text here — up to 5,000 characters…" oninput="updateCharCount()">Welcome to Universal Converter Hub. Enjoy our free tools!</textarea>
+      <span class="char-count" id="charCount">56 / 5000</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-grid">
+      <div>
+        <span class="ctrl-label">Voice &amp; Language</span>
+        <select id="voiceSelect" class="tts-select"></select>
+      </div>
+      <div>
+        <span class="ctrl-label">Speed</span>
+        <div class="slider-row">
+          <input type="range" id="rateSlider" class="tts-slider" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('rateVal').textContent=parseFloat(this.value).toFixed(1)+'×'">
+          <span class="slider-val" id="rateVal">1.0×</span>
+        </div>
+      </div>
+      <div>
+        <span class="ctrl-label">Pitch</span>
+        <div class="slider-row">
+          <input type="range" id="pitchSlider" class="tts-slider" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('pitchVal').textContent=parseFloat(this.value).toFixed(1)">
+          <span class="slider-val" id="pitchVal">1.0</span>
+        </div>
+      </div>
+      <div>
+        <span class="ctrl-label">Volume</span>
+        <div class="slider-row">
+          <input type="range" id="volSlider" class="tts-slider" min="0" max="1" step="0.05" value="1" oninput="document.getElementById('volVal').textContent=Math.round(this.value*100)+'%'">
+          <span class="slider-val" id="volVal">100%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="tts-btn-row">
+      <button class="btn btn-speak"  id="speakBtn"  onclick="speakText()"><i class="fas fa-play"></i> Speak</button>
+      <button class="btn btn-stop"   id="stopBtn"   onclick="stopText()"   disabled><i class="fas fa-stop"></i> Stop</button>
+      <button class="btn btn-pause"  id="pauseBtn"  onclick="pauseText()"  disabled><i class="fas fa-pause"></i> Pause</button>
+      <button class="btn btn-dl"     id="dlBtn"     onclick="downloadMP3()"><i class="fas fa-download"></i> Download MP3</button>
+    </div>
+
+    <!-- Progress -->
+    <div class="tts-progress" id="ttsProgress">
+      <div class="prog-bar-bg"><div class="prog-bar-fill" id="progFill"></div></div>
+      <div class="prog-label"  id="progLabel">Speaking…</div>
+    </div>
+
+    <!-- Status -->
+    <div class="tts-status" id="ttsStatus"></div>
+
+  </div><!-- /.card -->
+
+  <!-- AD #2 — 300x250 below tool -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
   </div>
+
+  <!-- HOW TO USE -->
+  <h3 class="sub-heading">How to Use This Tool</h3>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><p>Type or paste your text into the box above</p></div>
+    <div class="step-card"><div class="step-num">2</div><p>Select a voice and language from the dropdown</p></div>
+    <div class="step-card"><div class="step-num">3</div><p>Adjust speed, pitch and volume as needed</p></div>
+    <div class="step-card"><div class="step-num">4</div><p>Click <strong>Speak</strong> to preview or <strong>Download MP3</strong> to save</p></div>
+  </div>
+
+  <!-- AD #3 — NATIVE BANNER between sections -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
+    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
+  </div>
+
+  <!-- FEATURES -->
+  <h3 class="sub-heading">Features</h3>
+  <div class="features-grid">
+    <div class="feat-card"><div class="feat-icon">🌍</div><h4>50+ Languages &amp; Voices</h4><p>All browser voices — English, French, Yoruba, Hausa, Arabic, Spanish and more.</p></div>
+    <div class="feat-card"><div class="feat-icon">⬇️</div><h4>MP3 Download</h4><p>Record and save your speech as an audio file to use offline or in videos.</p></div>
+    <div class="feat-card"><div class="feat-icon">🎚️</div><h4>Speed, Pitch &amp; Volume</h4><p>Control rate from 0.5× to 2×. Fine-tune pitch and volume for perfect sound.</p></div>
+    <div class="feat-card"><div class="feat-icon">🔒</div><h4>100% Private</h4><p>Runs locally in your browser. Your text never leaves your device.</p></div>
+  </div>
+
+  <!-- WHO CAN USE -->
+  <h3 class="sub-heading">Who Can Use This Tool?</h3>
+  <div class="use-grid">
+    <div class="use-card"><div class="use-icon">📚</div><h4>Students</h4><p>Listen to notes while studying</p></div>
+    <div class="use-card"><div class="use-icon">✍️</div><h4>Writers</h4><p>Proofread by listening aloud</p></div>
+    <div class="use-card"><div class="use-icon">♿</div><h4>Accessibility</h4><p>Visual &amp; reading support</p></div>
+    <div class="use-card"><div class="use-icon">🎙️</div><h4>Creators</h4><p>Voiceovers for videos</p></div>
+    <div class="use-card"><div class="use-icon">🌐</div><h4>Everyone</h4><p>Any text, any language</p></div>
+  </div>
+
+  <!-- FEATURES TABLE -->
+  <h3 class="sub-heading">What Our Tool Offers</h3>
+  <table class="feat-table">
+    <tr><th>Feature</th><th>Available</th></tr>
+    <tr><td>Free to use</td><td>✅ Yes</td></tr>
+    <tr><td>No registration required</td><td>✅ Yes</td></tr>
+    <tr><td>MP3 audio download</td><td>✅ Yes</td></tr>
+    <tr><td>Speed, pitch &amp; volume controls</td><td>✅ Yes</td></tr>
+    <tr><td>50+ voices &amp; languages</td><td>✅ Yes</td></tr>
+    <tr><td>Works on mobile, tablet &amp; desktop</td><td>✅ Yes</td></tr>
+    <tr><td>Private — no data sent to servers</td><td>✅ Yes</td></tr>
+  </table>
+
+  <!-- AD #4 — MID-PAGE LEADERBOARD -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <!-- FAQ -->
   <section class="faq-accordion">
     <h3>Frequently Asked Questions</h3>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Which voices are available?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>All voices supported by your browser are available, including many languages and accents. You can select from the dropdown.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I download the audio?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Currently, the tool plays speech directly in your browser. For downloading, you may use browser extensions or record the audio.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a limit on text length?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Most browsers support up to several thousand characters. Very long texts may be truncated – try splitting into smaller parts.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the text to speech free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration, no hidden costs.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Does it work on mobile devices?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, modern mobile browsers support speech synthesis. Voice availability may vary by operating system.</p></div></div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Which voices are available?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>All voices supported by your browser are available, including many languages and accents. You can select from the dropdown. Chrome on desktop typically offers the most voices (50+).</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Can I download the audio as MP3?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes! Click the <strong>Download MP3</strong> button. The tool records the speech in real time using your browser's MediaRecorder API and saves the file automatically when speech ends. Works best on Chrome and Edge.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is there a limit on text length?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>You can enter up to 5,000 characters at a time. For very long texts, split into sections and convert each separately for best results.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is the text to speech free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes, completely free. No registration, no hidden costs, no watermarks on downloads. Supported by ads which help keep everything free.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Does it work on mobile devices?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. Speak, Pause and Stop work on all modern mobile browsers. Download MP3 works best on Chrome for Android and Safari on iOS 17+.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Does it work on Firefox or Edge?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes — all controls work on Firefox and Edge. Download MP3 works on Edge. If download fails on Firefox, switch to Chrome or Edge for that feature.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is my text stored anywhere?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>No. Everything runs entirely in your browser using the Web Speech API. Your text never leaves your device and is never stored or sent to any server.</p></div>
+    </div>
     <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
   </section>
-  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <!-- AD #5 — 300x250 bottom -->
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
+  </div>
+
+  <!-- SEO text -->
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border-light);font-size:0.9rem;color:var(--text-secondary);line-height:1.8;">
+    <strong style="color:var(--text-primary);">Free Text to Speech — Available Anywhere</strong><br>
+    Our online text to speech tool is accessible from anywhere in the world including Nigeria, Ghana, Kenya, the United Kingdom, United States, Canada, and beyond. Whether you are at home, in school, or at the office, you can instantly convert text to audio without any delays.
+  </div>
+
   <footer>© 2025 Universal Converter Hub – All tools are free. Ads help us improve.</footer>
-</div>
+
+</div><!-- /.container -->
+
+<!-- SOCIAL BAR #1 -->
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+
+<!-- INTERSTITIAL / SOCIAL BAR #2 (updated code) -->
+<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+
+<!-- COMMON SITE JS -->
 <script src="js/common.js"></script>
+
+<!-- PAGE JS -->
 <script>
-  // Accordion functionality
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
-  // Modal logic
-  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-  // Text to Speech logic
-  let synth = window.speechSynthesis;
-  let voices = [];
+  /* FAQ accordion — original logic */
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var btn  = item.querySelector('.faq-question');
+    var icon = btn.querySelector('.icon i');
+    btn.addEventListener('click', function() {
+      var isActive = item.classList.contains('active');
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+      } else {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+      }
+    });
+  });
+
+  /* Feedback modal — original logic */
+  var modal       = document.getElementById('feedbackModal');
+  var feedbackBtn = document.getElementById('feedbackBtn');
+  var closeBtn    = document.getElementById('closeModal');
+  var supportLink = document.getElementById('supportLink');
+  function openModal()  { modal.style.display = 'flex'; }
+  function closeModal() { modal.style.display = 'none'; }
+  feedbackBtn.addEventListener('click', openModal);
+  supportLink.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+  /* Voice loading — original exact logic from uploaded file */
+  var synth  = window.speechSynthesis;
+  var voices = [];
+  var voiceSelect = document.getElementById('voiceSelect');
+
   function loadVoices() {
     voices = synth.getVoices();
-    const voiceSelect = document.getElementById('voiceSelect');
-    if (!voiceSelect) return;
     voiceSelect.innerHTML = '';
-    voices.forEach(voice => {
-      const option = document.createElement('option');
+    voices.forEach(function(voice) {
+      var option = document.createElement('option');
       option.value = voice.name;
-      option.textContent = `${voice.name} (${voice.lang})`;
+      option.textContent = voice.name + ' (' + voice.lang + ')';
       voiceSelect.appendChild(option);
     });
   }
+
   if (synth) {
     synth.onvoiceschanged = loadVoices;
     loadVoices();
   }
-  document.getElementById('speakBtn').addEventListener('click', () => {
-    const text = document.getElementById('ttsText').value;
-    if (!text.trim()) { document.getElementById('ttsResult').innerText = 'Please enter text.'; return; }
-    const utterance = new SpeechSynthesisUtterance(text);
-    const selectedVoice = document.getElementById('voiceSelect').value;
-    if (selectedVoice) utterance.voice = voices.find(v => v.name === selectedVoice);
+
+  /* Char count */
+  function updateCharCount() {
+    var ta = document.getElementById('ttsText');
+    if (ta.value.length > 5000) ta.value = ta.value.slice(0, 5000);
+    var n  = ta.value.length;
+    var el = document.getElementById('charCount');
+    el.textContent = n + ' / 5000';
+    if (n > 4000) { el.classList.add('warn'); } else { el.classList.remove('warn'); }
+  }
+  updateCharCount();
+
+  /* Progress helpers */
+  function showProg(on, label) {
+    var el = document.getElementById('ttsProgress');
+    if (on) { el.classList.add('show'); } else { el.classList.remove('show'); }
+    if (label) document.getElementById('progLabel').textContent = label;
+  }
+  function animProg(ms) {
+    var f = document.getElementById('progFill');
+    f.style.transition = 'none';
+    f.style.width = '0%';
+    setTimeout(function() {
+      f.style.transition = 'width ' + ms + 'ms linear';
+      f.style.width = '100%';
+    }, 60);
+  }
+  function setStatus(msg, type) {
+    var el = document.getElementById('ttsStatus');
+    el.textContent = msg;
+    el.className = 'tts-status' + (type ? ' ' + type : '');
+  }
+  function estMs(text, rate) {
+    return (text.trim().split(/\s+/).length / (150 * rate)) * 60000;
+  }
+
+  /* Button state */
+  var isPaused = false;
+  function resetBtns() {
+    document.getElementById('speakBtn').disabled = false;
+    document.getElementById('stopBtn').disabled  = true;
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('pauseBtn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+    showProg(false);
+    isPaused = false;
+  }
+
+  /* Speak — original logic + progress bar */
+  document.getElementById('speakBtn').addEventListener('click', speakText);
+  function speakText() {
+    var text = document.getElementById('ttsText').value;
+    if (!text.trim()) {
+      document.getElementById('ttsResult') && (document.getElementById('ttsResult').innerText = 'Please enter text.');
+      setStatus('Please enter some text first.', 'error');
+      return;
+    }
+    var utterance = new SpeechSynthesisUtterance(text);
+    var selectedVoice = voiceSelect.value;
+    if (selectedVoice) {
+      utterance.voice = voices.find(function(v) { return v.name === selectedVoice; }) || null;
+    }
+    utterance.rate   = parseFloat(document.getElementById('rateSlider').value);
+    utterance.pitch  = parseFloat(document.getElementById('pitchSlider').value);
+    utterance.volume = parseFloat(document.getElementById('volSlider').value);
+
+    utterance.onstart = function() {
+      document.getElementById('speakBtn').disabled = true;
+      document.getElementById('stopBtn').disabled  = false;
+      document.getElementById('pauseBtn').disabled = false;
+      showProg(true, 'Speaking…');
+      animProg(estMs(text, utterance.rate));
+      setStatus('', '');
+    };
+    utterance.onend = function() {
+      resetBtns();
+    };
+    utterance.onerror = function() {
+      resetBtns();
+    };
+
     synth.speak(utterance);
-    document.getElementById('ttsResult').innerHTML = '🔊 Speaking...';
-    utterance.onend = () => document.getElementById('ttsResult').innerHTML = '✅ Finished.';
-  });
-  document.getElementById('stopBtn').addEventListener('click', () => {
+  }
+
+  /* Stop — original logic */
+  document.getElementById('stopBtn').addEventListener('click', stopText);
+  function stopText() {
     synth.cancel();
-    document.getElementById('ttsResult').innerHTML = '⏹️ Stopped.';
-  });
+    resetBtns();
+  }
+
+  /* Pause / Resume */
+  document.getElementById('pauseBtn').addEventListener('click', pauseText);
+  function pauseText() {
+    if (!isPaused) {
+      synth.pause();
+      isPaused = true;
+      document.getElementById('pauseBtn').innerHTML = '<i class="fas fa-play"></i> Resume';
+      document.getElementById('progLabel').textContent = 'Paused';
+    } else {
+      synth.resume();
+      isPaused = false;
+      document.getElementById('pauseBtn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+      document.getElementById('progLabel').textContent = 'Speaking…';
+    }
+  }
+
+  /* Download MP3 */
+  document.getElementById('dlBtn').addEventListener('click', downloadMP3);
+  function downloadMP3() {
+    var text = document.getElementById('ttsText').value.trim();
+    if (!text) { setStatus('Please enter some text first.', 'error'); return; }
+    if (!window.MediaRecorder) {
+      setStatus('Audio download requires Chrome or Edge. The Speak button works in all browsers.', 'error');
+      return;
+    }
+    var dlBtn = document.getElementById('dlBtn');
+    dlBtn.disabled = true;
+    dlBtn.innerHTML = '<span class="rec-dot"></span> Recording…';
+    setStatus('Recording — please wait until speech finishes…', 'info');
+
+    var AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) {
+      setStatus('AudioContext not supported. Use Chrome or Edge for MP3 downloads.', 'error');
+      dlBtn.disabled = false;
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP3';
+      return;
+    }
+    var ctx  = new AudioCtx();
+    var dest = ctx.createMediaStreamDestination();
+    var gain = ctx.createGain();
+    gain.connect(dest);
+    gain.connect(ctx.destination);
+
+    var chunks = [];
+    var rec = null;
+    var mimes = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg', ''];
+    for (var i = 0; i < mimes.length; i++) {
+      try {
+        rec = mimes[i] ? new MediaRecorder(dest.stream, {mimeType: mimes[i]}) : new MediaRecorder(dest.stream);
+        break;
+      } catch(e) { rec = null; }
+    }
+    if (!rec) {
+      setStatus('Could not start recorder. Please use Chrome or Edge.', 'error');
+      dlBtn.disabled = false;
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP3';
+      ctx.close();
+      return;
+    }
+
+    rec.ondataavailable = function(e) { if (e.data && e.data.size > 0) chunks.push(e.data); };
+    rec.onstop = function() {
+      var blob = new Blob(chunks, {type: rec.mimeType || 'audio/webm'});
+      var url  = URL.createObjectURL(blob);
+      var a    = document.createElement('a');
+      a.style.display = 'none';
+      a.href     = url;
+      a.download = 'text-to-speech.mp3';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+      dlBtn.disabled = false;
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP3';
+      showProg(false);
+      setStatus('Download started! File saved as text-to-speech.mp3', 'success');
+      ctx.close();
+    };
+
+    try { rec.start(); } catch(e) {
+      setStatus('Could not start recording. Please use Chrome or Edge.', 'error');
+      dlBtn.disabled = false;
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP3';
+      ctx.close();
+      return;
+    }
+
+    var u = new SpeechSynthesisUtterance(text);
+    var selectedVoice = voiceSelect.value;
+    if (selectedVoice) {
+      u.voice = voices.find(function(v) { return v.name === selectedVoice; }) || null;
+    }
+    u.rate   = parseFloat(document.getElementById('rateSlider').value);
+    u.pitch  = parseFloat(document.getElementById('pitchSlider').value);
+    u.volume = parseFloat(document.getElementById('volSlider').value);
+    showProg(true, 'Recording audio…');
+    animProg(estMs(text, u.rate));
+    u.onend   = function() { try { rec.stop(); } catch(e) {} };
+    u.onerror = function() {
+      try { rec.stop(); } catch(e) {}
+      dlBtn.disabled = false;
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP3';
+      setStatus('Speech error. Click Speak first to verify your voice, then try again.', 'error');
+      showProg(false);
+    };
+    synth.cancel();
+    synth.speak(u);
+  }
 </script>
-<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+
 </body>
 </html>

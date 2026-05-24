@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free File Compressor &ndash; Compress PDF, Images &amp; ZIP Online | Universal Converter Hub</title>
+<meta name="description" content="Compress PDF, JPG, PNG and ZIP files free online. Reduce file size instantly without losing quality. No signup, no watermark, works on all devices.">
+<meta name="keywords" content="file compressor, compress PDF online free, compress image online, reduce file size, PNG compressor, JPG compressor, ZIP compressor, free file size reducer">
+<link rel="canonical" href="https://converterhub.com.ng/file-compressor.html">
+<meta property="og:title" content="Free File Compressor &ndash; Compress PDF, Images &amp; ZIP Online">
+<meta property="og:description" content="Compress PDF, JPG, PNG and ZIP files free. Reduce file size instantly. No signup required.">
+<meta property="og:url" content="https://converterhub.com.ng/file-compressor.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free File Compressor &ndash; Universal Converter Hub">
+<meta name="twitter:description" content="Compress PDF, JPG, PNG and ZIP files free online. No signup.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free File Compressor","url":"https://converterhub.com.ng/file-compressor.html","description":"Compress PDF, JPG, PNG and ZIP files free online. No signup required.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What file types can I compress?","acceptedAnswer":{"@type":"Answer","text":"Compress JPG, PNG, WebP, GIF images, PDF files, and any file type into a ZIP archive."}},{"@type":"Question","name":"Will compression affect image quality?","acceptedAnswer":{"@type":"Answer","text":"You control quality with the slider. 70-80% gives the best balance of size vs clarity."}},{"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"Files up to 50MB are accepted. Images work best under 20MB."}},{"@type":"Question","name":"Is the compressor free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no registration, no watermarks."}},{"@type":"Question","name":"Are my files secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All processing happens in your browser. Files never leave your device."}},{"@type":"Question","name":"Can I compress multiple files?","acceptedAnswer":{"@type":"Answer","text":"Yes. In Image mode you can add multiple images. In ZIP mode you can bundle any number of files."}}]}</script>
+<style>
+.faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
+.faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
+.faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
+.faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.faq-question:hover{color:var(--accent)}
+.faq-question .icon{font-size:1.2rem;transition:transform .2s;flex-shrink:0}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;color:var(--text-secondary);line-height:1.6}
+.faq-answer p{padding-bottom:1rem}
+.faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
+.faq-item.active .faq-question .icon{transform:rotate(45deg)}
+.support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
+.support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
+.feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s;font-family:inherit}
+.feedback-btn:hover{transform:scale(1.05)}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
+.modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
+.modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary);background:none;border:none;line-height:1}
+.modal iframe{width:100%;height:500px;border:none;border-radius:12px}
+.tool-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.tool-tab{padding:.55rem 1.2rem;border-radius:20px;border:1.5px solid var(--border-light);background:var(--bg-secondary);color:var(--text-secondary);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.tool-tab:hover{border-color:var(--accent);color:var(--accent)}
+.tool-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.drop-zone{border:3px dashed #2563eb;border-radius:18px;padding:2.5rem 1.5rem;text-align:center;cursor:pointer;background:#f0f5ff;transition:all .2s;margin-bottom:1rem;user-select:none}
+.drop-zone:hover,.drop-zone.over{background:#dbeafe;border-color:#1d4ed8}
+.drop-zone .dz-icon{font-size:3rem;margin-bottom:.8rem;display:block}
+.drop-zone p{color:#555;margin:0;font-size:.95rem}
+.drop-zone strong{color:#1a1a1a}
+.file-list{margin-bottom:1rem}
+.file-item{display:flex;align-items:center;gap:12px;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:12px;padding:10px 14px;margin-bottom:.5rem;font-size:.88rem}
+.file-item .fi-icon{font-size:1.5rem;flex-shrink:0}
+.file-item .fi-info{flex:1;min-width:0}
+.file-item .fi-name{font-weight:600;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.file-item .fi-meta{color:var(--text-secondary);font-size:.8rem}
+.file-item .fi-remove{background:none;border:none;cursor:pointer;color:var(--text-secondary);font-size:1.1rem;padding:0 4px;flex-shrink:0}
+.file-item .fi-remove:hover{color:#dc2626}
+.file-item .fi-result{color:#16a34a;font-size:.82rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.quality-row{display:flex;align-items:center;gap:12px;margin-bottom:1.2rem;background:var(--bg-secondary);border-radius:12px;padding:12px 16px;border:1px solid var(--border-light)}
+.quality-row label{font-size:.85rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.quality-row input[type=range]{flex:1;accent-color:#2563eb;cursor:pointer;height:4px}
+.quality-row .q-val{font-size:.95rem;font-weight:700;color:#2563eb;min-width:40px;text-align:right}
+.action-btn{width:100%;padding:.85rem;background:#2563eb;color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s;margin-bottom:.8rem}
+.action-btn:hover{background:#1d4ed8}
+.action-btn:disabled{background:#93c5fd;cursor:not-allowed}
+.action-btn.green{background:#16a34a}.action-btn.green:hover{background:#15803d}
+.action-btn.grey{background:#6b7280;font-size:.9rem;padding:.7rem}.action-btn.grey:hover{background:#4b5563}
+.prog-wrap{display:none;margin:.5rem 0 1rem}
+.prog-wrap.show{display:block}
+.prog-bg{height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;margin-bottom:6px}
+.prog-fill{height:100%;background:#2563eb;border-radius:4px;width:0%;transition:width .3s ease}
+.prog-lbl{font-size:.83rem;color:#666;text-align:center}
+.status-msg{display:none;padding:11px 15px;border-radius:11px;font-size:.88rem;margin:.5rem 0;line-height:1.5}
+.status-msg.info{display:block;background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.status-msg.success{display:block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.status-msg.error{display:block;background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.summary-bar{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px 18px;margin:.8rem 0;font-size:.9rem}
+.summary-bar.show{display:block}
+.img-compare{display:none;gap:1rem;margin:.8rem 0;flex-wrap:wrap}
+.img-compare.show{display:flex}
+.img-compare-box{flex:1;min-width:140px;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:12px;overflow:hidden;text-align:center}
+.img-compare-box img{width:100%;height:160px;object-fit:contain;background:#fff;display:block}
+.img-compare-box p{font-size:.8rem;color:var(--text-secondary);padding:6px;margin:0}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.2rem 0 2rem}
+.step-card{background:var(--bg-secondary,#f8f9fa);border-radius:14px;padding:1.1rem;text-align:center;border:1px solid var(--border-light)}
+.step-num{width:30px;height:30px;border-radius:50%;background:#2563eb;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.step-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.2rem 0 2rem}
+.feat-card{background:var(--bg-secondary,#f8f9fa);border-radius:14px;padding:1.1rem;border:1px solid var(--border-light)}
+.feat-icon{font-size:1.4rem;margin-bottom:7px}
+.feat-card h4{font-size:.95rem;font-weight:600;margin-bottom:5px;color:var(--text-primary)}
+.feat-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.related-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0 2rem}
+.related-tools a{background:var(--bg-secondary,#f8f9fa);border:1px solid var(--border-light);border-radius:12px;padding:.8rem 1rem;font-size:.9rem;color:var(--text-primary);text-decoration:none;display:block;transition:all .15s;text-align:center}
+.related-tools a:hover{border-color:#2563eb;color:#2563eb;background:#eff6ff}
+.sub-heading{font-size:1.3rem;font-weight:700;margin:2rem 0 .6rem;color:var(--text-primary)}
+.ad-label-txt{display:block;text-align:center;font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.ad-desktop{display:block}.ad-mobile{display:none}
+@media(max-width:760px){.ad-desktop{display:none}.ad-mobile{display:block}}
+@media(max-width:500px){.tool-tab{padding:.45rem .9rem;font-size:.82rem}}
+</style>
+</head>
+<body>
+
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback Form"></iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html" aria-label="Universal Converter Hub home">
+        <div class="logo-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="url(#lg)"/>
+            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
+            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+      </a>
+    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" rel="noopener" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
+    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
+    <a href="file-compressor.html" class="nav-btn active">&#128230; File Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
+    <a href="password-generator.html" class="nav-btn">&#128274; Password</a>
+    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel to PDF</a>
+    <a href="unit-converter.html" class="nav-btn">&#128207; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127774; Land</a>
+    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+  </div>
+
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <h2 class="section-title">&#128230; Free File Compressor &ndash; Reduce Any File Size Online</h2>
+  <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem;">
+    Compress <strong>images (JPG, PNG, WebP, GIF)</strong>, <strong>PDF files</strong>, or bundle any files into a <strong>compressed ZIP archive</strong> &mdash; all free, no signup, no watermark. Everything runs in your browser. Your files never leave your device.
+  </p>
+
+  <div class="card">
+    <div class="tool-tabs">
+      <button class="tool-tab active" data-mode="image"><i class="fas fa-image"></i> Images</button>
+      <button class="tool-tab" data-mode="pdf"><i class="fas fa-file-pdf"></i> PDF</button>
+      <button class="tool-tab" data-mode="zip"><i class="fas fa-file-archive"></i> ZIP Archive</button>
+    </div>
+
+    <p id="modeDesc" style="font-size:.88rem;color:var(--text-secondary);margin-bottom:1rem;padding:10px 14px;background:var(--bg-secondary);border-radius:10px;border:1px solid var(--border-light);">
+      <strong>Image mode:</strong> Compress JPG, PNG, WebP or GIF. Adjust quality to balance size vs clarity.
+    </p>
+
+    <input type="file" id="fileInput" style="display:none;" multiple accept="image/*">
+
+    <div class="drop-zone" id="dropZone" role="button" tabindex="0">
+      <span class="dz-icon">&#128230;</span>
+      <p><strong>Drop files here</strong> or <span style="color:#2563eb;text-decoration:underline;" id="browseLink">click to browse</span></p>
+      <p style="margin-top:6px;font-size:.82rem;" id="dropHint">Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 50MB each</p>
+    </div>
+
+    <div class="quality-row" id="qualityRow">
+      <label for="qualitySlider">Quality</label>
+      <input type="range" id="qualitySlider" min="10" max="95" value="70" oninput="document.getElementById('qVal').textContent=this.value+'%'">
+      <span class="q-val" id="qVal">70%</span>
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+
+    <button class="action-btn" id="compressBtn" disabled>
+      <i class="fas fa-compress-arrows-alt"></i> <span id="compressBtnText">Compress Images</span>
+    </button>
+
+    <div class="prog-wrap" id="progWrap">
+      <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-lbl" id="progLbl">Processing...</div>
+    </div>
+
+    <div class="status-msg" id="statusMsg"></div>
+    <div class="summary-bar" id="summaryBar"></div>
+
+    <div class="img-compare" id="imgCompare">
+      <div class="img-compare-box">
+        <img id="origPreview" src="" alt="Original">
+        <p><strong>Original</strong><br><span id="origSize">-</span></p>
+      </div>
+      <div class="img-compare-box">
+        <img id="compPreview" src="" alt="Compressed">
+        <p><strong>Compressed</strong><br><span id="compSize">-</span></p>
+      </div>
+    </div>
+
+    <button class="action-btn green" id="downloadAllBtn" style="display:none;">
+      <i class="fas fa-download"></i> <span id="downloadBtnText">Download Compressed Files</span>
+    </button>
+    <button class="action-btn grey" id="resetBtn" style="display:none;">
+      <i class="fas fa-redo"></i> Start Over
+    </button>
+
+    <p style="font-size:.8rem;color:var(--text-secondary);margin-top:1rem;text-align:center;">
+      &#10003; 100% private &mdash; processed in your browser &nbsp;&middot;&nbsp; &#10003; No watermarks &nbsp;&middot;&nbsp; &#10003; Free forever
+    </p>
+  </div>
+
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
+  </div>
+
+  <h3 class="sub-heading">How to Compress Files Online</h3>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><p>Choose a mode: Images, PDF, or ZIP archive</p></div>
+    <div class="step-card"><div class="step-num">2</div><p>Upload your file(s) by clicking or dragging</p></div>
+    <div class="step-card"><div class="step-num">3</div><p>Adjust quality (for images) and click Compress</p></div>
+    <div class="step-card"><div class="step-num">4</div><p>Download your compressed file instantly</p></div>
+  </div>
+
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
+    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
+  </div>
+
+  <h3 class="sub-heading">Features</h3>
+  <div class="features-grid">
+    <div class="feat-card"><div class="feat-icon">&#128247;</div><h4>Image Compression</h4><p>Compress JPG, PNG, WebP and GIF with adjustable quality. See before/after size comparison.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#128196;</div><h4>PDF Compression</h4><p>Reduce PDF file size by stripping metadata and optimising object streams using pdf-lib.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#128230;</div><h4>ZIP Archive</h4><p>Bundle multiple files of any type into a single compressed ZIP for easy sharing.</p></div>
+    <div class="feat-card"><div class="feat-icon">&#128274;</div><h4>100% Private</h4><p>Everything runs in your browser. Your files never leave your device or hit any server.</p></div>
+  </div>
+
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal ad-desktop" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script>
+  </div>
+  <div class="ad-universal ad-mobile" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'ff59a424ee6292a6e70adaa01784f3dd','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://willingcease.com/ff59a424ee6292a6e70adaa01784f3dd/invoke.js"></script>
+  </div>
+
+  <h3 class="sub-heading">Related Tools</h3>
+  <div class="related-tools">
+    <a href="image-compressor.html">&#128247; Image Compressor</a>
+    <a href="pdf-to-word.html">&#128196; PDF to Word</a>
+    <a href="word-to-pdf.html">&#128221; Word to PDF</a>
+    <a href="image-editor.html">&#127912; Image Editor</a>
+    <a href="qr-code-generator.html">&#128241; QR Code</a>
+    <a href="text-to-speech.html">&#128266; Text to Speech</a>
+  </div>
+
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>What file types can I compress?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>You can compress <strong>JPG, PNG, WebP and GIF</strong> images, reduce <strong>PDF</strong> file sizes, or bundle <strong>any file type</strong> into a compressed ZIP archive.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Will compression reduce image quality?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>You control the quality slider. A setting of 70&ndash;80% gives the best balance between file size and visual quality. A before/after comparison is shown after compression.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Files up to 50MB each are accepted. For images, best results are under 20MB per image.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is the file compressor free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes, completely free. No registration, no watermarks, no hidden fees. Supported by ads to keep it free for everyone.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Are my files secure?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. All compression is done entirely in your browser. Your files never leave your device and are never uploaded to any server.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Can I compress multiple files at once?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. In Image mode you can add multiple images and compress them all at once. In ZIP mode you can bundle any number of files into one archive.</p></div>
+    </div>
+    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
+  </section>
+
+  <span class="ad-label-txt">Advertisement</span>
+  <div class="ad-universal" style="text-align:center;overflow:hidden;">
+    <script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script>
+  </div>
+
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border-light);font-size:.9rem;color:var(--text-secondary);line-height:1.8;">
+    <strong style="color:var(--text-primary);">Free File Compressor &mdash; Available Worldwide</strong><br>
+    Our free online file compressor is used across Nigeria, Ghana, Kenya, South Africa, the UK, US, Canada and beyond. Reduce image sizes for social media, compress PDFs for email, or create ZIP archives for easy file sharing &mdash; all free, instant and private.
+  </div>
+
+  <footer>&copy; 2025 Universal Converter Hub &ndash; All tools are free. Ads help us improve.</footer>
+</div>
+
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+<script src="js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=="undefined"){pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- FAQ ---- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-question');
+    var icon = btn.querySelector('.icon i');
+    btn.addEventListener('click', function () {
+      var active = item.classList.contains('active');
+      item.classList.toggle('active', !active);
+      btn.setAttribute('aria-expanded', String(!active));
+      icon.classList.toggle('fa-plus', active);
+      icon.classList.toggle('fa-minus', !active);
+    });
+  });
+
+  /* ---- MODAL ---- */
+  var modal = document.getElementById('feedbackModal');
+  document.getElementById('feedbackBtn').addEventListener('click', function () { modal.style.display = 'flex'; });
+  document.getElementById('supportLink').addEventListener('click', function () { modal.style.display = 'flex'; });
+  document.getElementById('closeModal').addEventListener('click', function () { modal.style.display = 'none'; });
+  window.addEventListener('click', function (e) { if (e.target === modal) modal.style.display = 'none'; });
+
+  /* ---- STATE ---- */
+  var mode = 'image';
+  var files = [];
+  var results = [];
+
+  /* ---- ELEMENTS ---- */
+  var fileInput     = document.getElementById('fileInput');
+  var dropZone      = document.getElementById('dropZone');
+  var browseLink    = document.getElementById('browseLink');
+  var fileList      = document.getElementById('fileList');
+  var qualityRow    = document.getElementById('qualityRow');
+  var qualitySlider = document.getElementById('qualitySlider');
+  var compressBtn   = document.getElementById('compressBtn');
+  var compressBtnTxt= document.getElementById('compressBtnText');
+  var progWrap      = document.getElementById('progWrap');
+  var progFill      = document.getElementById('progFill');
+  var progLbl       = document.getElementById('progLbl');
+  var statusMsg     = document.getElementById('statusMsg');
+  var summaryBar    = document.getElementById('summaryBar');
+  var imgCompare    = document.getElementById('imgCompare');
+  var downloadAllBtn= document.getElementById('downloadAllBtn');
+  var downloadBtnTxt= document.getElementById('downloadBtnText');
+  var resetBtn      = document.getElementById('resetBtn');
+  var modeDesc      = document.getElementById('modeDesc');
+  var dropHint      = document.getElementById('dropHint');
+
+  /* ---- TAB CONFIG ---- */
+  var cfg = {
+    image: {
+      desc: '<strong>Image mode:</strong> Compress JPG, PNG, WebP or GIF. Adjust quality to balance size vs clarity. Supports multiple files.',
+      hint: 'Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 50MB each &nbsp;&middot;&nbsp; Multiple files allowed',
+      accept: 'image/*',
+      multiple: true,
+      btnTxt: 'Compress Images',
+      dlTxt: 'Download Compressed Images',
+      quality: true
+    },
+    pdf: {
+      desc: '<strong>PDF mode:</strong> Each page is re-rendered at your chosen quality and rebuilt into a new PDF &mdash; achieving <strong>70&ndash;95% size reduction</strong>. Lower quality = smaller file. Runs 100% in your browser.',
+      hint: 'Supports PDF files &nbsp;&middot;&nbsp; Max 50MB &nbsp;&middot;&nbsp; One file at a time',
+      accept: '.pdf',
+      multiple: false,
+      btnTxt: 'Compress PDF',
+      dlTxt: 'Download Compressed PDF',
+      quality: true
+    },
+    zip: {
+      desc: '<strong>ZIP Archive mode:</strong> Compress any files into a single ZIP archive. Upload multiple files of any type.',
+      hint: 'Any file type &nbsp;&middot;&nbsp; Max 50MB each &nbsp;&middot;&nbsp; Multiple files allowed',
+      accept: '',
+      multiple: true,
+      btnTxt: 'Create ZIP Archive',
+      dlTxt: 'Download ZIP Archive',
+      quality: false
+    }
+  };
+
+  /* ---- TABS ---- */
+  document.querySelectorAll('.tool-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.tool-tab').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      mode = tab.dataset.mode;
+      var c = cfg[mode];
+      modeDesc.innerHTML = c.desc;
+      dropHint.innerHTML = c.hint;
+      fileInput.accept   = c.accept;
+      fileInput.multiple = c.multiple;
+      qualityRow.style.display = c.quality ? '' : 'none';
+      compressBtnTxt.textContent = c.btnTxt;
+      downloadBtnTxt.textContent = c.dlTxt;
+      resetTool();
+    });
+  });
+
+  /* ---- FILE INPUT ---- */
+  dropZone.addEventListener('click', function () { fileInput.click(); });
+  browseLink.addEventListener('click', function (e) { e.stopPropagation(); fileInput.click(); });
+  dropZone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files.length > 0) {
+      addFiles(Array.from(fileInput.files));
+      fileInput.value = '';
+    }
+  });
+  dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('over'); });
+  dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('over'); });
+  dropZone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    dropZone.classList.remove('over');
+    if (e.dataTransfer.files.length > 0) addFiles(Array.from(e.dataTransfer.files));
+  });
+
+  function addFiles(newFiles) {
+    newFiles.forEach(function (f) {
+      if (f.size > 52428800) { showStatus('"' + f.name + '" exceeds 50MB limit.', 'error'); return; }
+      if (mode === 'pdf' && !f.name.match(/\.pdf$/i)) { showStatus('Please upload a PDF file.', 'error'); return; }
+      if (mode === 'image' && !f.type.match(/^image\//)) { showStatus('"' + f.name + '" is not a supported image.', 'error'); return; }
+      if (mode === 'pdf') { files = [f]; } else { files.push(f); }
+    });
+    results = [];
+    downloadAllBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    summaryBar.classList.remove('show');
+    imgCompare.classList.remove('show');
+    showStatus('', '');
+    renderFileList();
+  }
+
+  function renderFileList() {
+    fileList.innerHTML = '';
+    if (files.length === 0) { compressBtn.disabled = true; return; }
+    files.forEach(function (f, i) {
+      var div = document.createElement('div');
+      div.className = 'file-item';
+      div.innerHTML =
+        '<span class="fi-icon">' + getIcon(f) + '</span>' +
+        '<span class="fi-info">' +
+          '<span class="fi-name">' + esc(f.name) + '</span>' +
+          '<span class="fi-meta">' + fmtBytes(f.size) + '</span>' +
+        '</span>' +
+        '<span class="fi-result" id="fir' + i + '"></span>' +
+        '<button class="fi-remove" data-i="' + i + '" title="Remove">&#10005;</button>';
+      fileList.appendChild(div);
+    });
+    fileList.querySelectorAll('.fi-remove').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        files.splice(parseInt(btn.dataset.i), 1);
+        renderFileList();
+      });
+    });
+    compressBtn.disabled = false;
+  }
+
+  /* ---- COMPRESS BUTTON ---- */
+  compressBtn.addEventListener('click', function () {
+    if (files.length === 0) return;
+    compressBtn.disabled = true;
+    downloadAllBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    results = [];
+    summaryBar.classList.remove('show');
+    imgCompare.classList.remove('show');
+    showStatus('', '');
+    showProg(true, 'Starting...');
+    setProg(0);
+    if (mode === 'image') compressImages();
+    else if (mode === 'pdf') compressPDF();
+    else createZIP();
+  });
+
+  /* ==========================
+     IMAGE COMPRESSION
+  ========================== */
+  function compressImages() {
+    var quality = parseInt(qualitySlider.value) / 100;
+    var total = files.length;
+    var done = 0;
+    var totalOrig = 0;
+    var totalComp = 0;
+
+    function next(i) {
+      if (i >= total) {
+        setProg(100);
+        showProg(false);
+        var saved = totalOrig - totalComp;
+        var pct = totalOrig > 0 ? Math.round((saved / totalOrig) * 100) : 0;
+        summaryBar.innerHTML = '<strong>&#9989; Done!</strong> Compressed ' + total + ' image' + (total > 1 ? 's' : '') + '. ' +
+          'Original: <strong>' + fmtBytes(totalOrig) + '</strong> &rarr; ' +
+          'Compressed: <strong>' + fmtBytes(totalComp) + '</strong>' +
+          (saved > 0 ? ' &mdash; saved <strong>' + fmtBytes(saved) + ' (' + pct + '%)</strong>.' : '.');
+        summaryBar.classList.add('show');
+        if (results.length > 0) {
+          var last = results[results.length - 1];
+          document.getElementById('origPreview').src = URL.createObjectURL(files[results.length - 1]);
+          document.getElementById('origSize').textContent = fmtBytes(files[results.length - 1].size);
+          document.getElementById('compPreview').src = URL.createObjectURL(last.blob);
+          document.getElementById('compSize').textContent = fmtBytes(last.blob.size);
+          imgCompare.classList.add('show');
+        }
+        downloadBtnTxt.textContent = total === 1 ? 'Download Compressed Image' : 'Download All as ZIP';
+        downloadAllBtn.style.display = '';
+        resetBtn.style.display = '';
+        compressBtn.disabled = false;
+        showStatus('', '');
+        return;
+      }
+      var f = files[i];
+      progLbl.textContent = 'Compressing ' + esc(f.name) + ' (' + (i + 1) + '/' + total + ')...';
+      setProg(Math.round((i / total) * 90) + 5);
+      var img = new Image();
+      var url = URL.createObjectURL(f);
+      img.onload = function () {
+        var canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        URL.revokeObjectURL(url);
+        var outType = f.type === 'image/png' ? 'image/png' : 'image/jpeg';
+        var outExt  = f.type === 'image/png' ? '.png' : '.jpg';
+        var q = f.type === 'image/png' ? 1 : quality;
+        canvas.toBlob(function (blob) {
+          if (!blob) { next(i + 1); return; }
+          var base = f.name.replace(/\.[^.]+$/, '');
+          results.push({ name: base + '_compressed' + outExt, blob: blob });
+          totalOrig += f.size;
+          totalComp += blob.size;
+          var el = document.getElementById('fir' + i);
+          if (el) {
+            var p = Math.round((1 - blob.size / f.size) * 100);
+            el.textContent = fmtBytes(blob.size) + ' (-' + p + '%)';
+            el.style.color = p > 0 ? '#16a34a' : '#f59e0b';
+          }
+          next(i + 1);
+        }, outType, q);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); next(i + 1); };
+      img.src = url;
+    }
+    next(0);
+  }
+
+  /* ==========================
+     PDF COMPRESSION
+     Method: Render each page via PDF.js canvas at reduced DPI,
+     then rebuild PDF from JPEG images using pdf-lib.
+     Achieves 70-95% reduction — same principle as server-side tools.
+  ========================== */
+  function compressPDF() {
+    var f = files[0];
+    if (!f) { showStatus('Please select a PDF file.', 'error'); compressBtn.disabled = false; return; }
+
+    if (typeof pdfjsLib === 'undefined' || typeof PDFLib === 'undefined') {
+      showStatus('PDF libraries are still loading. Please wait a moment and try again.', 'error');
+      showProg(false); compressBtn.disabled = false; return;
+    }
+
+    var qualityVal = parseInt(qualitySlider.value) / 100; // reuse quality slider
+    progLbl.textContent = 'Reading PDF...';
+    setProg(5);
+
+    var fileURL = URL.createObjectURL(f);
+    var loadingTask = pdfjsLib.getDocument(fileURL);
+
+    loadingTask.promise.then(function (pdfDoc) {
+      URL.revokeObjectURL(fileURL);
+      var numPages = pdfDoc.numPages;
+      setProg(10);
+      progLbl.textContent = 'Processing ' + numPages + ' page(s)...';
+
+      // DPI scale: lower = smaller file. 0.8 quality → scale 1.0, lower quality → lower scale
+      // Range: scale 0.6 (very compressed) to 1.4 (high quality)
+      var scale = 0.5 + (qualityVal * 0.9); // maps 10%→0.59, 70%→1.13, 95%→1.355
+
+      var pagePromises = [];
+      for (var i = 1; i <= numPages; i++) {
+        pagePromises.push(pdfDoc.getPage(i));
+      }
+
+      return Promise.all(pagePromises).then(function (pages) {
+        var imgPromises = pages.map(function (page, idx) {
+          var viewport  = page.getViewport({ scale: scale });
+          var canvas    = document.createElement('canvas');
+          canvas.width  = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
+          var ctx       = canvas.getContext('2d');
+
+          return page.render({ canvasContext: ctx, viewport: viewport }).promise
+            .then(function () {
+              setProg(10 + Math.round(((idx + 1) / pages.length) * 70));
+              progLbl.textContent = 'Rendering page ' + (idx + 1) + ' of ' + pages.length + '...';
+              return new Promise(function (resolve) {
+                canvas.toBlob(function (blob) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) { resolve({ dataUrl: e.target.result, width: canvas.width, height: canvas.height }); };
+                  reader.readAsDataURL(blob);
+                }, 'image/jpeg', qualityVal);
+              });
+            });
+        });
+
+        return Promise.all(imgPromises);
+      });
+
+    }).then(function (pages) {
+      setProg(82);
+      progLbl.textContent = 'Building compressed PDF...';
+
+      return PDFLib.PDFDocument.create().then(function (newDoc) {
+        var embedPromises = pages.map(function (pg) {
+          var b64 = pg.dataUrl.split(',')[1];
+          var bytes = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
+          return newDoc.embedJpg(bytes).then(function (img) {
+            // A4 pt dimensions
+            var pW = 595.28, pH = 841.89;
+            var aspect = pg.width / pg.height;
+            var w, h;
+            if (aspect > pW / pH) { w = pW; h = pW / aspect; }
+            else { h = pH; w = pH * aspect; }
+            var page = newDoc.addPage([w, h]);
+            page.drawImage(img, { x: 0, y: 0, width: w, height: h });
+          });
+        });
+        return Promise.all(embedPromises).then(function () {
+          return newDoc.save({ useObjectStreams: true });
+        });
+      });
+
+    }).then(function (bytes) {
+      setProg(100);
+      var blob     = new Blob([bytes], { type: 'application/pdf' });
+      var origSize = f.size;
+      var compSize = blob.size;
+      var saved    = origSize - compSize;
+      var pct      = origSize > 0 ? Math.round((saved / origSize) * 100) : 0;
+      var outName  = f.name.replace(/\.pdf$/i, '') + '_compressed.pdf';
+
+      results = [{ name: outName, blob: blob }];
+
+      var el = document.getElementById('fir0');
+      if (el) {
+        el.textContent = fmtBytes(compSize) + (pct > 0 ? ' (-' + pct + '%)' : '');
+        el.style.color  = pct > 0 ? '#16a34a' : '#f59e0b';
+      }
+
+      if (pct > 0) {
+        summaryBar.innerHTML = '<strong>&#9989; Done!</strong> '
+          + 'Original: <strong>' + fmtBytes(origSize) + '</strong> &rarr; '
+          + 'Compressed: <strong>' + fmtBytes(compSize) + '</strong> '
+          + '&mdash; saved <strong>' + fmtBytes(saved) + ' (' + pct + '%)</strong>.';
+      } else {
+        summaryBar.innerHTML = '<strong>&#9989; Done!</strong> '
+          + 'PDF size: <strong>' + fmtBytes(compSize) + '</strong>. '
+          + 'Try lowering the quality slider for a smaller file.';
+      }
+      summaryBar.classList.add('show');
+
+      setTimeout(function () {
+        showProg(false);
+        downloadBtnTxt.textContent = 'Download Compressed PDF';
+        downloadAllBtn.style.display = '';
+        resetBtn.style.display = '';
+        compressBtn.disabled = false;
+        showStatus('', '');
+      }, 400);
+
+    }).catch(function (err) {
+      showStatus('PDF compression failed: ' + (err.message || 'Unknown error') + '. Please try a different file.', 'error');
+      showProg(false);
+      compressBtn.disabled = false;
+    });
+  }
+  /* ==========================
+     ZIP ARCHIVE (JSZip)
+  ========================== */
+  function createZIP() {
+    if (typeof JSZip === 'undefined') {
+      showStatus('ZIP library still loading. Please wait and try again.', 'error');
+      compressBtn.disabled = false; return;
+    }
+    var zip = new JSZip();
+    var total = files.length;
+    files.forEach(function (f) { zip.file(f.name, f); });
+    progLbl.textContent = 'Creating ZIP archive...';
+    setProg(50);
+    zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } },
+      function (meta) { setProg(50 + Math.round(meta.percent * 0.45)); }
+    ).then(function (blob) {
+      var totalOrig = files.reduce(function (s, f) { return s + f.size; }, 0);
+      var saved = totalOrig - blob.size;
+      var pct = totalOrig > 0 ? Math.round((saved / totalOrig) * 100) : 0;
+      results = [{ name: 'compressed_archive.zip', blob: blob }];
+      summaryBar.innerHTML = '<strong>&#9989; ZIP created!</strong> ' + total + ' file' + (total > 1 ? 's' : '') + ' bundled. ' +
+        'Total original: <strong>' + fmtBytes(totalOrig) + '</strong> &rarr; ZIP: <strong>' + fmtBytes(blob.size) + '</strong>' +
+        (saved > 0 ? ' &mdash; saved <strong>' + fmtBytes(saved) + ' (' + pct + '%)</strong>.' : '.');
+      summaryBar.classList.add('show');
+      setProg(100);
+      setTimeout(function () {
+        showProg(false);
+        downloadBtnTxt.textContent = 'Download ZIP Archive';
+        downloadAllBtn.style.display = '';
+        resetBtn.style.display = '';
+        compressBtn.disabled = false;
+        showStatus('', '');
+      }, 400);
+    }).catch(function (err) {
+      showStatus('ZIP creation failed: ' + err.message, 'error');
+      showProg(false); compressBtn.disabled = false;
+    });
+  }
+
+  /* ---- DOWNLOAD ---- */
+  downloadAllBtn.addEventListener('click', function () {
+    if (results.length === 0) return;
+    if (mode === 'image' && results.length > 1) {
+      var zip = new JSZip();
+      results.forEach(function (r) { zip.file(r.name, r.blob); });
+      zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } })
+        .then(function (blob) { dl(blob, 'compressed_images.zip'); });
+    } else {
+      dl(results[0].blob, results[0].name);
+    }
+  });
+
+  /* ---- RESET ---- */
+  resetBtn.addEventListener('click', resetTool);
+  function resetTool() {
+    files = []; results = [];
+    fileList.innerHTML = '';
+    compressBtn.disabled = true;
+    downloadAllBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    summaryBar.classList.remove('show');
+    imgCompare.classList.remove('show');
+    showStatus('', '');
+    showProg(false);
+    setProg(0);
+  }
+
+  /* ---- HELPERS ---- */
+  function dl(blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.style.display = 'none'; a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+  }
+  function fmtBytes(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+    return (b / 1048576).toFixed(1) + ' MB';
+  }
+  function getIcon(f) {
+    if (f.type.match(/^image\//)) return '&#128247;';
+    if (f.name.match(/\.pdf$/i)) return '&#128196;';
+    if (f.name.match(/\.zip$/i)) return '&#128230;';
+    return '&#128196;';
+  }
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function showStatus(msg, type) {
+    statusMsg.innerHTML = msg;
+    statusMsg.className = 'status-msg' + (type ? ' ' + type : '');
+  }
+  function showProg(on, label) {
+    progWrap.classList.toggle('show', on);
+    if (label) progLbl.textContent = label;
+  }
+  function setProg(pct) { progFill.style.width = pct + '%'; }
+
+})();
+</script>
+</body>
+</html>
