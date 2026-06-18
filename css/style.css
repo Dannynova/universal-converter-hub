@@ -267,3 +267,19 @@ footer {
     align-items: stretch;
   }
 }
+/* ── RESPONSIVE ADS ─────────────────────────── */
+.ad-universal { text-align: center; overflow: hidden; max-width: 100%; margin: 0.5rem auto; }
+.ad-universal iframe { max-width: 100% !important; }
+.ad-show-desktop { display: block; }
+.ad-show-mobile  { display: none; }
+@media (max-width: 768px) {
+  .ad-show-desktop { display: none; }
+  .ad-show-mobile  { display: block; }
+}
+/* Responsive ads */
+.ad-show-desktop { display: block; }
+.ad-show-mobile  { display: none; }
+@media (max-width: 768px) {
+  .ad-show-desktop { display: none; }
+  .ad-show-mobile  { display: block; }
+}
