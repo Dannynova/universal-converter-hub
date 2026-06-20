@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Resume Builder – Create a Professional CV Online | Universal Converter Hub</title>
+  <meta name="description" content="Build a professional resume or CV free online. Choose from 5 templates, fill in your details, download as PDF or Word. No signup, no watermark, instant download.">
+  <meta name="keywords" content="free resume builder, cv builder online free, resume maker free, create resume online, professional resume template, free cv maker, resume builder no signup">
+  <link rel="canonical" href="https://converterhub.com.ng/resume-builder.html">
+  <meta property="og:title" content="Free Resume Builder – Create a Professional CV Online">
+  <meta property="og:description" content="Build a professional resume free online. 5 templates, download as PDF or Word. No signup required.">
+  <meta property="og:url" content="https://converterhub.com.ng/resume-builder.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Universal Converter Hub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Resume Builder | Universal Converter Hub">
+  <meta name="twitter:description" content="Create a professional resume free online. 5 templates. PDF and Word download.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Resume Builder","url":"https://converterhub.com.ng/resume-builder.html","description":"Free online resume and CV builder with 5 professional templates. Download as PDF or Word.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I create a free resume online?","acceptedAnswer":{"@type":"Answer","text":"Choose a template, fill in your personal details, work experience, education and skills in the form, preview your resume live, then download it as PDF or Word document."}},{"@type":"Question","name":"Can I download my resume as a Word document?","acceptedAnswer":{"@type":"Answer","text":"Yes. After building your resume, click Download Word to get an editable .docx file, or Download PDF for a print-ready PDF."}},{"@type":"Question","name":"Are the resume templates ATS-friendly?","acceptedAnswer":{"@type":"Answer","text":"Yes. All templates use clean, simple formatting with standard fonts and clear section headers that are easily readable by Applicant Tracking Systems used by employers."}},{"@type":"Question","name":"Is the resume builder really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no watermark, no hidden fees or premium templates."}},{"@type":"Question","name":"Is my resume data saved or stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything you type stays in your browser. Nothing is uploaded to any server, so your personal information remains private."}},{"@type":"Question","name":"Can I switch templates without losing my information?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your entered information stays in the form when you switch between templates, so you can compare different designs instantly."}}]}
+  </script>
+  <style>
+    .hero-text{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);border-radius:32px;padding:2rem;margin:2rem 0;text-align:center;border:1px solid var(--border-light)}
+    .hero-text h1{font-size:2rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0}
+    .feature-card{background:var(--bg-card);border-radius:20px;padding:1.5rem;text-align:center;border:1px solid var(--border-light)}
+    .feature-card i{font-size:2.2rem;color:var(--accent);margin-bottom:1rem}
+    .how-to-steps{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin:2rem 0}
+    .step{background:var(--bg-card);border-radius:20px;padding:1.2rem;text-align:center;width:180px;border:1px solid var(--border-light)}
+    .step-number{background:var(--accent);color:white;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.8rem}
+    .feature-table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--bg-card);border-radius:16px;overflow:hidden}
+    .feature-table th,.feature-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border-light)}
+    .feature-table th{background:var(--accent);color:white;font-weight:600}
+    .feature-table tr:last-child td{border-bottom:none}
+    .related-tools{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:1.5rem 0}
+    .tool-card{background:var(--bg-card);border-radius:40px;padding:.6rem 1.5rem;text-decoration:none;color:var(--text-primary);border:1px solid var(--border-light);transition:all .2s}
+    .tool-card:hover{background:var(--accent);color:white}
+    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
+    .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
+    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
+    .faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+    .faq-question:hover{color:var(--accent)}
+    .faq-question .icon{font-size:1.2rem;transition:transform .2s}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;padding:0;color:var(--text-secondary);line-height:1.6}
+    .faq-answer p{padding-bottom:1rem}
+    .faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
+    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
+    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s}
+    .feedback-btn:hover{transform:scale(1.05)}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
+    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
+    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary)}
+    .modal-close:hover{color:var(--accent)}
+    .modal iframe{width:100%;height:500px;border:none;border-radius:12px}
+    .ad-show-desktop{display:block}.ad-show-mobile{display:none}
+    @media(max-width:768px){.ad-show-desktop{display:none}.ad-show-mobile{display:block}}
+
+    /* ===== RESUME BUILDER LAYOUT ===== */
+    .rb-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+    @media(max-width:900px){.rb-layout{grid-template-columns:1fr}}
+    .rb-form-panel{background:var(--bg-card);border-radius:20px;padding:1.5rem;border:1px solid var(--border-light);max-height:80vh;overflow-y:auto}
+    .rb-preview-panel{background:var(--bg-card);border-radius:20px;padding:1.5rem;border:1px solid var(--border-light);position:sticky;top:1rem}
+    .rb-tpl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.2rem}
+    @media(max-width:600px){.rb-tpl-grid{grid-template-columns:repeat(3,1fr)}}
+    .rb-tpl-thumb{border:2px solid var(--border-light);border-radius:10px;padding:.5rem;cursor:pointer;text-align:center;font-size:.72rem;font-weight:600;color:var(--text-secondary);transition:all .15s;background:var(--bg-secondary)}
+    .rb-tpl-thumb.active{border-color:var(--accent);background:var(--accent);color:#fff}
+    .rb-tpl-thumb:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+    .rb-tpl-thumb .tpl-bar{height:6px;border-radius:2px;margin-bottom:6px}
+    .rb-section{margin-bottom:1.5rem;border-top:1px solid var(--border-light);padding-top:1rem}
+    .rb-section:first-of-type{border-top:none;padding-top:0}
+    .rb-section h4{font-size:.95rem;font-weight:700;color:var(--text-primary);margin-bottom:.7rem;display:flex;align-items:center;gap:6px}
+    .rb-field{margin-bottom:.7rem}
+    .rb-field label{display:block;font-size:.78rem;font-weight:600;color:var(--text-secondary);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.03em}
+    .rb-field input,.rb-field textarea,.rb-field select{width:100%;padding:.6rem .8rem;border:1.5px solid var(--border-light);border-radius:8px;font-size:.88rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary)}
+    .rb-field input:focus,.rb-field textarea:focus,.rb-field select:focus{outline:none;border-color:var(--accent)}
+    .rb-field textarea{resize:vertical;min-height:60px}
+    .rb-row2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+    .rb-repeat-item{background:var(--bg-secondary);border-radius:10px;padding:.8rem;margin-bottom:.6rem;border:1px solid var(--border-light);position:relative}
+    .rb-repeat-item .rb-remove{position:absolute;top:8px;right:8px;background:none;border:none;color:#dc2626;cursor:pointer;font-size:.85rem;padding:2px 6px}
+    .rb-add-btn{width:100%;padding:.5rem;border:1.5px dashed var(--accent);border-radius:8px;background:none;color:var(--accent);font-weight:600;font-size:.83rem;cursor:pointer;font-family:inherit;transition:background .15s}
+    .rb-add-btn:hover{background:var(--bg-secondary)}
+    .rb-dl-row{display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap}
+    .rb-dl-btn{flex:1;min-width:140px;padding:.75rem;border-radius:10px;border:none;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:opacity .15s}
+    .rb-dl-btn:hover{opacity:.88}
+    .rb-dl-pdf{background:#dc2626;color:#fff}
+    .rb-dl-word{background:#2563eb;color:#fff}
+
+    /* Resume preview document */
+    #resumePreview{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1);width:100%;min-height:600px;overflow:hidden;font-size:13px;color:#1a1a1a;line-height:1.4}
+    #resumePreview *{box-sizing:border-box}
+  </style>
+</head>
+<body>
+
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html" aria-label="Universal Converter Hub home">
+        <div class="logo-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
+            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
+            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+      </a>
+    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
+    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
+    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
+    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
+    <a href="resume-builder.html" class="nav-btn active">&#128221; Resume Builder</a>
+    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
+    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
+    <a href="password-generator.html" class="nav-btn">&#128274; Password</a>
+    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
+    <a href="unit-converter.html" class="nav-btn">&#128207; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127774; Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">&#128506; DWG&#8594;KMZ</a>
+    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+    <a href="coordinate-converter.html" class="nav-btn">&#127757; Coordinates</a>
+    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128247; YouTube Thumbnail</a>
+  </div>
+
+  <div class="ad-universal"><div class="ad-show-desktop"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-show-mobile"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div></div>
+
+  <div class="hero-text">
+    <h1>Free Resume Builder &#8211; Create a Professional CV Online</h1>
+    <p>Build a <strong>professional resume or CV in minutes</strong> with 5 clean, ATS-friendly templates. Fill in your details, preview live, and download as <strong>PDF or Word</strong> &#8212; free, no signup, no watermark.</p>
+    <p>Everything runs <strong>entirely in your browser</strong> &#8212; your personal information is never uploaded to any server.</p>
+  </div>
+
+  <!-- RESUME BUILDER TOOL -->
+  <div class="card">
+    <div class="rb-layout">
+
+      <!-- FORM PANEL -->
+      <div class="rb-form-panel">
+        <h3 style="margin-bottom:1rem;font-size:1.1rem;">Choose a Template</h3>
+        <div class="rb-tpl-grid" id="tplGrid">
+          <div class="rb-tpl-thumb active" data-tpl="modern"><div class="tpl-bar" style="background:#2563eb;"></div>Modern</div>
+          <div class="rb-tpl-thumb" data-tpl="classic"><div class="tpl-bar" style="background:#1f2937;"></div>Classic</div>
+          <div class="rb-tpl-thumb" data-tpl="minimal"><div class="tpl-bar" style="background:#6b7280;"></div>Minimal</div>
+          <div class="rb-tpl-thumb" data-tpl="creative"><div class="tpl-bar" style="background:#a855f7;"></div>Creative</div>
+          <div class="rb-tpl-thumb" data-tpl="executive"><div class="tpl-bar" style="background:#0f766e;"></div>Executive</div>
+        </div>
+
+        <!-- Personal Info -->
+        <div class="rb-section">
+          <h4><i class="fas fa-user"></i> Personal Information</h4>
+          <div class="rb-row2">
+            <div class="rb-field"><label>Full Name</label><input type="text" id="rbName" placeholder="Jane Doe"></div>
+            <div class="rb-field"><label>Job Title</label><input type="text" id="rbTitle" placeholder="Marketing Manager"></div>
+          </div>
+          <div class="rb-row2">
+            <div class="rb-field"><label>Email</label><input type="email" id="rbEmail" placeholder="jane@email.com"></div>
+            <div class="rb-field"><label>Phone</label><input type="text" id="rbPhone" placeholder="+1 555 123 4567"></div>
+          </div>
+          <div class="rb-row2">
+            <div class="rb-field"><label>Location</label><input type="text" id="rbLocation" placeholder="New York, NY"></div>
+            <div class="rb-field"><label>LinkedIn / Website</label><input type="text" id="rbLink" placeholder="linkedin.com/in/janedoe"></div>
+          </div>
+          <div class="rb-field"><label>Professional Summary</label><textarea id="rbSummary" placeholder="Results-driven marketing professional with 5+ years of experience..."></textarea></div>
+        </div>
+
+        <!-- Experience -->
+        <div class="rb-section">
+          <h4><i class="fas fa-briefcase"></i> Work Experience</h4>
+          <div id="expList"></div>
+          <button class="rb-add-btn" id="addExpBtn"><i class="fas fa-plus"></i> Add Experience</button>
+        </div>
+
+        <!-- Education -->
+        <div class="rb-section">
+          <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+          <div id="eduList"></div>
+          <button class="rb-add-btn" id="addEduBtn"><i class="fas fa-plus"></i> Add Education</button>
+        </div>
+
+        <!-- Skills -->
+        <div class="rb-section">
+          <h4><i class="fas fa-star"></i> Skills</h4>
+          <div class="rb-field"><label>Skills (comma separated)</label><input type="text" id="rbSkills" placeholder="Project Management, SEO, Adobe Photoshop, Public Speaking"></div>
+        </div>
+
+        <!-- Download -->
+        <div class="rb-dl-row">
+          <button class="rb-dl-btn rb-dl-pdf" id="dlPdfBtn"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          <button class="rb-dl-btn rb-dl-word" id="dlWordBtn"><i class="fas fa-file-word"></i> Download Word</button>
+        </div>
+        <div class="result-area" id="rbStatus" style="margin-top:.6rem;"></div>
+      </div>
+
+      <!-- PREVIEW PANEL -->
+      <div class="rb-preview-panel">
+        <h3 style="margin-bottom:1rem;font-size:1.1rem;">Live Preview</h3>
+        <div id="resumePreview"></div>
+      </div>
+
+    </div>
+    <p style="margin-top:1.2rem;font-size:.83rem;color:var(--text-secondary);text-align:center;">
+      &#10003; 100% private &#8212; nothing leaves your browser &nbsp;&#183;&nbsp;
+      &#10003; No watermarks &nbsp;&#183;&nbsp;
+      &#10003; Free forever
+    </p>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <h2>How to Build a Resume Online for Free</h2>
+  <div class="how-to-steps">
+    <div class="step"><div class="step-number">1</div><i class="fas fa-palette"></i><p>Choose one of 5 templates</p></div>
+    <div class="step"><div class="step-number">2</div><i class="fas fa-keyboard"></i><p>Fill in your details and experience</p></div>
+    <div class="step"><div class="step-number">3</div><i class="fas fa-eye"></i><p>Preview your resume live</p></div>
+    <div class="step"><div class="step-number">4</div><i class="fas fa-download"></i><p>Download as PDF or Word</p></div>
+  </div>
+
+  <div class="ad-universal" style="border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
+    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
+  </div>
+
+  <h2>Features of Our Resume Builder</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><i class="fas fa-palette"></i><h3>5 Professional Templates</h3><p>Modern, Classic, Minimal, Creative and Executive designs to suit any industry.</p></div>
+    <div class="feature-card"><i class="fas fa-file-export"></i><h3>PDF &amp; Word Export</h3><p>Download a print-ready PDF or an editable Word document &#8212; your choice.</p></div>
+    <div class="feature-card"><i class="fas fa-robot"></i><h3>ATS-Friendly</h3><p>Clean formatting that passes through Applicant Tracking Systems used by employers.</p></div>
+    <div class="feature-card"><i class="fas fa-lock"></i><h3>100% Private</h3><p>Your information stays in your browser. Nothing is uploaded or stored anywhere.</p></div>
+  </div>
+
+  <h2>Who Can Use This Tool?</h2>
+  <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+    <div class="feature-card"><i class="fas fa-graduation-cap"></i><h3>Students &amp; Graduates</h3><p>Build your first resume</p></div>
+    <div class="feature-card"><i class="fas fa-user-tie"></i><h3>Job Seekers</h3><p>Apply with a polished CV</p></div>
+    <div class="feature-card"><i class="fas fa-exchange-alt"></i><h3>Career Changers</h3><p>Highlight transferable skills</p></div>
+    <div class="feature-card"><i class="fas fa-building"></i><h3>Professionals</h3><p>Update your resume quickly</p></div>
+    <div class="feature-card"><i class="fas fa-globe"></i><h3>Everyone</h3><p>Free, fast, no signup</p></div>
+  </div>
+
+  <h2>What Our Resume Builder Offers</h2>
+  <table class="feature-table">
+    <thead><tr><th>Feature</th><th>Available</th></tr></thead>
+    <tbody>
+      <tr><td>5 professional templates</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Live preview as you type</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Download as PDF</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Download as editable Word (.docx)</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Switch templates without losing data</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>No watermarks</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>100% private &#8212; browser only</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Related Tools</h2>
+  <div class="related-tools">
+    <a href="word-to-pdf.html" class="tool-card">&#128221; Word to PDF</a>
+    <a href="pdf-to-word.html" class="tool-card">&#128196; PDF to Word</a>
+    <a href="image-to-pdf.html" class="tool-card">&#128247; Image to PDF</a>
+    <a href="qr-code-generator.html" class="tool-card">&#128241; QR Code</a>
+    <a href="file-compressor.html" class="tool-card">&#128230; File Compressor</a>
+  </div>
+
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>How do I create a free resume online?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Choose a template, fill in your personal details, work experience, education and skills in the form, preview your resume live, then download it as PDF or Word document.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Can I download my resume as a Word document?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. After building your resume, click <strong>Download Word</strong> to get an editable .docx file, or <strong>Download PDF</strong> for a print-ready PDF.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Are the resume templates ATS-friendly?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. All templates use clean, simple formatting with standard fonts and clear section headers that are easily readable by Applicant Tracking Systems used by employers.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is the resume builder really free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes, completely free. No signup, no watermark, no hidden fees or premium templates.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is my resume data saved or stored anywhere?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>No. Everything you type stays in your browser. Nothing is uploaded to any server, so your personal information remains private.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Can I switch templates without losing my information?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes. Your entered information stays in the form when you switch between templates, so you can compare different designs instantly.</p></div>
+    </div>
+    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
+  </section>
+
+  <div style="text-align:center;margin:2rem 0;">
+    <p><strong>Build Your Resume Anytime, Anywhere</strong><br>
+    Our free online resume builder is used daily by job seekers, students and professionals across the United States, United Kingdom, Canada, Australia, Nigeria and beyond. Whether you're applying for your first job or updating your CV for a career change &#8212; this tool creates a polished, professional resume in minutes, completely free, with no software installation required.</p>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>&#169; 2025 Universal Converter Hub &#8211; All tools are free. Ads help us improve.</footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<!-- PDF-lib + html2canvas for PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<!-- docx library for Word export -->
+<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
+
+<script>
+  // ── FAQ ─────────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const button = item.querySelector('.faq-question');
+    const iconSpan = button.querySelector('.icon i');
+    button.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      if (!isActive) {
+        item.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus');
+      } else {
+        item.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+        iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus');
+      }
+    });
+  });
+
+  // ── MODAL ───────────────────────────────────────────────────────────
+  const modal = document.getElementById('feedbackModal');
+  function openModal() { modal.style.display = 'flex'; }
+  document.getElementById('feedbackBtn').addEventListener('click', openModal);
+  document.getElementById('supportLink').addEventListener('click', openModal);
+  document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+  // ── STATE ───────────────────────────────────────────────────────────
+  let currentTpl = 'modern';
+  let expItems = [{ title:'', company:'', dates:'', desc:'' }];
+  let eduItems = [{ degree:'', school:'', dates:'' }];
+
+  // ── TEMPLATE SWITCHING ──────────────────────────────────────────────
+  document.querySelectorAll('.rb-tpl-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.rb-tpl-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      currentTpl = thumb.dataset.tpl;
+      renderPreview();
+    });
+  });
+
+  // ── DYNAMIC EXPERIENCE FIELDS ───────────────────────────────────────
+  function renderExpFields() {
+    const list = document.getElementById('expList');
+    list.innerHTML = '';
+    expItems.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'rb-repeat-item';
+      div.innerHTML = `
+        ${expItems.length > 1 ? `<button class="rb-remove" data-i="${i}" data-type="exp" title="Remove">&#10005;</button>` : ''}
+        <div class="rb-field"><label>Job Title</label><input type="text" class="exp-title" data-i="${i}" value="${item.title}" placeholder="Senior Developer"></div>
+        <div class="rb-field"><label>Company</label><input type="text" class="exp-company" data-i="${i}" value="${item.company}" placeholder="Tech Corp Inc."></div>
+        <div class="rb-field"><label>Dates</label><input type="text" class="exp-dates" data-i="${i}" value="${item.dates}" placeholder="Jan 2020 – Present"></div>
+        <div class="rb-field"><label>Description</label><textarea class="exp-desc" data-i="${i}" placeholder="Led a team of 5 engineers to deliver...">${item.desc}</textarea></div>`;
+      list.appendChild(div);
+    });
+    bindRepeatInputs('exp');
+  }
+
+  function renderEduFields() {
+    const list = document.getElementById('eduList');
+    list.innerHTML = '';
+    eduItems.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'rb-repeat-item';
+      div.innerHTML = `
+        ${eduItems.length > 1 ? `<button class="rb-remove" data-i="${i}" data-type="edu" title="Remove">&#10005;</button>` : ''}
+        <div class="rb-field"><label>Degree / Course</label><input type="text" class="edu-degree" data-i="${i}" value="${item.degree}" placeholder="B.Sc. Computer Science"></div>
+        <div class="rb-field"><label>School / University</label><input type="text" class="edu-school" data-i="${i}" value="${item.school}" placeholder="University of Lagos"></div>
+        <div class="rb-field"><label>Dates</label><input type="text" class="edu-dates" data-i="${i}" value="${item.dates}" placeholder="2016 – 2020"></div>`;
+      list.appendChild(div);
+    });
+    bindRepeatInputs('edu');
+  }
+
+  function bindRepeatInputs(type) {
+    const items = type === 'exp' ? expItems : eduItems;
+    document.querySelectorAll(`.${type}-title, .${type}-company, .${type}-dates, .${type}-desc, .${type}-degree, .${type}-school`).forEach(input => {
+      input.addEventListener('input', () => {
+        const i = parseInt(input.dataset.i);
+        const field = input.className.replace(`${type}-`, '');
+        items[i][field] = input.value;
+        renderPreview();
+      });
+    });
+    document.querySelectorAll(`.rb-remove[data-type="${type}"]`).forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        items.splice(i, 1);
+        if (type === 'exp') renderExpFields(); else renderEduFields();
+        renderPreview();
+      });
+    });
+  }
+
+  document.getElementById('addExpBtn').addEventListener('click', () => {
+    expItems.push({ title:'', company:'', dates:'', desc:'' });
+    renderExpFields(); renderPreview();
+  });
+  document.getElementById('addEduBtn').addEventListener('click', () => {
+    eduItems.push({ degree:'', school:'', dates:'' });
+    renderEduFields(); renderPreview();
+  });
+
+  renderExpFields();
+  renderEduFields();
+
+  // ── BIND PERSONAL INFO FIELDS ───────────────────────────────────────
+  ['rbName','rbTitle','rbEmail','rbPhone','rbLocation','rbLink','rbSummary','rbSkills'].forEach(id => {
+    document.getElementById(id).addEventListener('input', renderPreview);
+  });
+
+  function getData() {
+    return {
+      name: document.getElementById('rbName').value || 'Your Name',
+      title: document.getElementById('rbTitle').value || 'Your Job Title',
+      email: document.getElementById('rbEmail').value,
+      phone: document.getElementById('rbPhone').value,
+      location: document.getElementById('rbLocation').value,
+      link: document.getElementById('rbLink').value,
+      summary: document.getElementById('rbSummary').value,
+      skills: document.getElementById('rbSkills').value.split(',').map(s => s.trim()).filter(Boolean),
+      exp: expItems.filter(e => e.title || e.company),
+      edu: eduItems.filter(e => e.degree || e.school)
+    };
+  }
+</script>
+<script>
+  // ══════════════════════════════════════════════════════════════════
+  // TEMPLATE RENDERERS — 5 distinct designs
+  // ══════════════════════════════════════════════════════════════════
+
+  function escHtml(s) {
+    return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function contactLine(d) {
+    return [d.email, d.phone, d.location, d.link].filter(Boolean).map(escHtml).join('  &#183;  ');
+  }
+
+  function renderModern(d) {
+    return `
+    <div style="font-family:'Inter',Arial,sans-serif;padding:36px 40px;">
+      <div style="border-bottom:3px solid #2563eb;padding-bottom:14px;margin-bottom:18px;">
+        <h1 style="font-size:26px;font-weight:700;color:#111;margin:0 0 4px;">${escHtml(d.name)}</h1>
+        <p style="font-size:14px;color:#2563eb;font-weight:600;margin:0 0 8px;">${escHtml(d.title)}</p>
+        <p style="font-size:11px;color:#555;margin:0;">${contactLine(d)}</p>
+      </div>
+      ${d.summary ? `<p style="font-size:12px;color:#333;margin-bottom:16px;line-height:1.6;">${escHtml(d.summary)}</p>` : ''}
+      ${d.exp.length ? `<h3 style="font-size:13px;color:#2563eb;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #ddd;padding-bottom:4px;margin-bottom:10px;">Experience</h3>
+      ${d.exp.map(e => `
+        <div style="margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;">
+            <strong style="font-size:13px;color:#111;">${escHtml(e.title)}${e.company ? ' &#8211; ' + escHtml(e.company) : ''}</strong>
+            <span style="font-size:11px;color:#777;">${escHtml(e.dates)}</span>
+          </div>
+          ${e.desc ? `<p style="font-size:11.5px;color:#444;margin:4px 0 0;line-height:1.5;">${escHtml(e.desc)}</p>` : ''}
+        </div>`).join('')}` : ''}
+      ${d.edu.length ? `<h3 style="font-size:13px;color:#2563eb;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #ddd;padding-bottom:4px;margin:16px 0 10px;">Education</h3>
+      ${d.edu.map(e => `
+        <div style="margin-bottom:8px;display:flex;justify-content:space-between;">
+          <span style="font-size:12.5px;color:#111;"><strong>${escHtml(e.degree)}</strong>${e.school ? ', ' + escHtml(e.school) : ''}</span>
+          <span style="font-size:11px;color:#777;">${escHtml(e.dates)}</span>
+        </div>`).join('')}` : ''}
+      ${d.skills.length ? `<h3 style="font-size:13px;color:#2563eb;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #ddd;padding-bottom:4px;margin:16px 0 10px;">Skills</h3>
+      <p style="font-size:12px;color:#333;">${d.skills.map(escHtml).join(' &#183; ')}</p>` : ''}
+    </div>`;
+  }
+
+  function renderClassic(d) {
+    return `
+    <div style="font-family:'Georgia',serif;padding:36px 40px;">
+      <div style="text-align:center;margin-bottom:18px;">
+        <h1 style="font-size:24px;font-weight:700;color:#1f2937;margin:0 0 4px;letter-spacing:.03em;">${escHtml(d.name).toUpperCase()}</h1>
+        <p style="font-size:13px;color:#444;margin:0 0 6px;">${escHtml(d.title)}</p>
+        <p style="font-size:11px;color:#666;margin:0;">${contactLine(d)}</p>
+      </div>
+      <hr style="border:none;border-top:2px solid #1f2937;margin:14px 0;">
+      ${d.summary ? `<p style="font-size:12px;color:#333;margin-bottom:16px;line-height:1.6;text-align:justify;">${escHtml(d.summary)}</p>` : ''}
+      ${d.exp.length ? `<h3 style="font-size:13px;color:#1f2937;text-align:center;letter-spacing:.08em;margin-bottom:10px;">EXPERIENCE</h3>
+      ${d.exp.map(e => `
+        <div style="margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;">
+            <strong style="font-size:13px;color:#111;">${escHtml(e.title)}</strong>
+            <span style="font-size:11px;color:#777;font-style:italic;">${escHtml(e.dates)}</span>
+          </div>
+          <div style="font-size:12px;color:#555;font-style:italic;">${escHtml(e.company)}</div>
+          ${e.desc ? `<p style="font-size:11.5px;color:#444;margin:4px 0 0;line-height:1.5;">${escHtml(e.desc)}</p>` : ''}
+        </div>`).join('')}` : ''}
+      ${d.edu.length ? `<h3 style="font-size:13px;color:#1f2937;text-align:center;letter-spacing:.08em;margin:16px 0 10px;">EDUCATION</h3>
+      ${d.edu.map(e => `
+        <div style="margin-bottom:8px;text-align:center;">
+          <strong style="font-size:12.5px;color:#111;">${escHtml(e.degree)}</strong><br>
+          <span style="font-size:11.5px;color:#555;">${escHtml(e.school)} &#183; ${escHtml(e.dates)}</span>
+        </div>`).join('')}` : ''}
+      ${d.skills.length ? `<h3 style="font-size:13px;color:#1f2937;text-align:center;letter-spacing:.08em;margin:16px 0 10px;">SKILLS</h3>
+      <p style="font-size:12px;color:#333;text-align:center;">${d.skills.map(escHtml).join(' &#183; ')}</p>` : ''}
+    </div>`;
+  }
+
+  function renderMinimal(d) {
+    return `
+    <div style="font-family:'Inter',Arial,sans-serif;padding:36px 40px;">
+      <h1 style="font-size:22px;font-weight:600;color:#111;margin:0 0 2px;">${escHtml(d.name)}</h1>
+      <p style="font-size:12px;color:#6b7280;margin:0 0 10px;">${escHtml(d.title)} &nbsp;&#183;&nbsp; ${contactLine(d)}</p>
+      ${d.summary ? `<p style="font-size:11.5px;color:#444;margin-bottom:18px;line-height:1.6;">${escHtml(d.summary)}</p>` : ''}
+      ${d.exp.length ? `<p style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Experience</p>
+      ${d.exp.map(e => `
+        <div style="margin-bottom:14px;">
+          <p style="font-size:12.5px;color:#111;margin:0;"><strong>${escHtml(e.title)}</strong>, ${escHtml(e.company)} <span style="color:#9ca3af;font-size:11px;">&nbsp;${escHtml(e.dates)}</span></p>
+          ${e.desc ? `<p style="font-size:11.5px;color:#555;margin:3px 0 0;line-height:1.5;">${escHtml(e.desc)}</p>` : ''}
+        </div>`).join('')}` : ''}
+      ${d.edu.length ? `<p style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px;">Education</p>
+      ${d.edu.map(e => `<p style="font-size:12px;color:#111;margin:0 0 6px;">${escHtml(e.degree)}, ${escHtml(e.school)} <span style="color:#9ca3af;font-size:11px;">&nbsp;${escHtml(e.dates)}</span></p>`).join('')}` : ''}
+      ${d.skills.length ? `<p style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px;">Skills</p>
+      <p style="font-size:11.5px;color:#444;">${d.skills.map(escHtml).join('  &#183;  ')}</p>` : ''}
+    </div>`;
+  }
+
+  function renderCreative(d) {
+    return `
+    <div style="font-family:'Inter',Arial,sans-serif;display:flex;min-height:600px;">
+      <div style="width:34%;background:linear-gradient(180deg,#a855f7,#7c3aed);color:#fff;padding:30px 20px;">
+        <div style="width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;margin-bottom:14px;">${escHtml((d.name||'?')[0])}</div>
+        <h1 style="font-size:18px;font-weight:700;margin:0 0 2px;">${escHtml(d.name)}</h1>
+        <p style="font-size:11.5px;opacity:.9;margin:0 0 16px;">${escHtml(d.title)}</p>
+        <p style="font-size:10.5px;opacity:.85;line-height:1.7;word-break:break-word;">${[d.email,d.phone,d.location,d.link].filter(Boolean).map(escHtml).join('<br>')}</p>
+        ${d.skills.length ? `<p style="font-size:11px;font-weight:700;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.06em;">Skills</p>
+        ${d.skills.map(s => `<div style="font-size:10.5px;background:rgba(255,255,255,.15);border-radius:4px;padding:3px 8px;margin-bottom:5px;display:inline-block;margin-right:4px;">${escHtml(s)}</div>`).join('')}` : ''}
+      </div>
+      <div style="width:66%;padding:30px 24px;">
+        ${d.summary ? `<p style="font-size:11.5px;color:#444;margin-bottom:16px;line-height:1.6;">${escHtml(d.summary)}</p>` : ''}
+        ${d.exp.length ? `<h3 style="font-size:13px;color:#7c3aed;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">Experience</h3>
+        ${d.exp.map(e => `
+          <div style="margin-bottom:12px;border-left:2px solid #a855f7;padding-left:10px;">
+            <strong style="font-size:12.5px;color:#111;">${escHtml(e.title)}</strong><br>
+            <span style="font-size:11px;color:#777;">${escHtml(e.company)} &#183; ${escHtml(e.dates)}</span>
+            ${e.desc ? `<p style="font-size:11px;color:#444;margin:4px 0 0;line-height:1.5;">${escHtml(e.desc)}</p>` : ''}
+          </div>`).join('')}` : ''}
+        ${d.edu.length ? `<h3 style="font-size:13px;color:#7c3aed;text-transform:uppercase;letter-spacing:.05em;margin:16px 0 10px;">Education</h3>
+        ${d.edu.map(e => `<p style="font-size:12px;color:#111;margin:0 0 6px;border-left:2px solid #a855f7;padding-left:10px;">${escHtml(e.degree)}, ${escHtml(e.school)} <span style="color:#999;font-size:10.5px;">${escHtml(e.dates)}</span></p>`).join('')}` : ''}
+      </div>
+    </div>`;
+  }
+
+  function renderExecutive(d) {
+    return `
+    <div style="font-family:'Inter',Arial,sans-serif;padding:36px 40px;">
+      <div style="background:#0f766e;color:#fff;padding:18px 24px;margin:-36px -40px 20px;">
+        <h1 style="font-size:24px;font-weight:700;margin:0 0 3px;">${escHtml(d.name)}</h1>
+        <p style="font-size:13px;opacity:.92;margin:0;">${escHtml(d.title)}</p>
+      </div>
+      <p style="font-size:11px;color:#555;margin:0 0 16px;">${contactLine(d)}</p>
+      ${d.summary ? `<p style="font-size:12px;color:#333;margin-bottom:16px;line-height:1.6;border-left:3px solid #0f766e;padding-left:12px;">${escHtml(d.summary)}</p>` : ''}
+      ${d.exp.length ? `<h3 style="font-size:13px;color:#0f766e;border-bottom:2px solid #0f766e;display:inline-block;padding-bottom:2px;margin-bottom:10px;">Professional Experience</h3>
+      ${d.exp.map(e => `
+        <div style="margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;">
+            <strong style="font-size:13px;color:#111;">${escHtml(e.title)} &#8211; ${escHtml(e.company)}</strong>
+            <span style="font-size:11px;color:#0f766e;font-weight:600;">${escHtml(e.dates)}</span>
+          </div>
+          ${e.desc ? `<p style="font-size:11.5px;color:#444;margin:4px 0 0;line-height:1.5;">${escHtml(e.desc)}</p>` : ''}
+        </div>`).join('')}` : ''}
+      ${d.edu.length ? `<h3 style="font-size:13px;color:#0f766e;border-bottom:2px solid #0f766e;display:inline-block;padding-bottom:2px;margin:16px 0 10px;">Education</h3>
+      ${d.edu.map(e => `<p style="font-size:12px;color:#111;margin:0 0 6px;"><strong>${escHtml(e.degree)}</strong> &#8211; ${escHtml(e.school)} <span style="color:#0f766e;font-size:11px;">(${escHtml(e.dates)})</span></p>`).join('')}` : ''}
+      ${d.skills.length ? `<h3 style="font-size:13px;color:#0f766e;border-bottom:2px solid #0f766e;display:inline-block;padding-bottom:2px;margin:16px 0 10px;">Core Competencies</h3>
+      <p style="font-size:12px;color:#333;">${d.skills.map(escHtml).join('  &#183;  ')}</p>` : ''}
+    </div>`;
+  }
+
+  const TEMPLATES = {
+    modern: renderModern,
+    classic: renderClassic,
+    minimal: renderMinimal,
+    creative: renderCreative,
+    executive: renderExecutive
+  };
+
+  function renderPreview() {
+    const d = getData();
+    const fn = TEMPLATES[currentTpl] || renderModern;
+    document.getElementById('resumePreview').innerHTML = fn(d);
+  }
+
+  renderPreview();
+</script>
+<script>
+  // ══════════════════════════════════════════════════════════════════
+  // PDF EXPORT — render preview to canvas, embed in PDF-lib
+  // ══════════════════════════════════════════════════════════════════
+  document.getElementById('dlPdfBtn').addEventListener('click', async () => {
+    const statusEl = document.getElementById('rbStatus');
+    statusEl.innerText = '';
+    if (typeof html2canvas === 'undefined' || typeof PDFLib === 'undefined') {
+      statusEl.innerText = 'PDF library still loading. Please wait a moment and try again.'; return;
+    }
+    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+
+    try {
+      const node = document.getElementById('resumePreview');
+      const canvas = await html2canvas(node, { scale: 2, backgroundColor: '#ffffff', useCORS: true });
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const jpgBytes = await (await fetch(imgData)).arrayBuffer();
+      const jpgImage = await pdfDoc.embedJpg(jpgBytes);
+
+      // A4 page, scale image to fit width, allow multi-page if content is tall
+      const pageW = 595.28, pageH = 841.89;
+      const imgW = jpgImage.width, imgH = jpgImage.height;
+      const scale = pageW / imgW;
+      const scaledH = imgH * scale;
+
+      if (scaledH <= pageH) {
+        const page = pdfDoc.addPage([pageW, pageH]);
+        page.drawImage(jpgImage, { x: 0, y: pageH - scaledH, width: pageW, height: scaledH });
+      } else {
+        // Split into multiple pages
+        let remainingH = imgH;
+        let yOffset = 0;
+        while (remainingH > 0) {
+          const pageContentH = Math.min(remainingH, pageH / scale);
+          const page = pdfDoc.addPage([pageW, pageH]);
+          page.drawImage(jpgImage, {
+            x: 0,
+            y: pageH - (pageContentH * scale),
+            width: pageW,
+            height: imgH * scale,
+            clip: { x: 0, y: yOffset * scale, width: pageW, height: pageContentH * scale }
+          });
+          remainingH -= pageContentH;
+          yOffset += pageContentH;
+        }
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const name = (document.getElementById('rbName').value || 'resume').replace(/[^a-z0-9]+/gi, '_');
+      downloadBlob(blob, name + '_resume.pdf');
+      statusEl.innerHTML = '&#9989; PDF downloaded successfully!';
+    } catch (err) {
+      statusEl.innerText = 'PDF generation failed: ' + (err.message || 'unknown error');
+    }
+  });
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.style.display = 'none';
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // WORD EXPORT — build a real .docx using the docx library
+  // ══════════════════════════════════════════════════════════════════
+  document.getElementById('dlWordBtn').addEventListener('click', async () => {
+    const statusEl = document.getElementById('rbStatus');
+    statusEl.innerText = '';
+    if (typeof docx === 'undefined') {
+      statusEl.innerText = 'Word export library still loading. Please wait a moment and try again.'; return;
+    }
+    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Word document...';
+
+    try {
+      const d = getData();
+      const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } = docx;
+
+      const children = [];
+
+      // Name + title
+      children.push(new Paragraph({
+        children: [new TextRun({ text: d.name, bold: true, size: 32, color: '2563EB' })],
+        spacing: { after: 80 }
+      }));
+      children.push(new Paragraph({
+        children: [new TextRun({ text: d.title, size: 24, color: '444444' })],
+        spacing: { after: 80 }
+      }));
+      const contact = [d.email, d.phone, d.location, d.link].filter(Boolean).join('   |   ');
+      if (contact) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: contact, size: 18, color: '666666' })],
+          spacing: { after: 200 },
+          border: { bottom: { color: 'CCCCCC', space: 4, style: BorderStyle.SINGLE, size: 6 } }
+        }));
+      }
+
+      // Summary
+      if (d.summary) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: d.summary, size: 21 })],
+          spacing: { after: 200 }
+        }));
+      }
+
+      // Experience
+      if (d.exp.length) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: 'EXPERIENCE', bold: true, size: 22, color: '2563EB' })],
+          spacing: { after: 100, before: 100 }
+        }));
+        d.exp.forEach(e => {
+          children.push(new Paragraph({
+            children: [
+              new TextRun({ text: e.title + (e.company ? ' — ' + e.company : ''), bold: true, size: 21 }),
+              new TextRun({ text: e.dates ? '   (' + e.dates + ')' : '', size: 19, color: '777777' })
+            ],
+            spacing: { after: 40 }
+          }));
+          if (e.desc) {
+            children.push(new Paragraph({
+              children: [new TextRun({ text: e.desc, size: 19 })],
+              spacing: { after: 140 }
+            }));
+          }
+        });
+      }
+
+      // Education
+      if (d.edu.length) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: 'EDUCATION', bold: true, size: 22, color: '2563EB' })],
+          spacing: { after: 100, before: 100 }
+        }));
+        d.edu.forEach(e => {
+          children.push(new Paragraph({
+            children: [
+              new TextRun({ text: e.degree + (e.school ? ', ' + e.school : ''), size: 20 }),
+              new TextRun({ text: e.dates ? '   (' + e.dates + ')' : '', size: 19, color: '777777' })
+            ],
+            spacing: { after: 100 }
+          }));
+        });
+      }
+
+      // Skills
+      if (d.skills.length) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: 'SKILLS', bold: true, size: 22, color: '2563EB' })],
+          spacing: { after: 100, before: 100 }
+        }));
+        children.push(new Paragraph({
+          children: [new TextRun({ text: d.skills.join('  •  '), size: 20 })]
+        }));
+      }
+
+      const doc = new Document({
+        sections: [{ properties: {}, children }]
+      });
+
+      const blob = await Packer.toBlob(doc);
+      const name = (document.getElementById('rbName').value || 'resume').replace(/[^a-z0-9]+/gi, '_');
+      downloadBlob(blob, name + '_resume.docx');
+      statusEl.innerHTML = '&#9989; Word document downloaded successfully!';
+    } catch (err) {
+      statusEl.innerText = 'Word generation failed: ' + (err.message || 'unknown error');
+    }
+  });
+</script>
+</body>
+</html>

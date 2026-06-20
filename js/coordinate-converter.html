@@ -63,14 +63,9 @@
     .result-item{background:var(--bg-card);border-radius:10px;padding:.8rem 1rem;border:1px solid var(--border-light)}
     .result-item .r-label{font-size:.75rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
     .result-item .r-value{font-size:1rem;font-weight:600;color:var(--text-primary);word-break:break-all}
-    .origin-table-wrap{max-height:320px;overflow-y:auto;border:1px solid var(--border-light);border-radius:12px;margin-top:.5rem}
-    .origin-table{width:100%;border-collapse:collapse;font-size:.83rem}
-    .origin-table th{background:var(--accent);color:white;padding:.5rem .8rem;text-align:left;position:sticky;top:0}
-    .origin-table td{padding:.45rem .8rem;border-bottom:1px solid var(--border-light);color:var(--text-primary)}
-    .origin-table tr:hover td{background:var(--bg-secondary);cursor:pointer}
-    .origin-table tr:last-child td{border-bottom:none}
-    .search-input{width:100%;padding:.6rem 1rem;border:1.5px solid var(--border-light);border-radius:10px;font-size:.88rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary);margin-bottom:.5rem}
-    .search-input:focus{outline:none;border-color:var(--accent)}
+    /* origin select info box */
+    .origin-info { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:.5rem 1rem; font-size:.83rem; color:#2563eb; margin-bottom:.8rem; display:none; }
+    .origin-info.show { display:block; }
     .related-tools{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:1.5rem 0}
     .tool-card{background:var(--bg-card);border-radius:40px;padding:.6rem 1.5rem;text-decoration:none;color:var(--text-primary);border:1px solid var(--border-light);transition:all .2s}
     .tool-card:hover{background:var(--accent);color:white}
@@ -119,6 +114,8 @@
     <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
     <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
     <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
+    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
+    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
     <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
     <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
     <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
@@ -136,7 +133,7 @@
     <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128247; YouTube Thumbnail</a>
   </div>
 
-  <div class="ad-universal"><div class="ad-show-desktop"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-show-mobile"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div></div>
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
 
   <div class="hero-text">
     <h1>&#127757; Free Coordinate Converter &#8211; NNO, UTM, WGS84 &amp; Minna Datum</h1>
@@ -159,18 +156,10 @@
     <!-- NNO → UTM/WGS84 -->
     <div id="mode-nno-utm">
       <div class="form-group">
-        <label>Select Ogun State Local Origin</label>
-        <input type="text" class="search-input" id="originSearch" placeholder="Search town or origin ID...">
-        <div class="origin-table-wrap">
-          <table class="origin-table" id="originTable">
-            <thead><tr><th>Town</th><th>Origin ID</th><th>Northing (m)</th><th>Easting (m)</th></tr></thead>
-            <tbody id="originTbody"></tbody>
-          </table>
-        </div>
-        <p style="font-size:.8rem;color:var(--text-secondary);margin-top:.4rem;"><i class="fas fa-mouse-pointer"></i> Click a row to select it as your local origin.</p>
-      </div>
-      <div id="selectedOriginBar" style="display:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:.6rem 1rem;font-size:.85rem;margin-bottom:1rem;color:#2563eb;">
-        <i class="fas fa-map-marker-alt"></i> <strong>Selected:</strong> <span id="selectedOriginText"></span>
+        <label>Ogun State Local Origin</label>
+        <select class="form-control" id="originSelect">
+          <option value="">— Select a town / origin —</option>
+        </select>
       </div>
       <div class="form-row">
         <div class="form-group">
@@ -226,14 +215,10 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Select Ogun State Local Origin</label>
-        <input type="text" class="search-input" id="originSearch2" placeholder="Search town or origin ID...">
-        <div class="origin-table-wrap">
-          <table class="origin-table"><thead><tr><th>Town</th><th>Origin ID</th><th>Northing (m)</th><th>Easting (m)</th></tr></thead><tbody id="originTbody2"></tbody></table>
-        </div>
-      </div>
-      <div id="selectedOriginBar2" style="display:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:.6rem 1rem;font-size:.85rem;margin-bottom:1rem;color:#2563eb;">
-        <i class="fas fa-map-marker-alt"></i> <strong>Selected:</strong> <span id="selectedOriginText2"></span>
+        <label>Ogun State Local Origin</label>
+        <select class="form-control" id="originSelect2">
+          <option value="">— Select a town / origin —</option>
+        </select>
       </div>
       <button class="btn" id="btn_utm_nno"><i class="fas fa-exchange-alt"></i> Convert</button>
       <div class="err-msg" id="err_utm_nno"></div>
@@ -556,46 +541,31 @@ const ORIGINS = [
   {town:"ILARA-REMO",     id:"ILCS 3T",               N:324346.800, E:145140.348},
 ];
 
-// ── ORIGIN TABLE RENDERING ───────────────────────────────────────────────
-let selectedOrigin = null;
+// ── POPULATE ORIGIN DROPDOWNS ────────────────────────────────────────────
+let selectedOrigin  = null;
 let selectedOrigin2 = null;
 
-function renderOriginTable(tbodyId, searchVal, selectCallback) {
-  const tbody = document.getElementById(tbodyId);
-  const q = (searchVal || '').toLowerCase();
-  tbody.innerHTML = '';
-  ORIGINS.filter(o =>
-    o.town.toLowerCase().includes(q) || o.id.toLowerCase().includes(q)
-  ).forEach(o => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${o.town}</td><td>${o.id}</td><td>${o.N.toFixed(3)}</td><td>${o.E.toFixed(3)}</td>`;
-    tr.addEventListener('click', () => selectCallback(o, tr, tbodyId));
-    tbody.appendChild(tr);
+function populateOriginSelect(selectId, onSelect) {
+  const sel = document.getElementById(selectId);
+  sel.innerHTML = '<option value="">— Select a town / origin —</option>';
+  ORIGINS.forEach((o, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = o.town + ' — ' + o.id;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', function() {
+    const idx = parseInt(this.value);
+    if (!isNaN(idx) && ORIGINS[idx]) {
+      onSelect(ORIGINS[idx]);
+    } else {
+      onSelect(null);
+    }
   });
 }
 
-function initOriginTable(tbodyId, searchId, barId, textId, callback) {
-  renderOriginTable(tbodyId, '', (o, tr, tid) => {
-    // Highlight selected row
-    document.querySelectorAll('#' + tid + ' tr').forEach(r => r.style.background = '');
-    tr.style.background = '#eff6ff';
-    document.getElementById(barId).style.display = 'block';
-    document.getElementById(textId).textContent = o.town + ' — ' + o.id + ' (N=' + o.N.toFixed(3) + ', E=' + o.E.toFixed(3) + ')';
-    callback(o);
-  });
-  document.getElementById(searchId).addEventListener('input', function() {
-    renderOriginTable(tbodyId, this.value, (o, tr, tid) => {
-      document.querySelectorAll('#' + tid + ' tr').forEach(r => r.style.background = '');
-      tr.style.background = '#eff6ff';
-      document.getElementById(barId).style.display = 'block';
-      document.getElementById(textId).textContent = o.town + ' — ' + o.id + ' (N=' + o.N.toFixed(3) + ', E=' + o.E.toFixed(3) + ')';
-      callback(o);
-    });
-  });
-}
-
-initOriginTable('originTbody',  'originSearch',  'selectedOriginBar',  'selectedOriginText',  o => { selectedOrigin  = o; });
-initOriginTable('originTbody2', 'originSearch2', 'selectedOriginBar2', 'selectedOriginText2', o => { selectedOrigin2 = o; });
+populateOriginSelect('originSelect',  o => { selectedOrigin  = o; });
+populateOriginSelect('originSelect2', o => { selectedOrigin2 = o; });
 
 // ── TABS ─────────────────────────────────────────────────────────────────
 const MODES = ['nno-utm','utm-nno','wgs-utm','utm-wgs','wgs-minna','minna-wgs'];
@@ -654,7 +624,7 @@ function autoZone(lon) {
 // NNO local → NNO absolute (Minna West Belt) → target CRS
 document.getElementById('btn_nno_utm').addEventListener('click', () => {
   hideErr('err_nno_utm');
-  if (!selectedOrigin) { showErr('err_nno_utm', 'Please select a local origin from the table above.'); return; }
+  if (!selectedOrigin) { showErr('err_nno_utm', 'Please select a local origin from the dropdown above.'); return; }
   const lN = parseFloat(document.getElementById('nno_n').value);
   const lE = parseFloat(document.getElementById('nno_e').value);
   if (isNaN(lN) || isNaN(lE)) { showErr('err_nno_utm', 'Please enter valid Northing and Easting values.'); return; }
@@ -704,7 +674,7 @@ document.getElementById('btn_nno_utm').addEventListener('click', () => {
 // UTM/WGS84 → NNO local
 document.getElementById('btn_utm_nno').addEventListener('click', () => {
   hideErr('err_utm_nno');
-  if (!selectedOrigin2) { showErr('err_utm_nno', 'Please select a local origin from the table above.'); return; }
+  if (!selectedOrigin2) { showErr('err_utm_nno', 'Please select a local origin from the dropdown above.'); return; }
   const inN  = parseFloat(document.getElementById('utm_nno_n').value);
   const inE  = parseFloat(document.getElementById('utm_nno_e').value);
   if (isNaN(inN) || isNaN(inE)) { showErr('err_utm_nno', 'Please enter valid Northing and Easting values.'); return; }
