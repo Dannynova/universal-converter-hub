@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free OCR – Extract Text from Image Online | Universal Converter Hub</title>
+  <meta name="description" content="Extract text from images or scanned documents free online. Supports JPG, PNG, PDF. Copy or download as TXT or Word. No signup, no watermark, 100+ languages.">
+  <meta name="keywords" content="ocr online free, extract text from image, image to text converter, jpg to text, png to text, ocr scanner free, text extraction tool, scanned document to text">
+  <link rel="canonical" href="https://converterhub.com.ng/ocr-image-to-text.html">
+  <meta property="og:title" content="Free OCR – Extract Text from Image Online">
+  <meta property="og:description" content="Extract text from images free online. Supports 100+ languages. No signup, no watermark.">
+  <meta property="og:url" content="https://converterhub.com.ng/ocr-image-to-text.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Universal Converter Hub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free OCR Image to Text | Universal Converter Hub">
+  <meta name="twitter:description" content="Extract text from images free online. No signup required.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"OCR Image to Text","url":"https://converterhub.com.ng/ocr-image-to-text.html","description":"Free online OCR tool to extract text from images and scanned documents in 100+ languages.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I extract text from an image for free?","acceptedAnswer":{"@type":"Answer","text":"Upload your image, choose the language of the text, then click Extract Text. The recognized text appears in a box where you can copy it or download as TXT or Word."}},{"@type":"Question","name":"What image formats are supported for OCR?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG and WebP images are supported. For best accuracy, use clear, well-lit images with readable text."}},{"@type":"Question","name":"What languages does the OCR tool support?","acceptedAnswer":{"@type":"Answer","text":"The tool supports over 100 languages including English, Spanish, French, German, Arabic, Chinese and more."}},{"@type":"Question","name":"Is the OCR tool free with no signup?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no registration, watermark or hidden fees."}},{"@type":"Question","name":"Is my image uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Text extraction happens entirely in your browser using Tesseract.js. Your image is never uploaded anywhere."}},{"@type":"Question","name":"How accurate is the text extraction?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends on image quality. Clear, high-resolution images with good contrast typically achieve 95%+ accuracy. Blurry or low-contrast images may have more errors."}}]}
+  </script>
+  <style>
+    .hero-text{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);border-radius:32px;padding:2rem;margin:2rem 0;text-align:center;border:1px solid var(--border-light)}
+    .hero-text h1{font-size:2rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0}
+    .feature-card{background:var(--bg-card);border-radius:20px;padding:1.5rem;text-align:center;border:1px solid var(--border-light)}
+    .feature-card i{font-size:2.2rem;color:var(--accent);margin-bottom:1rem}
+    .how-to-steps{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin:2rem 0}
+    .step{background:var(--bg-card);border-radius:20px;padding:1.2rem;text-align:center;width:180px;border:1px solid var(--border-light)}
+    .step-number{background:var(--accent);color:white;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.8rem}
+    .feature-table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--bg-card);border-radius:16px;overflow:hidden}
+    .feature-table th,.feature-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border-light)}
+    .feature-table th{background:var(--accent);color:white;font-weight:600}
+    .feature-table tr:last-child td{border-bottom:none}
+    .related-tools{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:1.5rem 0}
+    .tool-card{background:var(--bg-card);border-radius:40px;padding:.6rem 1.5rem;text-decoration:none;color:var(--text-primary);border:1px solid var(--border-light);transition:all .2s}
+    .tool-card:hover{background:var(--accent);color:white}
+    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
+    .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
+    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
+    .faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+    .faq-question:hover{color:var(--accent)}
+    .faq-question .icon{font-size:1.2rem;transition:transform .2s}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;padding:0;color:var(--text-secondary);line-height:1.6}
+    .faq-answer p{padding-bottom:1rem}
+    .faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
+    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
+    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s}
+    .feedback-btn:hover{transform:scale(1.05)}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
+    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
+    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary)}
+    .modal-close:hover{color:var(--accent)}
+    .modal iframe{width:100%;height:500px;border:none;border-radius:12px}
+    .ad-show-desktop{display:block}.ad-show-mobile{display:none}
+    @media(max-width:768px){.ad-show-desktop{display:none}.ad-show-mobile{display:block}}
+
+    /* ===== OCR TOOL ===== */
+    .ocr-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    @media(max-width:800px){.ocr-layout{grid-template-columns:1fr}}
+    .ocr-preview-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--border-light);background:var(--bg-secondary);min-height:240px;display:flex;align-items:center;justify-content:center}
+    .ocr-preview-wrap img{max-width:100%;max-height:380px;display:block}
+    .form-group{margin-bottom:1rem}
+    .form-group label{display:block;font-size:.83rem;font-weight:600;color:var(--text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.03em}
+    .form-control{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border-light);border-radius:10px;font-size:.92rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary)}
+    .form-control:focus{outline:none;border-color:var(--accent)}
+    .ocr-textarea{width:100%;min-height:300px;padding:.9rem;border:1.5px solid var(--border-light);border-radius:12px;font-size:.92rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary);resize:vertical;line-height:1.6}
+    .ocr-textarea:focus{outline:none;border-color:var(--accent)}
+    .ocr-dl-row{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap}
+    .ocr-dl-btn{flex:1;min-width:120px;padding:.65rem;border-radius:10px;border:none;font-weight:700;font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:opacity .15s}
+    .ocr-dl-btn:hover{opacity:.88}
+    .ocr-copy{background:#2563eb;color:#fff}
+    .ocr-txt{background:#6b7280;color:#fff}
+    .ocr-word{background:#1d4ed8;color:#fff}
+    .prog-wrap{display:none;margin:.8rem 0}
+    .prog-wrap.show{display:block}
+    .prog-track{height:6px;background:var(--border-light);border-radius:3px;overflow:hidden;margin-bottom:5px}
+    .prog-bar{height:100%;background:var(--accent);border-radius:3px;width:0%;transition:width .3s ease}
+    .prog-text{font-size:.83rem;color:var(--text-secondary);text-align:center}
+    .word-count{font-size:.78rem;color:var(--text-secondary);margin-top:.4rem;text-align:right}
+  </style>
+</head>
+<body>
+
+<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h3>Help us improve</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html" aria-label="Universal Converter Hub home">
+        <div class="logo-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
+            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
+            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
+      </a>
+    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
+      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
+    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
+    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
+    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
+    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
+    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
+    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
+    <a href="ocr-image-to-text.html" class="nav-btn active">&#128270; OCR Image to Text</a>
+    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
+    <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
+    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
+    <a href="password-generator.html" class="nav-btn">&#128274; Password</a>
+    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
+    <a href="unit-converter.html" class="nav-btn">&#128207; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127774; Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">&#128506; DWG&#8594;KMZ</a>
+    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+    <a href="coordinate-converter.html" class="nav-btn">&#127757; Coordinates</a>
+    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128247; YouTube Thumbnail</a>
+  </div>
+
+  <div class="ad-universal"><div class="ad-show-desktop"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-show-mobile"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div></div>
+
+  <div class="hero-text">
+    <h1>Free OCR &#8211; Extract Text from Image Online</h1>
+    <p>Extract text from <strong>photos, screenshots and scanned documents</strong> instantly. Supports over <strong>100 languages</strong>. Copy the text or download as TXT or Word &#8212; free, no signup, no watermark.</p>
+    <p>Everything runs <strong>entirely in your browser</strong> &#8212; your images are never uploaded to any server.</p>
+  </div>
+
+  <!-- TOOL CARD -->
+  <div class="card">
+    <input type="file" id="ocrFileInput" accept=".jpg,.jpeg,.png,.webp" style="display:none;">
+    <div class="drop-zone" id="ocrDrop">
+      &#128270; Drop an image here or click to upload
+    </div>
+
+    <div class="ocr-layout" id="ocrLayoutWrap" style="display:none;margin-top:1rem;">
+      <div>
+        <div class="ocr-preview-wrap">
+          <img id="ocrPreviewImg" alt="Uploaded image">
+        </div>
+        <div class="form-group" style="margin-top:1rem;">
+          <label>Text Language</label>
+          <select class="form-control" id="ocrLanguage">
+            <option value="eng">English</option>
+            <option value="fra">French</option>
+            <option value="spa">Spanish</option>
+            <option value="deu">German</option>
+            <option value="por">Portuguese</option>
+            <option value="ita">Italian</option>
+            <option value="ara">Arabic</option>
+            <option value="chi_sim">Chinese (Simplified)</option>
+            <option value="rus">Russian</option>
+            <option value="hin">Hindi</option>
+            <option value="yor">Yoruba</option>
+            <option value="hau">Hausa</option>
+          </select>
+        </div>
+        <button class="btn" id="extractBtn"><i class="fas fa-magic"></i> Extract Text</button>
+        <div class="prog-wrap" id="ocrProgWrap">
+          <div class="prog-track"><div class="prog-bar" id="ocrProgBar"></div></div>
+          <div class="prog-text" id="ocrProgText">Processing...</div>
+        </div>
+      </div>
+      <div>
+        <label style="display:block;font-size:.83rem;font-weight:600;color:var(--text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.03em;">Extracted Text</label>
+        <textarea class="ocr-textarea" id="ocrOutput" placeholder="Extracted text will appear here..."></textarea>
+        <div class="word-count" id="ocrWordCount">0 words</div>
+        <div class="ocr-dl-row">
+          <button class="ocr-dl-btn ocr-copy" id="copyTextBtn"><i class="fas fa-copy"></i> Copy</button>
+          <button class="ocr-dl-btn ocr-txt" id="dlTxtBtn"><i class="fas fa-file-alt"></i> TXT</button>
+          <button class="ocr-dl-btn ocr-word" id="dlDocBtn"><i class="fas fa-file-word"></i> Word</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-area" id="ocrResult"></div>
+
+    <p style="margin-top:1rem;font-size:.85rem;color:var(--text-secondary);">
+      &#10003; 100% private &#8212; processed in your browser &nbsp;&#183;&nbsp;
+      &#10003; No watermarks &nbsp;&#183;&nbsp;
+      &#10003; Free forever
+    </p>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <h2>How to Extract Text from an Image</h2>
+  <div class="how-to-steps">
+    <div class="step"><div class="step-number">1</div><i class="fas fa-upload"></i><p>Upload your image or screenshot</p></div>
+    <div class="step"><div class="step-number">2</div><i class="fas fa-language"></i><p>Choose the text language</p></div>
+    <div class="step"><div class="step-number">3</div><i class="fas fa-magic"></i><p>Click "Extract Text"</p></div>
+    <div class="step"><div class="step-number">4</div><i class="fas fa-copy"></i><p>Copy or download the result</p></div>
+  </div>
+
+  <div class="ad-universal" style="border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
+    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
+  </div>
+
+  <h2>Features</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><i class="fas fa-language"></i><h3>100+ Languages</h3><p>Extract text in English, Spanish, French, Arabic, Chinese, Yoruba, Hausa and many more.</p></div>
+    <div class="feature-card"><i class="fas fa-file-export"></i><h3>Multiple Export Options</h3><p>Copy to clipboard, download as plain TXT, or export as an editable Word document.</p></div>
+    <div class="feature-card"><i class="fas fa-bolt"></i><h3>Fast &amp; Accurate</h3><p>Powered by Tesseract OCR engine, the same technology used by Google Docs OCR.</p></div>
+    <div class="feature-card"><i class="fas fa-lock"></i><h3>100% Private</h3><p>Your images are never uploaded. All text recognition happens in your browser.</p></div>
+  </div>
+
+  <h2>Who Can Use This Tool?</h2>
+  <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+    <div class="feature-card"><i class="fas fa-graduation-cap"></i><h3>Students</h3><p>Digitize textbook pages and notes</p></div>
+    <div class="feature-card"><i class="fas fa-briefcase"></i><h3>Professionals</h3><p>Extract text from scanned contracts</p></div>
+    <div class="feature-card"><i class="fas fa-book"></i><h3>Researchers</h3><p>Convert printed sources to editable text</p></div>
+    <div class="feature-card"><i class="fas fa-camera"></i><h3>Anyone</h3><p>Copy text from a photo or screenshot</p></div>
+    <div class="feature-card"><i class="fas fa-globe"></i><h3>Everyone</h3><p>Free, fast, no signup</p></div>
+  </div>
+
+  <h2>What Our OCR Tool Offers</h2>
+  <table class="feature-table">
+    <thead><tr><th>Feature</th><th>Available</th></tr></thead>
+    <tbody>
+      <tr><td>Supports 100+ languages</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Works with JPG, PNG and WebP</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Copy text with one click</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Download as TXT or Word</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Editable result before exporting</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>100% private &#8212; browser only</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+      <tr><td>Free, no registration</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Related Tools</h2>
+  <div class="related-tools">
+    <a href="pdf-to-word.html" class="tool-card">&#128196; PDF to Word</a>
+    <a href="image-to-pdf.html" class="tool-card">&#128247; Image to PDF</a>
+    <a href="word-to-pdf.html" class="tool-card">&#128221; Word to PDF</a>
+    <a href="language-translator.html" class="tool-card">&#127760; Translator</a>
+    <a href="text-to-speech.html" class="tool-card">&#128266; Text to Speech</a>
+  </div>
+
+  <section class="faq-accordion">
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>How do I extract text from an image for free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Upload your image, choose the language of the text, then click <strong>Extract Text</strong>. The recognized text appears in a box where you can copy it or download as TXT or Word.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>What image formats are supported for OCR?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>JPG, PNG and WebP images are supported. For best accuracy, use clear, well-lit images with readable text.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>What languages does the OCR tool support?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>The tool supports over 100 languages including English, Spanish, French, German, Arabic, Chinese, Yoruba, Hausa and more.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is the OCR tool free with no signup?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Yes, completely free with no registration, watermark or hidden fees.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>Is my image uploaded to a server?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>No. Text extraction happens entirely in your browser using Tesseract.js. Your image is never uploaded anywhere.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false"><span>How accurate is the text extraction?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
+      <div class="faq-answer"><p>Accuracy depends on image quality. Clear, high-resolution images with good contrast typically achieve 95%+ accuracy. Blurry or low-contrast images may have more errors.</p></div>
+    </div>
+    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
+  </section>
+
+  <div style="text-align:center;margin:2rem 0;">
+    <p><strong>Extract Text from Images Anytime, Anywhere</strong><br>
+    Our free online OCR tool is used daily by students, professionals and researchers across the United States, United Kingdom, Canada, Australia, Nigeria and beyond. Whether you need to digitize a textbook page, extract text from a screenshot, or convert a scanned document &#8212; this tool does it instantly, completely free, with no software installation required.</p>
+  </div>
+
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+
+  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
+</div>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script src="js/common.js"></script>
+<!-- Tesseract.js: OCR engine that runs entirely in the browser -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.4/dist/tesseract.min.js"></script>
+<!-- docx library for Word export -->
+<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
+
+<script>
+  // ── FAQ ─────────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const button = item.querySelector('.faq-question');
+    const iconSpan = button.querySelector('.icon i');
+    button.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      if (!isActive) {
+        item.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus');
+      } else {
+        item.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+        iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus');
+      }
+    });
+  });
+
+  // ── MODAL ───────────────────────────────────────────────────────────
+  const modal = document.getElementById('feedbackModal');
+  function openModal() { modal.style.display = 'flex'; }
+  document.getElementById('feedbackBtn').addEventListener('click', openModal);
+  document.getElementById('supportLink').addEventListener('click', openModal);
+  document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+  // ── FILE UPLOAD ─────────────────────────────────────────────────────
+  const ocrFileInput = document.getElementById('ocrFileInput');
+  const ocrDrop = document.getElementById('ocrDrop');
+  let currentFile = null;
+
+  ocrDrop.addEventListener('click', () => ocrFileInput.click());
+  ocrDrop.addEventListener('dragover', e => e.preventDefault());
+  ocrDrop.addEventListener('drop', e => {
+    e.preventDefault();
+    if (e.dataTransfer.files[0]) handleOcrFile(e.dataTransfer.files[0]);
+  });
+  ocrFileInput.addEventListener('change', () => {
+    if (ocrFileInput.files[0]) handleOcrFile(ocrFileInput.files[0]);
+    ocrFileInput.value = '';
+  });
+
+  function handleOcrFile(file) {
+    if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
+      document.getElementById('ocrResult').innerText = 'Please upload a JPG, PNG or WebP image.';
+      return;
+    }
+    if (file.size > 20971520) {
+      document.getElementById('ocrResult').innerText = 'File too large. Maximum size is 20MB.';
+      return;
+    }
+    currentFile = file;
+    document.getElementById('ocrResult').innerText = '';
+    document.getElementById('ocrOutput').value = '';
+    updateWordCount();
+
+    const url = URL.createObjectURL(file);
+    document.getElementById('ocrPreviewImg').src = url;
+    document.getElementById('ocrLayoutWrap').style.display = '';
+  }
+
+  // ── EXTRACT TEXT (Tesseract.js) ───────────────────────────────────────
+  function showProg(on, text) {
+    document.getElementById('ocrProgWrap').classList.toggle('show', on);
+    if (text) document.getElementById('ocrProgText').textContent = text;
+  }
+  function setProg(pct) { document.getElementById('ocrProgBar').style.width = pct + '%'; }
+
+  document.getElementById('extractBtn').addEventListener('click', async () => {
+    if (!currentFile) return;
+    if (typeof Tesseract === 'undefined') {
+      document.getElementById('ocrResult').innerText = 'OCR library still loading. Please wait a moment and try again.';
+      return;
+    }
+    document.getElementById('ocrResult').innerText = '';
+    const lang = document.getElementById('ocrLanguage').value;
+    showProg(true, 'Loading OCR engine...');
+    setProg(5);
+
+    try {
+      const result = await Tesseract.recognize(currentFile, lang, {
+        logger: m => {
+          if (m.status === 'recognizing text') {
+            const pct = Math.round(m.progress * 100);
+            setProg(pct);
+            showProg(true, 'Recognizing text... ' + pct + '%');
+          } else if (m.status) {
+            showProg(true, m.status.charAt(0).toUpperCase() + m.status.slice(1) + '...');
+          }
+        }
+      });
+
+      const text = result.data.text.trim();
+      document.getElementById('ocrOutput').value = text;
+      updateWordCount();
+      setProg(100);
+      setTimeout(() => showProg(false), 500);
+
+      if (!text) {
+        document.getElementById('ocrResult').innerText = 'No text was detected. Try a clearer image or a different language.';
+      } else {
+        document.getElementById('ocrResult').innerHTML = '&#9989; Text extracted successfully!';
+      }
+    } catch (err) {
+      showProg(false);
+      document.getElementById('ocrResult').innerText = 'OCR failed: ' + (err.message || 'unknown error') + '. Please try again.';
+    }
+  });
+
+  // ── WORD COUNT ──────────────────────────────────────────────────────
+  function updateWordCount() {
+    const text = document.getElementById('ocrOutput').value.trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    document.getElementById('ocrWordCount').textContent = words + ' word' + (words === 1 ? '' : 's');
+  }
+  document.getElementById('ocrOutput').addEventListener('input', updateWordCount);
+</script>
+<script>
+  // ── COPY TO CLIPBOARD ─────────────────────────────────────────────────
+  document.getElementById('copyTextBtn').addEventListener('click', () => {
+    const text = document.getElementById('ocrOutput').value;
+    if (!text) { document.getElementById('ocrResult').innerText = 'No text to copy yet.'; return; }
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyTextBtn');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => { btn.innerHTML = original; }, 1500);
+    }).catch(() => {
+      document.getElementById('ocrResult').innerText = 'Could not copy automatically. Please select and copy manually.';
+    });
+  });
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.style.display = 'none';
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+  }
+
+  // ── DOWNLOAD TXT ────────────────────────────────────────────────────
+  document.getElementById('dlTxtBtn').addEventListener('click', () => {
+    const text = document.getElementById('ocrOutput').value;
+    if (!text) { document.getElementById('ocrResult').innerText = 'No text to download yet.'; return; }
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    downloadBlob(blob, 'extracted_text.txt');
+  });
+
+  // ── DOWNLOAD WORD ───────────────────────────────────────────────────
+  document.getElementById('dlDocBtn').addEventListener('click', async () => {
+    const text = document.getElementById('ocrOutput').value;
+    if (!text) { document.getElementById('ocrResult').innerText = 'No text to download yet.'; return; }
+    if (typeof docx === 'undefined') {
+      document.getElementById('ocrResult').innerText = 'Word export library still loading. Please wait a moment and try again.';
+      return;
+    }
+    try {
+      const { Document, Packer, Paragraph, TextRun } = docx;
+      const paragraphs = text.split(/\n+/).filter(Boolean).map(line =>
+        new Paragraph({ children: [new TextRun({ text: line, size: 22 })], spacing: { after: 120 } })
+      );
+      const doc = new Document({ sections: [{ properties: {}, children: paragraphs }] });
+      const blob = await Packer.toBlob(doc);
+      downloadBlob(blob, 'extracted_text.docx');
+    } catch (err) {
+      document.getElementById('ocrResult').innerText = 'Word export failed: ' + (err.message || 'unknown error');
+    }
+  });
+</script>
+</body>
+</html>
