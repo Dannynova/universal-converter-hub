@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // ── APP DETECTION ─────────────────────────────────────────
+    // True only when this page is loaded inside the ConverterHub
+    // mobile app (identified by its custom User-Agent). Lets us
+    // skip Adsterra ad scripts inside the app, since some of its
+    // lower-tier formats can serve deceptive/scam ads that risk
+    // Play Store rejection. Normal website visitors are completely
+    // unaffected — this only activates inside the app itself.
+    function isConverterHubApp() {
+      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
+    }
+    function loadAdIfNotInApp(loadAdFn) {
+      if (isConverterHubApp()) return;
+      loadAdFn();
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Word to PDF Converter – Convert DOCX to PDF Online | Universal Converter Hub</title>
@@ -222,7 +239,21 @@
   </div>
 
   <!-- Top Ad Banner — identical placement to pdf-to-word.html -->
-  <div class="ad-universal"><div class="ad-show-desktop"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-show-mobile"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div></div>
+  <div class="ad-universal"><div class="ad-show-desktop"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div><div class="ad-show-mobile"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div></div>
 
   <!-- Hero Text (SEO) — identical structure to pdf-to-word.html -->
   <div class="hero-text">
@@ -352,7 +383,14 @@
   </div>
 
   <!-- Bottom Ad Banner — identical placement to pdf-to-word.html -->
-  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  <div class="ad-universal"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div>
 
   <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
 </div>
@@ -361,7 +399,13 @@
 <iframe id="printFrame" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;border:none;" title="print"></iframe>
 
 <!-- Social bar — identical placement to pdf-to-word.html -->
-<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script>
+loadAdIfNotInApp(function() {
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
+  document.body.appendChild(s);
+});
+</script>
 
 <!-- common.js — identical to pdf-to-word.html -->
 <script src="js/common.js"></script>
@@ -556,6 +600,12 @@
     return (b / 1048576).toFixed(1) + ' MB';
   }
 </script>
-<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+<script>
+loadAdIfNotInApp(function() {
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
+  document.body.appendChild(s);
+});
+</script>
 </body>
 </html>

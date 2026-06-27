@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // ── APP DETECTION ─────────────────────────────────────────
+    // True only when this page is loaded inside the ConverterHub
+    // mobile app (identified by its custom User-Agent). Lets us
+    // skip Adsterra ad scripts inside the app, since some of its
+    // lower-tier formats can serve deceptive/scam ads that risk
+    // Play Store rejection. Normal website visitors are completely
+    // unaffected — this only activates inside the app itself.
+    function isConverterHubApp() {
+      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
+    }
+    function loadAdIfNotInApp(loadAdFn) {
+      if (isConverterHubApp()) return;
+      loadAdFn();
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy – Universal Converter Hub</title>

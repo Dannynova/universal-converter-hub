@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // ── APP DETECTION ─────────────────────────────────────────
+    // True only when this page is loaded inside the ConverterHub
+    // mobile app (identified by its custom User-Agent). Lets us
+    // skip Adsterra ad scripts inside the app, since some of its
+    // lower-tier formats can serve deceptive/scam ads that risk
+    // Play Store rejection. Normal website visitors are completely
+    // unaffected — this only activates inside the app itself.
+    function isConverterHubApp() {
+      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
+    }
+    function loadAdIfNotInApp(loadAdFn) {
+      if (isConverterHubApp()) return;
+      loadAdFn();
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free QR Code Generator – Create Custom QR Codes Online | Universal Converter Hub</title>
@@ -113,7 +130,21 @@
       <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
       <a href="youtube-thumbnail-downloader.html" class="nav-btn">📸 YouTube Thumbnail</a>
   </div>
-  <div class="ad-universal"><div class="ad-show-desktop"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div><div class="ad-show-mobile"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div></div>
+  <div class="ad-universal"><div class="ad-show-desktop"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div><div class="ad-show-mobile"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div></div>
   <h2 class="section-title">QR Code Generator – Free & Instant</h2>
   <div class="card">
     <div class="input-group"><input type="text" id="qrText" placeholder="Enter text or URL" value="https://converterhub.com.ng" class="format-select"></div>
@@ -131,10 +162,23 @@
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I use the QR code commercially?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes. All generated QR codes are free to use for any purpose, personal or commercial.</p></div></div>
     <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
   </section>
-  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
+  <div class="ad-universal"><script>
+loadAdIfNotInApp(function() {
+  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+});
+</script></div>
   <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
 </div>
-<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
+<script>
+loadAdIfNotInApp(function() {
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
+  document.body.appendChild(s);
+});
+</script>
 <script src="js/common.js"></script>
 <script>
   // Accordion functionality
@@ -149,6 +193,12 @@
   document.getElementById('downloadQrBtn').addEventListener('click', () => { const canvas = document.querySelector('#qrcode canvas'); if (canvas) { const link = document.createElement('a'); link.download = 'qrcode.png'; link.href = canvas.toDataURL(); link.click(); } else { alert('Generate a QR code first.'); } });
   generateQR();
 </script>
-<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
+<script>
+loadAdIfNotInApp(function() {
+  var s = document.createElement('script');
+  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
+  document.body.appendChild(s);
+});
+</script>
 </body>
 </html>

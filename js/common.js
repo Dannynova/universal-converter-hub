@@ -1,3 +1,9 @@
+// NOTE: isConverterHubApp(), loadAdIfNotInApp(), and hideInApp() now
+// live in a tiny inline <script> in each page's <head> instead of
+// here — this guarantees they're defined before any ad script runs
+// anywhere on the page, including ones placed above where common.js
+// loads. See the app-detect snippet added near the top of <head>.
+
 // Dark mode
 const darkToggle = document.getElementById('darkToggle');
 if (darkToggle) {
