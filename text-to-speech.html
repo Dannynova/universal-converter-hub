@@ -206,7 +206,7 @@
     <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
     <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
     <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-editor.html"        class="nav-btn">🎨 Image Editor</a>
+    <a href="image-converter.html"        class="nav-btn">🎨 Image Converter</a>
     <a href="image-compressor.html"    class="nav-btn">🗜️ Image Compressor</a>
     <a href="qr-code-generator.html"   class="nav-btn">📱 QR Code</a>
     <a href="password-generator.html"  class="nav-btn">🔐 Password</a>
@@ -506,20 +506,54 @@ loadAdIfNotInApp(function() {
   var synth  = window.speechSynthesis;
   var voices = [];
   var voiceSelect = document.getElementById('voiceSelect');
+  var voiceLoadAttempts = 0;
 
   function loadVoices() {
-    voices = synth.getVoices();
+    if (!synth) {
+      voiceSelect.innerHTML = '<option value="">Speech is not supported in this WebView</option>';
+      voiceSelect.disabled = true;
+      return;
+    }
+
+    voices = synth.getVoices() || [];
     voiceSelect.innerHTML = '';
+
+    var defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = voices.length ? 'Default system voice' : 'Loading voices...';
+    voiceSelect.appendChild(defaultOption);
+
     voices.forEach(function(voice) {
       var option = document.createElement('option');
       option.value = voice.name;
       option.textContent = voice.name + ' (' + voice.lang + ')';
       voiceSelect.appendChild(option);
     });
+
+    if (voices.length) {
+      var preferred = voices.find(function(v) { return /^en(-|_)?/i.test(v.lang) && v.default; }) ||
+        voices.find(function(v) { return /^en(-|_)?/i.test(v.lang); }) ||
+        voices.find(function(v) { return v.default; });
+      if (preferred) voiceSelect.value = preferred.name;
+      setStatus('', '');
+      return;
+    }
+
+    voiceLoadAttempts += 1;
+    if (voiceLoadAttempts < 12) {
+      setTimeout(loadVoices, voiceLoadAttempts < 4 ? 250 : 700);
+    } else {
+      defaultOption.textContent = 'Default system voice';
+      setStatus('No named voices were reported by this browser, so the default system voice will be used.', 'info');
+    }
   }
 
   if (synth) {
-    synth.onvoiceschanged = loadVoices;
+    synth.addEventListener ? synth.addEventListener('voiceschanged', loadVoices) : (synth.onvoiceschanged = loadVoices);
+    loadVoices();
+    setTimeout(loadVoices, 500);
+    setTimeout(loadVoices, 1500);
+  } else {
     loadVoices();
   }
 
@@ -570,8 +604,12 @@ loadAdIfNotInApp(function() {
   }
 
   /* Speak — original logic + progress bar */
-  document.getElementById('speakBtn').addEventListener('click', speakText);
   function speakText() {
+    if (!synth || !window.SpeechSynthesisUtterance) {
+      setStatus('Speech is not supported in this browser or WebView.', 'error');
+      return;
+    }
+    loadVoices();
     var text = document.getElementById('ttsText').value;
     if (!text.trim()) {
       document.getElementById('ttsResult') && (document.getElementById('ttsResult').innerText = 'Please enter text.');
@@ -602,19 +640,20 @@ loadAdIfNotInApp(function() {
       resetBtns();
     };
 
-    synth.speak(utterance);
+    synth.cancel();
+    setTimeout(function() { synth.speak(utterance); }, 80);
   }
 
   /* Stop — original logic */
-  document.getElementById('stopBtn').addEventListener('click', stopText);
   function stopText() {
+    if (!synth) return;
     synth.cancel();
     resetBtns();
   }
 
   /* Pause / Resume */
-  document.getElementById('pauseBtn').addEventListener('click', pauseText);
   function pauseText() {
+    if (!synth) return;
     if (!isPaused) {
       synth.pause();
       isPaused = true;
@@ -629,8 +668,12 @@ loadAdIfNotInApp(function() {
   }
 
   /* Download MP3 */
-  document.getElementById('dlBtn').addEventListener('click', downloadMP3);
   function downloadMP3() {
+    if (!synth || !window.SpeechSynthesisUtterance) {
+      setStatus('Speech is not supported in this browser or WebView.', 'error');
+      return;
+    }
+    loadVoices();
     var text = document.getElementById('ttsText').value.trim();
     if (!text) { setStatus('Please enter some text first.', 'error'); return; }
     if (!window.MediaRecorder) {

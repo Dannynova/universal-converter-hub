@@ -36,8 +36,8 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question","name": "Is there a character limit for translation?","acceptedAnswer": {"@type": "Answer","text": "No. Our translator uses Lingva API which has no character limit. You can translate entire paragraphs or documents."}},
-      {"@type": "Question","name": "How accurate is the translation?","acceptedAnswer": {"@type": "Answer","text": "The translation is powered by Google Translate (via Lingva), so it is as accurate as Google Translate itself."}},
+      {"@type": "Question","name": "Is there a character limit for translation?","acceptedAnswer": {"@type": "Answer","text": "The translator supports normal text and paragraphs. Very long documents should be split into smaller sections for the most reliable results."}},
+      {"@type": "Question","name": "How accurate is the translation?","acceptedAnswer": {"@type": "Answer","text": "The translator uses public translation services and automatically tries fallback services if one is unavailable."}},
       {"@type": "Question","name": "How many languages are supported?","acceptedAnswer": {"@type": "Answer","text": "Over 100 languages, including English, Spanish, French, German, Chinese, Arabic, Hindi, Yoruba, Igbo, Hausa and many more."}},
       {"@type": "Question","name": "Is the translator free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration, no hidden fees."}},
       {"@type": "Question","name": "Do you store my translated text?","acceptedAnswer": {"@type": "Answer","text": "No. We do not store any of your text. The translation is processed on the fly and not saved."}}
@@ -108,7 +108,7 @@
     <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
     <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
     <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-editor.html" class="nav-btn">🎨 Image Editor</a>
+    <a href="image-converter.html" class="nav-btn">🎨 Image Converter</a>
     <a href="image-compressor.html" class="nav-btn">🗜️ Image Compressor</a>
     <a href="file-compressor.html" class="nav-btn active">&#128230; File Compressor</a>
     <a href="qr-code-generator.html" class="nav-btn">📱 QR Code</a>
@@ -141,7 +141,7 @@ loadAdIfNotInApp(function() {
 </script></div></div>
   <h2 class="section-title">Language Translator – Unlimited Text, 100+ Languages</h2>
   <div class="card">
-    <textarea id="sourceText" rows="4" class="format-select" placeholder="Enter text to translate (no length limit)...">Hello, how are you? I love using this tool because it can translate very long paragraphs without any character limit.</textarea>
+    <textarea id="sourceText" rows="4" class="format-select" placeholder="Enter text to translate...">Hello, how are you? I love using this tool because it can translate full paragraphs quickly.</textarea>
     <div class="input-group">
       <select id="sourceLang" class="format-select"></select>
       <i class="fas fa-arrow-right" style="align-self:center;"></i>
@@ -152,8 +152,8 @@ loadAdIfNotInApp(function() {
   </div>
   <section class="faq-accordion">
     <h3>Frequently Asked Questions</h3>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a character limit for translation?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>No. Our translator uses Lingva API which has no character limit. You can translate entire paragraphs or documents.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How accurate is the translation?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>The translation is powered by Google Translate (via Lingva), so it is as accurate as Google Translate itself.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a character limit for translation?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>The translator supports normal text and paragraphs. Very long documents should be split into smaller sections for the most reliable results.</p></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How accurate is the translation?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>The translator uses public translation services and automatically tries fallback services if one is unavailable.</p></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How many languages are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Over 100 languages, including English, Spanish, French, German, Chinese, Arabic, Hindi, Yoruba, Igbo, Hausa and many more.</p></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the translator free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration, no hidden fees.</p></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Do you store my translated text?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>No. We do not store any of your text. The translation is processed on the fly and not saved.</p></div></div>
@@ -183,7 +183,7 @@ loadAdIfNotInApp(function() {
   faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
   // Modal logic
   const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-  // Language Translator logic (Lingva API, unlimited)
+  // Language Translator logic with multiple public fallbacks.
   const languages = [
     {code:"en",name:"English"},{code:"es",name:"Spanish"},{code:"fr",name:"French"},{code:"de",name:"German"},
     {code:"it",name:"Italian"},{code:"pt",name:"Portuguese"},{code:"ru",name:"Russian"},{code:"zh",name:"Chinese"},
@@ -203,24 +203,89 @@ loadAdIfNotInApp(function() {
   });
   sourceLang.value = 'en';
   targetLang.value = 'es';
+  function setTranslationResult(label, text) {
+    const resultDiv = document.getElementById('translationResult');
+    resultDiv.innerHTML = '';
+    if (label) {
+      const strong = document.createElement('strong');
+      strong.textContent = label;
+      resultDiv.appendChild(strong);
+      resultDiv.appendChild(document.createElement('br'));
+    }
+    const body = document.createElement('div');
+    body.style.whiteSpace = 'pre-wrap';
+    body.textContent = text;
+    resultDiv.appendChild(body);
+  }
+
+  async function fetchWithTimeout(url, options = {}, timeoutMs = 12000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {...options, signal: controller.signal});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function translateWithMyMemory(text, source, target) {
+    const url = 'https://api.mymemory.translated.net/get?q=' +
+      encodeURIComponent(text) + '&langpair=' + encodeURIComponent(source + '|' + target);
+    const response = await fetchWithTimeout(url);
+    const data = await response.json();
+    const translated = data && data.responseData && data.responseData.translatedText;
+    if (!translated) throw new Error('MyMemory returned no translation');
+    return translated;
+  }
+
+  async function translateWithLingva(text, source, target) {
+    const bases = [
+      'https://lingva.ml/api/v1',
+      'https://lingva.lunar.icu/api/v1',
+      'https://translate.plausibility.cloud/api/v1'
+    ];
+    let lastError = null;
+    for (const base of bases) {
+      try {
+        const url = `${base}/${source}/${target}/${encodeURIComponent(text)}`;
+        const response = await fetchWithTimeout(url);
+        const data = await response.json();
+        if (data && data.translation) return data.translation;
+        throw new Error('Lingva returned no translation');
+      } catch (err) {
+        lastError = err;
+      }
+    }
+    throw lastError || new Error('Lingva failed');
+  }
+
+  async function translateText(text, source, target) {
+    if (source === target) return text;
+    try {
+      return await translateWithMyMemory(text, source, target);
+    } catch (err) {
+      return await translateWithLingva(text, source, target);
+    }
+  }
+
   document.getElementById('translateBtn').addEventListener('click', async () => {
     const text = document.getElementById('sourceText').value.trim();
-    if (!text) { document.getElementById('translationResult').innerHTML = 'Please enter text.'; return; }
+    if (!text) { setTranslationResult('', 'Please enter text.'); return; }
     const source = sourceLang.value;
     const target = targetLang.value;
     const resultDiv = document.getElementById('translationResult');
-    resultDiv.innerHTML = 'Translating... (no length limit)';
+    const btn = document.getElementById('translateBtn');
+    resultDiv.textContent = 'Translating...';
+    btn.disabled = true;
     try {
-      const url = `https://lingva.ml/api/v1/${source}/${target}/${encodeURIComponent(text)}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data && data.translation) {
-        resultDiv.innerHTML = `<strong>Translation:</strong><br>${data.translation}`;
-      } else {
-        resultDiv.innerHTML = 'Translation failed. Please try again.';
-      }
+      const translated = await translateText(text, source, target);
+      setTranslationResult('Translation:', translated);
     } catch (err) {
-      resultDiv.innerHTML = 'Error connecting to translation service.';
+      setTranslationResult('', 'Translation service is unavailable right now. Please check your internet connection and try again.');
+    } finally {
+      btn.disabled = false;
     }
   });
 </script>
