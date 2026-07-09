@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Word to PDF Converter – Convert DOCX to PDF Online | Universal Converter Hub</title>
@@ -212,48 +195,36 @@
   </div>
 
   <!-- Navigation — identical to pdf-to-word.html -->
-  <div class="nav-links">
+    <div class="nav-links" aria-label="Main navigation">
     <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
     <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
     <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
     <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn active">&#128195; PDF Merge &amp; Split</a>
+    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
     <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
     <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
     <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
-    <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
+    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
+    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
     <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
     <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128274; Password</a>
+    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
     <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
     <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
     <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
     <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128207; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127774; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506; DWG&#8594;KMZ</a>
+    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
+    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
     <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
     <a href="word-to-pdf.html" class="nav-btn active">&#128221; Word to PDF</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128247; YouTube Thumbnail</a>
   </div>
 
   <!-- Top Ad Banner — identical placement to pdf-to-word.html -->
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
+  <div class="ad-universal"><script>atOptions={'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js"></script></div>
 
   <!-- Hero Text (SEO) — identical structure to pdf-to-word.html -->
   <div class="hero-text">
@@ -383,29 +354,16 @@ loadAdIfNotInApp(function() {
   </div>
 
   <!-- Bottom Ad Banner — identical placement to pdf-to-word.html -->
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+  <div class="ad-universal"><script>atOptions={'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js"></script></div>
 
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
+  <footer>&#169; 2025 Universal Converter Hub &#8211; All tools are free. Ads help us improve.</footer>
 </div>
 
 <!-- Hidden print iframe -->
 <iframe id="printFrame" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;border:none;" title="print"></iframe>
 
 <!-- Social bar — identical placement to pdf-to-word.html -->
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
+<script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
 
 <!-- common.js — identical to pdf-to-word.html -->
 <script src="js/common.js"></script>
@@ -566,6 +524,24 @@ loadAdIfNotInApp(function() {
       + container.innerHTML
       + '</body></html>';
 
+    if (typeof isConverterHubApp === 'function' && isConverterHubApp()) {
+      const bridge = window.ConverterHubApp || window.AndroidDownloader || window.Android || window.NativeDownloader;
+      if (bridge && typeof bridge.printHtml === 'function') {
+        bridge.printHtml(name + '.pdf', printDoc);
+        if (window.showDownloadNotice) showDownloadNotice('Opening Android PDF save dialog...', 'info');
+        document.getElementById('wordResult').innerHTML =
+          '&#128197; Opening Android PDF save dialog. Choose Save as PDF to finish.';
+        return;
+      }
+
+      if (window.showDownloadNotice) {
+        showDownloadNotice('Conversion is ready, but this app needs native print support to save Word as PDF.', 'error');
+      }
+      document.getElementById('wordResult').innerHTML =
+        '&#9888;&#65039; Conversion is ready, but Android WebView cannot open the PDF print/save dialog by itself. Please add native print support in the app, or open this tool in Chrome and tap Save as PDF.';
+      return;
+    }
+
     const printFrame = document.getElementById('printFrame');
     printFrame.srcdoc = printDoc;
     printFrame.onload = () => {
@@ -600,12 +576,6 @@ loadAdIfNotInApp(function() {
     return (b / 1048576).toFixed(1) + ' MB';
   }
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
+<script src="https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js"></script>
 </body>
 </html>
