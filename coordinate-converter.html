@@ -72,6 +72,10 @@
     .form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
     .form-control{width:100%;padding:.7rem 1rem;border:1.5px solid var(--border-light);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary);transition:border-color .2s}
     .form-control:focus{outline:none;border-color:var(--accent)}
+    .numeric-input-wrap{position:relative;display:flex;align-items:center}
+    .numeric-input-wrap .form-control{padding-right:3.4rem}
+    .numeric-sign-btn{position:absolute;right:.45rem;top:50%;transform:translateY(-50%);border:none;background:rgba(37,99,235,.1);color:var(--accent);font-weight:700;font-size:.85rem;line-height:1;padding:.35rem .5rem;border-radius:6px;cursor:pointer;min-width:2.35rem}
+    .numeric-sign-btn:hover{background:rgba(37,99,235,.18)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
     @media(max-width:540px){.form-row{grid-template-columns:1fr}}
     .result-panel{display:none;margin-top:1rem;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:14px;padding:1.2rem}
@@ -136,7 +140,7 @@
     <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
     <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
     <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-editor.html" class="nav-btn">&#127912; Image Editor</a>
+    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
     <a href="image-compressor.html" class="nav-btn">&#128247; Image Compressor</a>
     <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
     <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
@@ -678,6 +682,45 @@ document.querySelectorAll('.conv-tab').forEach(tab => {
 
 // ── HELPERS ───────────────────────────────────────────────────────────────
 function fmt(n, dec) { return n.toFixed(dec !== undefined ? dec : 3); }
+
+function setupSignedDecimalInputs() {
+  document.querySelectorAll('input[inputmode="decimal"]').forEach(input => {
+    if (input.dataset.signToggleBound === 'true') return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'numeric-input-wrap';
+    input.parentNode.insertBefore(wrap, input);
+    wrap.appendChild(input);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'numeric-sign-btn';
+    btn.setAttribute('aria-label', 'Toggle sign');
+    btn.title = 'Toggle sign';
+    btn.textContent = '+/-';
+    btn.addEventListener('click', () => {
+      const raw = input.value.trim();
+      if (raw === '') {
+        input.value = '-';
+        input.focus();
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        return;
+      }
+      const withoutSign = raw.replace(/^[+-]/, '');
+      input.value = raw.startsWith('-') ? withoutSign : '-' + withoutSign;
+      input.focus();
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    wrap.appendChild(btn);
+    input.setAttribute('pattern', '[-+]?[0-9]*[.,]?[0-9]*');
+    input.dataset.signToggleBound = 'true';
+  });
+}
+
+setupSignedDecimalInputs();
 
 function showResult(gridId, panelId, items) {
   const grid = document.getElementById(gridId);
