@@ -197,30 +197,32 @@
   </div>
 
   <!-- NAV LINKS -->
-  <div class="nav-links">
+    <div class="nav-links" aria-label="Main navigation">
     <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
     <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html"               class="nav-btn">🏠 Home</a>
-    <a href="pdf-to-word.html"         class="nav-btn">📄 PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn active">&#128195; PDF Merge &amp; Split</a>
+    <a href="index.html" class="nav-btn">&#127968; Home</a>
+    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
+    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
+    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
     <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
     <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
     <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html"        class="nav-btn">🎨 Image Converter</a>
-    <a href="image-compressor.html"    class="nav-btn">🗜️ Image Compressor</a>
-    <a href="qr-code-generator.html"   class="nav-btn">📱 QR Code</a>
-    <a href="password-generator.html"  class="nav-btn">🔐 Password</a>
-    <a href="text-to-speech.html"      class="nav-btn active">🔊 Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">🌐 Translator</a>
-    <a href="csv-to-excel.html"        class="nav-btn">📊 Excel</a>
-    <a href="excel-to-pdf.html"        class="nav-btn">📄 Excel→PDF</a>
-    <a href="unit-converter.html"      class="nav-btn">📐 Units</a>
-    <a href="land-calculator.html"     class="nav-btn">🏞️ Land</a>
-    <a href="dwg-to-kmz.html"          class="nav-btn">🗺️ DWG→KMZ</a>
-    <a href="currency-converter.html"  class="nav-btn">💰 Currency</a>
-      <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
-      <a href="youtube-thumbnail-downloader.html" class="nav-btn">📸 YouTube Thumbnail</a>
-      <a href="file-compressor.html" class="nav-btn active">&#128230; File Compressor</a>
+    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
+    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
+    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
+    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
+    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
+    <a href="text-to-speech.html" class="nav-btn active">&#128266; Text to Speech</a>
+    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
+    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
+    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
+    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
+    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
+    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
+    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
+    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
+    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
+    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
   </div>
 
   <!-- AD #1 — TOP BANNER: 728x90 desktop / 320x50 mobile -->
@@ -507,11 +509,41 @@ loadAdIfNotInApp(function() {
   var voices = [];
   var voiceSelect = document.getElementById('voiceSelect');
   var voiceLoadAttempts = 0;
+  var fallbackAudio = null;
+  var fallbackChunks = [];
+  var fallbackIndex = 0;
+  var fallbackStopped = true;
+  var onlineTtsLanguages = [
+    {code:'en', name:'English'}, {code:'es', name:'Spanish'}, {code:'fr', name:'French'},
+    {code:'de', name:'German'}, {code:'it', name:'Italian'}, {code:'pt', name:'Portuguese'},
+    {code:'ru', name:'Russian'}, {code:'zh-CN', name:'Chinese'}, {code:'ja', name:'Japanese'},
+    {code:'ko', name:'Korean'}, {code:'ar', name:'Arabic'}, {code:'hi', name:'Hindi'},
+    {code:'tr', name:'Turkish'}, {code:'nl', name:'Dutch'}, {code:'pl', name:'Polish'},
+    {code:'sv', name:'Swedish'}, {code:'da', name:'Danish'}, {code:'fi', name:'Finnish'},
+    {code:'no', name:'Norwegian'}, {code:'el', name:'Greek'}, {code:'cs', name:'Czech'},
+    {code:'hu', name:'Hungarian'}, {code:'ro', name:'Romanian'}, {code:'th', name:'Thai'},
+    {code:'vi', name:'Vietnamese'}, {code:'id', name:'Indonesian'}, {code:'ms', name:'Malay'},
+    {code:'he', name:'Hebrew'}, {code:'fa', name:'Persian'}, {code:'ur', name:'Urdu'},
+    {code:'bn', name:'Bengali'}, {code:'ta', name:'Tamil'}, {code:'sw', name:'Swahili'},
+    {code:'yo', name:'Yoruba'}, {code:'ig', name:'Igbo'}, {code:'ha', name:'Hausa'}
+  ];
+
+  function populateOnlineTtsLanguages() {
+    voiceSelect.innerHTML = '';
+    onlineTtsLanguages.forEach(function(lang) {
+      var option = document.createElement('option');
+      option.value = lang.code;
+      option.textContent = 'Online voice - ' + lang.name + ' (' + lang.code + ')';
+      voiceSelect.appendChild(option);
+    });
+    voiceSelect.value = 'en';
+  }
 
   function loadVoices() {
     if (!synth) {
-      voiceSelect.innerHTML = '<option value="">Speech is not supported in this WebView</option>';
-      voiceSelect.disabled = true;
+      populateOnlineTtsLanguages();
+      voiceSelect.disabled = false;
+      setStatus('This WebView has no built-in speech engine, so Speak will use the online voice fallback.', 'info');
       return;
     }
 
@@ -592,6 +624,89 @@ loadAdIfNotInApp(function() {
     return (text.trim().split(/\s+/).length / (150 * rate)) * 60000;
   }
 
+  function chunkForOnlineTts(text, maxLen) {
+    var words = text.replace(/\s+/g, ' ').trim().split(' ');
+    var chunks = [];
+    var current = '';
+    words.forEach(function(word) {
+      if ((current + ' ' + word).trim().length > maxLen && current) {
+        chunks.push(current);
+        current = word;
+      } else {
+        current = (current + ' ' + word).trim();
+      }
+    });
+    if (current) chunks.push(current);
+    return chunks;
+  }
+
+  function getSelectedSpeechLang() {
+    if (!synth) return voiceSelect.value || 'en';
+    var selectedVoice = voices.find(function(v) { return v.name === voiceSelect.value; });
+    return selectedVoice && selectedVoice.lang ? selectedVoice.lang : 'en';
+  }
+
+  function getOnlineTtsUrl(text) {
+    return 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=' +
+      encodeURIComponent(getSelectedSpeechLang()) + '&q=' + encodeURIComponent(text);
+  }
+
+  function stopOnlineFallback() {
+    fallbackStopped = true;
+    fallbackChunks = [];
+    fallbackIndex = 0;
+    if (fallbackAudio) {
+      fallbackAudio.pause();
+      fallbackAudio.removeAttribute('src');
+      fallbackAudio.load();
+      fallbackAudio = null;
+    }
+  }
+
+  function playNextOnlineChunk() {
+    if (fallbackStopped) return;
+    if (fallbackIndex >= fallbackChunks.length) {
+      resetBtns();
+      setStatus('', '');
+      return;
+    }
+
+    fallbackAudio = new Audio(getOnlineTtsUrl(fallbackChunks[fallbackIndex]));
+    fallbackAudio.preload = 'auto';
+    fallbackAudio.volume = parseFloat(document.getElementById('volSlider').value);
+    fallbackAudio.onended = function() {
+      fallbackIndex += 1;
+      playNextOnlineChunk();
+    };
+    fallbackAudio.onerror = function() {
+      resetBtns();
+      setStatus('Online voice could not load. Please check the WebView internet permission and try again.', 'error');
+    };
+    fallbackAudio.play().catch(function() {
+      resetBtns();
+      setStatus('Tap Speak again if the WebView blocked audio autoplay.', 'error');
+    });
+  }
+
+  function speakWithOnlineFallback(text) {
+    stopOnlineFallback();
+    fallbackChunks = chunkForOnlineTts(text, 180);
+    if (!fallbackChunks.length) {
+      setStatus('Please enter some text first.', 'error');
+      return;
+    }
+
+    fallbackStopped = false;
+    fallbackIndex = 0;
+    document.getElementById('speakBtn').disabled = true;
+    document.getElementById('stopBtn').disabled  = false;
+    document.getElementById('pauseBtn').disabled = false;
+    showProg(true, 'Speaking with online voice...');
+    animProg(estMs(text, parseFloat(document.getElementById('rateSlider').value)));
+    setStatus('Using online voice fallback because this WebView does not provide native voices.', 'info');
+    playNextOnlineChunk();
+  }
+
   /* Button state */
   var isPaused = false;
   function resetBtns() {
@@ -605,17 +720,18 @@ loadAdIfNotInApp(function() {
 
   /* Speak — original logic + progress bar */
   function speakText() {
-    if (!synth || !window.SpeechSynthesisUtterance) {
-      setStatus('Speech is not supported in this browser or WebView.', 'error');
-      return;
-    }
-    loadVoices();
     var text = document.getElementById('ttsText').value;
     if (!text.trim()) {
       document.getElementById('ttsResult') && (document.getElementById('ttsResult').innerText = 'Please enter text.');
       setStatus('Please enter some text first.', 'error');
       return;
     }
+    if (!synth || !window.SpeechSynthesisUtterance) {
+      speakWithOnlineFallback(text);
+      return;
+    }
+    stopOnlineFallback();
+    loadVoices();
     var utterance = new SpeechSynthesisUtterance(text);
     var selectedVoice = voiceSelect.value;
     if (selectedVoice) {
@@ -646,13 +762,27 @@ loadAdIfNotInApp(function() {
 
   /* Stop — original logic */
   function stopText() {
-    if (!synth) return;
-    synth.cancel();
+    stopOnlineFallback();
+    if (synth) synth.cancel();
     resetBtns();
   }
 
   /* Pause / Resume */
   function pauseText() {
+    if (!synth && fallbackAudio) {
+      if (!isPaused) {
+        fallbackAudio.pause();
+        isPaused = true;
+        document.getElementById('pauseBtn').innerHTML = '<i class="fas fa-play"></i> Resume';
+        document.getElementById('progLabel').textContent = 'Paused';
+      } else {
+        fallbackAudio.play();
+        isPaused = false;
+        document.getElementById('pauseBtn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+        document.getElementById('progLabel').textContent = 'Speaking with online voice...';
+      }
+      return;
+    }
     if (!synth) return;
     if (!isPaused) {
       synth.pause();
@@ -670,7 +800,7 @@ loadAdIfNotInApp(function() {
   /* Download MP3 */
   function downloadMP3() {
     if (!synth || !window.SpeechSynthesisUtterance) {
-      setStatus('Speech is not supported in this browser or WebView.', 'error');
+      setStatus('Download needs native Web Speech support. Use Speak in this WebView, or open the website in Chrome for audio downloads.', 'error');
       return;
     }
     loadVoices();
