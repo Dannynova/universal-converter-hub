@@ -108,6 +108,8 @@
     .prog-text{font-size:.83rem;color:var(--text-secondary);text-align:center}
     .bg-info{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:.7rem 1rem;font-size:.85rem;color:#2563eb;margin-bottom:1rem}
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -663,5 +665,6 @@ loadAdIfNotInApp(function() {
     showProg(false); setProg(0);
   });
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>
