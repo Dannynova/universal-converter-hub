@@ -105,6 +105,8 @@
     .ad-show-desktop{display:block}.ad-show-mobile{display:none}
     @media(max-width:768px){.ad-show-desktop{display:none}.ad-show-mobile{display:block}}
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -680,5 +682,6 @@ loadAdIfNotInApp(function() {
   document.body.appendChild(s);
 });
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

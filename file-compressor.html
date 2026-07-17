@@ -36,7 +36,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free File Compressor","url":"https://converterhub.com.ng/file-compressor.html","description":"Compress PDF, JPG, PNG and ZIP files free online. No signup required.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What file types can I compress?","acceptedAnswer":{"@type":"Answer","text":"Compress JPG, PNG, WebP, GIF images, PDF files, and any file type into a ZIP archive."}},{"@type":"Question","name":"Will compression affect image quality?","acceptedAnswer":{"@type":"Answer","text":"You control quality with the slider. 70-80% gives the best balance of size vs clarity."}},{"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"Files up to 50MB are accepted. Images work best under 20MB."}},{"@type":"Question","name":"Is the compressor free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no registration, no watermarks."}},{"@type":"Question","name":"Are my files secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All processing happens in your browser. Files never leave your device."}},{"@type":"Question","name":"Can I compress multiple files?","acceptedAnswer":{"@type":"Answer","text":"Yes. In Image mode you can add multiple images. In ZIP mode you can bundle any number of files."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What file types can I compress?","acceptedAnswer":{"@type":"Answer","text":"Compress JPG, PNG, WebP, GIF images, PDF files, and any file type into a ZIP archive."}},{"@type":"Question","name":"Will compression affect image quality?","acceptedAnswer":{"@type":"Answer","text":"Choose the percentage you want to reduce from the original size. Higher reductions can reduce image quality."}},{"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"Files up to 500MB are accepted. Very large files require sufficient device memory."}},{"@type":"Question","name":"Is the compressor free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no registration, no watermarks."}},{"@type":"Question","name":"Are my files secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All processing happens in your browser. Files never leave your device."}},{"@type":"Question","name":"Can I compress multiple files?","acceptedAnswer":{"@type":"Answer","text":"Yes. In Image mode you can add multiple images. In ZIP mode you can bundle any number of files."}}]}</script>
 <style>
 .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
 .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
@@ -117,6 +117,8 @@
 @media(max-width:760px){.ad-desktop{display:none}.ad-mobile{display:block}}
 @media(max-width:500px){.tool-tab{padding:.45rem .9rem;font-size:.82rem}}
 </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -222,13 +224,14 @@ loadAdIfNotInApp(function() {
     <div class="drop-zone" id="dropZone" role="button" tabindex="0">
       <span class="dz-icon">&#128230;</span>
       <p><strong>Drop files here</strong> or <span style="color:#2563eb;text-decoration:underline;" id="browseLink">click to browse</span></p>
-      <p style="margin-top:6px;font-size:.82rem;" id="dropHint">Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 50MB each</p>
+      <p style="margin-top:6px;font-size:.82rem;" id="dropHint">Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 500MB each</p>
     </div>
 
     <div class="quality-row" id="qualityRow">
-      <label for="qualitySlider">Quality</label>
-      <input type="range" id="qualitySlider" min="10" max="95" value="70" oninput="document.getElementById('qVal').textContent=this.value+'%'">
-      <span class="q-val" id="qVal">70%</span>
+      <label for="qualitySlider">Reduce By</label>
+      <input type="range" id="qualitySlider" min="5" max="95" value="10" oninput="document.getElementById('qVal').textContent=this.value+'%'">
+      <span class="q-val" id="qVal">10%</span>
+      <span style="font-size:.78rem;color:var(--text-secondary);">from the original file</span>
     </div>
 
     <div class="file-list" id="fileList"></div>
@@ -290,7 +293,7 @@ loadAdIfNotInApp(function() {
 
   <span class="ad-label-txt">Advertisement</span>
   <div class="ad-universal" style="text-align:center;overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
-    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
+    <script>loadAdIfNotInApp(function(){ var s=document.createElement('script'); s.async=true; s.dataset.cfasync='false'; s.src='https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js'; document.currentScript.parentNode.appendChild(s); });</script>
     <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
   </div>
 
@@ -342,11 +345,11 @@ loadAdIfNotInApp(function() {
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false"><span>Will compression reduce image quality?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>You control the quality slider. A setting of 70&ndash;80% gives the best balance between file size and visual quality. A before/after comparison is shown after compression.</p></div>
+      <div class="faq-answer"><p>Choose the percentage you want removed from the original file. Each image result also shows the maximum reduction measured for that file.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Files up to 50MB each are accepted. For images, best results are under 20MB per image.</p></div>
+      <div class="faq-answer"><p>Files up to 500MB each are accepted. Very large files need enough available memory on your device.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false"><span>Is the file compressor free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
@@ -457,7 +460,7 @@ loadAdIfNotInApp(function() {
   var cfg = {
     image: {
       desc: '<strong>Image mode:</strong> Compress JPG, PNG, WebP or GIF. Adjust quality to balance size vs clarity. Supports multiple files.',
-      hint: 'Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 50MB each &nbsp;&middot;&nbsp; Multiple files allowed',
+      hint: 'Supports JPG, PNG, WebP, GIF &nbsp;&middot;&nbsp; Max 500MB each &nbsp;&middot;&nbsp; Multiple files allowed',
       accept: 'image/*',
       multiple: true,
       btnTxt: 'Compress Images',
@@ -466,7 +469,7 @@ loadAdIfNotInApp(function() {
     },
     pdf: {
       desc: '<strong>PDF mode:</strong> Each page is re-rendered at your chosen quality and rebuilt into a new PDF &mdash; achieving <strong>70&ndash;95% size reduction</strong>. Lower quality = smaller file. Runs 100% in your browser.',
-      hint: 'Supports PDF files &nbsp;&middot;&nbsp; Max 50MB &nbsp;&middot;&nbsp; One file at a time',
+      hint: 'Supports PDF files &nbsp;&middot;&nbsp; Max 500MB &nbsp;&middot;&nbsp; One file at a time',
       accept: '.pdf',
       multiple: false,
       btnTxt: 'Compress PDF',
@@ -475,7 +478,7 @@ loadAdIfNotInApp(function() {
     },
     zip: {
       desc: '<strong>ZIP Archive mode:</strong> Compress any files into a single ZIP archive. Upload multiple files of any type.',
-      hint: 'Any file type &nbsp;&middot;&nbsp; Max 50MB each &nbsp;&middot;&nbsp; Multiple files allowed',
+      hint: 'Any file type &nbsp;&middot;&nbsp; Max 500MB each &nbsp;&middot;&nbsp; Multiple files allowed',
       accept: '',
       multiple: true,
       btnTxt: 'Create ZIP Archive',
@@ -524,7 +527,7 @@ loadAdIfNotInApp(function() {
 
   function addFiles(newFiles) {
     newFiles.forEach(function (f) {
-      if (f.size > 52428800) { showStatus('"' + f.name + '" exceeds 50MB limit.', 'error'); return; }
+      if (f.size > 524288000) { showStatus('"' + f.name + '" exceeds the 500MB per-file limit.', 'error'); return; }
       if (mode === 'pdf' && !f.name.match(/\.pdf$/i)) { showStatus('Please upload a PDF file.', 'error'); return; }
       if (mode === 'image' && !f.type.match(/^image\//)) { showStatus('"' + f.name + '" is not a supported image.', 'error'); return; }
       if (mode === 'pdf') { files = [f]; } else { files.push(f); }
@@ -584,7 +587,7 @@ loadAdIfNotInApp(function() {
      IMAGE COMPRESSION
   ========================== */
   function compressImages() {
-    var quality = parseInt(qualitySlider.value) / 100;
+    var requestedReduction = parseInt(qualitySlider.value);
     var total = files.length;
     var done = 0;
     var totalOrig = 0;
@@ -629,8 +632,7 @@ loadAdIfNotInApp(function() {
         URL.revokeObjectURL(url);
         var outType = f.type === 'image/png' ? 'image/png' : 'image/jpeg';
         var outExt  = f.type === 'image/png' ? '.png' : '.jpg';
-        var q = f.type === 'image/png' ? 1 : quality;
-        canvas.toBlob(function (blob) {
+        compressCanvasToTarget(canvas, f, outType, requestedReduction, function (blob, maxReduction) {
           if (!blob) { next(i + 1); return; }
           var base = f.name.replace(/\.[^.]+$/, '');
           results.push({ name: base + '_compressed' + outExt, blob: blob });
@@ -638,17 +640,51 @@ loadAdIfNotInApp(function() {
           totalComp += blob.size;
           var el = document.getElementById('fir' + i);
           if (el) {
-            var p = Math.round((1 - blob.size / f.size) * 100);
-            el.textContent = fmtBytes(blob.size) + ' (-' + p + '%)';
+            var p = Math.max(0, Math.round((1 - blob.size / f.size) * 100));
+            el.textContent = fmtBytes(blob.size) + ' (-' + p + '%; max ' + maxReduction + '%)';
             el.style.color = p > 0 ? '#16a34a' : '#f59e0b';
           }
           next(i + 1);
-        }, outType, q);
+        });
       };
       img.onerror = function () { URL.revokeObjectURL(url); next(i + 1); };
       img.src = url;
     }
     next(0);
+  }
+
+  function canvasToBlob(canvas, type, quality, callback) {
+    canvas.toBlob(function (blob) { callback(blob); }, type, quality);
+  }
+
+  // Measure the smallest output available, then retain the best quality that
+  // still meets the requested total reduction from the original file.
+  function compressCanvasToTarget(canvas, file, type, requestedReduction, callback) {
+    if (type === 'image/png') {
+      canvasToBlob(canvas, type, 1, function (blob) {
+        var pngReduction = blob ? Math.max(0, Math.round((1 - blob.size / file.size) * 100)) : 0;
+        callback(blob, pngReduction);
+      });
+      return;
+    }
+    var targetSize = file.size * (1 - requestedReduction / 100);
+    canvasToBlob(canvas, type, 0.05, function (smallest) {
+      if (!smallest) { callback(null, 0); return; }
+      var maxReduction = Math.max(0, Math.round((1 - smallest.size / file.size) * 100));
+      if (smallest.size > targetSize) { callback(smallest, maxReduction); return; }
+      var low = 0.05, high = 0.95, best = smallest, attempts = 0;
+      function search() {
+        if (attempts++ >= 6 || high - low < 0.02) { callback(best, maxReduction); return; }
+        var quality = (low + high) / 2;
+        canvasToBlob(canvas, type, quality, function (candidate) {
+          if (!candidate) { callback(best, maxReduction); return; }
+          if (candidate.size <= targetSize) { best = candidate; low = quality; }
+          else { high = quality; }
+          search();
+        });
+      }
+      search();
+    });
   }
 
   /* ==========================
@@ -666,7 +702,8 @@ loadAdIfNotInApp(function() {
       showProg(false); compressBtn.disabled = false; return;
     }
 
-    var qualityVal = parseInt(qualitySlider.value) / 100; // reuse quality slider
+    var requestedReduction = parseInt(qualitySlider.value);
+    var qualityVal = Math.max(0.05, Math.min(0.95, (100 - requestedReduction) / 100 * 1.02));
     progLbl.textContent = 'Reading PDF...';
     setProg(5);
 
@@ -677,11 +714,11 @@ loadAdIfNotInApp(function() {
       URL.revokeObjectURL(fileURL);
       var numPages = pdfDoc.numPages;
       setProg(10);
-      progLbl.textContent = 'Processing ' + numPages + ' page(s)...';
+      progLbl.textContent = 'Processing ' + numPages + ' page(s) for ' + requestedReduction + '% reduction...';
 
       // DPI scale: lower = smaller file. 0.8 quality → scale 1.0, lower quality → lower scale
       // Range: scale 0.6 (very compressed) to 1.4 (high quality)
-      var scale = 0.5 + (qualityVal * 0.9); // maps 10%→0.59, 70%→1.13, 95%→1.355
+      var scale = Math.max(0.45, Math.min(1.5, 1.5 - (requestedReduction / 100)));
 
       var pagePromises = [];
       for (var i = 1; i <= numPages; i++) {
@@ -762,7 +799,7 @@ loadAdIfNotInApp(function() {
       } else {
         summaryBar.innerHTML = '<strong>&#9989; Done!</strong> '
           + 'PDF size: <strong>' + fmtBytes(compSize) + '</strong>. '
-          + 'Try lowering the quality slider for a smaller file.';
+          + 'Try choosing a higher reduction percentage for a smaller file.';
       }
       summaryBar.classList.add('show');
 
@@ -882,5 +919,6 @@ loadAdIfNotInApp(function() {
 
 })();
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

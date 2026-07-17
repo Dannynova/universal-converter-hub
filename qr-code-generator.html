@@ -71,6 +71,8 @@
     .qrcode-container { display: flex; justify-content: center; margin: 1rem 0; }
     #qrcode { background: white; padding: 10px; border-radius: 12px; display: inline-block; }
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
   <script src="https://willingcease.com/3a/9a/cc/3a9acc9effe5287ceca4fb4247838ec5.js"></script>
@@ -202,5 +204,6 @@ loadAdIfNotInApp(function() {
   document.body.appendChild(s);
 });
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

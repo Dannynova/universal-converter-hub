@@ -119,6 +119,8 @@
     .amort-table td{padding:.4rem .7rem;text-align:right;border-bottom:1px solid var(--border-light);color:var(--text-primary)}
     .amort-toggle{background:none;border:none;color:var(--accent);font-weight:600;font-size:.85rem;cursor:pointer;margin-top:.8rem;display:flex;align-items:center;gap:6px}
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -661,5 +663,6 @@ loadAdIfNotInApp(function() {
   // Trigger initial calculation for demo purposes
   document.getElementById('calcBtn').click();
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

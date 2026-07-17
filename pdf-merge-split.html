@@ -191,6 +191,8 @@
     .prog-bar { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
     .prog-text { font-size: 0.83rem; color: var(--text-secondary); text-align: center; }
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -790,5 +792,6 @@ loadAdIfNotInApp(function() {
   document.body.appendChild(s);
 });
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

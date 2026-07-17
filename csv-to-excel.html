@@ -68,6 +68,8 @@
     .modal-close:hover { color: var(--accent); }
     .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 <button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
@@ -226,5 +228,6 @@ loadAdIfNotInApp(function() {
   document.body.appendChild(s);
 });
 </script>
+  <script src="/pwa-init.js"></script>
 </body>
 </html>

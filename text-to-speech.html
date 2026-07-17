@@ -151,6 +151,8 @@
     @media (max-width: 760px) { .ad-desktop { display: none; } .ad-mobile { display: block; } }
     @media (max-width: 380px) { .tts-btn-row { flex-direction: column; } .tts-btn-row .btn { width: 100%; justify-content: center; } }
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
@@ -894,5 +896,6 @@ loadAdIfNotInApp(function() {
   }
 </script>
 
+  <script src="/pwa-init.js"></script>
 </body>
 </html>
