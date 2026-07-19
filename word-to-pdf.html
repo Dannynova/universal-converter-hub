@@ -17,9 +17,9 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"How do I convert Word to PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Upload your .doc or .docx file using the upload area above, click Convert to PDF, then click Save as PDF and choose Save as PDF in the browser print dialog. No signup required."}},
+      {"@type":"Question","name":"How do I convert Word to PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Upload your .doc or .docx file using the upload area above, click Convert to PDF, then click Download PDF and your PDF will download automatically. No signup required."}},
       {"@type":"Question","name":"Will my Word formatting be preserved in the PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Fonts, tables, images, headings and layout are preserved using docx-preview which renders the original Word document with full formatting fidelity."}},
-      {"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"You can upload files up to 50MB. Most Word documents are well under this limit."}},
+      {"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"You can upload files up to 150MB. Most Word documents are well under this limit. Very large files may take longer to process depending on your device."}},
       {"@type":"Question","name":"Do I need to register or pay?","acceptedAnswer":{"@type":"Answer","text":"No. Completely free. No registration, subscriptions, or hidden fees required."}},
       {"@type":"Question","name":"Is my file secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All conversion happens entirely in your browser using JavaScript. Your file never leaves your device and is never uploaded to any server."}}
     ]
@@ -257,9 +257,9 @@
 
     <!-- Save / Reset buttons — shown after conversion -->
     <div id="saveArea" style="display:none; margin-top:1rem;">
-      <button class="btn" id="savePdfBtn" style="background:#16a34a; margin-bottom:0.5rem;"><i class="fas fa-download"></i> Save as PDF</button>
+      <button class="btn" id="savePdfBtn" style="background:#16a34a; margin-bottom:0.5rem;"><i class="fas fa-download"></i> Download PDF</button>
       <button class="btn" id="resetBtn" style="background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border-light);"><i class="fas fa-redo"></i> Convert Another</button>
-      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-secondary);">In the print dialog, set <strong>Destination</strong> to <strong>&#8220;Save as PDF&#8221;</strong> to download your file.</p>
+      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-secondary);">Your PDF will download automatically to your <strong>Downloads folder</strong>.</p>
     </div>
 
     <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-secondary);">&#10003; Preserves fonts, tables, images and layout. &#10003; 100% private &#8212; processed in your browser. &#10003; No watermarks.</p>
@@ -323,7 +323,7 @@
     <h3>Frequently Asked Questions</h3>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false"><span>How do I convert a Word document to PDF for free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Upload your .doc or .docx file using the upload area above, then click <strong>Convert to PDF</strong>. After the preview loads, click <strong>Save as PDF</strong> and choose &#8220;Save as PDF&#8221; in the browser print dialog. No signup needed.</p></div>
+      <div class="faq-answer"><p>Upload your .doc or .docx file using the upload area above, then click <strong>Convert to PDF</strong>. After the preview loads, click <strong>Download PDF</strong> and your PDF downloads automatically to your Downloads folder. No signup needed.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false"><span>Will my Word formatting be preserved in the PDF?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
@@ -361,9 +361,6 @@
   <footer>&#169; 2025 Universal Converter Hub &#8211; All tools are free. Ads help us improve.</footer>
 </div>
 
-<!-- Hidden print iframe -->
-<iframe id="printFrame" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;border:none;" title="print"></iframe>
-
 <!-- Social bar — identical placement to pdf-to-word.html -->
 <script src="https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js"></script>
 
@@ -373,6 +370,9 @@
 <!-- docx-preview: renders DOCX with full formatting fidelity -->
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docx-preview@0.3.7/dist/docx-preview.min.js"></script>
+<!-- html2canvas + pdf-lib: generate real PDF blob without print dialog (works in WebView) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
 <script>
   // FAQ accordion — identical to pdf-to-word.html
@@ -451,8 +451,8 @@
       document.getElementById('wordResult').innerText = 'Please upload a .doc or .docx Word file.';
       return;
     }
-    if (file.size > 52428800) {
-      document.getElementById('wordResult').innerText = 'File too large. Maximum size is 50MB.';
+    if (file.size > 157286400) {
+      document.getElementById('wordResult').innerText = 'File too large. Maximum size is 150MB. For very large files, consider splitting into chapters first.';
       return;
     }
 
@@ -501,63 +501,90 @@
     });
   });
 
-  // Save as PDF — prints the docx-preview rendered output
-  document.getElementById('savePdfBtn').addEventListener('click', () => {
+  // Save as PDF — generates a real PDF blob using html2canvas + pdf-lib
+  // Works in Android WebView, Chrome, Safari and all browsers — NO print dialog needed
+  document.getElementById('savePdfBtn').addEventListener('click', async () => {
     const container = document.getElementById('previewBody');
     if (!container || !container.innerHTML) return;
 
     const file = (wordInput.files && wordInput.files.length > 0) ? wordInput.files[0] : droppedFile;
     const name = file ? file.name.replace(/\.(doc|docx)$/i, '') : 'document';
+    const resultEl = document.getElementById('wordResult');
 
-    // Capture all <style> tags injected by docx-preview into <head>
-    const docxStyles = Array.from(document.querySelectorAll('style'))
-      .map(s => '<style>' + s.innerHTML + '</style>')
-      .join('\n');
-
-    const printDoc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + name + '</title>'
-      + docxStyles
-      + '<style>'
-      + '@page { size: A4; margin: 0; }'
-      + '* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }'
-      + 'html, body { margin: 0; padding: 0; background: #fff; }'
-      + '@media print { .docx-wrapper { padding: 0 !important; } }'
-      + '</style>'
-      + '</head><body>'
-      + container.innerHTML
-      + '</body></html>';
-
-    if (typeof isConverterHubApp === 'function' && isConverterHubApp()) {
-      const bridge = window.ConverterHubApp || window.AndroidDownloader || window.Android || window.NativeDownloader;
-      if (bridge && typeof bridge.printHtml === 'function') {
-        bridge.printHtml(name + '.pdf', printDoc);
-        if (window.showDownloadNotice) showDownloadNotice('Opening Android PDF save dialog...', 'info');
-        document.getElementById('wordResult').innerHTML =
-          '&#128197; Opening Android PDF save dialog. Choose Save as PDF to finish.';
-        return;
-      }
-
-      if (window.showDownloadNotice) {
-        showDownloadNotice('Conversion is ready, but this app needs native print support to save Word as PDF.', 'error');
-      }
-      document.getElementById('wordResult').innerHTML =
-        '&#9888;&#65039; Conversion is ready, but Android WebView cannot open the PDF print/save dialog by itself. Please add native print support in the app, or open this tool in Chrome and tap Save as PDF.';
+    if (typeof html2canvas === 'undefined' || typeof PDFLib === 'undefined') {
+      resultEl.innerText = 'PDF library still loading. Please wait a moment and try again.';
       return;
     }
 
-    const printFrame = document.getElementById('printFrame');
-    printFrame.srcdoc = printDoc;
-    printFrame.onload = () => {
-      try {
-        printFrame.contentWindow.focus();
-        printFrame.contentWindow.print();
-      } catch (err) {
-        const w = window.open('', '_blank');
-        if (w) { w.document.write(printDoc); w.document.close(); w.focus(); w.print(); }
-        else { document.getElementById('wordResult').innerText = 'Popup blocked. Please allow popups for this site.'; }
+    resultEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+    document.getElementById('savePdfBtn').disabled = true;
+
+    try {
+      // Render the preview to a canvas at 2x scale for sharp PDF output
+      const canvas = await html2canvas(container, {
+        scale: 2,
+        backgroundColor: '#ffffff',
+        useCORS: true,
+        logging: false,
+        allowTaint: true
+      });
+
+      // Build a real PDF using pdf-lib — works as a downloadable blob
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      const jpgBytes = await (await fetch(imgData)).arrayBuffer();
+      const jpgImage = await pdfDoc.embedJpg(jpgBytes);
+
+      // A4 page sizing — split into multiple pages if content is tall
+      const A4_W = 595.28, A4_H = 841.89;
+      const imgW = jpgImage.width, imgH = jpgImage.height;
+      const scale = A4_W / imgW;
+      const scaledH = imgH * scale;
+
+      if (scaledH <= A4_H) {
+        // Single page
+        const page = pdfDoc.addPage([A4_W, A4_H]);
+        page.drawImage(jpgImage, { x: 0, y: A4_H - scaledH, width: A4_W, height: scaledH });
+      } else {
+        // Multi-page: slice the canvas into A4-height chunks
+        const pageContentH = Math.floor(A4_H / scale); // pixels per page
+        let yOffset = 0;
+        while (yOffset < imgH) {
+          const sliceH = Math.min(pageContentH, imgH - yOffset);
+          // Create a slice canvas
+          const sliceCanvas = document.createElement('canvas');
+          sliceCanvas.width = imgW;
+          sliceCanvas.height = sliceH;
+          sliceCanvas.getContext('2d').drawImage(canvas, 0, yOffset, imgW, sliceH, 0, 0, imgW, sliceH);
+          const sliceData = sliceCanvas.toDataURL('image/jpeg', 0.92);
+          const sliceBytes = await (await fetch(sliceData)).arrayBuffer();
+          const sliceImg = await pdfDoc.embedJpg(sliceBytes);
+          const pageH = sliceH * scale;
+          const page = pdfDoc.addPage([A4_W, pageH]);
+          page.drawImage(sliceImg, { x: 0, y: 0, width: A4_W, height: pageH });
+          yOffset += sliceH;
+        }
       }
-    };
-    document.getElementById('wordResult').innerHTML =
-      '&#128197; In the print dialog, set <strong>Destination</strong> to <strong>"Save as PDF"</strong> to download.';
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+      // Download — works in WebView, Chrome, Safari
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name + '.pdf';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 2000);
+
+      resultEl.innerHTML = '&#9989; PDF downloaded successfully! Check your Downloads folder.';
+    } catch (err) {
+      resultEl.innerText = 'PDF generation failed: ' + (err.message || 'unknown error') + '. Please try again.';
+    } finally {
+      document.getElementById('savePdfBtn').disabled = false;
+    }
   });
 
   // Reset
@@ -569,7 +596,7 @@
     document.getElementById('previewPane').classList.remove('show');
     document.getElementById('previewBody').innerHTML = '';
     document.getElementById('saveArea').style.display = 'none';
-    document.getElementById('printFrame').srcdoc = '';
+    // PDF blob download — no iframe needed
   });
 
   function formatBytes(b) {
