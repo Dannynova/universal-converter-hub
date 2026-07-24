@@ -94,6 +94,15 @@
     .err-msg.show{display:block}
     .copy-btn{background:none;border:none;cursor:pointer;color:var(--accent);font-size:.8rem;margin-left:.5rem;padding:2px 6px;border-radius:4px;transition:background .15s}
     .copy-btn:hover{background:var(--bg-secondary)}
+    /* Format toggle buttons */
+    .fmt-btn{flex:1;min-width:140px;padding:.65rem 1rem;border-radius:10px;border:2px solid var(--border-light);background:var(--bg-secondary);color:var(--text-secondary);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;text-align:center}
+    .fmt-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .fmt-btn:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+    /* DMS grid — responsive on mobile */
+    @media(max-width:480px){
+      #dmsInputs [style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
+      #dmsInputs [style*="grid-template-columns"] select{grid-column:span 2}
+    }
   </style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#2563eb">
@@ -312,23 +321,111 @@ loadAdIfNotInApp(function() {
 
     <!-- WGS84 → UTM -->
     <div id="mode-wgs-utm" style="display:none;">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Latitude (decimal degrees)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="wgs_utm_lat" placeholder="e.g. 6.8921" step="0.000001">
-        </div>
-        <div class="form-group">
-          <label>Longitude (decimal degrees)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="wgs_utm_lon" placeholder="e.g. 3.3987" step="0.000001">
+
+      <!-- Format toggle -->
+      <div class="form-group" style="margin-bottom:.8rem;">
+        <label>Input Format</label>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;">
+          <button class="fmt-btn active" id="fmtDecBtn" onclick="setFmt('dec')">
+            <i class="fas fa-decimal" style="font-size:.8rem;"></i> Decimal Degrees &nbsp;<small style="opacity:.75;">e.g. 6.8921</small>
+          </button>
+          <button class="fmt-btn" id="fmtDmsBtn" onclick="setFmt('dms')">
+            <i class="fas fa-superscript" style="font-size:.8rem;"></i> DMS &nbsp;<small style="opacity:.75;">e.g. 6° 53′ 31.56″</small>
+          </button>
         </div>
       </div>
+
+      <!-- Decimal input -->
+      <div id="decInputs">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Latitude (decimal °)</label>
+            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_utm_lat" placeholder="e.g. 6.892100">
+          </div>
+          <div class="form-group">
+            <label>Longitude (decimal °)</label>
+            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_utm_lon" placeholder="e.g. 3.398700">
+          </div>
+        </div>
+      </div>
+
+      <!-- DMS input -->
+      <div id="dmsInputs" style="display:none;">
+        <!-- Latitude DMS -->
+        <div class="form-group">
+          <label>Latitude (D° M′ S″)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lat_d" placeholder="°" min="0" max="90" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lat_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lat_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
+            </div>
+            <select class="form-control" id="lat_hem" style="min-width:60px;padding-left:.5rem;">
+              <option value="N">N</option>
+              <option value="S">S</option>
+            </select>
+          </div>
+        </div>
+        <!-- Longitude DMS -->
+        <div class="form-group">
+          <label>Longitude (D° M′ S″)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lon_d" placeholder="°" min="0" max="180" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lon_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="lon_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
+            </div>
+            <select class="form-control" id="lon_hem" style="min-width:60px;padding-left:.5rem;">
+              <option value="E">E</option>
+              <option value="W">W</option>
+            </select>
+          </div>
+        </div>
+        <!-- Also accept text DMS paste -->
+        <div class="form-group">
+          <label style="font-size:.75rem;color:var(--text-secondary);">Or paste DMS string directly</label>
+          <input type="text" class="form-control" id="dms_paste_lat" placeholder='e.g. 6° 52&apos; 10.506" N  or  6 52 10.506 N' autocomplete="off">
+          <input type="text" class="form-control" id="dms_paste_lon" placeholder='e.g. 3° 47&apos; 47.24" E  or  3 47 47.24 E' autocomplete="off" style="margin-top:.5rem;">
+          <p style="font-size:.75rem;color:var(--text-secondary);margin-top:.3rem;"><i class="fas fa-info-circle"></i> Filling the paste boxes overrides the D/M/S fields above.</p>
+        </div>
+      </div>
+
       <div class="form-group">
         <label>Output UTM Zone</label>
         <select class="form-control" id="wgs_utm_zone">
-          <option value="31">UTM Zone 31N (WGS84 – West Nigeria)</option>
-          <option value="32">UTM Zone 32N (WGS84 – East Nigeria)</option>
           <option value="auto">Auto-detect zone</option>
+          <option value="31">UTM Zone 31N</option>
+          <option value="32">UTM Zone 32N</option>
+          <option value="33">UTM Zone 33N</option>
+          <option value="34">UTM Zone 34N</option>
+          <option value="35">UTM Zone 35N</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label>Output Datum</label>
+        <select class="form-control" id="wgs_utm_datum">
+          <option value="minna">Minna Datum / NNO (Nigeria surveys)</option>
+          <option value="wgs84">WGS84 (GPS / global use)</option>
+        </select>
+        <p style="font-size:.78rem;color:var(--text-secondary);margin-top:.4rem;">
+          <i class="fas fa-info-circle"></i>
+          <strong>Minna:</strong> use for Nigerian survey work — matches SivanDesign &amp; Mobile Topographer Pro.<br>
+          <strong>WGS84:</strong> use for GPS devices, Google Maps, global GIS.
+        </p>
       </div>
       <button class="btn" id="btn_wgs_utm"><i class="fas fa-exchange-alt"></i> Convert</button>
       <div class="err-msg" id="err_wgs_utm"></div>
@@ -371,16 +468,89 @@ loadAdIfNotInApp(function() {
 
     <!-- WGS84 → Minna -->
     <div id="mode-wgs-minna" style="display:none;">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Latitude (decimal degrees)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="wgs_minna_lat" placeholder="e.g. 6.8921" step="0.000001">
-        </div>
-        <div class="form-group">
-          <label>Longitude (decimal degrees)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="wgs_minna_lon" placeholder="e.g. 3.3987" step="0.000001">
+
+      <!-- Format toggle -->
+      <div class="form-group" style="margin-bottom:.8rem;">
+        <label>Input Format</label>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;">
+          <button class="fmt-btn active" id="mFmtDecBtn" onclick="setMinnaFmt('dec')">
+            Decimal Degrees <small style="opacity:.75;">e.g. 6.8921</small>
+          </button>
+          <button class="fmt-btn" id="mFmtDmsBtn" onclick="setMinnaFmt('dms')">
+            DMS <small style="opacity:.75;">e.g. 6° 53′ 31.56″</small>
+          </button>
         </div>
       </div>
+
+      <!-- Decimal input -->
+      <div id="mDecInputs">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Latitude (decimal °)</label>
+            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_minna_lat" placeholder="e.g. 6.892100">
+          </div>
+          <div class="form-group">
+            <label>Longitude (decimal °)</label>
+            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_minna_lon" placeholder="e.g. 3.398700">
+          </div>
+        </div>
+      </div>
+
+      <!-- DMS input -->
+      <div id="mDmsInputs" style="display:none;">
+        <!-- Latitude DMS -->
+        <div class="form-group">
+          <label>Latitude (D° M′ S″)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lat_d" placeholder="°" min="0" max="90" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lat_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lat_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
+            </div>
+            <select class="form-control" id="m_lat_hem" style="min-width:60px;padding-left:.5rem;">
+              <option value="N">N</option>
+              <option value="S">S</option>
+            </select>
+          </div>
+        </div>
+        <!-- Longitude DMS -->
+        <div class="form-group">
+          <label>Longitude (D° M′ S″)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lon_d" placeholder="°" min="0" max="180" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lon_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
+            </div>
+            <div style="position:relative;">
+              <input type="number" class="form-control" id="m_lon_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
+              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
+            </div>
+            <select class="form-control" id="m_lon_hem" style="min-width:60px;padding-left:.5rem;">
+              <option value="E">E</option>
+              <option value="W">W</option>
+            </select>
+          </div>
+        </div>
+        <!-- Paste DMS -->
+        <div class="form-group">
+          <label style="font-size:.75rem;color:var(--text-secondary);">Or paste DMS string directly</label>
+          <input type="text" class="form-control" id="m_dms_paste_lat" placeholder='e.g. 6° 50&apos; 45" N  or  6 50 45 N' autocomplete="off">
+          <input type="text" class="form-control" id="m_dms_paste_lon" placeholder='e.g. 3° 32&apos; 45" E  or  3 32 45 E' autocomplete="off" style="margin-top:.5rem;">
+          <p style="font-size:.75rem;color:var(--text-secondary);margin-top:.3rem;"><i class="fas fa-info-circle"></i> Paste boxes override the D/M/S fields above.</p>
+        </div>
+      </div>
+
       <div class="form-group">
         <label>Output Minna System</label>
         <select class="form-control" id="wgs_minna_out">
@@ -877,29 +1047,125 @@ document.getElementById('btn_utm_nno').addEventListener('click', () => {
 });
 
 // WGS84 → UTM
+// ── FORMAT TOGGLE ────────────────────────────────────────────────────
+let wgsInputFmt = 'dec'; // 'dec' | 'dms'
+
+function setFmt(fmt) {
+  wgsInputFmt = fmt;
+  document.getElementById('decInputs').style.display = fmt === 'dec' ? '' : 'none';
+  document.getElementById('dmsInputs').style.display = fmt === 'dms' ? '' : 'none';
+  document.getElementById('fmtDecBtn').classList.toggle('active', fmt === 'dec');
+  document.getElementById('fmtDmsBtn').classList.toggle('active', fmt === 'dms');
+  hideErr('err_wgs_utm');
+}
+
+// ── DMS PARSER ────────────────────────────────────────────────────────
+// Accepts all common formats:
+//   6° 52' 10.506" N   |   6 52 10.506 N   |   6°52′10.506″N
+//   6:52:10.506N       |   N6 52 10.506
+function parseDMSString(str) {
+  if (!str || !str.trim()) return null;
+  str = str.trim().toUpperCase();
+  // Extract hemisphere (N/S/E/W)
+  let hem = null;
+  str = str.replace(/[NSEW]/, m => { hem = m; return ' '; }).trim();
+  // Strip all non-numeric except dots, minus, spaces
+  const parts = str.replace(/[°′″'":,]/g, ' ').trim().split(/\s+/).filter(Boolean);
+  if (parts.length < 1) return null;
+  const d = parseFloat(parts[0]) || 0;
+  const m = parseFloat(parts[1]) || 0;
+  const s = parseFloat(parts[2]) || 0;
+  if (isNaN(d)) return null;
+  let dd = d + m / 60 + s / 3600;
+  if (hem === 'S' || hem === 'W') dd = -dd;
+  return dd;
+}
+
+// Get lat/lon from whichever format is active
+function getWgsLatLon() {
+  if (wgsInputFmt === 'dec') {
+    const lat = parseFloat(document.getElementById('wgs_utm_lat').value.replace(',', '.'));
+    const lon = parseFloat(document.getElementById('wgs_utm_lon').value.replace(',', '.'));
+    return { lat, lon };
+  }
+  // DMS mode — check paste boxes first, then D/M/S fields
+  const pasteLatStr = document.getElementById('dms_paste_lat').value.trim();
+  const pasteLonStr = document.getElementById('dms_paste_lon').value.trim();
+
+  let lat, lon;
+  if (pasteLatStr) {
+    lat = parseDMSString(pasteLatStr);
+  } else {
+    const d = parseFloat(document.getElementById('lat_d').value) || 0;
+    const m = parseFloat(document.getElementById('lat_m').value) || 0;
+    const s = parseFloat(document.getElementById('lat_s').value) || 0;
+    const hem = document.getElementById('lat_hem').value;
+    lat = d + m / 60 + s / 3600;
+    if (hem === 'S') lat = -lat;
+  }
+  if (pasteLonStr) {
+    lon = parseDMSString(pasteLonStr);
+  } else {
+    const d = parseFloat(document.getElementById('lon_d').value) || 0;
+    const m = parseFloat(document.getElementById('lon_m').value) || 0;
+    const s = parseFloat(document.getElementById('lon_s').value) || 0;
+    const hem = document.getElementById('lon_hem').value;
+    lon = d + m / 60 + s / 3600;
+    if (hem === 'W') lon = -lon;
+  }
+  return { lat, lon };
+}
+
+// ── WGS84 → UTM CONVERSION ────────────────────────────────────────────
 document.getElementById('btn_wgs_utm').addEventListener('click', () => {
   hideErr('err_wgs_utm');
-  const lat = parseFloat(document.getElementById('wgs_utm_lat').value);
-  const lon = parseFloat(document.getElementById('wgs_utm_lon').value);
-  if (isNaN(lat) || isNaN(lon)) { showErr('err_wgs_utm', 'Please enter valid Latitude and Longitude.'); return; }
-  if (lat < -90 || lat > 90)    { showErr('err_wgs_utm', 'Latitude must be between -90 and 90.'); return; }
-  if (lon < -180 || lon > 180)  { showErr('err_wgs_utm', 'Longitude must be between -180 and 180.'); return; }
+  const { lat, lon } = getWgsLatLon();
+  if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
+    showErr('err_wgs_utm', 'Please enter valid coordinates in the selected format.'); return;
+  }
+  if (lat < -90 || lat > 90)   { showErr('err_wgs_utm', 'Latitude must be between -90° and 90°.'); return; }
+  if (lon < -180 || lon > 180) { showErr('err_wgs_utm', 'Longitude must be between -180° and 180°.'); return; }
   try {
     let zone = parseInt(document.getElementById('wgs_utm_zone').value);
     if (isNaN(zone)) zone = autoZone(lon);
-    const crs = 'EPSG:326' + String(zone).padStart(2, '0');
-    if (!proj4.defs(crs)) {
-      proj4.defs(crs, '+proj=utm +zone=' + zone + ' +datum=WGS84 +units=m +no_defs');
+    const outDatum = document.getElementById('wgs_utm_datum').value;
+
+    let tgtCRS, datumLabel;
+    if (outDatum === 'minna') {
+      // WGS84 → Minna UTM (applies Clarke 1880 + towgs84=-92,-93,122 shift)
+      // This matches SivanDesign and Mobile Topographer Pro
+      const minnaKey = zone === 31 ? 'EPSG:26331' : zone === 32 ? 'EPSG:26332' :
+        'MINNA_UTM_' + zone;
+      if (!proj4.defs(minnaKey) || minnaKey.startsWith('MINNA_UTM_')) {
+        proj4.defs(minnaKey,
+          '+proj=utm +zone=' + zone +
+          ' +a=6378249.145 +rf=293.465' +
+          ' +towgs84=-92,-93,122,0,0,0,0' +
+          ' +units=m +no_defs');
+      }
+      tgtCRS = minnaKey;
+      datumLabel = 'Minna / NNO';
+    } else {
+      // WGS84 → WGS84 UTM (no datum shift — pure GPS projection)
+      const wgsKey = 'EPSG:326' + String(zone).padStart(2, '0');
+      if (!proj4.defs(wgsKey)) {
+        proj4.defs(wgsKey,
+          '+proj=utm +zone=' + zone + ' +datum=WGS84 +units=m +no_defs');
+      }
+      tgtCRS = wgsKey;
+      datumLabel = 'WGS84';
     }
-    const [e, n] = proj4('EPSG:4326', crs, [lon, lat]);
+
+    const [e, n] = proj4('EPSG:4326', tgtCRS, [lon, lat]);
     showResult('resgrid_wgs_utm', 'res_wgs_utm', [
-      {label: 'UTM Zone',    value: zone + 'N',   raw: zone + 'N'},
-      {label: 'Northing',    value: fmt(n) + ' m', raw: fmt(n)},
-      {label: 'Easting',     value: fmt(e) + ' m', raw: fmt(e)},
-      {label: 'Lat (input)', value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-      {label: 'Lon (input)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      {label: 'Lat (DMS)',   value: toDMS(lat), raw: toDMS(lat)},
-      {label: 'Lon (DMS)',   value: toDMS(lon), raw: toDMS(lon)},
+      {label: 'Output Datum',      value: datumLabel,        raw: datumLabel},
+      {label: 'UTM Zone',          value: zone + 'N',        raw: zone + 'N'},
+      {label: 'Northing',          value: fmt(n) + ' m',     raw: fmt(n)},
+      {label: 'Easting',           value: fmt(e) + ' m',     raw: fmt(e)},
+      {label: 'Lat (decimal °)',   value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
+      {label: 'Lon (decimal °)',   value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
+      {label: 'Lat (DMS)',         value: toDMS(lat),         raw: toDMS(lat)},
+      {label: 'Lon (DMS)',         value: toDMS(lon),         raw: toDMS(lon)},
     ]);
   } catch(e) { showErr('err_wgs_utm', 'Conversion error: ' + e.message); }
 });
@@ -932,11 +1198,59 @@ document.getElementById('btn_utm_wgs').addEventListener('click', () => {
 });
 
 // WGS84 → Minna
+// ── WGS84 → MINNA FORMAT TOGGLE ─────────────────────────────────────
+let minnaInputFmt = 'dec';
+
+function setMinnaFmt(fmt) {
+  minnaInputFmt = fmt;
+  document.getElementById('mDecInputs').style.display = fmt === 'dec' ? '' : 'none';
+  document.getElementById('mDmsInputs').style.display = fmt === 'dms' ? '' : 'none';
+  document.getElementById('mFmtDecBtn').classList.toggle('active', fmt === 'dec');
+  document.getElementById('mFmtDmsBtn').classList.toggle('active', fmt === 'dms');
+  hideErr('err_wgs_minna');
+}
+
+function getMinnaLatLon() {
+  if (minnaInputFmt === 'dec') {
+    const lat = parseFloat(document.getElementById('wgs_minna_lat').value.replace(',', '.'));
+    const lon = parseFloat(document.getElementById('wgs_minna_lon').value.replace(',', '.'));
+    return { lat, lon };
+  }
+  // DMS mode — paste boxes override D/M/S fields
+  const pasteLatStr = document.getElementById('m_dms_paste_lat').value.trim();
+  const pasteLonStr = document.getElementById('m_dms_paste_lon').value.trim();
+  let lat, lon;
+  if (pasteLatStr) {
+    lat = parseDMSString(pasteLatStr);
+  } else {
+    const d = parseFloat(document.getElementById('m_lat_d').value) || 0;
+    const m = parseFloat(document.getElementById('m_lat_m').value) || 0;
+    const s = parseFloat(document.getElementById('m_lat_s').value) || 0;
+    const hem = document.getElementById('m_lat_hem').value;
+    lat = d + m / 60 + s / 3600;
+    if (hem === 'S') lat = -lat;
+  }
+  if (pasteLonStr) {
+    lon = parseDMSString(pasteLonStr);
+  } else {
+    const d = parseFloat(document.getElementById('m_lon_d').value) || 0;
+    const m = parseFloat(document.getElementById('m_lon_m').value) || 0;
+    const s = parseFloat(document.getElementById('m_lon_s').value) || 0;
+    const hem = document.getElementById('m_lon_hem').value;
+    lon = d + m / 60 + s / 3600;
+    if (hem === 'W') lon = -lon;
+  }
+  return { lat, lon };
+}
+
 document.getElementById('btn_wgs_minna').addEventListener('click', () => {
   hideErr('err_wgs_minna');
-  const lat = parseFloat(document.getElementById('wgs_minna_lat').value);
-  const lon = parseFloat(document.getElementById('wgs_minna_lon').value);
-  if (isNaN(lat) || isNaN(lon)) { showErr('err_wgs_minna', 'Please enter valid Latitude and Longitude.'); return; }
+  const { lat, lon } = getMinnaLatLon();
+  if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
+    showErr('err_wgs_minna', 'Please enter valid coordinates in the selected format.'); return;
+  }
+  if (lat < -90 || lat > 90)   { showErr('err_wgs_minna', 'Latitude must be between -90° and 90°.'); return; }
+  if (lon < -180 || lon > 180) { showErr('err_wgs_minna', 'Longitude must be between -180° and 180°.'); return; }
   const outKey = document.getElementById('wgs_minna_out').value;
   const outCRS = {geo:'EPSG:4263', utm31:'EPSG:26331', utm32:'EPSG:26332', west:'EPSG:26391', mid:'EPSG:26392', east:'EPSG:26393'}[outKey];
   try {
@@ -947,12 +1261,18 @@ document.getElementById('btn_wgs_minna').addEventListener('click', () => {
         {label: 'Minna Longitude', value: fmt(mLon, 8) + '°', raw: fmt(mLon, 8)},
         {label: 'Minna Lat (DMS)', value: toDMS(mLat), raw: toDMS(mLat)},
         {label: 'Minna Lon (DMS)', value: toDMS(mLon), raw: toDMS(mLon)},
+        {label: 'Input Lat (Dec)', value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
+        {label: 'Input Lon (Dec)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
       ]);
     } else {
       const [mE, mN] = proj4('EPSG:4326', outCRS, [lon, lat]);
       showResult('resgrid_wgs_minna', 'res_wgs_minna', [
-        {label: 'Minna Northing', value: fmt(mN) + ' m', raw: fmt(mN)},
-        {label: 'Minna Easting',  value: fmt(mE) + ' m', raw: fmt(mE)},
+        {label: 'Minna Northing',  value: fmt(mN) + ' m',     raw: fmt(mN)},
+        {label: 'Minna Easting',   value: fmt(mE) + ' m',     raw: fmt(mE)},
+        {label: 'Input Lat (Dec)', value: fmt(lat, 8) + '°',  raw: fmt(lat, 8)},
+        {label: 'Input Lon (Dec)', value: fmt(lon, 8) + '°',  raw: fmt(lon, 8)},
+        {label: 'Input Lat (DMS)', value: toDMS(lat),          raw: toDMS(lat)},
+        {label: 'Input Lon (DMS)', value: toDMS(lon),          raw: toDMS(lon)},
       ]);
     }
   } catch(e) { showErr('err_wgs_minna', 'Conversion error: ' + e.message); }
