@@ -1,310 +1,709 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DWG to KMZ Converter – Create Google Earth Markers from CAD Files | Universal Converter Hub</title>
-  <meta name="description" content="Convert DWG files to KMZ (Google Earth) markers. Enter UTM coordinates or upload a DWG file. Supports Minna, WGS84, and other datums. Perfect for GIS professionals.">
-  <meta name="keywords" content="DWG to KMZ, DWG to KML, CAD to Google Earth, UTM converter, Minna datum, GIS, land survey">
+  <title>CoordCast – Survey Coordinates to KMZ | Android App | ConverterHub</title>
+  <meta name="description" content="CoordCast converts survey coordinates and CSV files to KMZ for Google Earth. Free Android app with Pro upgrade. Unlimited conversions, no ads. Launching soon on Google Play.">
+  <meta name="keywords" content="CoordCast, coordinate to KMZ, CSV to KMZ, survey coordinates Google Earth, KMZ converter Android, Nigeria surveying app, survey points KMZ">
   <link rel="canonical" href="https://converterhub.com.ng/dwg-to-kmz.html">
-  <!-- Favicon for browser tab and Google search result icon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:title" content="CoordCast – Survey Coordinates to KMZ | Android App">
+  <meta property="og:description" content="Convert survey coordinates and CSV files to KMZ for Google Earth. Free Android app — launching soon on Google Play.">
+  <meta property="og:url" content="https://converterhub.com.ng/dwg-to-kmz.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConverterHub">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230d9488'/%3E%3Cpath d='M24 8C17.4 8 12 13.4 12 20c0 10 12 20 12 20s12-10 12-20c0-6.6-5.4-12-12-12zm0 16a4 4 0 110-8 4 4 0 010 8z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question","name": "Can I convert actual DWG geometry to KMZ?","acceptedAnswer": {"@type": "Answer","text": "This tool creates a location marker (KMZ) based on UTM coordinates. For full geometry conversion, use professional GIS software like Global Mapper or Spatial Manager."}},
-      {"@type": "Question","name": "What datums are supported?","acceptedAnswer": {"@type": "Answer","text": "WGS84, Minna (Nigeria), NAD83, and ED50. Minna is the standard datum for Nigeria."}},
-      {"@type": "Question","name": "How do I find my UTM coordinates?","acceptedAnswer": {"@type": "Answer","text": "You can obtain UTM coordinates from your DWG file or use online tools to convert latitude/longitude to UTM."}},
-      {"@type": "Question","name": "Is the KMZ file compatible with Google Earth?","acceptedAnswer": {"@type": "Answer","text": "Yes. The generated KMZ file opens directly in Google Earth and other GIS applications."}},
-      {"@type": "Question","name": "Is the converter free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No registration required."}}
-    ]
-  }
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CoordCast","url":"https://converterhub.com.ng/dwg-to-kmz.html","description":"Android app that converts survey coordinates and CSV files to KMZ files for Google Earth. Free with Pro upgrade.","applicationCategory":"UtilitiesApplication","operatingSystem":"Android","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"NGN"},{"@type":"Offer","name":"CoordCast Pro Monthly","price":"2.99","priceCurrency":"USD"},{"@type":"Offer","name":"CoordCast Pro Yearly","price":"19.99","priceCurrency":"USD"}],"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
   </script>
   <style>
-    /* FAQ Accordion Styles (same as previous pages) */
-    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
-    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
-    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
-    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-    .faq-question:hover { color: var(--accent); }
-    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
-    .faq-answer p { padding-bottom: 1rem; }
-    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
-    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
-    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
-    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
-    /* Feedback Button & Modal */
-    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
-    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
-    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
-    .modal-close:hover { color: var(--accent); }
-    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+    /* ── BRAND COLOURS (teal, matching app) ─── */
+    :root{ --teal:#0d9488; --teal-dark:#0f766e; --teal-light:#ccfbf1; }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero-section{
+      background:linear-gradient(135deg,#042f2e 0%,#0d4f47 40%,#134e4a 100%);
+      border-radius:24px;padding:60px 40px;text-align:center;
+      position:relative;overflow:hidden;margin-bottom:40px;
+    }
+    @media(max-width:600px){.hero-section{padding:40px 20px;}}
+    .hero-section::before{
+      content:'';position:absolute;inset:0;opacity:.4;
+      background:radial-gradient(ellipse at 70% 20%,rgba(20,184,166,.3),transparent 60%),
+                 radial-gradient(ellipse at 20% 80%,rgba(6,182,212,.2),transparent 50%);
+      pointer-events:none;
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(20,184,166,.2);border:1px solid rgba(20,184,166,.4);
+      border-radius:30px;padding:6px 16px;font-size:.82rem;font-weight:700;
+      color:rgba(255,255,255,.9);margin-bottom:24px;
+    }
+    .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:blink 1.4s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+    /* App logo inline */
+    .hero-logo{
+      display:inline-flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;padding:14px 24px;margin-bottom:28px;
+    }
+    .hero-logo-icon{
+      width:56px;height:56px;border-radius:16px;
+      background:linear-gradient(135deg,#0d9488,#0891b2);
+      display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+    }
+    .hero-logo-text{text-align:left;}
+    .hero-logo-name{font-size:1.5rem;font-weight:900;color:#fff;line-height:1.1;}
+    .hero-logo-sub{font-size:.78rem;color:rgba(255,255,255,.6);margin-top:2px;}
+
+    .hero-title{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;color:#fff;margin-bottom:14px;line-height:1.2;letter-spacing:-.02em;}
+    .hero-title em{font-style:normal;color:#5eead4;}
+    .hero-sub{font-size:1rem;color:rgba(255,255,255,.72);max-width:560px;margin:0 auto 28px;line-height:1.7;}
+
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px;}
+    .hero-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:5px 14px;font-size:.78rem;color:rgba(255,255,255,.82);font-weight:600;}
+
+    /* ── COUNTDOWN ────────────────────────────── */
+    .countdown-wrap{
+      background:rgba(0,0,0,.35);backdrop-filter:blur(16px);
+      border:1px solid rgba(20,184,166,.3);border-radius:18px;
+      padding:20px 28px;display:inline-flex;flex-direction:column;
+      align-items:center;gap:8px;margin-bottom:28px;
+    }
+    .countdown-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em;}
+    .countdown-units{display:flex;gap:12px;align-items:flex-end;}
+    .countdown-unit{text-align:center;min-width:54px;}
+    .countdown-num{
+      font-size:2.6rem;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;
+      line-height:1;background:rgba(255,255,255,.06);border-radius:10px;
+      padding:8px 10px;display:block;
+    }
+    .countdown-sep{font-size:2rem;font-weight:900;color:rgba(255,255,255,.3);padding-bottom:12px;}
+    .countdown-sub{font-size:.62rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:5px;}
+    .countdown-done{font-size:1rem;font-weight:700;color:#5eead4;display:none;}
+
+    /* ── PLAY BUTTON ──────────────────────────── */
+    .play-btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:0;}
+    .play-btn{
+      display:inline-flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);
+      border-radius:16px;padding:14px 26px;color:#fff;text-decoration:none;
+      font-family:inherit;opacity:.6;cursor:default;transition:all .2s;
+    }
+    .play-btn.active{opacity:1;cursor:pointer;background:rgba(20,184,166,.25);border-color:rgba(20,184,166,.5);}
+    .play-btn.active:hover{background:rgba(20,184,166,.4);}
+    .play-btn-icon{font-size:2rem;}
+    .play-btn-small{display:block;font-size:.67rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em;}
+    .play-btn-big{font-size:1.05rem;font-weight:800;display:block;}
+    .cs-badge{
+      background:#f59e0b;color:#1c1c1c;font-size:.65rem;font-weight:800;
+      border-radius:6px;padding:2px 7px;text-transform:uppercase;letter-spacing:.04em;
+      vertical-align:middle;margin-left:6px;
+    }
+
+    /* ── PHONE MOCKUP ─────────────────────────── */
+    .phone-mockup-row{
+      display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap;
+    }
+    .phone-frame{
+      width:180px;background:#0d1117;border-radius:28px;
+      border:3px solid rgba(255,255,255,.15);overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);flex-shrink:0;
+    }
+    .phone-status{height:24px;background:#1a1a1a;display:flex;align-items:center;padding:0 12px;gap:6px;}
+    .phone-status-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);}
+    .phone-screen{background:#e8f5f3;padding:0;}
+    /* Home screen mockup */
+    .ps-header{background:#e8f5f3;padding:14px 14px 8px;display:flex;align-items:center;justify-content:space-between;}
+    .ps-app-name{font-size:.85rem;font-weight:900;color:#0d1117;}
+    .ps-gear{font-size:.85rem;color:#555;}
+    .ps-signed{font-size:.58rem;color:#666;padding:0 14px 8px;border-bottom:1px solid #d4ece9;}
+    .ps-signed strong{color:#0d1117;font-size:.62rem;}
+    .ps-ad{background:#fff;margin:8px 10px;border-radius:8px;padding:6px 10px;border:1px solid #e2e8f0;}
+    .ps-ad-text{font-size:.55rem;color:#2563eb;font-weight:700;line-height:1.3;}
+    .ps-menu{padding:6px 0;}
+    .ps-item{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid #d4ece9;}
+    .ps-item-icon{width:28px;height:28px;border-radius:8px;background:#e0f2f1;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+    .ps-item-text{flex:1;}
+    .ps-item-title{font-size:.62rem;font-weight:700;color:#0d1117;}
+    .ps-item-sub{font-size:.52rem;color:#666;line-height:1.3;}
+    .ps-item-arrow{font-size:.6rem;color:#aaa;}
+
+    /* Pro screen mockup */
+    .pro-screen{background:#2a2a2a;padding:20px 14px;text-align:center;min-height:280px;}
+    .pro-trophy{font-size:2rem;margin-bottom:8px;}
+    .pro-title{font-size:.9rem;font-weight:900;color:#fff;margin-bottom:10px;}
+    .pro-feature{display:flex;align-items:center;gap:6px;margin-bottom:6px;text-align:left;}
+    .pro-check{color:#0d9488;font-size:.7rem;}
+    .pro-feat-text{font-size:.6rem;color:#ddd;}
+    .pro-divider{border:none;border-top:1px solid #444;margin:12px 0;}
+    .pro-plan{background:#3a3a3a;border-radius:10px;padding:8px 10px;margin-bottom:6px;}
+    .pro-plan-name{font-size:.6rem;color:#aaa;text-align:center;}
+    .pro-plan-price{font-size:.75rem;font-weight:800;color:#fff;text-align:center;text-decoration:line-through;text-decoration-color:#666;}
+
+    /* ── SECTION COMMON ───────────────────────── */
+    .section-eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:6px;}
+    .section-title{font-size:1.4rem;font-weight:800;color:var(--text-primary);margin-bottom:6px;}
+    .section-sub{font-size:.88rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+
+    /* ── FEATURES ─────────────────────────────── */
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:16px;}
+    .feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:22px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s,transform .15s;}
+    .feat-card:hover{border-color:var(--teal);transform:translateY(-2px);}
+    .feat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+    .feat-name{font-size:.9rem;font-weight:700;margin-bottom:5px;color:var(--text-primary);}
+    .feat-desc{font-size:.8rem;color:var(--text-muted);line-height:1.6;}
+    .feat-tag{display:inline-block;font-size:.62rem;font-weight:700;border-radius:6px;padding:2px 7px;margin-top:8px;text-transform:uppercase;letter-spacing:.04em;}
+    .tag-free{background:#ccfbf1;color:#0f766e;}
+    .tag-pro{background:#fef3c7;color:#92400e;}
+    body.dark .tag-free{background:#042f2e;color:#5eead4;}
+    body.dark .tag-pro{background:#451a03;color:#fcd34d;}
+
+    /* ── WORKFLOW ─────────────────────────────── */
+    .workflow-row{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+    @media(max-width:640px){.workflow-row{grid-template-columns:1fr 1fr;}}
+    .workflow-step{padding:22px 16px;text-align:center;position:relative;}
+    .workflow-step:not(:last-child){border-right:1px solid var(--border);}
+    @media(max-width:640px){
+      .workflow-step:nth-child(2){border-right:none;}
+      .workflow-step:nth-child(1),.workflow-step:nth-child(2){border-bottom:1px solid var(--border);}
+    }
+    .ws-num{width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-size:.82rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+    .ws-icon{font-size:1.5rem;margin-bottom:8px;}
+    .ws-label{font-size:.82rem;font-weight:700;color:var(--text-primary);margin-bottom:3px;}
+    .ws-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4;}
+
+    /* ── PRICING ──────────────────────────────── */
+    .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    @media(max-width:580px){.pricing-grid{grid-template-columns:1fr;}}
+    .pricing-card{background:var(--bg-card);border:2px solid var(--border);border-radius:22px;padding:28px;text-align:center;position:relative;}
+    .pricing-card.popular{border-color:var(--teal);}
+    .pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:.68rem;font-weight:800;border-radius:20px;padding:4px 14px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;}
+    .pricing-tier{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:6px;}
+    .pricing-price{font-size:2.2rem;font-weight:900;color:var(--text-primary);margin-bottom:2px;line-height:1;}
+    .pricing-price sup{font-size:.9rem;vertical-align:super;font-weight:700;}
+    .pricing-price span{font-size:.85rem;font-weight:400;color:var(--text-muted);}
+    .pricing-alt{font-size:.75rem;color:var(--text-muted);margin-bottom:20px;}
+    .pricing-features{list-style:none;text-align:left;display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+    .pricing-features li{font-size:.83rem;color:var(--text-secondary);display:flex;gap:9px;align-items:flex-start;line-height:1.4;}
+    .pricing-features li.no{color:var(--text-muted);}
+    .pricing-btn{width:100%;padding:13px;border-radius:12px;font-size:.88rem;font-weight:700;border:none;cursor:default;font-family:inherit;}
+    .pb-free{background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--border);}
+    .pb-pro{background:var(--teal);color:#fff;}
+
+    /* ── ROADMAP ──────────────────────────────── */
+    .roadmap-list{display:flex;flex-direction:column;gap:10px;}
+    .road-item{display:flex;align-items:flex-start;gap:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
+    .road-status{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+    .road-title{font-size:.88rem;font-weight:700;color:var(--text-primary);margin-bottom:3px;}
+    .road-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5;}
+    .road-tag{display:inline-block;font-size:.62rem;font-weight:700;border-radius:6px;padding:2px 7px;margin-top:6px;text-transform:uppercase;letter-spacing:.04em;}
+    .rt-live{background:#ccfbf1;color:#0f766e;}
+    .rt-soon{background:#dbeafe;color:#1e40af;}
+    .rt-planned{background:#f3e8ff;color:#6b21a8;}
+    body.dark .rt-live{background:#042f2e;color:#5eead4;}
+    body.dark .rt-soon{background:#1e3a8a;color:#93c5fd;}
+    body.dark .rt-planned{background:#3b0764;color:#d8b4fe;}
+
+    /* ── NOTIFY ───────────────────────────────── */
+    .notify-section{background:linear-gradient(135deg,#042f2e,#0d4f47);border-radius:20px;padding:44px 36px;text-align:center;margin-top:44px;}
+    @media(max-width:500px){.notify-section{padding:32px 20px;}}
+    .notify-section h2{color:#fff;font-size:1.4rem;font-weight:800;margin-bottom:8px;}
+    .notify-section p{color:rgba(255,255,255,.7);font-size:.88rem;margin-bottom:24px;}
+    .notify-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+    .notify-input{flex:1;min-width:200px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:inherit;font-size:.9rem;}
+    .notify-input::placeholder{color:rgba(255,255,255,.4);}
+    .notify-input:focus{outline:2px solid rgba(94,234,212,.5);}
+    .notify-btn{padding:12px 22px;border-radius:12px;background:#5eead4;color:#042f2e;font-weight:800;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;white-space:nowrap;}
+    .notify-btn:hover{background:#2dd4bf;}
+    .notify-done{display:none;color:#5eead4;font-size:.88rem;font-weight:600;margin-top:12px;}
+
+    /* ── RELATED ──────────────────────────────── */
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s;}
+    .related-pill:hover{border-color:var(--teal);color:var(--teal);}
   </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
-</div>
-<div class="container">
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2563eb"/>
-                <stop offset="1" stop-color="#7c3aed"/>
-              </linearGradient>
-            </defs>
-          </svg>
+
+<main class="ch-container">
+
+  <nav class="ch-breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Surveying Apps</span><span class="sep">›</span>
+    <span class="current">CoordCast – Coordinates to KMZ</span>
+  </nav>
+
+  <!-- ══ HERO ════════════════════════════════════════════════════════════ -->
+  <div class="hero-section">
+
+    <div class="hero-badge">
+      <span class="dot"></span> Launching on Google Play — Closed Testing Active
+    </div>
+
+    <!-- Real app logo -->
+    <div class="hero-logo">
+      <div class="hero-logo-icon">📍</div>
+      <div class="hero-logo-text">
+        <div class="hero-logo-name">CoordCast</div>
+        <div class="hero-logo-sub">Survey Coordinates to KMZ</div>
+      </div>
+    </div>
+
+    <h1 class="hero-title">
+      Your Survey Points.<br><em>On Google Earth. Instantly.</em>
+    </h1>
+
+    <p class="hero-sub">
+      CoordCast converts your field survey coordinates and CSV files into KMZ files for Google Earth, GIS platforms and satellite overlays. Built for Nigerian surveyors, engineers and GIS professionals who need fast, accurate results on the go.
+    </p>
+
+    <div class="hero-tags">
+      <span class="hero-tag">📍 Coordinates → KMZ</span>
+      <span class="hero-tag">📄 CSV → KMZ</span>
+      <span class="hero-tag">📁 PDF & CSV Viewer</span>
+      <span class="hero-tag">🗂 My Files</span>
+      <span class="hero-tag">📱 Android App</span>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">🚀 Launching in</div>
+      <div class="countdown-units">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd_days">15</span>
+          <div class="countdown-sub">Days</div>
         </div>
-        <div class="logo-text">
-          <h1>Universal Converter Hub</h1>
-          <p>Convert Anything, Anywhere</p>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd_hours">00</span>
+          <div class="countdown-sub">Hours</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd_mins">00</span>
+          <div class="countdown-sub">Mins</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd_secs">00</span>
+          <div class="countdown-sub">Secs</div>
+        </div>
+      </div>
+      <div class="countdown-done" id="cd_done">🎉 CoordCast is live on Google Play!</div>
+    </div>
+
+    <!-- Play Store -->
+    <div class="play-btn-row">
+      <a href="#notify" class="play-btn" id="playStoreBtn">
+        <span class="play-btn-icon">▶</span>
+        <div>
+          <span class="play-btn-small">Get it on</span>
+          <span class="play-btn-big">Google Play <span class="cs-badge" id="csBadge">Coming Soon</span></span>
         </div>
       </a>
     </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+
+    <!-- Phone mockups using real screen layout -->
+    <div class="phone-mockup-row">
+
+      <!-- Home screen mockup -->
+      <div class="phone-frame">
+        <div class="phone-status">
+          <div class="phone-status-dot"></div>
+          <div class="phone-status-dot"></div>
+          <div class="phone-status-dot"></div>
+        </div>
+        <div class="phone-screen">
+          <div class="ps-header">
+            <span class="ps-app-name">CoordCast</span>
+            <span class="ps-gear">⚙️</span>
+          </div>
+          <div class="ps-signed">Signed in as <strong>user@example.com</strong></div>
+          <div class="ps-ad">
+            <div class="ps-ad-text" style="color:#555;font-size:.5rem;">📢 Ad</div>
+          </div>
+          <div class="ps-menu">
+            <div class="ps-item">
+              <div class="ps-item-icon">📍</div>
+              <div class="ps-item-text">
+                <div class="ps-item-title">Coordinates → KMZ</div>
+                <div class="ps-item-sub">Enter or upload survey points</div>
+              </div>
+              <span class="ps-item-arrow">›</span>
+            </div>
+            <div class="ps-item">
+              <div class="ps-item-icon">📑</div>
+              <div class="ps-item-text">
+                <div class="ps-item-title">View PDF</div>
+                <div class="ps-item-sub">Open and browse a PDF file</div>
+              </div>
+              <span class="ps-item-arrow">›</span>
+            </div>
+            <div class="ps-item">
+              <div class="ps-item-icon">📊</div>
+              <div class="ps-item-text">
+                <div class="ps-item-title">View CSV</div>
+                <div class="ps-item-sub">Open and browse a CSV file</div>
+              </div>
+              <span class="ps-item-arrow">›</span>
+            </div>
+            <div class="ps-item">
+              <div class="ps-item-icon">📁</div>
+              <div class="ps-item-text">
+                <div class="ps-item-title">My Files</div>
+                <div class="ps-item-sub">Past conversions & uploads</div>
+              </div>
+              <span class="ps-item-arrow">›</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro screen mockup -->
+      <div class="phone-frame">
+        <div class="phone-status">
+          <div class="phone-status-dot"></div>
+          <div class="phone-status-dot"></div>
+          <div class="phone-status-dot"></div>
+        </div>
+        <div class="pro-screen">
+          <div class="pro-trophy">🏆</div>
+          <div class="pro-title">Go unlimited</div>
+          <div class="pro-feature"><span class="pro-check">✅</span><span class="pro-feat-text">Unlimited conversions — no daily cap</span></div>
+          <div class="pro-feature"><span class="pro-check">✅</span><span class="pro-feat-text">No ads, anywhere in the app</span></div>
+          <div class="pro-feature"><span class="pro-check">✅</span><span class="pro-feat-text">Priority support</span></div>
+          <hr class="pro-divider">
+          <div class="pro-plan">
+            <div class="pro-plan-name">Monthly</div>
+            <div class="pro-plan-price">$2.99/month</div>
+          </div>
+          <div class="pro-plan">
+            <div class="pro-plan-name">Yearly — best value</div>
+            <div class="pro-plan-price">$19.99/year</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn active">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+
+  <!-- AdSense top -->
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
-  <h2 class="section-title">DWG to KMZ Converter – CAD to Google Earth</h2>
-  <div class="card">
-    <div class="drop-zone" id="dwgDrop">🗺️ Drop .dwg file here or click<input type="file" id="dwgInput" accept=".dwg" multiple></div>
-    <div id="dwgFileList" class="file-list"></div>
-    <div class="input-group">
-      <label>UTM Zone:</label>
-      <select id="utmZone" class="format-select">
-        <option value="31N">31N (Nigeria / West Africa)</option>
-        <option value="32N">32N</option><option value="33N">33N</option><option value="34N">34N</option>
-        <option value="35N">35N</option><option value="36N">36N</option><option value="37N">37N</option>
-        <option value="38N">38N</option><option value="39N">39N</option><option value="40N">40N</option>
-        <option value="41N">41N</option><option value="42N">42N</option><option value="43N">43N</option>
-        <option value="44N">44N</option><option value="45N">45N</option><option value="46N">46N</option>
-        <option value="47N">47N</option><option value="48N">48N</option><option value="49N">49N</option>
-        <option value="50N">50N</option><option value="51N">51N</option><option value="52N">52N</option>
-        <option value="53N">53N</option><option value="54N">54N</option><option value="55N">55N</option>
-        <option value="56N">56N</option><option value="57N">57N</option><option value="58N">58N</option>
-        <option value="59N">59N</option><option value="60N">60N</option>
-        <option value="1S">1S</option><option value="2S">2S</option><option value="3S">3S</option>
-        <option value="4S">4S</option><option value="5S">5S</option><option value="6S">6S</option>
-        <option value="7S">7S</option><option value="8S">8S</option><option value="9S">9S</option>
-        <option value="10S">10S</option><option value="11S">11S</option><option value="12S">12S</option>
-        <option value="13S">13S</option><option value="14S">14S</option><option value="15S">15S</option>
-        <option value="16S">16S</option><option value="17S">17S</option><option value="18S">18S</option>
-        <option value="19S">19S</option><option value="20S">20S</option><option value="21S">21S</option>
-        <option value="22S">22S</option><option value="23S">23S</option><option value="24S">24S</option>
-        <option value="25S">25S</option><option value="26S">26S</option><option value="27S">27S</option>
-        <option value="28S">28S</option><option value="29S">29S</option><option value="30S">30S</option>
-        <option value="31S">31S</option><option value="32S">32S</option><option value="33S">33S</option>
-        <option value="34S">34S</option><option value="35S">35S</option><option value="36S">36S</option>
-        <option value="37S">37S</option><option value="38S">38S</option><option value="39S">39S</option>
-        <option value="40S">40S</option><option value="41S">41S</option><option value="42S">42S</option>
-        <option value="43S">43S</option><option value="44S">44S</option><option value="45S">45S</option>
-        <option value="46S">46S</option><option value="47S">47S</option><option value="48S">48S</option>
-        <option value="49S">49S</option><option value="50S">50S</option><option value="51S">51S</option>
-        <option value="52S">52S</option><option value="53S">53S</option><option value="54S">54S</option>
-        <option value="55S">55S</option><option value="56S">56S</option><option value="57S">57S</option>
-        <option value="58S">58S</option><option value="59S">59S</option><option value="60S">60S</option>
-      </select>
+
+  <!-- ══ FEATURES ════════════════════════════════════════════════════════ -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">✅ What's in the App</div>
+    <div class="section-title">Everything You Need — Right Out of the Box</div>
+    <div class="section-sub">Four core tools, full account management, and a Pro upgrade for unlimited professional use.</div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#ccfbf1;">📍</div>
+        <div>
+          <div class="feat-name">Coordinates → KMZ</div>
+          <div class="feat-desc">Enter or upload survey points (Northing, Easting, label) and generate a KMZ file ready for Google Earth in seconds.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#dbeafe;">📑</div>
+        <div>
+          <div class="feat-name">PDF Viewer</div>
+          <div class="feat-desc">Open and browse PDF files directly inside CoordCast — no external app needed. Perfect for viewing survey reports.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#f0fdf4;">📊</div>
+        <div>
+          <div class="feat-name">CSV Viewer</div>
+          <div class="feat-desc">Open and browse CSV coordinate files inside the app before converting. Inspect your data before it goes to KMZ.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#f5f3ff;">📁</div>
+        <div>
+          <div class="feat-name">My Files</div>
+          <div class="feat-desc">All your past conversions and uploads saved in one place. Open, share or re-export any previous KMZ from your file history.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fef3c7;">🔗</div>
+        <div>
+          <div class="feat-name">"Open With" Google Earth</div>
+          <div class="feat-desc">Open your generated KMZ directly in Google Earth, Maps.me, OsmAnd or any GIS app — straight from CoordCast.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fce7f3;">👤</div>
+        <div>
+          <div class="feat-name">Account System</div>
+          <div class="feat-desc">Sign up, sign in, reset password and delete account — full account management with your subscription tied to your profile.</div>
+          <span class="feat-tag tag-free">Free</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fef9c3;">♾️</div>
+        <div>
+          <div class="feat-name">Unlimited Conversions</div>
+          <div class="feat-desc">Free tier has a daily cap. Go Pro to remove all limits — convert as many coordinate sets as you need, every day.</div>
+          <span class="feat-tag tag-pro">Pro</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fef9c3;">🚫</div>
+        <div>
+          <div class="feat-name">No Ads — Anywhere</div>
+          <div class="feat-desc">Pro removes every ad from the entire app. A clean, distraction-free workspace for professional surveying work.</div>
+          <span class="feat-tag tag-pro">Pro</span>
+        </div>
+      </div>
     </div>
-    <div class="input-group">
-      <label>Easting (X):</label>
-      <input type="number" id="utmEasting" placeholder="e.g., 315000" value="315000" step="any" class="format-select">
-    </div>
-    <div class="input-group">
-      <label>Northing (Y):</label>
-      <input type="number" id="utmNorthing" placeholder="e.g., 950000" value="950000" step="any" class="format-select">
-    </div>
-    <div class="input-group">
-      <label>Datum:</label>
-      <select id="utmDatum" class="format-select">
-        <option value="WGS84">WGS84</option>
-        <option value="Minna" selected>Minna (Nigeria)</option>
-        <option value="NAD83">NAD83</option>
-        <option value="ED50">ED50</option>
-      </select>
-    </div>
-    <button class="btn" id="generateKmzBtn"><i class="fas fa-globe"></i> Generate KMZ Marker</button>
-    <div class="result-area" id="kmzResult"></div>
-    <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-secondary);">⚠️ This tool creates a location marker (KMZ) based on UTM coordinates. For full DWG geometry conversion, use professional GIS software.</p>
   </div>
-  <section class="faq-accordion">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I convert actual DWG geometry to KMZ?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>This tool creates a location marker (KMZ) based on UTM coordinates. For full geometry conversion, use professional GIS software like Global Mapper or Spatial Manager.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What datums are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>WGS84, Minna (Nigeria), NAD83, and ED50. Minna is the standard datum for Nigeria.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How do I find my UTM coordinates?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>You can obtain UTM coordinates from your DWG file or use online tools to convert latitude/longitude to UTM.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the KMZ file compatible with Google Earth?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes. The generated KMZ file opens directly in Google Earth and other GIS applications.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is the converter free?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, completely free. No registration required.</p></div></div>
-    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
-  </section>
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
+
+  <!-- ══ HOW IT WORKS ════════════════════════════════════════════════════ -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">⚙️ How It Works</div>
+    <div class="section-title">Field Book to Google Earth in 4 Steps</div>
+    <div class="section-sub">No desktop software. No complicated settings. Just fast, accurate KMZ output.</div>
+    <div class="workflow-row">
+      <div class="workflow-step">
+        <div class="ws-num">1</div>
+        <div class="ws-icon">📂</div>
+        <div class="ws-label">Load Data</div>
+        <div class="ws-desc">Enter coordinates or upload a CSV survey file</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-num">2</div>
+        <div class="ws-icon">⚙️</div>
+        <div class="ws-label">Configure</div>
+        <div class="ws-desc">Choose datum, belt and output options</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-num">3</div>
+        <div class="ws-icon">🧮</div>
+        <div class="ws-label">Convert</div>
+        <div class="ws-desc">Instant WGS84 transformation and KMZ output</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-num">4</div>
+        <div class="ws-icon">🌍</div>
+        <div class="ws-label">Open in Earth</div>
+        <div class="ws-desc">View your survey in Google Earth instantly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AdSense mid -->
+  <div class="ch-ad-zone" style="margin-top:36px;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ══ PRICING ══════════════════════════════════════════════════════════ -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">💳 Pricing</div>
+    <div class="section-title">Start Free. Go Pro When You Need More.</div>
+    <div class="section-sub">CoordCast is free to download and use. Upgrade to Pro for unlimited conversions and no ads.</div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-price"><sup>₦</sup>0<span>/forever</span></div>
+        <div class="pricing-alt">No credit card required</div>
+        <ul class="pricing-features">
+          <li><span>✅</span> Coordinates → KMZ</li>
+          <li><span>✅</span> PDF & CSV Viewer</li>
+          <li><span>✅</span> My Files history</li>
+          <li><span>✅</span> Open with Google Earth</li>
+          <li><span>✅</span> Account & settings</li>
+          <li class="no"><span>❌</span> Daily conversion limit</li>
+          <li class="no"><span>❌</span> Ads shown in app</li>
+        </ul>
+        <button class="pricing-btn pb-free">Download Free</button>
+      </div>
+      <div class="pricing-card popular">
+        <div class="pop-badge">⭐ CoordCast Pro</div>
+        <div class="pricing-tier" style="margin-top:14px;">Go Unlimited</div>
+        <div class="pricing-price"><sup>$</sup>2.99<span>/month</span></div>
+        <div class="pricing-alt">or $19.99/year — save 44%</div>
+        <ul class="pricing-features">
+          <li><span>✅</span> Everything in Free</li>
+          <li><span>✅</span> <strong>Unlimited conversions</strong></li>
+          <li><span>✅</span> <strong>No ads, anywhere</strong></li>
+          <li><span>✅</span> Priority support</li>
+          <li><span>✅</span> Early access to new features</li>
+          <li><span>✅</span> Cancel anytime via Google Play</li>
+          <li><span>✅</span> Subscription synced to your account</li>
+        </ul>
+        <button class="pricing-btn pb-pro">Get Pro on Launch</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROADMAP ══════════════════════════════════════════════════════════ -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">🗺 Roadmap</div>
+    <div class="section-title">What's Live, What's Coming</div>
+    <div class="section-sub">Current status from closed testing + planned features for after launch.</div>
+    <div class="roadmap-list">
+      <div class="road-item">
+        <span class="road-status">✅</span>
+        <div>
+          <div class="road-title">Coordinates → KMZ, PDF Viewer, CSV Viewer, My Files</div>
+          <div class="road-desc">All four core app screens live and confirmed working in closed testing.</div>
+          <span class="road-tag rt-live">Live in Closed Testing</span>
+        </div>
+      </div>
+      <div class="road-item">
+        <span class="road-status">✅</span>
+        <div>
+          <div class="road-title">Account System — Signup, Login, Password Reset, Delete Account</div>
+          <div class="road-desc">Full account management confirmed working — sign in, sign out, delete account. Subscriptions tied to user account.</div>
+          <span class="road-tag rt-live">Live in Closed Testing</span>
+        </div>
+      </div>
+      <div class="road-item">
+        <span class="road-status">✅</span>
+        <div>
+          <div class="road-title">Ads (All 5 Formats) + Subscriptions (Monthly ₦4,250 / Yearly ₦42,500)</div>
+          <div class="road-desc">Monetization confirmed end-to-end — $2.99/month and $19.99/year subscriptions working on a real closed-testing install.</div>
+          <span class="road-tag rt-live">Live in Closed Testing</span>
+        </div>
+      </div>
+      <div class="road-item">
+        <span class="road-status">🔜</span>
+        <div>
+          <div class="road-title">Production Release on Google Play Store</div>
+          <div class="road-desc">Applying for production this week after 14-day closed testing period (12 testers opted in).</div>
+          <span class="road-tag rt-soon">This Week</span>
+        </div>
+      </div>
+      <div class="road-item">
+        <span class="road-status">🔮</span>
+        <div>
+          <div class="road-title">Survey PDF / Image → Excel (Pro Feature)</div>
+          <div class="road-desc">Upload a scanned survey plan or field sheet and extract coordinate data into an Excel file automatically.</div>
+          <span class="road-tag rt-planned">Planned — Pro</span>
+        </div>
+      </div>
+      <div class="road-item">
+        <span class="road-status">🔮</span>
+        <div>
+          <div class="road-title">Batch Export — Multiple Coordinate Sets to One KMZ</div>
+          <div class="road-desc">Convert multiple CSV files or coordinate sets at once and package them into a single layered KMZ.</div>
+          <span class="road-tag rt-planned">Planned — Pro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NOTIFY ════════════════════════════════════════════════════════════ -->
+  <div class="notify-section" id="notify">
+    <h2>🔔 Get Notified on Launch</h2>
+    <p>Be the first to know when CoordCast goes live on Google Play. We'll send you a direct link the moment it's published.</p>
+    <div class="notify-form">
+      <input type="email" class="notify-input" id="notifyEmail" placeholder="your@email.com">
+      <button class="notify-btn" onclick="submitNotify()">Notify Me</button>
+    </div>
+    <div class="notify-done" id="notifyDone">✅ You're on the list! We'll email you on launch day.</div>
+  </div>
+
+  <!-- AdSense bottom -->
+  <div class="ch-ad-zone" style="margin-top:36px;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Related -->
+  <div style="margin-top:44px;">
+    <div class="section-eyebrow">🔧 Related Tools</div>
+    <div class="section-title">More Free Surveying Tools on ConverterHub</div>
+    <div class="related-grid">
+      <a href="coordinate-converter.html" class="related-pill">🧭 Coordinate Converter</a>
+      <a href="land-calculator.html"      class="related-pill">🌍 Land Calculator</a>
+      <a href="unit-converter.html"       class="related-pill">📐 Unit Converter</a>
+      <a href="csv-to-excel.html"         class="related-pill">📊 CSV to Excel</a>
+      <a href="currency-converter.html"   class="related-pill">💱 Currency Converter</a>
+      <a href="pdf-to-word.html"          class="related-pill">📄 PDF to Word</a>
+    </div>
+  </div>
+
+</main>
+
 <script src="js/common.js"></script>
 <script>
-  // Accordion functionality
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
-  // Modal logic
-  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-  // DWG to KMZ logic
-  const dwgInput = document.getElementById('dwgInput');
-  const dwgDrop = document.getElementById('dwgDrop');
-  dwgInput.addEventListener('change', () => updateFileList('dwgFileList', dwgInput.files));
-  dwgDrop.addEventListener('click', () => dwgInput.click());
-  dwgDrop.addEventListener('dragover', e => e.preventDefault());
-  dwgDrop.addEventListener('drop', e => { e.preventDefault(); dwgInput.files = e.dataTransfer.files; updateFileList('dwgFileList', dwgInput.files); });
-  function utmToLatLng(zoneStr, easting, northing) {
-    const match = zoneStr.match(/(\d+)([NS])/);
-    if (!match) return { lat: 9.0575, lng: 7.4955 };
-    const zoneNum = parseInt(match[1], 10);
-    const hemisphere = match[2];
-    const centralMeridian = zoneNum * 6 - 183;
-    const eastingOffset = (easting - 500000) / 111320;
-    let lng = centralMeridian + eastingOffset;
-    let lat = (hemisphere === 'N') ? northing / 111320 : -northing / 111320;
-    lat = Math.max(-80, Math.min(84, lat));
-    lng = Math.max(-180, Math.min(180, lng));
-    return { lat, lng };
+(function(){
+  // ── COUNTDOWN — persists across visits ───────────────────────────────
+  var KEY = 'coordcast_launch_v2';
+  var stored = localStorage.getItem(KEY);
+  var launchDate;
+  if (stored) {
+    launchDate = new Date(parseInt(stored));
+  } else {
+    launchDate = new Date(Date.now() + 15 * 24 * 60 * 60 * 1000);
+    try { localStorage.setItem(KEY, launchDate.getTime().toString()); } catch(e){}
   }
-  document.getElementById('generateKmzBtn').addEventListener('click', async () => {
-    const zone = document.getElementById('utmZone').value;
-    let easting = parseFloat(document.getElementById('utmEasting').value);
-    let northing = parseFloat(document.getElementById('utmNorthing').value);
-    const datum = document.getElementById('utmDatum').value;
-    if (isNaN(easting)) easting = 315000;
-    if (isNaN(northing)) northing = 950000;
-    const files = Array.from(dwgInput.files);
-    if (files.length === 0 && (!easting || !northing)) {
-      document.getElementById('kmzResult').innerText = '⚠️ Please upload a DWG file or enter UTM coordinates.';
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function tick(){
+    var diff = launchDate.getTime() - Date.now();
+    if (diff <= 0) {
+      document.getElementById('cd_days').textContent  = '00';
+      document.getElementById('cd_hours').textContent = '00';
+      document.getElementById('cd_mins').textContent  = '00';
+      document.getElementById('cd_secs').textContent  = '00';
+      document.getElementById('cd_done').style.display = '';
+      var btn = document.getElementById('playStoreBtn');
+      btn.classList.add('active');
+      var b = document.getElementById('csBadge');
+      if (b) { b.textContent = 'Download Now'; b.style.background='#22c55e'; b.style.color='#fff'; }
       return;
     }
-    const latLng = utmToLatLng(zone, easting, northing);
-    const kmzResultDiv = document.getElementById('kmzResult');
-    kmzResultDiv.innerHTML = 'Generating KMZ...';
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd_days').textContent  = pad(d);
+    document.getElementById('cd_hours').textContent = pad(h);
+    document.getElementById('cd_mins').textContent  = pad(m);
+    document.getElementById('cd_secs').textContent  = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+
+  // ── NOTIFY ────────────────────────────────────────────────────────────
+  window.submitNotify = function(){
+    var email = document.getElementById('notifyEmail').value.trim();
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
     try {
-      const zip = new JSZip();
-      const kml = `<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>Converted from ${files.length ? files.map(f => f.name).join(', ') : 'manual input'}</name>
-    <description>UTM: ${zone} ${easting.toFixed(2)}E ${northing.toFixed(2)}N (${datum})</description>
-    <Placemark>
-      <name>Location marker</name>
-      <Point>
-        <coordinates>${latLng.lng},${latLng.lat},0</coordinates>
-      </Point>
-    </Placemark>
-  </Document>
-</kml>`;
-      zip.file("doc.kml", kml);
-      const blob = await zip.generateAsync({ type: "blob" });
-      const filename = files.length ? files[0].name.replace(/\.dwg$/i, '') : 'coordinates';
-      saveAs(blob, `${filename}_${zone}_${datum}.kmz`);
-      kmzResultDiv.innerHTML = '✅ KMZ file generated and downloaded.';
-    } catch (err) {
-      kmzResultDiv.innerHTML = '❌ Error generating KMZ.';
-    }
-  });
+      var list = JSON.parse(localStorage.getItem('coordcast_notify') || '[]');
+      list.push({email: email, ts: Date.now()});
+      localStorage.setItem('coordcast_notify', JSON.stringify(list));
+    } catch(e){}
+    document.getElementById('notifyDone').style.display = '';
+    document.getElementById('notifyEmail').value = '';
+  };
+})();
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
-  <script src="/pwa-init.js"></script>
+
 </body>
 </html>

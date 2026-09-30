@@ -1,3 +1,12 @@
 User-agent: *
 Allow: /
+
+# Keep admin and test pages out of search index
+Disallow: /test.html
+Disallow: /temp.html
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /*.py$
+
+# Sitemap location
 Sitemap: https://converterhub.com.ng/sitemap.xml

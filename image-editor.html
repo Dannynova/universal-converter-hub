@@ -1,1 +1,40 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=image-converter.html"><title>Redirecting</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#2563eb"></head><body><p>Redirecting to <a href="image-converter.html">Image Converter</a>...</p><script src="/pwa-init.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=image-converter.html"><title>Redirecting</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#2563eb"><style>html,body{width:100%;max-width:100%;overflow-x:clip}#cookieBanner{padding:1rem!important}#cookieBanner>div>div:first-child{min-width:0!important}</style>  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
+</head><body><p>Redirecting to <a href="image-converter.html">Image Converter</a>...</p><script src="/pwa-init.js"></script>
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#f1f5f9;padding:1rem 1.5rem;box-shadow:0 -4px 20px rgba(0,0,0,.3);font-family:Inter,Arial,sans-serif;">
+  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;">
+    <div style="flex:1;min-width:260px;font-size:.88rem;line-height:1.6;">
+      <strong style="font-size:.95rem;">&#127850; We use cookies</strong><br>
+      We use cookies and Google AdSense to serve ads and analyse traffic. By clicking <strong>Accept</strong> you consent to our use of cookies as described in our <a href="/privacy-policy.html" style="color:#60a5fa;text-decoration:underline;">Privacy Policy</a>.
+    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;flex-shrink:0;">
+      <button id="cookieAccept" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:.6rem 1.4rem;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;">Accept All</button>
+      <button id="cookieDecline" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:.6rem 1.4rem;font-size:.88rem;cursor:pointer;font-family:inherit;">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    document.getElementById('cookieBanner').style.display = 'block';
+  }
+  document.getElementById('cookieAccept').addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  document.getElementById('cookieDecline').addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+})();
+</script>
+</body></html>

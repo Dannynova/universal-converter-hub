@@ -1,309 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Loan Calculator – Mortgage, Auto Loan & Personal Loan | Universal Converter Hub</title>
+  <title>Free Loan Calculator – Mortgage, Auto Loan & Personal Loan | ConverterHub</title>
   <meta name="description" content="Calculate your monthly mortgage, auto loan or personal loan payment free online. See full amortization schedule, total interest and payoff date. No signup required.">
   <meta name="keywords" content="loan calculator, mortgage calculator, auto loan calculator, personal loan calculator, monthly payment calculator, amortization schedule, mortgage payment calculator free">
   <link rel="canonical" href="https://converterhub.com.ng/loan-calculator.html">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta property="og:title" content="Free Loan Calculator – Mortgage, Auto Loan & Personal Loan">
   <meta property="og:description" content="Calculate mortgage, auto loan or personal loan payments free online. Full amortization schedule included.">
   <meta property="og:url" content="https://converterhub.com.ng/loan-calculator.html">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Universal Converter Hub">
+  <meta property="og:site_name" content="ConverterHub">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Free Loan Calculator | Universal Converter Hub">
-  <meta name="twitter:description" content="Calculate mortgage, auto and personal loan payments free online.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Loan Calculator","url":"https://converterhub.com.ng/loan-calculator.html","description":"Free online calculator for mortgage, auto loan and personal loan monthly payments with full amortization schedule.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Loan Calculator","url":"https://converterhub.com.ng/loan-calculator.html","description":"Free online loan calculator for mortgage, auto loan and personal loan. Full amortization schedule included. Runs entirely in your browser.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate my monthly mortgage payment?","acceptedAnswer":{"@type":"Answer","text":"Select the Mortgage tab, enter the home price, down payment, interest rate and loan term, then click Calculate. The tool shows your monthly payment including principal, interest, taxes and insurance if entered."}},{"@type":"Question","name":"What is an amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"An amortization schedule shows how each payment is split between principal and interest over the life of the loan, and how your remaining balance decreases over time."}},{"@type":"Question","name":"How is the monthly loan payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator uses the standard amortization formula based on loan amount, annual interest rate and number of payments to determine a fixed monthly payment."}},{"@type":"Question","name":"Is this loan calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup, registration or hidden fees."}},{"@type":"Question","name":"Can I calculate an auto loan or personal loan too?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Auto Loan tab for vehicle financing or the Personal Loan tab for any general installment loan calculation."}},{"@type":"Question","name":"Does this calculator include taxes and insurance for mortgages?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Mortgage tab includes optional fields for annual property tax and home insurance, which are added to your monthly payment estimate."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I calculate my monthly mortgage payment?","acceptedAnswer":{"@type":"Answer","text":"Select the Mortgage tab, enter the home price, down payment, interest rate and loan term, then click Calculate. The tool shows your monthly payment including principal, interest, taxes and insurance if entered."}},
+    {"@type":"Question","name":"What is an amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"An amortization schedule shows how each payment is split between principal and interest over the life of the loan, and how your remaining balance decreases over time."}},
+    {"@type":"Question","name":"Is this loan calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup, registration or hidden fees."}},
+    {"@type":"Question","name":"Can I calculate an auto loan or personal loan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Auto Loan tab for vehicle financing or the Personal Loan tab for any general installment loan calculation."}},
+    {"@type":"Question","name":"Does the mortgage calculator include taxes and insurance?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Mortgage tab includes optional fields for annual property tax and home insurance, which are added to your monthly payment estimate."}},
+    {"@type":"Question","name":"Is my financial data secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All calculations run entirely in your browser. Your financial information is never sent to any server."}}
+  ]}
   </script>
   <style>
-    .hero-text{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);border-radius:32px;padding:2rem;margin:2rem 0;text-align:center;border:1px solid var(--border-light)}
-    .hero-text h1{font-size:2rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0}
-    .feature-card{background:var(--bg-card);border-radius:20px;padding:1.5rem;text-align:center;border:1px solid var(--border-light)}
-    .feature-card i{font-size:2.2rem;color:var(--accent);margin-bottom:1rem}
-    .how-to-steps{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin:2rem 0}
-    .step{background:var(--bg-card);border-radius:20px;padding:1.2rem;text-align:center;width:180px;border:1px solid var(--border-light)}
-    .step-number{background:var(--accent);color:white;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.8rem}
-    .feature-table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--bg-card);border-radius:16px;overflow:hidden}
-    .feature-table th,.feature-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border-light)}
-    .feature-table th{background:var(--accent);color:white;font-weight:600}
-    .feature-table tr:last-child td{border-bottom:none}
-    .related-tools{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:1.5rem 0}
-    .tool-card{background:var(--bg-card);border-radius:40px;padding:.6rem 1.5rem;text-decoration:none;color:var(--text-primary);border:1px solid var(--border-light);transition:all .2s}
-    .tool-card:hover{background:var(--accent);color:white}
-    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
-    .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
-    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
-    .faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
-    .faq-question:hover{color:var(--accent)}
-    .faq-question .icon{font-size:1.2rem;transition:transform .2s}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;padding:0;color:var(--text-secondary);line-height:1.6}
-    .faq-answer p{padding-bottom:1rem}
-    .faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
-    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
-    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
-    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
-    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s}
-    .feedback-btn:hover{transform:scale(1.05)}
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
-    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
-    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary)}
-    .modal-close:hover{color:var(--accent)}
-    .modal iframe{width:100%;height:500px;border:none;border-radius:12px}
-    .ad-show-desktop{display:block}.ad-show-mobile{display:none}
-    @media(max-width:768px){.ad-show-desktop{display:none}.ad-show-mobile{display:block}}
+    .tool-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start;margin-top:24px}
+    @media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+    .tool-sidebar{display:flex;flex-direction:column;gap:16px}
 
-    /* ===== LOAN CALCULATOR ===== */
-    .tool-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-    .tool-tab{flex:1;min-width:140px;padding:.8rem 1rem;border-radius:12px;border:2px solid var(--border-light);background:var(--bg-secondary);color:var(--text-secondary);font-size:.92rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-    .tool-tab.active{background:var(--accent);color:white;border-color:var(--accent)}
-    .tool-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-    .lc-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
-    @media(max-width:860px){.lc-layout{grid-template-columns:1fr}}
-    .form-group{margin-bottom:1rem}
-    .form-group label{display:block;font-size:.83rem;font-weight:600;color:var(--text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.03em}
-    .form-control{width:100%;padding:.7rem .9rem;border:1.5px solid var(--border-light);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary)}
-    .form-control:focus{outline:none;border-color:var(--accent)}
-    .form-row2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-    @media(max-width:480px){.form-row2{grid-template-columns:1fr}}
-    .input-prefix{position:relative}
-    .input-prefix .prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-weight:600;font-size:.92rem;pointer-events:none}
-    .input-prefix input{padding-left:28px}
-    .input-suffix .suffix{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-weight:600;font-size:.85rem;pointer-events:none}
-    .input-suffix input{padding-right:36px}
+    /* Mode tabs */
+    .mode-tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:14px;padding:5px}
+    .mode-tab{flex:1;padding:10px 12px;border-radius:10px;font-size:.85rem;font-weight:600;color:var(--text-secondary);border:none;background:none;cursor:pointer;transition:all .15s;text-align:center;font-family:inherit}
+    .mode-tab.active{background:var(--bg-card);color:var(--brand-primary);box-shadow:var(--shadow-sm)}
+    .mode-tab:hover:not(.active){color:var(--text-primary)}
 
-    /* Result panel */
-    .lc-result-card{background:var(--bg-card);border-radius:18px;padding:1.5rem;border:1px solid var(--border-light);text-align:center}
-    .lc-payment-big{font-size:2.4rem;font-weight:700;color:var(--accent);margin:.3rem 0}
-    .lc-payment-label{font-size:.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-    .lc-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
-    .lc-summary-item{background:var(--bg-secondary);border-radius:12px;padding:.9rem;text-align:left}
-    .lc-summary-item .si-label{font-size:.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem}
-    .lc-summary-item .si-value{font-size:1.1rem;font-weight:700;color:var(--text-primary)}
-    .lc-chart-wrap{margin-top:1.2rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
-    .lc-donut{width:120px;height:120px;border-radius:50%;position:relative}
-    .lc-legend{display:flex;flex-direction:column;gap:6px;font-size:.85rem}
-    .lc-legend-item{display:flex;align-items:center;gap:8px}
-    .lc-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-    .amort-table-wrap{max-height:340px;overflow-y:auto;border:1px solid var(--border-light);border-radius:12px;margin-top:1rem}
-    .amort-table{width:100%;border-collapse:collapse;font-size:.82rem}
-    .amort-table th{background:var(--accent);color:#fff;padding:.5rem .7rem;text-align:right;position:sticky;top:0}
+    /* Input with prefix/suffix */
+    .input-group{position:relative;display:flex;align-items:center}
+    .input-prefix,.input-suffix{position:absolute;font-size:.9rem;font-weight:600;color:var(--text-muted);padding:0 12px;pointer-events:none}
+    .input-prefix{left:0}
+    .input-suffix{right:0}
+    .input-group input{padding-left:28px!important}
+    .input-group.has-suffix input{padding-right:36px!important}
+
+    /* Results grid */
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
+    .result-card{background:var(--bg-subtle);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+    .result-card.highlight{background:linear-gradient(135deg,#2563eb,#7c3aed);border-color:transparent}
+    .result-lbl{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+    .result-card.highlight .result-lbl{color:rgba(255,255,255,.7)}
+    .result-val{font-size:1.2rem;font-weight:800;color:var(--text-primary)}
+    .result-card.highlight .result-val{color:#fff;font-size:1.4rem}
+
+    /* Pie chart */
+    .pie-wrap{display:flex;align-items:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+    .pie-legend{display:flex;flex-direction:column;gap:8px}
+    .pie-legend-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-secondary)}
+    .pie-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+    /* Amortization table */
+    .amort-wrap{display:none;margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .amort-wrap.show{display:block}
+    .amort-scroll{overflow-x:auto;max-height:340px;overflow-y:auto}
+    .amort-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:480px}
+    .amort-table th{background:var(--bg-subtle);padding:10px 12px;text-align:right;font-weight:700;color:var(--text-secondary);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0;z-index:1}
     .amort-table th:first-child,.amort-table td:first-child{text-align:left}
-    .amort-table td{padding:.4rem .7rem;text-align:right;border-bottom:1px solid var(--border-light);color:var(--text-primary)}
-    .amort-toggle{background:none;border:none;color:var(--accent);font-weight:600;font-size:.85rem;cursor:pointer;margin-top:.8rem;display:flex;align-items:center;gap:6px}
+    .amort-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+    .amort-table tr:last-child td{border-bottom:none}
+    .amort-table tr:hover td{background:var(--bg-hover)}
+
+    /* Trust pills */
+    .trust-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .trust-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:var(--bg-subtle);border:1px solid var(--border);font-size:.78rem;color:var(--text-secondary);font-weight:500}
+    .trust-pill .tp-icon{color:var(--brand-primary)}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .feature-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .feature-desc{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+
+    .steps-row{display:flex;gap:0;align-items:flex-start;flex-wrap:wrap;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:16px}
+    .step-item{text-align:center;flex:1;min-width:100px;padding:0 10px}
+    .step-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;font-size:.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .step-icon{font-size:1.4rem;margin-bottom:6px}
+    .step-label{font-size:.78rem;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+    .step-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4}
+    .step-arrow{color:var(--text-muted);font-size:1.1rem;padding-top:20px;flex-shrink:0}
+    @media(max-width:600px){.step-arrow{display:none}}
+
+    .compare-table{width:100%;border-collapse:collapse}
+    .compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:.875rem}
+    .compare-table th{background:var(--bg-subtle);font-weight:700;color:var(--text-secondary);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+    .compare-table tr:last-child td{border-bottom:none}
+    .check-yes{color:#16a34a;font-weight:700}
+
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s}
+    .related-pill:hover{border-color:var(--brand-primary);color:var(--brand-primary);background:var(--bg-hover)}
+    .sidebar-ad{background:var(--bg-subtle);border:1px dashed var(--border);border-radius:12px;padding:12px;text-align:center;overflow:hidden}
   </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
 
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" id="closeModal">&times;</span>
-    <h3>Help us improve</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe>
-  </div>
-</div>
+<main class="ch-container">
 
-<div class="container">
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-          </svg>
-        </div>
-        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
-      </a>
-    </div>
-    <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
-      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
-      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
-    </div>
-  </div>
+  <!-- Breadcrumb -->
+  <nav class="ch-breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Finance Tools</span><span class="sep">›</span>
+    <span class="current">Loan Calculator</span>
+  </nav>
 
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn active">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
-  </div>
-
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
-
-  <div class="hero-text">
-    <h1>Free Loan Calculator &#8211; Mortgage, Auto &amp; Personal Loan</h1>
-    <p>Calculate your <strong>monthly mortgage, auto loan or personal loan payment</strong> instantly. See the full amortization schedule, total interest paid, and payoff date &#8212; free, no signup required.</p>
-    <p>All calculations run <strong>entirely in your browser</strong> &#8212; your financial information is never sent anywhere.</p>
-  </div>
-
-  <!-- TOOL CARD -->
-  <div class="card">
-    <div class="tool-tabs">
-      <div class="tool-tab active" id="tabMortgage"><i class="fas fa-home"></i> Mortgage</div>
-      <div class="tool-tab" id="tabAuto"><i class="fas fa-car"></i> Auto Loan</div>
-      <div class="tool-tab" id="tabPersonal"><i class="fas fa-hand-holding-usd"></i> Personal Loan</div>
-    </div>
-
-    <div class="lc-layout">
-      <!-- INPUT FORM -->
+  <!-- Tool Header -->
+  <div class="ch-tool-header">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">💰</div>
       <div>
-        <!-- Mortgage fields -->
-        <div id="mortgageFields">
-          <div class="form-group input-prefix">
-            <label>Home Price</label>
-            <span class="prefix">$</span>
-            <input type="number" class="form-control" id="m_price" placeholder="350,000" value="350000">
-          </div>
-          <div class="form-row2">
-            <div class="form-group input-prefix">
-              <label>Down Payment</label>
-              <span class="prefix">$</span>
-              <input type="number" class="form-control" id="m_down" placeholder="70,000" value="70000">
+        <h1 class="ch-tool-title">Loan Calculator</h1>
+        <div class="ch-tool-badges">
+          <span class="ch-badge ch-badge-green">✓ Free</span>
+          <span class="ch-badge ch-badge-green">✓ No Signup</span>
+          <span class="ch-badge ch-badge-blue">✓ Amortization Schedule</span>
+          <span class="ch-badge ch-badge-blue">✓ 100% Private</span>
+        </div>
+      </div>
+    </div>
+    <p class="ch-tool-desc">Calculate your monthly mortgage, auto loan or personal loan payment instantly. See total interest paid, total cost, payoff date and a full month-by-month amortization schedule. All calculations run in your browser — your financial data stays private.</p>
+  </div>
+
+  <!-- AdSense top -->
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Tool Layout -->
+  <div class="tool-layout">
+
+    <!-- ── MAIN PANEL ─────────────────────────────────────── -->
+    <div>
+      <div class="ch-card">
+
+        <!-- Loan type tabs -->
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-loan="mortgage">🏠 Mortgage</button>
+          <button class="mode-tab" data-loan="auto">🚗 Auto Loan</button>
+          <button class="mode-tab" data-loan="personal">💳 Personal Loan</button>
+        </div>
+
+        <!-- ══ MORTGAGE ══════════════════════════════════════ -->
+        <div id="mortgageForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Home Price</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="mHomePrice" placeholder="300000" min="0">
+              </div>
             </div>
-            <div class="form-group input-suffix">
-              <label>Interest Rate</label>
-              <input type="number" class="form-control" id="m_rate" placeholder="6.5" value="6.5" step="0.01">
-              <span class="suffix">% / yr</span>
+            <div class="ch-form-group">
+              <label class="ch-label">Down Payment</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="mDownPayment" placeholder="60000" min="0">
+              </div>
             </div>
-          </div>
-          <div class="form-row2">
-            <div class="form-group">
-              <label>Loan Term</label>
-              <select class="form-control" id="m_term">
-                <option value="30">30 years</option>
-                <option value="20">20 years</option>
-                <option value="15">15 years</option>
-                <option value="10">10 years</option>
+            <div class="ch-form-group">
+              <label class="ch-label">Interest Rate</label>
+              <div class="input-group has-suffix">
+                <input type="number" class="ch-input" id="mRate" placeholder="6.5" min="0" max="50" step="0.1" style="padding-left:14px!important;">
+                <span class="input-suffix">%/yr</span>
+              </div>
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Loan Term</label>
+              <select class="ch-select" id="mTerm">
+                <option value="360">30 years</option>
+                <option value="240">20 years</option>
+                <option value="180">15 years</option>
+                <option value="120">10 years</option>
               </select>
             </div>
-            <div class="form-group input-prefix">
-              <label>Annual Property Tax</label>
-              <span class="prefix">$</span>
-              <input type="number" class="form-control" id="m_tax" placeholder="3,500" value="3500">
+            <div class="ch-form-group">
+              <label class="ch-label">Annual Property Tax</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="mTax" placeholder="3000" min="0">
+              </div>
             </div>
-          </div>
-          <div class="form-group input-prefix">
-            <label>Annual Home Insurance</label>
-            <span class="prefix">$</span>
-            <input type="number" class="form-control" id="m_ins" placeholder="1,400" value="1400">
+            <div class="ch-form-group">
+              <label class="ch-label">Annual Home Insurance</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="mInsurance" placeholder="1200" min="0">
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Auto loan fields -->
-        <div id="autoFields" style="display:none;">
-          <div class="form-group input-prefix">
-            <label>Vehicle Price</label>
-            <span class="prefix">$</span>
-            <input type="number" class="form-control" id="a_price" placeholder="32,000" value="32000">
-          </div>
-          <div class="form-row2">
-            <div class="form-group input-prefix">
-              <label>Down Payment</label>
-              <span class="prefix">$</span>
-              <input type="number" class="form-control" id="a_down" placeholder="4,000" value="4000">
+        <!-- ══ AUTO LOAN ═════════════════════════════════════ -->
+        <div id="autoForm" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Vehicle Price</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="aPrice" placeholder="25000" min="0">
+              </div>
             </div>
-            <div class="form-group input-suffix">
-              <label>Interest Rate</label>
-              <input type="number" class="form-control" id="a_rate" placeholder="7.2" value="7.2" step="0.01">
-              <span class="suffix">% / yr</span>
+            <div class="ch-form-group">
+              <label class="ch-label">Down Payment</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="aDown" placeholder="5000" min="0">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Loan Term</label>
-            <select class="form-control" id="a_term">
-              <option value="72">72 months</option>
-              <option value="60" selected>60 months</option>
-              <option value="48">48 months</option>
-              <option value="36">36 months</option>
-            </select>
+            <div class="ch-form-group">
+              <label class="ch-label">Interest Rate</label>
+              <div class="input-group has-suffix">
+                <input type="number" class="ch-input" id="aRate" placeholder="7.5" min="0" max="50" step="0.1" style="padding-left:14px!important;">
+                <span class="input-suffix">%/yr</span>
+              </div>
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Loan Term</label>
+              <select class="ch-select" id="aTerm">
+                <option value="72">72 months</option>
+                <option value="60" selected>60 months</option>
+                <option value="48">48 months</option>
+                <option value="36">36 months</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <!-- Personal loan fields -->
-        <div id="personalFields" style="display:none;">
-          <div class="form-group input-prefix">
-            <label>Loan Amount</label>
-            <span class="prefix">$</span>
-            <input type="number" class="form-control" id="p_amount" placeholder="10,000" value="10000">
-          </div>
-          <div class="form-row2">
-            <div class="form-group input-suffix">
-              <label>Interest Rate</label>
-              <input type="number" class="form-control" id="p_rate" placeholder="11.5" value="11.5" step="0.01">
-              <span class="suffix">% / yr</span>
+        <!-- ══ PERSONAL LOAN ══════════════════════════════════ -->
+        <div id="personalForm" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Loan Amount</label>
+              <div class="input-group"><span class="input-prefix">$</span>
+                <input type="number" class="ch-input" id="pAmount" placeholder="10000" min="0">
+              </div>
             </div>
-            <div class="form-group">
-              <label>Loan Term</label>
-              <select class="form-control" id="p_term">
+            <div class="ch-form-group">
+              <label class="ch-label">Interest Rate</label>
+              <div class="input-group has-suffix">
+                <input type="number" class="ch-input" id="pRate" placeholder="12" min="0" max="100" step="0.1" style="padding-left:14px!important;">
+                <span class="input-suffix">%/yr</span>
+              </div>
+            </div>
+            <div class="ch-form-group" style="grid-column:span 2;">
+              <label class="ch-label">Loan Term</label>
+              <select class="ch-select" id="pTerm">
                 <option value="60">5 years</option>
                 <option value="36" selected>3 years</option>
                 <option value="24">2 years</option>
@@ -313,356 +267,391 @@ loadAdIfNotInApp(function() {
           </div>
         </div>
 
-        <button class="btn" id="calcBtn"><i class="fas fa-calculator"></i> Calculate</button>
-      </div>
+        <!-- Calculate button -->
+        <button class="ch-btn ch-btn-primary ch-btn-lg" id="calcBtn" style="width:100%;margin-top:16px;">
+          <i class="fas fa-calculator"></i> Calculate
+        </button>
 
-      <!-- RESULT -->
-      <div>
-        <div class="lc-result-card" id="resultCard" style="display:none;">
-          <div class="lc-payment-label">Estimated Monthly Payment</div>
-          <div class="lc-payment-big" id="monthlyPaymentBig">$0</div>
-          <div class="lc-summary-grid">
-            <div class="lc-summary-item"><div class="si-label">Loan Amount</div><div class="si-value" id="sumPrincipal">$0</div></div>
-            <div class="lc-summary-item"><div class="si-label">Total Interest</div><div class="si-value" id="sumInterest">$0</div></div>
-            <div class="lc-summary-item"><div class="si-label">Total Cost</div><div class="si-value" id="sumTotal">$0</div></div>
-            <div class="lc-summary-item"><div class="si-label">Payoff Date</div><div class="si-value" id="sumPayoff">&#8212;</div></div>
-          </div>
-          <div class="lc-chart-wrap">
-            <div class="lc-donut" id="donutChart"></div>
-            <div class="lc-legend">
-              <div class="lc-legend-item"><span class="lc-legend-dot" style="background:#2563eb;"></span> Principal</div>
-              <div class="lc-legend-item"><span class="lc-legend-dot" style="background:#f59e0b;"></span> Interest</div>
-              <div class="lc-legend-item" id="legendExtra" style="display:none;"><span class="lc-legend-dot" style="background:#a855f7;"></span> Tax &amp; Insurance</div>
+        <!-- Results -->
+        <div id="resultsSection" style="display:none;margin-top:20px;">
+          <div class="results-grid">
+            <div class="result-card highlight" style="grid-column:span 2;">
+              <div class="result-lbl">Estimated Monthly Payment</div>
+              <div class="result-val" id="rMonthly">$0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-lbl">Loan Amount</div>
+              <div class="result-val" id="rPrincipal">$0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-lbl">Total Interest</div>
+              <div class="result-val" id="rInterest">$0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-lbl">Total Cost</div>
+              <div class="result-val" id="rTotal">$0</div>
+            </div>
+            <div class="result-card">
+              <div class="result-lbl">Payoff Date</div>
+              <div class="result-val" id="rPayoff" style="font-size:.95rem;">—</div>
             </div>
           </div>
-          <button class="amort-toggle" id="amortToggle"><i class="fas fa-table"></i> Show Amortization Schedule</button>
-          <div class="amort-table-wrap" id="amortWrap" style="display:none;">
-            <table class="amort-table">
-              <thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
-              <tbody id="amortBody"></tbody>
-            </table>
+
+          <!-- Pie chart (SVG) -->
+          <div class="pie-wrap" id="pieWrap">
+            <svg id="pieChart" width="120" height="120" viewBox="0 0 120 120"></svg>
+            <div class="pie-legend">
+              <div class="pie-legend-item"><span class="pie-dot" style="background:#2563eb;"></span><span id="lgPrincipal">Principal: $0</span></div>
+              <div class="pie-legend-item"><span class="pie-dot" style="background:#7c3aed;"></span><span id="lgInterest">Interest: $0</span></div>
+              <div class="pie-legend-item" id="lgTaxRow" style="display:none;"><span class="pie-dot" style="background:#059669;"></span><span id="lgTax">Tax &amp; Insurance: $0</span></div>
+            </div>
+          </div>
+
+          <!-- Amortization toggle -->
+          <button class="ch-btn ch-btn-secondary" id="amortToggle" style="width:100%;margin-top:14px;">
+            <i class="fas fa-table"></i> Show Amortization Schedule
+          </button>
+          <div class="amort-wrap" id="amortWrap">
+            <div class="amort-scroll">
+              <table class="amort-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="amortBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust pills -->
+        <div class="trust-pills">
+          <div class="trust-pill"><span class="tp-icon">🔒</span> 100% private — browser only</div>
+          <div class="trust-pill"><span class="tp-icon">⚡</span> Instant calculation</div>
+          <div class="trust-pill"><span class="tp-icon">📱</span> Works on mobile</div>
+          <div class="trust-pill"><span class="tp-icon">🆓</span> Free</div>
+        </div>
+      </div>
+
+      <!-- AdSense mid -->
+      <div class="ch-ad-zone" style="margin-top:24px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- How it works -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:32px;margin-bottom:4px;">How to Calculate Your Loan Payment</h2>
+      <div class="steps-row">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-icon">🔘</div><div class="step-label">Choose Loan Type</div><div class="step-desc">Mortgage, Auto or Personal</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-icon">✏️</div><div class="step-label">Enter Details</div><div class="step-desc">Amount, rate and term</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-icon">🧮</div><div class="step-label">Click Calculate</div><div class="step-desc">Instant results</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-icon">📊</div><div class="step-label">Review Schedule</div><div class="step-desc">See full amortization</div></div>
+      </div>
+
+      <!-- Features -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Why Use Our Loan Calculator?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#d1fae5;">🏠</div>
+          <div>
+            <div class="feature-title">Mortgage Calculator</div>
+            <div class="feature-desc">Includes property tax and home insurance for a complete monthly payment estimate.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#dbeafe;">🚗</div>
+          <div>
+            <div class="feature-title">Auto Loan Calculator</div>
+            <div class="feature-desc">Calculate your monthly car payment based on price, down payment, rate and term.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fef3c7;">📊</div>
+          <div>
+            <div class="feature-title">Amortization Schedule</div>
+            <div class="feature-desc">See exactly how much principal and interest you pay every month until payoff.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#f0fdf4;">🔒</div>
+          <div>
+            <div class="feature-title">100% Private</div>
+            <div class="feature-desc">All calculations happen in your browser. Your financial data is never sent anywhere.</div>
           </div>
         </div>
       </div>
+
+      <!-- Compare table -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">What Our Loan Calculator Offers</h2>
+      <div class="ch-card" style="overflow:hidden;padding:0;">
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>ConverterHub</th></tr></thead>
+          <tbody>
+            <tr><td>Mortgage, Auto Loan and Personal Loan calculators</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Property tax and insurance for mortgages</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Full month-by-month amortization schedule</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Visual breakdown of principal vs interest</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Total interest and total cost shown</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Payoff date calculated</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>100% private — browser only</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Free, no registration</td><td class="check-yes">✓ Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="ch-card">
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How do I calculate my monthly mortgage payment? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Select the Mortgage tab, enter the home price, down payment, interest rate and loan term, then click Calculate. The tool shows your monthly payment including principal, interest, taxes and insurance if entered.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What is an amortization schedule? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>An amortization schedule shows how each monthly payment is split between principal and interest over the life of the loan, and how your remaining balance decreases each month until it reaches zero at payoff.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How is the monthly payment calculated? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>The calculator uses the standard amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan amount, r is the monthly interest rate and n is the number of payments.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is this loan calculator free? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes, completely free with no signup, registration or hidden fees. All three calculators — mortgage, auto loan and personal loan — are included.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Does the mortgage calculator include taxes and insurance? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. The Mortgage tab includes optional fields for annual property tax and home insurance. These are divided by 12 and added to your monthly principal and interest payment for a complete PITI estimate.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is my financial data secure? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. All calculations run entirely in your browser using JavaScript. Your financial information is never sent to any server and is not stored anywhere.</p></div>
+        </div>
+      </div>
+
+      <!-- Related tools -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Related Tools</h2>
+      <div class="related-grid">
+        <a href="currency-converter.html"  class="related-pill">💱 Currency Converter</a>
+        <a href="unit-converter.html"      class="related-pill">📐 Unit Converter</a>
+        <a href="land-calculator.html"     class="related-pill">🌍 Land Calculator</a>
+        <a href="resume-builder.html"      class="related-pill">📋 Resume Builder</a>
+        <a href="excel-to-pdf.html"        class="related-pill">📊 Excel to PDF</a>
+        <a href="pdf-to-word.html"         class="related-pill">📄 PDF to Word</a>
+      </div>
+
+      <!-- Bottom AdSense -->
+      <div class="ch-ad-zone" style="margin-top:32px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
     </div>
 
-    <p style="margin-top:1.2rem;font-size:.83rem;color:var(--text-secondary);text-align:center;">
-      &#10003; 100% private &#8212; calculations run in your browser &nbsp;&#183;&nbsp;
-      &#10003; No signup &nbsp;&#183;&nbsp;
-      &#10003; Free forever
-    </p>
-  </div>
+    <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+    <div class="tool-sidebar">
+      <div class="ch-card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">💰🧮</div>
+        <div style="font-size:1.2rem;font-weight:800;color:var(--brand-primary);">Loan Calculator</div>
+        <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">3 Loan Types • Browser-Based</div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">3</div><div style="font-size:.72rem;color:var(--text-muted);">Loan types</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">360</div><div style="font-size:.72rem;color:var(--text-muted);">Max months</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">Full</div><div style="font-size:.72rem;color:var(--text-muted);">Amortization</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">Free</div><div style="font-size:.72rem;color:var(--text-muted);">No payment</div></div>
+        </div>
+      </div>
 
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+      <div class="sidebar-ad">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
-  <h2>How to Calculate Your Loan Payment</h2>
-  <div class="how-to-steps">
-    <div class="step"><div class="step-number">1</div><i class="fas fa-list"></i><p>Choose Mortgage, Auto Loan or Personal Loan</p></div>
-    <div class="step"><div class="step-number">2</div><i class="fas fa-keyboard"></i><p>Enter the loan amount, rate and term</p></div>
-    <div class="step"><div class="step-number">3</div><i class="fas fa-calculator"></i><p>Click "Calculate"</p></div>
-    <div class="step"><div class="step-number">4</div><i class="fas fa-table"></i><p>Review your payment and amortization schedule</p></div>
-  </div>
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">💡 Tips</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> A larger down payment reduces monthly payments and total interest</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Shorter loan term = higher payment but much less total interest</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Even 0.5% lower rate can save thousands over 30 years</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Check the amortization schedule to see how early payments help</li>
+        </ul>
+      </div>
 
-  <div class="ad-universal" style="border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:12px 0;margin:1.5rem 0;">
-    <script async="async" data-cfasync="false" src="https://willingcease.com/db93495c0035dde1af3829aff5543bcb/invoke.js"></script>
-    <div id="container-db93495c0035dde1af3829aff5543bcb"></div>
-  </div>
-
-  <h2>Features</h2>
-  <div class="feature-grid">
-    <div class="feature-card"><i class="fas fa-home"></i><h3>Mortgage Calculator</h3><p>Includes down payment, property tax and home insurance for a complete monthly payment estimate.</p></div>
-    <div class="feature-card"><i class="fas fa-car"></i><h3>Auto Loan Calculator</h3><p>Calculate your monthly car payment based on price, down payment, rate and term.</p></div>
-    <div class="feature-card"><i class="fas fa-table"></i><h3>Full Amortization Schedule</h3><p>See exactly how much principal and interest you pay every month until payoff.</p></div>
-    <div class="feature-card"><i class="fas fa-lock"></i><h3>100% Private</h3><p>All calculations happen in your browser. Your financial data is never sent anywhere.</p></div>
-  </div>
-
-  <h2>Who Can Use This Tool?</h2>
-  <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
-    <div class="feature-card"><i class="fas fa-key"></i><h3>Home Buyers</h3><p>Estimate your monthly mortgage</p></div>
-    <div class="feature-card"><i class="fas fa-car-side"></i><h3>Car Buyers</h3><p>Plan your auto loan budget</p></div>
-    <div class="feature-card"><i class="fas fa-hand-holding-usd"></i><h3>Borrowers</h3><p>Compare personal loan offers</p></div>
-    <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Financial Planners</h3><p>Model different scenarios</p></div>
-    <div class="feature-card"><i class="fas fa-users"></i><h3>Everyone</h3><p>Free, fast, no signup</p></div>
-  </div>
-
-  <h2>What Our Loan Calculator Offers</h2>
-  <table class="feature-table">
-    <thead><tr><th>Feature</th><th>Available</th></tr></thead>
-    <tbody>
-      <tr><td>Mortgage, Auto Loan and Personal Loan calculators</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>Property tax and insurance included for mortgages</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>Full month-by-month amortization schedule</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>Visual breakdown of principal vs interest</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>Total interest and total cost shown</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>100% private &#8212; browser only</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-      <tr><td>Free, no registration</td><td><i class="fas fa-check-circle" style="color:#22c55e;"></i> Yes</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Related Tools</h2>
-  <div class="related-tools">
-    <a href="currency-converter.html" class="tool-card">&#128176; Currency Converter</a>
-    <a href="unit-converter.html" class="tool-card">&#128207; Unit Converter</a>
-    <a href="land-calculator.html" class="tool-card">&#127774; Land Calculator</a>
-    <a href="excel-to-pdf.html" class="tool-card">&#128196; Excel to PDF</a>
-    <a href="resume-builder.html" class="tool-card">&#128221; Resume Builder</a>
-  </div>
-
-  <section class="faq-accordion">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>How do I calculate my monthly mortgage payment?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Select the <strong>Mortgage</strong> tab, enter the home price, down payment, interest rate and loan term, then click <strong>Calculate</strong>. The tool shows your monthly payment including principal, interest, taxes and insurance if entered.</p></div>
+      <div class="ch-card" style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);border-color:transparent;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">📰</div>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px;">Tivora Hub Blog</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5;">Tips, productivity hacks and ways to make money online.</div>
+        <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener"
+           class="ch-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);width:100%;justify-content:center;font-size:.82rem;">
+          Visit Blog →
+        </a>
+      </div>
     </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>What is an amortization schedule?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>An amortization schedule shows how each payment is split between principal and interest over the life of the loan, and how your remaining balance decreases over time.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>How is the monthly loan payment calculated?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>The calculator uses the standard amortization formula based on loan amount, annual interest rate and number of payments to determine a fixed monthly payment.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Is this loan calculator free?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Yes, completely free with no signup, registration or hidden fees.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Can I calculate an auto loan or personal loan too?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Yes. Use the <strong>Auto Loan</strong> tab for vehicle financing or the <strong>Personal Loan</strong> tab for any general installment loan calculation.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Does this calculator include taxes and insurance for mortgages?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Yes. The Mortgage tab includes optional fields for annual property tax and home insurance, which are added to your monthly payment estimate.</p></div>
-    </div>
-    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
-  </section>
 
-  <div style="text-align:center;margin:2rem 0;">
-    <p><strong>Plan Your Loan Anytime, Anywhere</strong><br>
-    Our free online loan calculator is used daily by home buyers, car buyers and borrowers across the United States, United Kingdom, Canada, Australia, Nigeria and beyond. Whether you're budgeting for a new home, a vehicle, or comparing personal loan offers &#8212; this tool gives you accurate monthly payment estimates instantly, completely free.</p>
   </div>
 
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+</main>
 
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
 <script src="js/common.js"></script>
-
 <script>
-  // ── FAQ ─────────────────────────────────────────────────────────────
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const button = item.querySelector('.faq-question');
-    const iconSpan = button.querySelector('.icon i');
-    button.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      if (!isActive) {
-        item.classList.add('active');
-        button.setAttribute('aria-expanded', 'true');
-        iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus');
-      } else {
-        item.classList.remove('active');
-        button.setAttribute('aria-expanded', 'false');
-        iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus');
-      }
+  // ── LOAN TYPE TABS ────────────────────────────────────────────
+  var currentLoan = 'mortgage';
+  document.querySelectorAll('.mode-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      currentLoan = tab.dataset.loan;
+      document.querySelectorAll('.mode-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById('mortgageForm').style.display = currentLoan === 'mortgage' ? '' : 'none';
+      document.getElementById('autoForm').style.display     = currentLoan === 'auto'     ? '' : 'none';
+      document.getElementById('personalForm').style.display = currentLoan === 'personal'  ? '' : 'none';
+      document.getElementById('resultsSection').style.display = 'none';
     });
   });
 
-  // ── MODAL ───────────────────────────────────────────────────────────
-  const modal = document.getElementById('feedbackModal');
-  function openModal() { modal.style.display = 'flex'; }
-  document.getElementById('feedbackBtn').addEventListener('click', openModal);
-  document.getElementById('supportLink').addEventListener('click', openModal);
-  document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
-  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
-  // ── TAB SWITCHING ───────────────────────────────────────────────────
-  let loanType = 'mortgage';
-  const tabs = {
-    mortgage: { tab: document.getElementById('tabMortgage'), fields: document.getElementById('mortgageFields') },
-    auto:     { tab: document.getElementById('tabAuto'),     fields: document.getElementById('autoFields') },
-    personal: { tab: document.getElementById('tabPersonal'), fields: document.getElementById('personalFields') }
-  };
-  Object.keys(tabs).forEach(key => {
-    tabs[key].tab.addEventListener('click', () => {
-      loanType = key;
-      Object.keys(tabs).forEach(k => {
-        tabs[k].tab.classList.toggle('active', k === key);
-        tabs[k].fields.style.display = k === key ? '' : 'none';
-      });
-      document.getElementById('resultCard').style.display = 'none';
-      document.getElementById('amortWrap').style.display = 'none';
-    });
-  });
-
-  // ── HELPERS ─────────────────────────────────────────────────────────
-  function fmtMoney(n) {
+  // ── HELPERS ──────────────────────────────────────────────────
+  function fmtCurrency(n) {
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
-  function fmtMoneyRound(n) {
-    return '$' + Math.round(n).toLocaleString('en-US');
+  function getVal(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+  // Standard amortization formula
+  function calcPayment(principal, annualRate, months) {
+    if (annualRate === 0) return principal / months;
+    var r = annualRate / 100 / 12;
+    return principal * (r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
   }
 
-  // Standard amortization formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
-  function calcMonthlyPayment(principal, annualRatePct, numPayments) {
-    const r = (annualRatePct / 100) / 12;
-    if (r === 0) return principal / numPayments;
-    const factor = Math.pow(1 + r, numPayments);
-    return principal * (r * factor) / (factor - 1);
-  }
+  // ── DRAW PIE CHART ────────────────────────────────────────────
+  function drawPie(principal, interest, taxIns) {
+    var total = principal + interest + taxIns;
+    if (total <= 0) return;
+    var svg = document.getElementById('pieChart');
+    svg.innerHTML = '';
+    var cx = 60, cy = 60, r = 54;
+    var segs = [
+      { val: principal, color: '#2563eb' },
+      { val: interest,  color: '#7c3aed' },
+      { val: taxIns,    color: '#059669' }
+    ].filter(function(s){ return s.val > 0; });
 
-  function buildAmortization(principal, annualRatePct, numPayments) {
-    const r = (annualRatePct / 100) / 12;
-    const payment = calcMonthlyPayment(principal, annualRatePct, numPayments);
-    let balance = principal;
-    const rows = [];
-    let totalInterest = 0;
-    for (let i = 1; i <= numPayments; i++) {
-      const interestPmt = balance * r;
-      let principalPmt = payment - interestPmt;
-      if (i === numPayments) principalPmt = balance; // final payment clears exact balance
-      balance = Math.max(0, balance - principalPmt);
-      totalInterest += interestPmt;
-      rows.push({ month: i, payment: principalPmt + interestPmt, principal: principalPmt, interest: interestPmt, balance });
-    }
-    return { rows, totalInterest, payment };
-  }
-</script>
-<script>
-  // ── DONUT CHART (pure CSS conic-gradient, no library needed) ────────
-  function renderDonut(segments) {
-    // segments: [{value, color}, ...]
-    const total = segments.reduce((s, seg) => s + seg.value, 0);
-    let cumPct = 0;
-    const stops = segments.map(seg => {
-      const pct = total > 0 ? (seg.value / total) * 100 : 0;
-      const start = cumPct;
-      cumPct += pct;
-      return `${seg.color} ${start}% ${cumPct}%`;
-    }).join(', ');
-    const donut = document.getElementById('donutChart');
-    donut.style.background = `conic-gradient(${stops})`;
-    donut.style.position = 'relative';
-    donut.innerHTML = '<div style="position:absolute;inset:18px;background:var(--bg-card);border-radius:50%;"></div>';
-  }
-
-  // ── AMORTIZATION TABLE ────────────────────────────────────────────────
-  function renderAmortTable(rows) {
-    const tbody = document.getElementById('amortBody');
-    tbody.innerHTML = '';
-    // Show all rows but limit DOM size for very long loans (cap at 360 months = 30yr, fine)
-    rows.forEach(row => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${row.month}</td><td>${fmtMoneyRound(row.payment)}</td><td>${fmtMoneyRound(row.principal)}</td><td>${fmtMoneyRound(row.interest)}</td><td>${fmtMoneyRound(row.balance)}</td>`;
-      tbody.appendChild(tr);
+    var startAngle = -Math.PI / 2;
+    segs.forEach(function(seg) {
+      var angle = (seg.val / total) * 2 * Math.PI;
+      var endAngle = startAngle + angle;
+      var x1 = cx + r * Math.cos(startAngle), y1 = cy + r * Math.sin(startAngle);
+      var x2 = cx + r * Math.cos(endAngle),   y2 = cy + r * Math.sin(endAngle);
+      var large = angle > Math.PI ? 1 : 0;
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', 'M'+cx+','+cy+' L'+x1+','+y1+' A'+r+','+r+' 0 '+large+',1 '+x2+','+y2+' Z');
+      path.setAttribute('fill', seg.color);
+      svg.appendChild(path);
+      startAngle = endAngle;
     });
   }
 
-  document.getElementById('amortToggle').addEventListener('click', function() {
-    const wrap = document.getElementById('amortWrap');
-    const isOpen = wrap.style.display !== 'none';
-    wrap.style.display = isOpen ? 'none' : '';
-    this.innerHTML = isOpen
-      ? '<i class="fas fa-table"></i> Show Amortization Schedule'
-      : '<i class="fas fa-chevron-up"></i> Hide Amortization Schedule';
-  });
+  // ── CALCULATE ─────────────────────────────────────────────────
+  document.getElementById('calcBtn').addEventListener('click', function() {
+    var principal, annualRate, months, taxMonthly = 0, insMonthly = 0;
 
-  function addMonthsToDate(date, months) {
-    const d = new Date(date);
-    d.setMonth(d.getMonth() + months);
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-  }
-
-  // ── CALCULATE BUTTON ──────────────────────────────────────────────────
-  document.getElementById('calcBtn').addEventListener('click', () => {
-    let principal, rate, term, extraMonthly = 0, hasExtra = false;
-
-    if (loanType === 'mortgage') {
-      const price = parseFloat(document.getElementById('m_price').value) || 0;
-      const down  = parseFloat(document.getElementById('m_down').value) || 0;
-      principal = Math.max(0, price - down);
-      rate = parseFloat(document.getElementById('m_rate').value) || 0;
-      term = (parseInt(document.getElementById('m_term').value) || 30) * 12;
-      const tax = parseFloat(document.getElementById('m_tax').value) || 0;
-      const ins = parseFloat(document.getElementById('m_ins').value) || 0;
-      extraMonthly = (tax + ins) / 12;
-      hasExtra = (tax + ins) > 0;
-    } else if (loanType === 'auto') {
-      const price = parseFloat(document.getElementById('a_price').value) || 0;
-      const down  = parseFloat(document.getElementById('a_down').value) || 0;
-      principal = Math.max(0, price - down);
-      rate = parseFloat(document.getElementById('a_rate').value) || 0;
-      term = parseInt(document.getElementById('a_term').value) || 60;
+    if (currentLoan === 'mortgage') {
+      var homePrice = getVal('mHomePrice');
+      var down      = getVal('mDownPayment');
+      principal  = homePrice - down;
+      annualRate = getVal('mRate');
+      months     = parseInt(document.getElementById('mTerm').value);
+      taxMonthly = getVal('mTax') / 12;
+      insMonthly = getVal('mInsurance') / 12;
+    } else if (currentLoan === 'auto') {
+      var vehiclePrice = getVal('aPrice');
+      var aDown        = getVal('aDown');
+      principal  = vehiclePrice - aDown;
+      annualRate = getVal('aRate');
+      months     = parseInt(document.getElementById('aTerm').value);
     } else {
-      principal = parseFloat(document.getElementById('p_amount').value) || 0;
-      rate = parseFloat(document.getElementById('p_rate').value) || 0;
-      term = parseInt(document.getElementById('p_term').value) || 36;
+      principal  = getVal('pAmount');
+      annualRate = getVal('pRate');
+      months     = parseInt(document.getElementById('pTerm').value);
     }
 
-    if (principal <= 0 || term <= 0) {
-      alert('Please enter a valid loan amount and term.');
-      return;
+    if (principal <= 0 || months <= 0) {
+      alert('Please enter valid loan details.'); return;
     }
 
-    const { rows, totalInterest, payment } = buildAmortization(principal, rate, term);
-    const totalCost = principal + totalInterest;
-    const monthlyTotal = payment + extraMonthly;
+    var piPayment   = calcPayment(principal, annualRate, months);
+    var fullPayment = piPayment + taxMonthly + insMonthly;
+    var totalPaid   = piPayment * months;
+    var totalInterest = totalPaid - principal;
+    var totalCost   = totalPaid + (taxMonthly + insMonthly) * months;
 
-    // Display results
-    document.getElementById('resultCard').style.display = '';
-    document.getElementById('monthlyPaymentBig').textContent = fmtMoneyRound(monthlyTotal);
-    document.getElementById('sumPrincipal').textContent = fmtMoneyRound(principal);
-    document.getElementById('sumInterest').textContent = fmtMoneyRound(totalInterest);
-    document.getElementById('sumTotal').textContent = fmtMoneyRound(totalCost + extraMonthly * term);
-    document.getElementById('sumPayoff').textContent = addMonthsToDate(new Date(), term);
+    // Payoff date
+    var now = new Date();
+    var payoff = new Date(now.getFullYear(), now.getMonth() + months, 1);
+    var payoffStr = payoff.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 
-    // Donut chart
-    const segments = [
-      { value: principal, color: '#2563eb' },
-      { value: totalInterest, color: '#f59e0b' }
-    ];
-    if (hasExtra) {
-      segments.push({ value: extraMonthly * term, color: '#a855f7' });
-      document.getElementById('legendExtra').style.display = 'flex';
+    // Update result cards
+    document.getElementById('rMonthly').textContent   = fmtCurrency(fullPayment);
+    document.getElementById('rPrincipal').textContent = fmtCurrency(principal);
+    document.getElementById('rInterest').textContent  = fmtCurrency(Math.max(0, totalInterest));
+    document.getElementById('rTotal').textContent     = fmtCurrency(totalCost);
+    document.getElementById('rPayoff').textContent    = payoffStr;
+
+    // Pie chart
+    var taxInsTotal = (taxMonthly + insMonthly) * months;
+    drawPie(principal, Math.max(0, totalInterest), taxInsTotal);
+    document.getElementById('lgPrincipal').textContent = 'Principal: ' + fmtCurrency(principal);
+    document.getElementById('lgInterest').textContent  = 'Interest: ' + fmtCurrency(Math.max(0, totalInterest));
+    if (taxInsTotal > 0) {
+      document.getElementById('lgTaxRow').style.display = '';
+      document.getElementById('lgTax').textContent = 'Tax & Insurance: ' + fmtCurrency(taxInsTotal);
     } else {
-      document.getElementById('legendExtra').style.display = 'none';
+      document.getElementById('lgTaxRow').style.display = 'none';
     }
-    renderDonut(segments);
 
     // Amortization table
-    renderAmortTable(rows);
-    document.getElementById('amortWrap').style.display = 'none';
-    document.getElementById('amortToggle').innerHTML = '<i class="fas fa-table"></i> Show Amortization Schedule';
-
-    // Scroll result into view on mobile
-    if (window.innerWidth < 860) {
-      document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var tbody = document.getElementById('amortBody');
+    tbody.innerHTML = '';
+    var balance = principal;
+    var r = annualRate / 100 / 12;
+    for (var m = 1; m <= months; m++) {
+      var intPayment  = balance * r;
+      var prinPayment = piPayment - intPayment;
+      balance -= prinPayment;
+      if (balance < 0) balance = 0;
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>' + m + '</td>' +
+        '<td>' + fmtCurrency(fullPayment) + '</td>' +
+        '<td>' + fmtCurrency(Math.max(0, prinPayment)) + '</td>' +
+        '<td>' + fmtCurrency(Math.max(0, intPayment)) + '</td>' +
+        '<td>' + fmtCurrency(balance) + '</td>';
+      tbody.appendChild(tr);
     }
+
+    // Show results
+    document.getElementById('resultsSection').style.display = '';
+    document.getElementById('amortWrap').classList.remove('show');
+    document.getElementById('amortToggle').innerHTML = '<i class="fas fa-table"></i> Show Amortization Schedule';
   });
 
-  // Trigger initial calculation for demo purposes
-  document.getElementById('calcBtn').click();
+  // ── AMORTIZATION TOGGLE ───────────────────────────────────────
+  document.getElementById('amortToggle').addEventListener('click', function() {
+    var wrap = document.getElementById('amortWrap');
+    var showing = wrap.classList.toggle('show');
+    this.innerHTML = showing
+      ? '<i class="fas fa-table"></i> Hide Amortization Schedule'
+      : '<i class="fas fa-table"></i> Show Amortization Schedule';
+  });
 </script>
-  <script src="/pwa-init.js"></script>
+
 </body>
 </html>

@@ -1,256 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy – Universal Converter Hub</title>
-  <meta name="description" content="Privacy Policy for Universal Converter Hub and the ConverterHub mobile app. Learn how we handle your data, files, and advertising.">
+  <title>Privacy Policy – ConverterHub</title>
+  <meta name="description" content="ConverterHub Privacy Policy. Learn how we handle your data, cookies, Google AdSense advertising, and Google Analytics tracking.">
   <link rel="canonical" href="https://converterhub.com.ng/privacy-policy.html">
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-    .logo-icon svg { display: block; width: 48px; height: 48px; border-radius: 12px; box-shadow: var(--shadow); }
-    .logo-text h1 { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .logo-text p { font-size: 0.75rem; color: var(--text-secondary); }
-    @media (max-width: 600px) {
-      .logo-icon svg { width: 36px; height: 36px; }
-      .logo-text h1 { font-size: 1.2rem; }
-    }
-    .policy-wrap {
-      background: var(--bg-card);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin: 2rem 0;
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow);
-      line-height: 1.7;
-    }
-    .policy-wrap h1 {
-      font-size: 1.9rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      background: linear-gradient(135deg, var(--accent), #a855f7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .policy-wrap .updated {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-    .policy-wrap h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-top: 2rem;
-      margin-bottom: 0.6rem;
-      color: var(--text-primary);
-    }
-    .policy-wrap h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-top: 1.2rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-primary);
-    }
-    .policy-wrap p, .policy-wrap li {
-      color: var(--text-secondary);
-      margin-bottom: 0.8rem;
-    }
-    .policy-wrap ul { padding-left: 1.4rem; }
-    .policy-wrap a { color: var(--accent); }
-    .policy-wrap .contact-box {
-      background: var(--bg-secondary);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
-      margin-top: 1rem;
-      border: 1px solid var(--border-light);
-    }
-    @media (max-width: 600px) {
-      .policy-wrap { padding: 1.5rem; }
-      .policy-wrap h1 { font-size: 1.5rem; }
-    }
-    .skip-link { position: absolute; top: -40px; left: 0; background: var(--accent); color: white; padding: 8px 12px; text-decoration: none; z-index: 100; font-weight: 500; }
-    .skip-link:focus { top: 0; }
-    .dark-toggle { cursor: pointer; user-select: none; }
-  </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<main class="ch-container">
+  <nav class="ch-breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">Privacy Policy</span></nav>
 
-<div class="container">
-  <!-- Header with Logo -->
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2563eb"/>
-                <stop offset="1" stop-color="#7c3aed"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <h1>Universal Converter Hub</h1>
-          <p>Convert Anything, Anywhere</p>
-        </div>
-      </a>
+  <div style="max-width:800px;margin:0 auto;padding:40px 0;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem;">🛡️</div>
+      <h1 style="font-size:2rem;font-weight:800;margin-bottom:8px;">Privacy Policy</h1>
+      <p style="color:var(--text-muted);font-size:.9rem;">Last updated: August 2026 &nbsp;•&nbsp; Effective: August 1, 2026</p>
     </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
-      <div class="dark-toggle" id="darkToggle" role="button" tabindex="0" aria-label="Toggle dark mode"><i class="fas fa-moon"></i> Dark</div>
-    </div>
-  </div>
 
-  <!-- Navigation -->
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
-  </div>
-
-  <main id="main-content">
-    <div class="policy-wrap">
-      <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: June 19, 2026</p>
-
-      <p>This Privacy Policy describes how ConverterHub ("we," "our," or "us") collects, uses, and discloses information when you use our mobile application <strong>ConverterHub - File &amp; Tools</strong> (the "App") and our website <strong>converterhub.com.ng</strong> (the "Website").</p>
-
-      <h2>1. Information We Collect</h2>
-
-      <h3>1.1 Files You Choose to Convert</h3>
-      <p>When you use a conversion tool (PDF to Word, Image Compressor, QR Code Generator, etc.), the App may request access to your device's files or media so you can select a file to convert. We do not access, view, or collect your files without your direct action of selecting them through the file picker. Processing happens either locally on your device or is sent securely to our servers solely to perform the conversion you requested, and is not retained beyond what is necessary to complete that task.</p>
-
-      <h3>1.2 Automatically Collected Information</h3>
-      <p>Like most apps, we and our third-party service providers (see Section 3) may automatically collect:</p>
-      <ul>
-        <li>Device information (device model, operating system version)</li>
-        <li>App usage data (features used, session duration, crash reports)</li>
-        <li>Approximate location (derived from IP address, not precise GPS)</li>
-        <li>Advertising identifiers (such as the Google Advertising ID)</li>
-      </ul>
-
-      <h3>1.3 Information You Provide Directly</h3>
-      <p>If you contact us for support or feedback, we collect the information you provide, such as your email address and the content of your message.</p>
-
-      <h2>2. How We Use Information</h2>
-      <p>We use the information described above to:</p>
-      <ul>
-        <li>Provide, operate, and maintain the App's conversion tools</li>
-        <li>Display advertisements through Google AdMob</li>
-        <li>Understand how the App is used so we can improve it</li>
-        <li>Diagnose and fix technical problems</li>
-        <li>Respond to your support requests</li>
-      </ul>
-
-      <h2>3. Third-Party Services</h2>
-
-      <h3>3.1 Google AdMob</h3>
-      <p>We use Google AdMob to display advertisements within the App, including banner, interstitial, and native ad formats. AdMob may collect and use device identifiers and other information to show you relevant ads and measure ad performance. Learn more at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google's Partner Sites policy</a>.</p>
-
-      <h3>3.2 Google Play Services</h3>
-      <p>The App relies on Google Play Services for core Android functionality, which has its own data collection practices governed by Google's Privacy Policy.</p>
-
-      <h2>4. File Access and Storage Permissions</h2>
-      <p>The App requests permission to access your device's photos, media, and files solely to allow you to select a file for conversion (for example, choosing a PDF or image to upload into a tool). The App does not browse, collect, or transmit any files other than the one you explicitly select for a conversion task.</p>
-
-      <h2>5. Children's Privacy</h2>
-      <p>The App is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
-
-      <h2>6. Data Retention</h2>
-      <p>Files submitted for conversion are processed and, where applicable, deleted from our servers shortly after the conversion is complete. We do not use your converted files for any purpose other than fulfilling your request.</p>
-
-      <h2>7. Your Choices</h2>
-      <ul>
-        <li>You can disable file/media access permissions at any time through your device's app settings, though this will limit the App's ability to perform file conversions.</li>
-        <li>You can opt out of personalized advertising through your device's ad settings (Settings &gt; Google &gt; Ads &gt; Opt out of Ads Personalization on Android).</li>
-        <li>You can request deletion of any personal information you've provided to us by contacting us using the details below.</li>
-      </ul>
-
-      <h2>8. Data Security</h2>
-      <p>We take reasonable measures to protect the information we collect, including the use of secure connections (HTTPS) for data transmitted between the App and our servers. However, no method of transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
-
-      <h2>9. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by updating the "Last updated" date at the top of this page. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
-
-      <h2>10. Contact Us</h2>
-      <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us at:</p>
-      <div class="contact-box">
-        <p style="margin-bottom:0.3rem;"><strong>Email:</strong> dannynova32@gmail.com</p>
-        <p style="margin-bottom:0;"><strong>Website:</strong> <a href="https://converterhub.com.ng">https://converterhub.com.ng</a></p>
+    <!-- TOC -->
+    <div class="ch-card" style="margin-bottom:32px;">
+      <p style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;">Contents</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+        <a href="#overview"     style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">1. Overview</a>
+        <a href="#data"         style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">2. Information We Collect</a>
+        <a href="#files"        style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">3. File Processing</a>
+        <a href="#analytics"    style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">4. Google Analytics</a>
+        <a href="#adsense"      style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">5. Google AdSense</a>
+        <a href="#cookies"      style="color:var(--brand-primary);font-size:.875sogn;text-decoration:none;padding:3px 0;">6. Cookies</a>
+        <a href="#third-party"  style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">7. Third-Party Services</a>
+        <a href="#children"     style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">8. Children's Privacy</a>
+        <a href="#rights"       style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">9. Your Rights</a>
+        <a href="#contact-pp"   style="color:var(--brand-primary);font-size:.875rem;text-decoration:none;padding:3px 0;">10. Contact Us</a>
       </div>
     </div>
-  </main>
 
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
+    <!-- Sections -->
+    <div id="overview" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">1. Overview</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;">ConverterHub ("we", "us", "our") is committed to protecting your privacy. This policy describes our practices at <strong>converterhub.com.ng</strong>.</p>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;margin-top:10px;">The vast majority of our tools (PDF conversion, image editing, coordinate conversion, OCR, etc.) run <strong>entirely in your browser</strong>. Your files never leave your device.</p>
+    </div>
 
-<script>
-  const darkToggle = document.getElementById('darkToggle');
-  if (darkToggle) {
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
-    });
-    darkToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        darkToggle.click();
-      }
-    });
-  }
-</script>
-  <script src="/pwa-init.js"></script>
+    <div id="data" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">2. Information We Collect</h2>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;padding-left:20px;">
+        <li><strong>Usage data via Google Analytics:</strong> Page views, session duration, device type, browser, country. Aggregated and anonymised.</li>
+        <li style="margin-top:8px;"><strong>Contact form submissions:</strong> Your name, email and message if you contact us. Used solely to respond.</li>
+        <li style="margin-top:8px;"><strong>Advertising data via Google AdSense:</strong> Google may use cookies to serve relevant ads. See Section 5.</li>
+      </ul>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;margin-top:12px;">We do <strong>not</strong> collect files you upload, coordinates you enter, passwords you generate, or any content processed by our tools.</p>
+    </div>
+
+    <div id="files" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">3. File Processing & Tool Data</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;">All file processing is performed <strong>client-side</strong> — meaning it runs in JavaScript in your browser on your own device:</p>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;padding-left:20px;margin-top:8px;">
+        <li>Files you upload are never sent to any server</li>
+        <li>Coordinates, financial figures and text remain on your device</li>
+        <li>Downloaded output files are generated locally by your browser</li>
+        <li>We have no technical ability to access or store any content you process</li>
+      </ul>
+    </div>
+
+    <div id="analytics" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">4. Google Analytics</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;">We use <strong>Google Analytics 4 (GA4)</strong> to understand how visitors use our website. It collects anonymised data including pages visited, device type, and approximate region.</p>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;margin-top:10px;">You can opt out by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" style="color:var(--brand-primary);">Google Analytics Opt-out Browser Add-on</a>. Google's Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--brand-primary);">policies.google.com/privacy</a></p>
+    </div>
+
+    <div id="adsense" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">5. Google AdSense & Advertising</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;">We use <strong>Google AdSense</strong> (Publisher ID: ca-pub-5268090468184213) to display advertisements. Google may use the <strong>DoubleClick cookie</strong> to serve ads based on your browsing behaviour.</p>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;margin-top:10px;">Opt out of personalised ads: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--brand-primary);">Google Ads Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener" style="color:var(--brand-primary);">aboutads.info</a>. More info: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" style="color:var(--brand-primary);">How Google uses data from partner sites</a>.</p>
+    </div>
+
+    <div id="cookies" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">6. Cookies</h2>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;padding-left:20px;">
+        <li><strong>Essential:</strong> Dark mode and language preferences. No personal data.</li>
+        <li style="margin-top:6px;"><strong>Analytics (Google Analytics):</strong> Anonymised usage statistics.</li>
+        <li style="margin-top:6px;"><strong>Advertising (Google AdSense):</strong> DoubleClick and similar identifiers for ad targeting.</li>
+      </ul>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;margin-top:12px;">A cookie consent banner appears on your first visit. You can withdraw consent at any time by clearing your browser cookies.</p>
+    </div>
+
+    <div id="third-party" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">7. Third-Party Services</h2>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;padding-left:20px;">
+        <li><strong>Google Analytics & AdSense</strong> — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--brand-primary);">Google Privacy Policy</a></li>
+        <li style="margin-top:6px;"><strong>Google Fonts</strong> — Font files loaded from Google servers</li>
+        <li style="margin-top:6px;"><strong>Flutterwave</strong> — Optional donations — <a href="https://flutterwave.com/ng/privacy-policy" target="_blank" rel="noopener" style="color:var(--brand-primary);">Flutterwave Privacy Policy</a></li>
+        <li style="margin-top:6px;"><strong>jsDelivr / cdnjs</strong> — CDN services for JavaScript libraries</li>
+      </ul>
+    </div>
+
+    <div id="children" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">8. Children's Privacy</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;">ConverterHub is not directed at children under 13. We do not knowingly collect information from children. If you believe we have done so inadvertently, contact us at <a href="mailto:dannynova32@gmail.com" style="color:var(--brand-primary);">dannynova32@gmail.com</a> and we will delete it promptly.</p>
+    </div>
+
+    <div id="rights" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">9. Your Rights</h2>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;padding-left:20px;">
+        <li><strong>Right to access:</strong> Request a copy of any personal data we hold</li>
+        <li style="margin-top:6px;"><strong>Right to deletion:</strong> Request deletion of personal data</li>
+        <li style="margin-top:6px;"><strong>Right to opt out:</strong> Opt out of personalised advertising via Google Ads Settings</li>
+        <li style="margin-top:6px;"><strong>Right to withdraw consent:</strong> Clear cookies to withdraw cookie consent</li>
+      </ul>
+    </div>
+
+    <div id="contact-pp" class="ch-card" style="margin-bottom:16px;">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">10. Contact Us</h2>
+      <ul style="color:var(--text-secondary);line-height:1.8;font-size:.9rem;list-style:none;padding:0;">
+        <li>📧 <strong>Email:</strong> <a href="mailto:dannynova32@gmail.com" style="color:var(--brand-primary);">dannynova32@gmail.com</a></li>
+        <li style="margin-top:6px;">📝 <strong>Contact form:</strong> <a href="contact.html" style="color:var(--brand-primary);">converterhub.com.ng/contact.html</a></li>
+        <li style="margin-top:6px;">🌐 <strong>Website:</strong> <a href="https://converterhub.com.ng" style="color:var(--brand-primary);">converterhub.com.ng</a></li>
+      </ul>
+      <p style="color:var(--text-muted);font-size:.82rem;margin-top:12px;">We respond to privacy-related enquiries within 5 business days.</p>
+    </div>
+
+  </div>
+</main>
+<script src="js/common.js"></script>
 </body>
 </html>

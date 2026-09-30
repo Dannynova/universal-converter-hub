@@ -1,821 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Coordinate Converter – NNO to UTM, WGS84, Minna Datum | Universal Converter Hub</title>
-  <meta name="description" content="Convert Nigerian NNO local coordinates to UTM, WGS84 and Minna Datum. Supports Ogun State local origins, Nigeria belts, and global coordinate systems. Free, instant, no signup.">
+  <title>Free Coordinate Converter – NNO, UTM, WGS84, Minna Datum | ConverterHub</title>
+  <meta name="description" content="Convert Nigerian NNO local coordinates to UTM, WGS84 and Minna Datum. 54 Ogun State local origins, Nigeria belts, UTM Zones 31N & 32N. Free surveying tool.">
   <meta name="keywords" content="coordinate converter, NNO to UTM, WGS84 to Minna, Nigeria coordinate conversion, Ogun state local origin, Minna datum, UTM zone 31N, surveying Nigeria">
   <link rel="canonical" href="https://converterhub.com.ng/coordinate-converter.html">
-  <meta property="og:title" content="Free Coordinate Converter – NNO to UTM, WGS84, Minna Datum">
-  <meta property="og:description" content="Convert Nigerian NNO local coordinates to UTM, WGS84 and Minna Datum. Free, instant, no signup.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:title" content="Free Coordinate Converter – NNO, UTM, WGS84, Minna Datum | ConverterHub">
+  <meta property="og:description" content="Convert between NNO local, UTM, WGS84 and Minna Datum. 54 Ogun State origins. Free Nigerian surveying tool.">
   <meta property="og:url" content="https://converterhub.com.ng/coordinate-converter.html">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <meta property="og:site_name" content="ConverterHub">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Coordinate Converter","url":"https://converterhub.com.ng/coordinate-converter.html","description":"Free coordinate converter for NNO, UTM, WGS84 and Minna Datum. Supports all Nigerian local origins.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Universal Converter Hub","url":"https://converterhub.com.ng"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Coordinate Converter","url":"https://converterhub.com.ng/coordinate-converter.html","description":"Free coordinate converter for NNO, UTM, WGS84 and Minna Datum. Supports 54 Ogun State local origins, Nigeria belts and UTM Zones 31N and 32N.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is NNO in Nigerian surveying?","acceptedAnswer":{"@type":"Answer","text":"NNO stands for National Network Origin. Each town has a known benchmark with precise Northing and Easting coordinates relative to that local origin used by surveyors."}},{"@type":"Question","name":"What is the Minna Datum?","acceptedAnswer":{"@type":"Answer","text":"The Minna Datum is Nigeria's official geodetic datum based on the Clarke 1880 ellipsoid, used for all official mapping and surveys in Nigeria."}},{"@type":"Question","name":"How do I convert local NNO coordinates to UTM?","acceptedAnswer":{"@type":"Answer","text":"Select the NNO to UTM tab, choose your local origin from the Ogun State table, enter your local Northing and Easting, choose your output system and click Convert."}},{"@type":"Question","name":"What is the difference between UTM Zone 31N and 32N in Nigeria?","acceptedAnswer":{"@type":"Answer","text":"UTM Zone 31N covers western Nigeria including Lagos, Ogun and Oyo states. Zone 32N covers eastern Nigeria including Abuja and Kano. Ogun State falls primarily in Zone 31N."}},{"@type":"Question","name":"Can I use GPS WGS84 coordinates in this tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the WGS84 to UTM or WGS84 to Minna tabs to convert GPS coordinates to Nigerian survey systems."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is NNO in Nigerian surveying?","acceptedAnswer":{"@type":"Answer","text":"NNO stands for National Network Origin. Each town has a known benchmark with precise Northing and Easting coordinates relative to that local origin used by surveyors."}},
+    {"@type":"Question","name":"What is the Minna Datum?","acceptedAnswer":{"@type":"Answer","text":"The Minna Datum is Nigeria's official geodetic datum based on the Clarke 1880 ellipsoid, used for all official mapping and surveys in Nigeria."}},
+    {"@type":"Question","name":"How do I convert local NNO coordinates to UTM?","acceptedAnswer":{"@type":"Answer","text":"Select the NNO to UTM tab, choose your local origin from the Ogun State list, enter your local Northing and Easting, choose your output system and click Convert."}},
+    {"@type":"Question","name":"What is the difference between UTM Zone 31N and 32N in Nigeria?","acceptedAnswer":{"@type":"Answer","text":"UTM Zone 31N covers western Nigeria including Lagos, Ogun and Oyo states. Zone 32N covers eastern Nigeria including Abuja and Kano. Ogun State falls primarily in Zone 31N."}},
+    {"@type":"Question","name":"Can I use GPS WGS84 coordinates in this tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the WGS84 to UTM or WGS84 to Minna tabs to convert GPS coordinates to Nigerian survey systems."}},
+    {"@type":"Question","name":"Is the coordinate converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No registration, no hidden fees. All calculations run entirely in your browser using proj4.js."}}
+  ]}
   </script>
   <style>
-    .hero-text{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);border-radius:32px;padding:2rem;margin:2rem 0;text-align:center;border:1px solid var(--border-light)}
-    .hero-text h1{font-size:2rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0}
-    .feature-card{background:var(--bg-card);border-radius:20px;padding:1.5rem;text-align:center;border:1px solid var(--border-light)}
-    .feature-card i{font-size:2.2rem;color:var(--accent);margin-bottom:1rem}
-    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0}
-    .faq-accordion h3{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center}
-    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:.5rem}
-    .faq-question{width:100%;background:none;border:none;text-align:left;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s;font-family:inherit}
-    .faq-question:hover{color:var(--accent)}
-    .faq-question .icon{font-size:1.2rem;transition:transform .2s}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-out;color:var(--text-secondary);line-height:1.6}
-    .faq-answer p{padding-bottom:1rem}
-    .faq-item.active .faq-answer{max-height:300px;transition:max-height .4s ease-in}
-    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
-    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light)}
-    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
-    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:transform .2s}
-    .feedback-btn:hover{transform:scale(1.05)}
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center}
-    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative}
-    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary)}
-    .modal-close:hover{color:var(--accent)}
-    .modal iframe{width:100%;height:500px;border:none;border-radius:12px}
-    /* Tool styles */
-    .conv-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-    .conv-tab{flex:1;min-width:120px;padding:.7rem .5rem;border-radius:10px;border:2px solid var(--border-light);background:var(--bg-secondary);color:var(--text-secondary);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-    .conv-tab.active{background:var(--accent);color:white;border-color:var(--accent)}
-    .conv-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-    .form-group{margin-bottom:1rem}
-    .form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
-    .form-control{width:100%;padding:.7rem 1rem;border:1.5px solid var(--border-light);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg-secondary);color:var(--text-primary);transition:border-color .2s}
-    .form-control:focus{outline:none;border-color:var(--accent)}
-    .numeric-input-wrap{position:relative;display:flex;align-items:center}
-    .numeric-input-wrap .form-control{padding-right:3.4rem}
-    .numeric-sign-btn{position:absolute;right:.45rem;top:50%;transform:translateY(-50%);border:none;background:rgba(37,99,235,.1);color:var(--accent);font-weight:700;font-size:.85rem;line-height:1;padding:.35rem .5rem;border-radius:6px;cursor:pointer;min-width:2.35rem}
-    .numeric-sign-btn:hover{background:rgba(37,99,235,.18)}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    @media(max-width:540px){.form-row{grid-template-columns:1fr}}
-    .result-panel{display:none;margin-top:1rem;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:14px;padding:1.2rem}
+    .tool-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start;margin-top:24px}
+    @media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+    .tool-sidebar{display:flex;flex-direction:column;gap:16px}
+
+    /* Mode tabs — scrollable on mobile */
+    .mode-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+    .mode-tabs::-webkit-scrollbar{display:none}
+    .mode-tab{flex-shrink:0;padding:9px 14px;border-radius:10px;font-size:.82rem;font-weight:600;color:var(--text-secondary);border:1.5px solid var(--border);background:var(--bg-subtle);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
+    .mode-tab.active{background:var(--brand-primary);color:#fff;border-color:var(--brand-primary)}
+    .mode-tab:hover:not(.active){border-color:var(--brand-primary);color:var(--brand-primary)}
+
+    /* Mode panel */
+    .mode-panel{display:none}
+    .mode-panel.show{display:block}
+
+    /* Warning box */
+    .warn-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:10px 14px;font-size:.8rem;color:#92400e;margin-bottom:12px;line-height:1.5}
+    body.dark .warn-box{background:#451a03;border-color:#92400e;color:#fcd34d}
+
+    /* DMS format toggle */
+    .fmt-row{display:flex;gap:6px;margin-bottom:12px}
+    .fmt-btn{padding:6px 14px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg-subtle);font-size:.8rem;font-weight:600;cursor:pointer;color:var(--text-secondary);font-family:inherit;transition:all .15s}
+    .fmt-btn.active{background:var(--brand-primary);color:#fff;border-color:var(--brand-primary)}
+
+    /* Result grid */
+    .result-panel{display:none;margin-top:14px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:14px;padding:16px}
     .result-panel.show{display:block}
-    .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin-top:.8rem}
-    .result-item{background:var(--bg-card);border-radius:10px;padding:.8rem 1rem;border:1px solid var(--border-light)}
-    .result-item .r-label{font-size:.75rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
-    .result-item .r-value{font-size:1rem;font-weight:600;color:var(--text-primary);word-break:break-all}
-    /* origin select info box */
-    .origin-info { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:.5rem 1rem; font-size:.83rem; color:#2563eb; margin-bottom:.8rem; display:none; }
-    .origin-info.show { display:block; }
-    .related-tools{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:1.5rem 0}
-    .tool-card{background:var(--bg-card);border-radius:40px;padding:.6rem 1.5rem;text-decoration:none;color:var(--text-primary);border:1px solid var(--border-light);transition:all .2s}
-    .tool-card:hover{background:var(--accent);color:white}
-    .err-msg{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;border-radius:10px;padding:.7rem 1rem;font-size:.88rem;margin-top:.5rem;display:none}
+    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:500px){.result-grid{grid-template-columns:1fr}}
+    .result-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:12px}
+    .r-label{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+    .r-value{font-size:.9rem;font-weight:700;color:var(--text-primary);font-family:monospace;display:flex;align-items:center;justify-content:space-between;gap:6px;word-break:break-all}
+    .copy-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.8rem;padding:0 4px;flex-shrink:0}
+    .copy-btn:hover{color:var(--brand-primary)}
+
+    /* Error */
+    .err-msg{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:8px 12px;font-size:.82rem;margin-top:8px}
+    body.dark .err-msg{background:#450a0a;border-color:#991b1b;color:#fca5a5}
     .err-msg.show{display:block}
-    .copy-btn{background:none;border:none;cursor:pointer;color:var(--accent);font-size:.8rem;margin-left:.5rem;padding:2px 6px;border-radius:4px;transition:background .15s}
-    .copy-btn:hover{background:var(--bg-secondary)}
-    /* Format toggle buttons */
-    .fmt-btn{flex:1;min-width:140px;padding:.65rem 1rem;border-radius:10px;border:2px solid var(--border-light);background:var(--bg-secondary);color:var(--text-secondary);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;text-align:center}
-    .fmt-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .fmt-btn:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-    /* DMS grid — responsive on mobile */
-    @media(max-width:480px){
-      #dmsInputs [style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
-      #dmsInputs [style*="grid-template-columns"] select{grid-column:span 2}
-    }
+
+    /* Origin info */
+    .origin-info{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 12px;font-size:.8rem;color:#1d4ed8;margin-bottom:10px;display:none}
+    body.dark .origin-info{background:#1e3a8a;border-color:#1d4ed8;color:#bfdbfe}
+    .origin-info.show{display:block}
+
+    /* Numeric sign toggle */
+    .numeric-input-wrap{position:relative;display:flex;align-items:center}
+    .numeric-input-wrap .ch-input{flex:1;padding-right:50px!important}
+    .numeric-sign-btn{position:absolute;right:8px;background:var(--bg-hover);border:1px solid var(--border);border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;padding:3px 6px;color:var(--text-secondary);font-family:inherit}
+
+    /* Trust pills */
+    .trust-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .trust-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:var(--bg-subtle);border:1px solid var(--border);font-size:.78rem;color:var(--text-secondary);font-weight:500}
+    .trust-pill .tp-icon{color:var(--brand-primary)}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:12px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .feature-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .feature-desc{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+
+    .ref-table{width:100%;border-collapse:collapse}
+    .ref-table th,.ref-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:.82rem}
+    .ref-table th{background:var(--bg-subtle);font-weight:700;color:var(--text-secondary);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+    .ref-table tr:last-child td{border-bottom:none}
+
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s}
+    .related-pill:hover{border-color:var(--brand-primary);color:var(--brand-primary);background:var(--bg-hover)}
+    .sidebar-ad{background:var(--bg-subtle);border:1px dashed var(--border);border-radius:12px;padding:12px;text-align:center;overflow:hidden}
+    .copy-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#1e293b;color:#fff;padding:10px 20px;border-radius:30px;font-size:.85rem;font-weight:600;transition:transform .3s ease;z-index:9999;pointer-events:none}
+    .copy-toast.show{transform:translateX(-50%) translateY(0)}
   </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
+<div class="copy-toast" id="copyToast">✅ Copied!</div>
 
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" id="closeModal">&times;</span>
-    <h3>Help us improve</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe>
-  </div>
-</div>
+<main class="ch-container">
 
-<div class="container">
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-          </svg>
+  <nav class="ch-breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Surveying Tools</span><span class="sep">›</span>
+    <span class="current">Coordinate Converter</span>
+  </nav>
+
+  <div class="ch-tool-header">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🧭</div>
+      <div>
+        <h1 class="ch-tool-title">Coordinate Converter</h1>
+        <div class="ch-tool-badges">
+          <span class="ch-badge ch-badge-green">✓ 54 Ogun State Origins</span>
+          <span class="ch-badge ch-badge-green">✓ Minna Datum</span>
+          <span class="ch-badge ch-badge-blue">✓ UTM 31N & 32N</span>
+          <span class="ch-badge ch-badge-blue">✓ Free</span>
         </div>
-        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
-      </a>
+      </div>
     </div>
-    <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
-      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a>
-      <div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div>
-    </div>
+    <p class="ch-tool-desc">Convert between Nigerian NNO local coordinates, Minna Datum UTM, WGS84 and global coordinate systems. Supports all 54 Ogun State local origins, Nigeria West/Mid/East Belts, UTM Zones 31N & 32N. Validated against Mobile Topographer Pro and SivanDesign.</p>
   </div>
 
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn active">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+  <div class="tool-layout">
+    <div>
+      <div class="ch-card">
 
-  <div class="hero-text">
-    <h1>&#127757; Free Coordinate Converter &#8211; NNO, UTM, WGS84 &amp; Minna Datum</h1>
-    <p>Convert between <strong>Nigerian NNO local coordinates</strong>, <strong>Minna Datum UTM</strong>, <strong>WGS84</strong> and global coordinate systems. Supports all <strong>59 Ogun State local origins</strong>, Nigeria West/Mid/East Belts, UTM Zones 31N &amp; 32N, and worldwide projections.</p>
-    <p>Used by <strong>surveyors, engineers, GIS professionals and students</strong> across Nigeria. All calculations run instantly in your browser &#8212; no data is sent to any server.</p>
-  </div>
-
-  <!-- TOOL CARD -->
-  <div class="card">
-    <!-- Conversion mode tabs -->
-    <div class="conv-tabs">
-      <div class="conv-tab active" data-mode="nno-utm">&#128205; NNO &#8594; UTM (Local Origin)</div>
-      <div class="conv-tab" data-mode="nno-direct">&#128204; Datum Converter (Any &#8594; Any)</div>
-      <div class="conv-tab" data-mode="utm-nno">&#127757; UTM &#8594; NNO</div>
-      <div class="conv-tab" data-mode="wgs-utm">&#127760; WGS84 &#8594; UTM</div>
-      <div class="conv-tab" data-mode="utm-wgs">&#128200; UTM &#8594; WGS84</div>
-      <div class="conv-tab" data-mode="wgs-minna">&#127759; WGS84 &#8594; Minna</div>
-      <div class="conv-tab" data-mode="minna-wgs">&#127758; Minna &#8594; WGS84</div>
-    </div>
-
-    <!-- NNO → UTM/WGS84 -->
-    <div id="mode-nno-utm">
-      <div class="form-group">
-        <label>Ogun State Local Origin</label>
-        <select class="form-control" id="originSelect">
-          <option value="">— Select a town / origin —</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Local Northing (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="nno_n" placeholder="e.g. 5234.567" step="0.001">
+        <!-- Mode tabs -->
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="nno-utm">📍 NNO → UTM</button>
+          <button class="mode-tab" data-mode="nno-direct">🔄 Datum Converter</button>
+          <button class="mode-tab" data-mode="utm-nno">🌍 UTM → NNO</button>
+          <button class="mode-tab" data-mode="wgs-utm">🌐 WGS84 → UTM</button>
+          <button class="mode-tab" data-mode="utm-wgs">📈 UTM → WGS84</button>
+          <button class="mode-tab" data-mode="wgs-minna">🗺 WGS84 → Minna</button>
+          <button class="mode-tab" data-mode="minna-wgs">🔁 Minna → WGS84</button>
         </div>
-        <div class="form-group">
-          <label>Local Easting (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="nno_e" placeholder="e.g. 3012.345" step="0.001">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Output Coordinate System</label>
-        <select class="form-control" id="nno_output">
-          <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
-          <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
-          <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
-          <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
-          <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
-          <option value="wgs84geo">WGS84 Geographic (Lat/Lon)</option>
-          <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
-          <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
-        </select>
-      </div>
-      <button class="btn" id="btn_nno_utm"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_nno_utm"></div>
-      <div class="result-panel" id="res_nno_utm">
-        <strong>&#9989; Result</strong>
-        <div class="result-grid" id="resgrid_nno_utm"></div>
-      </div>
-    </div>
 
-    <!-- NNO → UTM (Direct, no local origin) -->
-    <div id="mode-nno-direct" style="display:none;">
-      <div class="bg-info" style="background:#fef3c7;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:.7rem 1rem;font-size:.85rem;margin-bottom:1rem;">
-        <i class="fas fa-exclamation-triangle"></i> <strong>Datum mode:</strong> coordinates here must already be <strong>absolute</strong> (national-grid) values &#8212; e.g. a Northing in the 100,000&ndash;900,000+ range for the West Belt. If your figures are small local field-book numbers (e.g. under 10,000), use the <strong>NNO &#8594; UTM (Local Origin)</strong> tab instead so the town origin can be added first.
-      </div>
-      <div class="form-group">
-        <label>From (Input System)</label>
-        <select class="form-control" id="nnoDirect_input">
-          <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
-          <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
-          <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
-          <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
-          <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
-          <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
-          <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Northing (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="nnoDirect_n" placeholder="e.g. 791222.860" step="0.001">
-        </div>
-        <div class="form-group">
-          <label>Easting (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="nnoDirect_e" placeholder="e.g. 450680.430" step="0.001">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>To (Output System)</label>
-        <select class="form-control" id="nnoDirect_output">
-          <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
-          <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
-          <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
-          <option value="minna31" selected>Minna / UTM Zone 31N (EPSG:26331)</option>
-          <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
-          <option value="wgs84geo">WGS84 Geographic (Lat/Lon)</option>
-          <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
-          <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
-        </select>
-      </div>
-      <button class="btn" id="btn_nno_direct"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_nno_direct"></div>
-      <div class="result-panel" id="res_nno_direct">
-        <strong>&#9989; Result</strong>
-        <div class="result-grid" id="resgrid_nno_direct"></div>
-      </div>
-    </div>
-
-    <!-- UTM → NNO -->
-    <div id="mode-utm-nno" style="display:none;">
-      <div class="form-group">
-        <label>Input Coordinate System</label>
-        <select class="form-control" id="utm_nno_input">
-          <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
-          <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
-          <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
-          <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
-          <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Northing (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="utm_nno_n" placeholder="e.g. 712345.678" step="0.001">
-        </div>
-        <div class="form-group">
-          <label>Easting (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="utm_nno_e" placeholder="e.g. 347127.762" step="0.001">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Ogun State Local Origin</label>
-        <select class="form-control" id="originSelect2">
-          <option value="">— Select a town / origin —</option>
-        </select>
-      </div>
-      <button class="btn" id="btn_utm_nno"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_utm_nno"></div>
-      <div class="result-panel" id="res_utm_nno">
-        <strong>&#9989; Result</strong>
-        <div class="result-grid" id="resgrid_utm_nno"></div>
-      </div>
-    </div>
-
-    <!-- WGS84 → UTM -->
-    <div id="mode-wgs-utm" style="display:none;">
-
-      <!-- Format toggle -->
-      <div class="form-group" style="margin-bottom:.8rem;">
-        <label>Input Format</label>
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;">
-          <button class="fmt-btn active" id="fmtDecBtn" onclick="setFmt('dec')">
-            <i class="fas fa-decimal" style="font-size:.8rem;"></i> Decimal Degrees &nbsp;<small style="opacity:.75;">e.g. 6.8921</small>
-          </button>
-          <button class="fmt-btn" id="fmtDmsBtn" onclick="setFmt('dms')">
-            <i class="fas fa-superscript" style="font-size:.8rem;"></i> DMS &nbsp;<small style="opacity:.75;">e.g. 6° 53′ 31.56″</small>
-          </button>
-        </div>
-      </div>
-
-      <!-- Decimal input -->
-      <div id="decInputs">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Latitude (decimal °)</label>
-            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_utm_lat" placeholder="e.g. 6.892100">
+        <!-- ══ NNO → UTM ═════════════════════════════════════════ -->
+        <div class="mode-panel show" id="mode-nno-utm">
+          <div class="ch-form-group">
+            <label class="ch-label">Ogun State Local Origin</label>
+            <select class="ch-select" id="originSelect"></select>
           </div>
-          <div class="form-group">
-            <label>Longitude (decimal °)</label>
-            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_utm_lon" placeholder="e.g. 3.398700">
+          <div id="originInfo" class="origin-info"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Local Northing (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="nno_n" placeholder="e.g. 5234.567">
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Local Easting (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="nno_e" placeholder="e.g. 3012.345">
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- DMS input -->
-      <div id="dmsInputs" style="display:none;">
-        <!-- Latitude DMS -->
-        <div class="form-group">
-          <label>Latitude (D° M′ S″)</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lat_d" placeholder="°" min="0" max="90" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lat_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lat_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
-            </div>
-            <select class="form-control" id="lat_hem" style="min-width:60px;padding-left:.5rem;">
-              <option value="N">N</option>
-              <option value="S">S</option>
+          <div class="ch-form-group">
+            <label class="ch-label">Output Coordinate System</label>
+            <select class="ch-select" id="nno_output">
+              <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
+              <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
+              <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
+              <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
+              <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
+              <option value="wgs84geo">WGS84 Geographic (Lat/Lon)</option>
+              <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
+              <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
             </select>
           </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_nno_utm" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert</button>
+          <div class="err-msg" id="err_nno_utm"></div>
+          <div class="result-panel" id="res_nno_utm"><div class="result-grid" id="resgrid_nno_utm"></div></div>
         </div>
-        <!-- Longitude DMS -->
-        <div class="form-group">
-          <label>Longitude (D° M′ S″)</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lon_d" placeholder="°" min="0" max="180" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lon_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="lon_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
-            </div>
-            <select class="form-control" id="lon_hem" style="min-width:60px;padding-left:.5rem;">
-              <option value="E">E</option>
-              <option value="W">W</option>
+
+        <!-- ══ DATUM CONVERTER ══════════════════════════════════ -->
+        <div class="mode-panel" id="mode-nno-direct">
+          <div class="warn-box">⚠️ <strong>Datum mode:</strong> coordinates must already be <strong>absolute</strong> national-grid values (e.g. Northing 100,000–900,000+). For small local field-book numbers use the <strong>NNO → UTM</strong> tab instead.</div>
+          <div class="ch-form-group">
+            <label class="ch-label">From (Input System)</label>
+            <select class="ch-select" id="nnoDirect_input">
+              <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
+              <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
+              <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
+              <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
+              <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
+              <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
+              <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
             </select>
           </div>
-        </div>
-        <!-- Also accept text DMS paste -->
-        <div class="form-group">
-          <label style="font-size:.75rem;color:var(--text-secondary);">Or paste DMS string directly</label>
-          <input type="text" class="form-control" id="dms_paste_lat" placeholder='e.g. 6° 52&apos; 10.506" N  or  6 52 10.506 N' autocomplete="off">
-          <input type="text" class="form-control" id="dms_paste_lon" placeholder='e.g. 3° 47&apos; 47.24" E  or  3 47 47.24 E' autocomplete="off" style="margin-top:.5rem;">
-          <p style="font-size:.75rem;color:var(--text-secondary);margin-top:.3rem;"><i class="fas fa-info-circle"></i> Filling the paste boxes overrides the D/M/S fields above.</p>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Output UTM Zone</label>
-        <select class="form-control" id="wgs_utm_zone">
-          <option value="auto">Auto-detect zone</option>
-          <option value="31">UTM Zone 31N</option>
-          <option value="32">UTM Zone 32N</option>
-          <option value="33">UTM Zone 33N</option>
-          <option value="34">UTM Zone 34N</option>
-          <option value="35">UTM Zone 35N</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Output Datum</label>
-        <select class="form-control" id="wgs_utm_datum">
-          <option value="minna">Minna Datum / NNO (Nigeria surveys)</option>
-          <option value="wgs84">WGS84 (GPS / global use)</option>
-        </select>
-        <p style="font-size:.78rem;color:var(--text-secondary);margin-top:.4rem;">
-          <i class="fas fa-info-circle"></i>
-          <strong>Minna:</strong> use for Nigerian survey work — matches SivanDesign &amp; Mobile Topographer Pro.<br>
-          <strong>WGS84:</strong> use for GPS devices, Google Maps, global GIS.
-        </p>
-      </div>
-      <button class="btn" id="btn_wgs_utm"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_wgs_utm"></div>
-      <div class="result-panel" id="res_wgs_utm"><strong>&#9989; Result</strong><div class="result-grid" id="resgrid_wgs_utm"></div></div>
-    </div>
-
-    <!-- UTM → WGS84 -->
-    <div id="mode-utm-wgs" style="display:none;">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Northing (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="utm_wgs_n" placeholder="e.g. 760000.000" step="0.001">
-        </div>
-        <div class="form-group">
-          <label>Easting (m)</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="utm_wgs_e" placeholder="e.g. 350000.000" step="0.001">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>UTM Zone</label>
-        <select class="form-control" id="utm_wgs_zone">
-          <option value="31N">Zone 31N</option>
-          <option value="32N">Zone 32N</option>
-          <option value="33N">Zone 33N</option>
-          <option value="34N">Zone 34N</option>
-          <option value="35N">Zone 35N</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Datum</label>
-        <select class="form-control" id="utm_wgs_datum">
-          <option value="wgs84">WGS84</option>
-          <option value="minna">Minna (Nigeria)</option>
-        </select>
-      </div>
-      <button class="btn" id="btn_utm_wgs"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_utm_wgs"></div>
-      <div class="result-panel" id="res_utm_wgs"><strong>&#9989; Result</strong><div class="result-grid" id="resgrid_utm_wgs"></div></div>
-    </div>
-
-    <!-- WGS84 → Minna -->
-    <div id="mode-wgs-minna" style="display:none;">
-
-      <!-- Format toggle -->
-      <div class="form-group" style="margin-bottom:.8rem;">
-        <label>Input Format</label>
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;">
-          <button class="fmt-btn active" id="mFmtDecBtn" onclick="setMinnaFmt('dec')">
-            Decimal Degrees <small style="opacity:.75;">e.g. 6.8921</small>
-          </button>
-          <button class="fmt-btn" id="mFmtDmsBtn" onclick="setMinnaFmt('dms')">
-            DMS <small style="opacity:.75;">e.g. 6° 53′ 31.56″</small>
-          </button>
-        </div>
-      </div>
-
-      <!-- Decimal input -->
-      <div id="mDecInputs">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Latitude (decimal °)</label>
-            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_minna_lat" placeholder="e.g. 6.892100">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Northing (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="nnoDirect_n" placeholder="e.g. 791222.860">
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Easting (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="nnoDirect_e" placeholder="e.g. 450680.430">
+            </div>
           </div>
-          <div class="form-group">
-            <label>Longitude (decimal °)</label>
-            <input type="text" inputmode="decimal" autocomplete="off" class="form-control" id="wgs_minna_lon" placeholder="e.g. 3.398700">
-          </div>
-        </div>
-      </div>
-
-      <!-- DMS input -->
-      <div id="mDmsInputs" style="display:none;">
-        <!-- Latitude DMS -->
-        <div class="form-group">
-          <label>Latitude (D° M′ S″)</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lat_d" placeholder="°" min="0" max="90" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lat_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lat_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
-            </div>
-            <select class="form-control" id="m_lat_hem" style="min-width:60px;padding-left:.5rem;">
-              <option value="N">N</option>
-              <option value="S">S</option>
+          <div class="ch-form-group">
+            <label class="ch-label">To (Output System)</label>
+            <select class="ch-select" id="nnoDirect_output">
+              <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
+              <option value="minnaM">Minna / Nigeria Mid Belt (EPSG:26392)</option>
+              <option value="minnaE">Minna / Nigeria East Belt (EPSG:26393)</option>
+              <option value="minna31" selected>Minna / UTM Zone 31N (EPSG:26331)</option>
+              <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
+              <option value="wgs84geo">WGS84 Geographic (Lat/Lon)</option>
+              <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
+              <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
             </select>
           </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_nno_direct" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert</button>
+          <div class="err-msg" id="err_nno_direct"></div>
+          <div class="result-panel" id="res_nno_direct"><div class="result-grid" id="resgrid_nno_direct"></div></div>
         </div>
-        <!-- Longitude DMS -->
-        <div class="form-group">
-          <label>Longitude (D° M′ S″)</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.5rem;align-items:center;">
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lon_d" placeholder="°" min="0" max="180" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">°</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lon_m" placeholder="′" min="0" max="59" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">′</span>
-            </div>
-            <div style="position:relative;">
-              <input type="number" class="form-control" id="m_lon_s" placeholder="″" min="0" max="59.9999" step="0.0001" style="padding-right:24px;">
-              <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:.85rem;">″</span>
-            </div>
-            <select class="form-control" id="m_lon_hem" style="min-width:60px;padding-left:.5rem;">
-              <option value="E">E</option>
-              <option value="W">W</option>
+
+        <!-- ══ UTM → NNO ════════════════════════════════════════ -->
+        <div class="mode-panel" id="mode-utm-nno">
+          <div class="ch-form-group">
+            <label class="ch-label">Input Coordinate System</label>
+            <select class="ch-select" id="utm_nno_input">
+              <option value="minna31">Minna / UTM Zone 31N (EPSG:26331)</option>
+              <option value="minna32">Minna / UTM Zone 32N (EPSG:26332)</option>
+              <option value="minnaW">Minna / Nigeria West Belt (EPSG:26391)</option>
+              <option value="wgs84_31">WGS84 / UTM Zone 31N (EPSG:32631)</option>
+              <option value="wgs84_32">WGS84 / UTM Zone 32N (EPSG:32632)</option>
             </select>
           </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Northing (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="utm_nno_n" placeholder="e.g. 712345.678">
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Easting (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="utm_nno_e" placeholder="e.g. 347127.762">
+            </div>
+          </div>
+          <div class="ch-form-group">
+            <label class="ch-label">Ogun State Local Origin</label>
+            <select class="ch-select" id="originSelect2"></select>
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_utm_nno" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert</button>
+          <div class="err-msg" id="err_utm_nno"></div>
+          <div class="result-panel" id="res_utm_nno"><div class="result-grid" id="resgrid_utm_nno"></div></div>
         </div>
-        <!-- Paste DMS -->
-        <div class="form-group">
-          <label style="font-size:.75rem;color:var(--text-secondary);">Or paste DMS string directly</label>
-          <input type="text" class="form-control" id="m_dms_paste_lat" placeholder='e.g. 6° 50&apos; 45" N  or  6 50 45 N' autocomplete="off">
-          <input type="text" class="form-control" id="m_dms_paste_lon" placeholder='e.g. 3° 32&apos; 45" E  or  3 32 45 E' autocomplete="off" style="margin-top:.5rem;">
-          <p style="font-size:.75rem;color:var(--text-secondary);margin-top:.3rem;"><i class="fas fa-info-circle"></i> Paste boxes override the D/M/S fields above.</p>
+
+        <!-- ══ WGS84 → UTM ══════════════════════════════════════ -->
+        <div class="mode-panel" id="mode-wgs-utm">
+          <div class="fmt-row">
+            <button class="fmt-btn active" id="fmtDecBtn" onclick="setFmt('dec')">Decimal °</button>
+            <button class="fmt-btn" id="fmtDmsBtn" onclick="setFmt('dms')">DMS</button>
+          </div>
+          <!-- Decimal inputs -->
+          <div id="decInputs">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="ch-form-group">
+                <label class="ch-label">Latitude (°)</label>
+                <input type="text" inputmode="decimal" class="ch-input" id="wgs_utm_lat" placeholder="e.g. 6.8921">
+              </div>
+              <div class="ch-form-group">
+                <label class="ch-label">Longitude (°)</label>
+                <input type="text" inputmode="decimal" class="ch-input" id="wgs_utm_lon" placeholder="e.g. 3.3987">
+              </div>
+            </div>
+          </div>
+          <!-- DMS inputs -->
+          <div id="dmsInputs" style="display:none;">
+            <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px;">Paste full DMS string (e.g. <code>6° 52' 10.506" N</code>) or enter D/M/S fields:</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;">
+              <div class="ch-form-group"><label class="ch-label">Paste Latitude DMS</label><input type="text" class="ch-input" id="dms_paste_lat" placeholder="6° 52' 10.506&quot; N"></div>
+              <div class="ch-form-group"><label class="ch-label">Paste Longitude DMS</label><input type="text" class="ch-input" id="dms_paste_lon" placeholder="3° 23' 55.32&quot; E"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;margin-bottom:8px;align-items:end;">
+              <div class="ch-form-group"><label class="ch-label">Lat °</label><input type="number" class="ch-input" id="lat_d" placeholder="6"></div>
+              <div class="ch-form-group"><label class="ch-label">Lat '</label><input type="number" class="ch-input" id="lat_m" min="0" max="59" placeholder="52"></div>
+              <div class="ch-form-group"><label class="ch-label">Lat "</label><input type="number" class="ch-input" id="lat_s" min="0" max="59.9999" step="0.0001" placeholder="10.506"></div>
+              <div class="ch-form-group"><label class="ch-label">Dir</label><select class="ch-select" id="lat_hem"><option value="N">N</option><option value="S">S</option></select></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;align-items:end;">
+              <div class="ch-form-group"><label class="ch-label">Lon °</label><input type="number" class="ch-input" id="lon_d" placeholder="3"></div>
+              <div class="ch-form-group"><label class="ch-label">Lon '</label><input type="number" class="ch-input" id="lon_m" min="0" max="59" placeholder="23"></div>
+              <div class="ch-form-group"><label class="ch-label">Lon "</label><input type="number" class="ch-input" id="lon_s" min="0" max="59.9999" step="0.0001" placeholder="55.32"></div>
+              <div class="ch-form-group"><label class="ch-label">Dir</label><select class="ch-select" id="lon_hem"><option value="E">E</option><option value="W">W</option></select></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Output UTM Zone</label>
+              <select class="ch-select" id="wgs_utm_zone">
+                <option value="31">UTM Zone 31N</option>
+                <option value="32">UTM Zone 32N</option>
+                <option value="33">UTM Zone 33N</option>
+              </select>
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Output Datum</label>
+              <select class="ch-select" id="wgs_utm_datum">
+                <option value="minna">Minna Datum / NNO (Nigeria)</option>
+                <option value="wgs84">WGS84 (GPS / global)</option>
+              </select>
+            </div>
+          </div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:12px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;">
+            <strong>Minna:</strong> use for Nigerian survey work — matches SivanDesign & Mobile Topographer Pro.<br>
+            <strong>WGS84:</strong> pure GPS projection with no datum shift.
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_wgs_utm" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert</button>
+          <div class="err-msg" id="err_wgs_utm"></div>
+          <div class="result-panel" id="res_wgs_utm"><div class="result-grid" id="resgrid_wgs_utm"></div></div>
+        </div>
+
+        <!-- ══ UTM → WGS84 ══════════════════════════════════════ -->
+        <div class="mode-panel" id="mode-utm-wgs">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Northing (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="utm_wgs_n" placeholder="e.g. 760000.000">
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Easting (m)</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="utm_wgs_e" placeholder="e.g. 350000.000">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label">UTM Zone</label>
+              <select class="ch-select" id="utm_wgs_zone">
+                <option value="31">Zone 31N</option>
+                <option value="32">Zone 32N</option>
+                <option value="33">Zone 33N</option>
+              </select>
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Input Datum</label>
+              <select class="ch-select" id="utm_wgs_datum">
+                <option value="wgs84">WGS84</option>
+                <option value="minna">Minna (Nigeria)</option>
+              </select>
+            </div>
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_utm_wgs" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert to WGS84</button>
+          <div class="err-msg" id="err_utm_wgs"></div>
+          <div class="result-panel" id="res_utm_wgs"><div class="result-grid" id="resgrid_utm_wgs"></div></div>
+        </div>
+
+        <!-- ══ WGS84 → MINNA ════════════════════════════════════ -->
+        <div class="mode-panel" id="mode-wgs-minna">
+          <div class="fmt-row">
+            <button class="fmt-btn active" id="mFmtDecBtn" onclick="setMinnaFmt('dec')">Decimal °</button>
+            <button class="fmt-btn" id="mFmtDmsBtn" onclick="setMinnaFmt('dms')">DMS</button>
+          </div>
+          <div id="mDecInputs">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="ch-form-group"><label class="ch-label">Latitude (°)</label><input type="text" inputmode="decimal" class="ch-input" id="wgs_minna_lat" placeholder="e.g. 6.8921"></div>
+              <div class="ch-form-group"><label class="ch-label">Longitude (°)</label><input type="text" inputmode="decimal" class="ch-input" id="wgs_minna_lon" placeholder="e.g. 3.3987"></div>
+            </div>
+          </div>
+          <div id="mDmsInputs" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;">
+              <div class="ch-form-group"><label class="ch-label">Paste Latitude DMS</label><input type="text" class="ch-input" id="m_dms_paste_lat" placeholder="6° 52' 10.506&quot; N"></div>
+              <div class="ch-form-group"><label class="ch-label">Paste Longitude DMS</label><input type="text" class="ch-input" id="m_dms_paste_lon" placeholder="3° 23' 55.32&quot; E"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;margin-bottom:8px;align-items:end;">
+              <div class="ch-form-group"><label class="ch-label">Lat °</label><input type="number" class="ch-input" id="m_lat_d" placeholder="6"></div>
+              <div class="ch-form-group"><label class="ch-label">Lat '</label><input type="number" class="ch-input" id="m_lat_m" min="0" max="59" placeholder="52"></div>
+              <div class="ch-form-group"><label class="ch-label">Lat "</label><input type="number" class="ch-input" id="m_lat_s" step="0.0001" placeholder="10.506"></div>
+              <div class="ch-form-group"><label class="ch-label">Dir</label><select class="ch-select" id="m_lat_hem"><option value="N">N</option><option value="S">S</option></select></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;align-items:end;">
+              <div class="ch-form-group"><label class="ch-label">Lon °</label><input type="number" class="ch-input" id="m_lon_d" placeholder="3"></div>
+              <div class="ch-form-group"><label class="ch-label">Lon '</label><input type="number" class="ch-input" id="m_lon_m" min="0" max="59" placeholder="23"></div>
+              <div class="ch-form-group"><label class="ch-label">Lon "</label><input type="number" class="ch-input" id="m_lon_s" step="0.0001" placeholder="55.32"></div>
+              <div class="ch-form-group"><label class="ch-label">Dir</label><select class="ch-select" id="m_lon_hem"><option value="E">E</option><option value="W">W</option></select></div>
+            </div>
+          </div>
+          <div class="ch-form-group" style="margin-top:12px;">
+            <label class="ch-label">Output Minna System</label>
+            <select class="ch-select" id="wgs_minna_out">
+              <option value="geo">Minna Geographic (Lat/Lon)</option>
+              <option value="utm31">Minna / UTM Zone 31N</option>
+              <option value="utm32">Minna / UTM Zone 32N</option>
+              <option value="west">Minna / Nigeria West Belt</option>
+              <option value="mid">Minna / Nigeria Mid Belt</option>
+              <option value="east">Minna / Nigeria East Belt</option>
+            </select>
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_wgs_minna" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert to Minna</button>
+          <div class="err-msg" id="err_wgs_minna"></div>
+          <div class="result-panel" id="res_wgs_minna"><div class="result-grid" id="resgrid_wgs_minna"></div></div>
+        </div>
+
+        <!-- ══ MINNA → WGS84 ════════════════════════════════════ -->
+        <div class="mode-panel" id="mode-minna-wgs">
+          <div class="ch-form-group">
+            <label class="ch-label">Input Minna System</label>
+            <select class="ch-select" id="minna_wgs_in">
+              <option value="geo">Minna Geographic (Lat/Lon)</option>
+              <option value="utm31">Minna / UTM Zone 31N</option>
+              <option value="utm32">Minna / UTM Zone 32N</option>
+              <option value="west">Minna / Nigeria West Belt</option>
+              <option value="mid">Minna / Nigeria Mid Belt</option>
+              <option value="east">Minna / Nigeria East Belt</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="ch-form-group">
+              <label class="ch-label" id="minna_wgs_l1">Northing / Latitude</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="minna_wgs_n" placeholder="e.g. 760000.000">
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label" id="minna_wgs_l2">Easting / Longitude</label>
+              <input type="text" inputmode="decimal" class="ch-input" id="minna_wgs_e" placeholder="e.g. 350000.000">
+            </div>
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="btn_minna_wgs" style="width:100%;"><i class="fas fa-exchange-alt"></i> Convert to WGS84</button>
+          <div class="err-msg" id="err_minna_wgs"></div>
+          <div class="result-panel" id="res_minna_wgs"><div class="result-grid" id="resgrid_minna_wgs"></div></div>
+        </div>
+
+        <div class="trust-pills">
+          <div class="trust-pill"><span class="tp-icon">🇳🇬</span> 54 Ogun State origins</div>
+          <div class="trust-pill"><span class="tp-icon">🎯</span> proj4.js accurate</div>
+          <div class="trust-pill"><span class="tp-icon">✅</span> Validated vs SivanDesign</div>
+          <div class="trust-pill"><span class="tp-icon">🆓</span> Free</div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Output Minna System</label>
-        <select class="form-control" id="wgs_minna_out">
-          <option value="geo">Minna Geographic (Lat/Lon)</option>
-          <option value="utm31">Minna / UTM Zone 31N</option>
-          <option value="utm32">Minna / UTM Zone 32N</option>
-          <option value="west">Minna / Nigeria West Belt</option>
-          <option value="mid">Minna / Nigeria Mid Belt</option>
-          <option value="east">Minna / Nigeria East Belt</option>
-        </select>
+      <div class="ch-ad-zone" style="margin-top:24px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
-      <button class="btn" id="btn_wgs_minna"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_wgs_minna"></div>
-      <div class="result-panel" id="res_wgs_minna"><strong>&#9989; Result</strong><div class="result-grid" id="resgrid_wgs_minna"></div></div>
-    </div>
 
-    <!-- Minna → WGS84 -->
-    <div id="mode-minna-wgs" style="display:none;">
-      <div class="form-group">
-        <label>Input Minna System</label>
-        <select class="form-control" id="minna_wgs_in">
-          <option value="geo">Minna Geographic (Lat/Lon)</option>
-          <option value="utm31">Minna / UTM Zone 31N</option>
-          <option value="utm32">Minna / UTM Zone 32N</option>
-          <option value="west">Minna / Nigeria West Belt</option>
-          <option value="mid">Minna / Nigeria Mid Belt</option>
-          <option value="east">Minna / Nigeria East Belt</option>
-        </select>
+      <!-- Nigeria Belts Reference -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:32px;margin-bottom:16px;">Nigeria Belt Reference</h2>
+      <div class="ch-card" style="overflow:hidden;padding:0;">
+        <table class="ref-table">
+          <thead><tr><th>Belt</th><th>EPSG</th><th>Central Meridian</th><th>Coverage</th></tr></thead>
+          <tbody>
+            <tr><td><strong>West Belt</strong></td><td>26391</td><td>4° East</td><td>Lagos, Ogun, Oyo, Ondo, Edo, Delta</td></tr>
+            <tr><td><strong>Mid Belt</strong></td><td>26392</td><td>8° East</td><td>Abuja, Kogi, Niger, Benue, Plateau</td></tr>
+            <tr><td><strong>East Belt</strong></td><td>26393</td><td>12° East</td><td>Borno, Yobe, Gombe, Adamawa, Taraba</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label id="minna_wgs_l1">Northing / Latitude</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="minna_wgs_n" placeholder="e.g. 760000.000" step="0.000001">
+
+      <!-- Features -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Why Use Our Coordinate Converter?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#dbeafe;">📍</div>
+          <div><div class="feature-title">54 Ogun State Origins</div><div class="feature-desc">All local origins including Abeokuta, Ijebu-Ode, Sagamu, Ilaro, Sango-Ota and more.</div></div>
         </div>
-        <div class="form-group">
-          <label id="minna_wgs_l2">Easting / Longitude</label>
-          <input type="text" inputmode="decimal" pattern="-?[0-9]*[.,]?[0-9]*" autocomplete="off" class="form-control" id="minna_wgs_e" placeholder="e.g. 350000.000" step="0.000001">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#d1fae5;">🎯</div>
+          <div><div class="feature-title">proj4.js Accuracy</div><div class="feature-desc">Uses the professional proj4.js library for geodetically accurate CRS transformations.</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fef3c7;">🔄</div>
+          <div><div class="feature-title">7 Conversion Modes</div><div class="feature-desc">NNO↔UTM, Datum Converter, WGS84↔UTM, WGS84↔Minna — all in one tool.</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fce7f3;">✅</div>
+          <div><div class="feature-title">Validated Results</div><div class="feature-desc">Results verified against Mobile Topographer Pro and SivanDesign for field accuracy.</div></div>
         </div>
       </div>
-      <button class="btn" id="btn_minna_wgs"><i class="fas fa-exchange-alt"></i> Convert</button>
-      <div class="err-msg" id="err_minna_wgs"></div>
-      <div class="result-panel" id="res_minna_wgs"><strong>&#9989; Result</strong><div class="result-grid" id="resgrid_minna_wgs"></div></div>
+
+      <!-- FAQ -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="ch-card">
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What is NNO in Nigerian surveying? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>NNO stands for National Network Origin. Each town has a known benchmark with precise Northing and Easting coordinates relative to that local origin used by surveyors in their field books.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What is the Minna Datum? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>The Minna Datum is Nigeria's official geodetic datum based on the Clarke 1880 ellipsoid. It uses a towgs84 shift of -92, -93, 122 to convert to WGS84. All official Nigerian survey work references this datum.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How do I convert local NNO coordinates to UTM? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Select the NNO → UTM tab, choose your local origin from the Ogun State list, enter your local Northing and Easting from your field book, choose your output system and click Convert. The tool adds the origin coordinates automatically.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What is the difference between UTM Zone 31N and 32N? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>UTM Zone 31N covers western Nigeria (roughly west of 6°E) including Lagos, Ogun and Oyo states. Zone 32N covers eastern Nigeria including Abuja and Kano. Ogun State falls primarily in Zone 31N.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Can I use GPS WGS84 coordinates? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. Use the WGS84 → UTM or WGS84 → Minna tabs to convert GPS coordinates to Nigerian survey systems. Supports both decimal degrees and DMS input formats.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is the coordinate converter free? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes, completely free. No registration, no hidden fees. All calculations run entirely in your browser using proj4.js — no coordinates are sent to any server.</p></div>
+        </div>
+      </div>
+
+      <!-- Related tools -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Related Tools</h2>
+      <div class="related-grid">
+        <a href="dwg-to-kmz.html"      class="related-pill">🗺 DWG to KMZ</a>
+        <a href="land-calculator.html"  class="related-pill">🌍 Land Calculator</a>
+        <a href="unit-converter.html"   class="related-pill">📐 Unit Converter</a>
+        <a href="currency-converter.html" class="related-pill">💱 Currency Converter</a>
+        <a href="pdf-to-word.html"      class="related-pill">📄 PDF to Word</a>
+        <a href="resume-builder.html"   class="related-pill">📋 Resume Builder</a>
+      </div>
+
+      <div class="ch-ad-zone" style="margin-top:32px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
     </div>
 
-    <p style="margin-top:1rem;font-size:.83rem;color:var(--text-secondary);">
-      &#10003; All calculations run in your browser &nbsp;&#183;&nbsp;
-      &#10003; No data sent to any server &nbsp;&#183;&nbsp;
-      &#10003; Free forever
-    </p>
+    <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+    <div class="tool-sidebar">
+      <div class="ch-card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">🧭📍</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--brand-primary);">Coordinate Converter</div>
+        <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Nigeria GIS / Surveying</div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">54</div><div style="font-size:.72rem;color:var(--text-muted);">Ogun origins</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">7</div><div style="font-size:.72rem;color:var(--text-muted);">Conv. modes</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">proj4</div><div style="font-size:.72rem;color:var(--text-muted);">Accuracy</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">Free</div><div style="font-size:.72rem;color:var(--text-muted);">No signup</div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-ad">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">🔑 Minna Datum Shift</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:.8rem;color:var(--text-secondary);">towgs84 = <strong>-92, -93, 122</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);">Ellipsoid: <strong>Clarke 1880</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);">a = <strong>6378249.145 m</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);">1/f = <strong>293.465</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);margin-top:6px;border-top:1px solid var(--border);padding-top:6px;">West Belt CM: <strong>4° E</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);">Mid Belt CM: <strong>8° E</strong></li>
+          <li style="font-size:.8rem;color:var(--text-secondary);">East Belt CM: <strong>12° E</strong></li>
+        </ul>
+      </div>
+
+      <div class="ch-card" style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);border-color:transparent;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">📰</div>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px;">Tivora Hub Blog</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5;">Tips, productivity hacks and ways to make money online.</div>
+        <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener"
+           class="ch-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);width:100%;justify-content:center;font-size:.82rem;">
+          Visit Blog →
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+</main>
 
-  <h2>Features</h2>
-  <div class="feature-grid">
-    <div class="feature-card"><i class="fas fa-map-marker-alt"></i><h3>59 Ogun State Origins</h3><p>All local origins including Abeokuta, Ijebu-Ode, Sagamu, Ilaro, Sango-Ota and more.</p></div>
-    <div class="feature-card"><i class="fas fa-globe-africa"></i><h3>Nigeria Datums</h3><p>Supports Minna Datum, Nigeria West/Mid/East Belts and UTM Zones 31N &amp; 32N.</p></div>
-    <div class="feature-card"><i class="fas fa-globe"></i><h3>WGS84 Global</h3><p>Convert to/from WGS84 geographic and UTM coordinates used worldwide and in GPS devices.</p></div>
-    <div class="feature-card"><i class="fas fa-lock"></i><h3>100% Private</h3><p>All conversions happen in your browser. No coordinates are ever sent to any server.</p></div>
-  </div>
-
-  <h2>Related Tools</h2>
-  <div class="related-tools">
-    <a href="land-calculator.html" class="tool-card">&#127774; Land Calculator</a>
-    <a href="dwg-to-kmz.html" class="tool-card">&#128506; DWG to KMZ</a>
-    <a href="unit-converter.html" class="tool-card">&#128207; Unit Converter</a>
-    <a href="pdf-merge-split.html" class="tool-card">&#128195; PDF Merge &amp; Split</a>
-  </div>
-
-  <section class="faq-accordion">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>What is NNO in Nigerian surveying?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>NNO stands for <strong>National Network Origin</strong> — a system of local survey origins established across Nigeria. Each town has a known benchmark with precise Northing and Easting coordinates relative to that local origin. Surveyors use these to reference field measurements before converting to national or global coordinate systems.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>What is the Minna Datum?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>The <strong>Minna Datum</strong> is Nigeria's official geodetic datum, based on the Clarke 1880 ellipsoid. It was established by the Federal Surveys of Nigeria and is used for all official mapping, cadastral surveys and engineering projects in Nigeria. It has three belt projections: West, Mid and East, plus UTM Zones 31N and 32N.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>How do I convert local coordinates to UTM?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Select the <strong>NNO &#8594; UTM/WGS84</strong> tab, choose your local origin from the Ogun State table, enter your local Northing and Easting, choose your output system, then click Convert. The tool adds the origin coordinates to give you the full national or UTM coordinates.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>What is the difference between UTM Zone 31N and 32N in Nigeria?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p><strong>UTM Zone 31N</strong> covers western Nigeria (roughly west of 6&#176;E longitude), including Lagos, Ogun, Oyo and Edo states. <strong>UTM Zone 32N</strong> covers eastern Nigeria (east of 6&#176;E), including Abuja, Kano, Enugu and Rivers states. Ogun State falls primarily in Zone 31N.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Can I use WGS84 coordinates from my GPS in this tool?</span><span class="icon"><i class="fas fa-plus"></i></span></button>
-      <div class="faq-answer"><p>Yes. Use the <strong>WGS84 &#8594; UTM</strong> or <strong>WGS84 &#8594; Minna</strong> tabs to convert GPS coordinates (decimal degrees latitude/longitude) to Nigerian survey systems. This is useful for checking GPS readings against survey data.</p></div>
-    </div>
-    <div class="support-link"><a id="supportLink">&#128231; Still have questions? Contact support</a></div>
-  </section>
-
-  <div style="text-align:center;margin:2rem 0;">
-    <p><strong>Nigerian Coordinate Converter &#8212; Built for Surveyors &amp; Engineers</strong><br>
-    This tool supports the coordinate systems used in everyday surveying practice across Nigeria, including all Ogun State local origins. Whether you are converting field book coordinates to UTM for GIS, checking GPS readings against survey data, or transforming between Minna Datum and WGS84 &#8212; this free tool handles it all instantly in your browser.</p>
-  </div>
-
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
-
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
-<script src="js/common.js"></script>
-<!-- proj4js: industry-standard coordinate transformation library -->
+<!-- proj4.js — exact library from original -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.js"></script>
-
+<script src="js/common.js"></script>
 <script>
-// ── FAQ ─────────────────────────────────────────────────────────────────
-document.querySelectorAll('.faq-item').forEach(item => {
-  const btn = item.querySelector('.faq-question');
-  const icon = btn.querySelector('.icon i');
-  btn.addEventListener('click', () => {
-    const active = item.classList.contains('active');
-    item.classList.toggle('active', !active);
-    btn.setAttribute('aria-expanded', String(!active));
-    icon.classList.toggle('fa-plus', active);
-    icon.classList.toggle('fa-minus', !active);
-  });
-});
-
-// ── MODAL ───────────────────────────────────────────────────────────────
-const modal = document.getElementById('feedbackModal');
-function openModal() { modal.style.display = 'flex'; }
-document.getElementById('feedbackBtn').addEventListener('click', openModal);
-document.getElementById('supportLink').addEventListener('click', openModal);
-document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
-window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
-// ── PROJ4 DEFINITIONS ────────────────────────────────────────────────────
-// WGS84 (default in proj4)
+// ── PROJ4 CRS DEFINITIONS ─────────────────────────────────────────────────
 proj4.defs('EPSG:4326', '+proj=longlat +datum=WGS84 +no_defs');
-
-// Minna Geographic (Clarke 1880, Nigeria)
-// towgs84 parameters: dx=-92, dy=-93, dz=122 (official NGA parameters)
 proj4.defs('EPSG:4263', '+proj=longlat +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +no_defs');
-
-// Minna / UTM Zone 31N
 proj4.defs('EPSG:26331', '+proj=utm +zone=31 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
-
-// Minna / UTM Zone 32N
 proj4.defs('EPSG:26332', '+proj=utm +zone=32 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
-
-// Minna / Nigeria West Belt
 proj4.defs('EPSG:26391', '+proj=tmerc +lat_0=4 +lon_0=4.5 +k=0.99975 +x_0=230738.26 +y_0=0 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
-
-// Minna / Nigeria Mid Belt
 proj4.defs('EPSG:26392', '+proj=tmerc +lat_0=4 +lon_0=8.5 +k=0.99975 +x_0=670553.98 +y_0=0 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
-
-// Minna / Nigeria East Belt
-proj4.defs('EPSG:26393', '+proj=tmerc +lat_0=4 +lon_0=12.5 +k=0.99975 +x_0=1110369.7 +y_0=0 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
-
-// WGS84 / UTM Zone 31N
+proj4.defs('EPSG:26393', '+proj=tmerc +lat_0=4 +lon_0=12.5 +k=0.99975 +x_0=1110369.70 +y_0=0 +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
 proj4.defs('EPSG:32631', '+proj=utm +zone=31 +datum=WGS84 +units=m +no_defs');
-
-// WGS84 / UTM Zone 32N
 proj4.defs('EPSG:32632', '+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs');
 
-// WGS84 / UTM Zone 33N-35N
-proj4.defs('EPSG:32633', '+proj=utm +zone=33 +datum=WGS84 +units=m +no_defs');
-proj4.defs('EPSG:32634', '+proj=utm +zone=34 +datum=WGS84 +units=m +no_defs');
-proj4.defs('EPSG:32635', '+proj=utm +zone=35 +datum=WGS84 +units=m +no_defs');
-
-// CRS lookup map
-const CRS = {
-  minna31: 'EPSG:26331',
-  minna32: 'EPSG:26332',
-  minnaW:  'EPSG:26391',
-  minnaM:  'EPSG:26392',
-  minnaE:  'EPSG:26393',
-  wgs84geo:'EPSG:4326',
-  wgs84_31:'EPSG:32631',
-  wgs84_32:'EPSG:32632',
-  minnageo:'EPSG:4263',
-  utm33:   'EPSG:32633',
-  utm34:   'EPSG:32634',
-  utm35:   'EPSG:32635',
+var CRS = {
+  minnaW:  'EPSG:26391', minnaM: 'EPSG:26392', minnaE: 'EPSG:26393',
+  minna31: 'EPSG:26331', minna32:'EPSG:26332',
+  wgs84geo:'EPSG:4326',  wgs84_31:'EPSG:32631', wgs84_32:'EPSG:32632'
 };
 
-// ── OGUN STATE LOCAL ORIGINS (from uploaded file) ────────────────────────
-// These are NNO coordinates on Minna Datum / Nigeria West Belt
-// To convert: UTM_N = Local_N + Origin_N, UTM_E = Local_E + Origin_E
+// ── OGUN STATE LOCAL ORIGINS ──────────────────────────────────────────────
 const ORIGINS = [
-  {town:"ABEOKUTA",       id:"A.T.6",                N:347127.762, E:103542.667},
-  {town:"ALAMALA",        id:"A.C.S 1 T",             N:352332.544, E:93309.431},
-  {town:"ELEWERAN",       id:"Z.T. 1383 / CFA 393",   N:351545.869, E:109255.637},
-  {town:"ODEDA",          id:"CFA 436",               N:356799.202, E:120865.246},
-  {town:"OWODE NEAR AJURA",id:"OCS 2 / ZT 1205",     N:326156.848, E:121068.217},
-  {town:"IJEBU-ODE",      id:"CFC 261",               N:312404.529, E:165635.136},
-  {town:"SAGAMU",         id:"CFC 374",               N:314848.302, E:136917.352},
-  {town:"IJEBU-IGBO",     id:"CFC 218",               N:325866.294, E:169495.416},
-  {town:"ILARO (I)",      id:"CFB 225",               N:318789.636, E:66909.806},
-  {town:"ILARO (II)",     id:"CFB 228",               N:317808.521, E:66078.236},
-  {town:"SANGO-OTA (I)",  id:"CFA 103",               N:299407.812, E:91846.837},
-  {town:"SANGO-OTA (II)", id:"CFA 084",               N:298078.162, E:93546.877},
-  {town:"IFO",            id:"CFA 165",               N:311640.841, E:86653.119},
-  {town:"ADO-ODO",        id:"CFB 298",               N:287157.702, E:58061.026},
-  {town:"IPERU",          id:"CFC 339",               N:322515.026, E:138641.162},
-  {town:"ILISHAN",        id:"CFC 325",               N:319365.782, E:143810.351},
-  {town:"OKUN-OWA",       id:"CFC 295",               N:316192.790, E:154943.040},
-  {town:"ODOGBOLU (I)",   id:"OCS 2T",                N:314633.761, E:149979.448},
-  {town:"ODOGBOLU (II)",  id:"SCS 200P",              N:315120.072, E:149699.455},
-  {town:"IKENNE",         id:"ICS 3T",                N:317062.017, E:144004.793},
-  {town:"IJU (I)",        id:"WR 1",                  N:295972.695, E:101611.782},
-  {town:"IJU (II)",       id:"ICS 1T",                N:296327.376, E:101417.497},
-  {town:"IJAGUN (I)",     id:"ICS 1T",                N:309406.556, E:166819.103},
-  {town:"IJAGUN (II)",    id:"ICS 2T",                N:309227.298, E:166821.371},
-  {town:"ITANRIN (I)",    id:"ICS 1T",                N:310752.421, E:162757.042},
-  {town:"ITANRIN (II)",   id:"ICS 2T",                N:310702.102, E:162556.440},
-  {town:"AIYEPE",         id:"ACS 2T",                N:310048.318, E:146557.129},
-  {town:"IBEFUN",         id:"Z.T. 1358",             N:300317.661, E:153169.465},
-  {town:"ALAGBADO",       id:"Z.T. 869",              N:297159.411, E:98435.191},
-  {town:"AIYEDE",         id:"CFA 147",               N:308543.331, E:87137.405},
-  {town:"OMU",            id:"Z.T. 1383",             N:297506.514, E:160418.153},
-  {town:"IPARA",          id:"Z.T. 1604 / 1851",      N:331989.943, E:138642.352},
-  {town:"TIROSOGUN",      id:"T.C.S. 1T",             N:308879.466, E:179561.986},
-  {town:"ODO-LERU",       id:"Z.M. 7361",             N:304031.336, E:175474.022},
-  {town:"ISEWO IMUSHIN",  id:"F.B.S. 188",            N:309559.148, E:175479.617},
-  {town:"KOTOPO",         id:"K.C.S. 1T",             N:352127.762, E:112092.667},
-  {town:"ILARO",          id:"C.F.B. 193",            N:330008.038, E:69729.967},
-  {town:"OGIJO",          id:"O.C.S. 1T",             N:298584.235, E:122036.688},
-  {town:"OGERE",          id:"I.C.S. 1T",             N:324565.196, E:135429.955},
-  {town:"C.F.B. 82",      id:"C.F.B. 82",             N:358696.245, E:70026.873},
-  {town:"C.F.B. 83",      id:"C.F.B. 83",             N:538800.833, E:69762.288},
-  {town:"C.F.D. 39",      id:"C.F.D. 39",             N:318674.200, E:79392.518},
-  {town:"C.F.A. 393",     id:"C.F.A 393",             N:351545.869, E:109255.787},
-  {town:"A.W.S. 1S",      id:"A.W.S. 1S",             N:349276.175, E:101152.128},
-  {town:"A.W.S 75S",      id:"A.W.S 75S",             N:323944.038, E:89415.446},
-  {town:"I.C.S. 1S",      id:"I.C.S1S",               N:304175.472, E:94410.990},
-  {town:"C.M.C.S. 1T",    id:"C.M.C.S. 1T",           N:305836.817, E:81824.399},
-  {town:"ISIWO",          id:"ICS 3S",                N:299073.690, E:170827.916},
-  {town:"IJU",            id:"CFA 32",                N:289275.773, E:101162.968},
-  {town:"IDI IROKO",      id:"ZT 426",                N:290881.918, E:36330.941},
-  {town:"AGEGE",          id:"CFA 32",                N:289275.773, E:101162.968},
-  {town:"EWEKORO",        id:"CFA 213",               N:324517.423, E:90034.951},
-  {town:"ODE-REMO",       id:"ORCS 2T",               N:328709.545, E:140605.266},
-  {town:"ODE-LEMO",       id:"OLCS 1T",               N:303509.503, E:138418.160},
-  {town:"ILARA-REMO",     id:"ILCS 3T",               N:324346.800, E:145140.348},
+  {town:"ABEOKUTA",        id:"A.T.6",                N:347127.762, E:103542.667},
+  {town:"ALAMALA",         id:"A.C.S 1 T",             N:352332.544, E:93309.431},
+  {town:"ELEWERAN",        id:"ZT 1383/CFA 393",        N:351545.869, E:109255.637},
+  {town:"ODEDA",           id:"CFA 436",               N:356799.202, E:120865.246},
+  {town:"OWODE NEAR AJURA",id:"OCS 2/ZT 1205",         N:326156.848, E:121068.217},
+  {town:"IJEBU-ODE",       id:"CFC 261",               N:312404.529, E:165635.136},
+  {town:"SAGAMU",          id:"CFC 374",               N:314848.302, E:136917.352},
+  {town:"IJEBU-IGBO",      id:"CFC 218",               N:325866.294, E:169495.416},
+  {town:"ILARO (I)",       id:"CFB 225",               N:318789.636, E:66909.806},
+  {town:"ILARO (II)",      id:"CFB 228",               N:317808.521, E:66078.236},
+  {town:"SANGO-OTA (I)",   id:"CFA 103",               N:299407.812, E:91846.837},
+  {town:"SANGO-OTA (II)",  id:"CFA 084",               N:298078.162, E:93546.877},
+  {town:"IFO",             id:"CFA 165",               N:311640.841, E:86653.119},
+  {town:"ADO-ODO",         id:"CFB 298",               N:287157.702, E:58061.026},
+  {town:"IPERU",           id:"CFC 339",               N:322515.026, E:138641.162},
+  {town:"ILISHAN",         id:"CFC 325",               N:319365.782, E:143810.351},
+  {town:"OKUN-OWA",        id:"CFC 295",               N:316192.790, E:154943.040},
+  {town:"ODOGBOLU (I)",    id:"OCS 2T",                N:314633.761, E:149979.448},
+  {town:"ODOGBOLU (II)",   id:"SCS 200P",              N:315120.072, E:149699.455},
+  {town:"IKENNE",          id:"ICS 3T",                N:317062.017, E:144004.793},
+  {town:"IJU (I)",         id:"WR 1",                  N:295972.695, E:101611.782},
+  {town:"IJU (II)",        id:"ICS 1T",                N:296327.376, E:101417.497},
+  {town:"IJAGUN (I)",      id:"ICS 1T",                N:309406.556, E:166819.103},
+  {town:"IJAGUN (II)",     id:"ICS 2T",                N:309227.298, E:166821.371},
+  {town:"ITANRIN (I)",     id:"ICS 1T",                N:310752.421, E:162757.042},
+  {town:"ITANRIN (II)",    id:"ICS 2T",                N:310702.102, E:162556.440},
+  {town:"AIYEPE",          id:"ACS 2T",                N:310048.318, E:146557.129},
+  {town:"IBEFUN",          id:"ZT 1358",               N:300317.661, E:153169.465},
+  {town:"ALAGBADO",        id:"ZT 869",                N:297159.411, E:98435.191},
+  {town:"AIYEDE",          id:"CFA 147",               N:308543.331, E:87137.405},
+  {town:"OMU",             id:"ZT 1383",               N:297506.514, E:160418.153},
+  {town:"IPARA",           id:"ZT 1604/1851",           N:331989.943, E:138642.352},
+  {town:"TIROSOGUN",       id:"T.C.S. 1T",             N:308879.466, E:179561.986},
+  {town:"ODO-LERU",        id:"ZM 7361",               N:304031.336, E:175474.022},
+  {town:"ISEWO IMUSHIN",   id:"F.B.S. 188",            N:309559.148, E:175479.617},
+  {town:"KOTOPO",          id:"K.C.S. 1T",             N:352127.762, E:112092.667},
+  {town:"ILARO",           id:"C.F.B. 193",            N:330008.038, E:69729.967},
+  {town:"OGIJO",           id:"O.C.S. 1T",             N:298584.235, E:122036.688},
+  {town:"OGERE",           id:"I.C.S. 1T",             N:324565.196, E:135429.955},
+  {town:"C.F.B. 82",       id:"C.F.B. 82",             N:358696.245, E:70026.873},
+  {town:"C.F.B. 83",       id:"C.F.B. 83",             N:538800.833, E:69762.288},
+  {town:"C.F.D. 39",       id:"C.F.D. 39",             N:318674.200, E:79392.518},
+  {town:"C.F.A. 393",      id:"C.F.A 393",             N:351545.869, E:109255.787},
+  {town:"A.W.S. 1S",       id:"A.W.S. 1S",             N:349276.175, E:101152.128},
+  {town:"A.W.S 75S",       id:"A.W.S 75S",             N:323944.038, E:89415.446},
+  {town:"I.C.S. 1S",       id:"I.C.S1S",               N:304175.472, E:94410.990},
+  {town:"C.M.C.S. 1T",     id:"C.M.C.S. 1T",           N:305836.817, E:81824.399},
+  {town:"ISIWO",           id:"ICS 3S",                N:299073.690, E:170827.916},
+  {town:"IJU",             id:"CFA 32",                N:289275.773, E:101162.968},
+  {town:"IDI IROKO",       id:"ZT 426",                N:290881.918, E:36330.941},
+  {town:"AGEGE",           id:"CFA 32",                N:289275.773, E:101162.968},
+  {town:"EWEKORO",         id:"CFA 213",               N:324517.423, E:90034.951},
+  {town:"ODE-REMO",        id:"ORCS 2T",               N:328709.545, E:140605.266},
+  {town:"ODE-LEMO",        id:"OLCS 1T",               N:303509.503, E:138418.160},
+  {town:"ILARA-REMO",      id:"ILCS 3T",               N:324346.800, E:145140.348},
 ];
 
-// ── POPULATE ORIGIN DROPDOWNS ────────────────────────────────────────────
-let selectedOrigin  = null;
-let selectedOrigin2 = null;
+// ── POPULATE ORIGIN DROPDOWNS ─────────────────────────────────────────────
+let selectedOrigin = null, selectedOrigin2 = null;
 
 function populateOriginSelect(selectId, onSelect) {
   const sel = document.getElementById(selectId);
@@ -828,71 +675,36 @@ function populateOriginSelect(selectId, onSelect) {
   });
   sel.addEventListener('change', function() {
     const idx = parseInt(this.value);
-    if (!isNaN(idx) && ORIGINS[idx]) {
-      onSelect(ORIGINS[idx]);
-    } else {
-      onSelect(null);
-    }
+    if (!isNaN(idx) && ORIGINS[idx]) { onSelect(ORIGINS[idx]); }
+    else { onSelect(null); }
   });
 }
 
-populateOriginSelect('originSelect',  o => { selectedOrigin  = o; });
+populateOriginSelect('originSelect', o => {
+  selectedOrigin = o;
+  const info = document.getElementById('originInfo');
+  if (o) {
+    info.textContent = '📍 ' + o.town + ' (' + o.id + '): N = ' + o.N.toFixed(3) + ' m, E = ' + o.E.toFixed(3) + ' m';
+    info.classList.add('show');
+  } else { info.classList.remove('show'); }
+});
 populateOriginSelect('originSelect2', o => { selectedOrigin2 = o; });
 
-// ── TABS ─────────────────────────────────────────────────────────────────
+// ── TABS ──────────────────────────────────────────────────────────────────
 const MODES = ['nno-utm','nno-direct','utm-nno','wgs-utm','utm-wgs','wgs-minna','minna-wgs'];
-document.querySelectorAll('.conv-tab').forEach(tab => {
+document.querySelectorAll('.mode-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    const mode = tab.dataset.mode;
-    document.querySelectorAll('.conv-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     MODES.forEach(m => {
-      document.getElementById('mode-' + m).style.display = m === mode ? '' : 'none';
+      document.getElementById('mode-' + m).classList.toggle('show', m === tab.dataset.mode);
     });
   });
 });
+document.getElementById('mode-nno-utm').classList.add('show');
 
 // ── HELPERS ───────────────────────────────────────────────────────────────
 function fmt(n, dec) { return n.toFixed(dec !== undefined ? dec : 3); }
-
-function setupSignedDecimalInputs() {
-  document.querySelectorAll('input[inputmode="decimal"]').forEach(input => {
-    if (input.dataset.signToggleBound === 'true') return;
-
-    const wrap = document.createElement('div');
-    wrap.className = 'numeric-input-wrap';
-    input.parentNode.insertBefore(wrap, input);
-    wrap.appendChild(input);
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'numeric-sign-btn';
-    btn.setAttribute('aria-label', 'Toggle sign');
-    btn.title = 'Toggle sign';
-    btn.textContent = '+/-';
-    btn.addEventListener('click', () => {
-      const raw = input.value.trim();
-      if (raw === '') {
-        input.value = '-';
-        input.focus();
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-        return;
-      }
-      const withoutSign = raw.replace(/^[+-]/, '');
-      input.value = raw.startsWith('-') ? withoutSign : '-' + withoutSign;
-      input.focus();
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-    });
-
-    wrap.appendChild(btn);
-    input.setAttribute('pattern', '[-+]?[0-9]*[.,]?[0-9]*');
-    input.dataset.signToggleBound = 'true';
-  });
-}
-
-setupSignedDecimalInputs();
 
 function showResult(gridId, panelId, items) {
   const grid = document.getElementById(gridId);
@@ -900,9 +712,10 @@ function showResult(gridId, panelId, items) {
   items.forEach(item => {
     const d = document.createElement('div');
     d.className = 'result-item';
+    const raw = String(item.raw).replace(/'/g, "\\'");
     d.innerHTML = `<div class="r-label">${item.label}</div>
       <div class="r-value">${item.value}
-        <button class="copy-btn" title="Copy" onclick="navigator.clipboard.writeText('${item.raw}')"><i class="fas fa-copy"></i></button>
+        <button class="copy-btn" title="Copy" onclick="copyVal('${raw}')"><i class="fas fa-copy"></i></button>
       </div>`;
     grid.appendChild(d);
   });
@@ -911,11 +724,9 @@ function showResult(gridId, panelId, items) {
 
 function showErr(id, msg) {
   const el = document.getElementById(id);
-  el.textContent = msg;
-  el.classList.add('show');
+  el.textContent = msg; el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 5000);
 }
-
 function hideErr(id) { document.getElementById(id).classList.remove('show'); }
 
 function toDMS(deg) {
@@ -925,151 +736,39 @@ function toDMS(deg) {
   return `${deg < 0 ? '-' : ''}${d}° ${m}' ${s.toFixed(4)}"`;
 }
 
-function autoZone(lon) {
-  const z = Math.floor((lon + 180) / 6) + 1;
-  return z;
-}
+function autoZone(lon) { return Math.floor((lon + 180) / 6) + 1; }
 
-// ── CONVERSION FUNCTIONS ─────────────────────────────────────────────────
+window.copyVal = function(txt) {
+  navigator.clipboard.writeText(txt).then(() => {
+    const t = document.getElementById('copyToast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+  });
+};
 
-// NNO local → NNO absolute (Minna West Belt) → target CRS
-document.getElementById('btn_nno_utm').addEventListener('click', () => {
-  hideErr('err_nno_utm');
-  if (!selectedOrigin) { showErr('err_nno_utm', 'Please select a local origin from the dropdown above.'); return; }
-  const lN = parseFloat(document.getElementById('nno_n').value);
-  const lE = parseFloat(document.getElementById('nno_e').value);
-  if (isNaN(lN) || isNaN(lE)) { showErr('err_nno_utm', 'Please enter valid Northing and Easting values.'); return; }
+// ── FORMAT TOGGLES ────────────────────────────────────────────────────────
+let wgsInputFmt = 'dec', minnaInputFmt = 'dec';
 
-  // Step 1: add origin to get absolute Minna / Nigeria West Belt coordinates
-  const absN = lN + selectedOrigin.N;
-  const absE = lE + selectedOrigin.E;
+window.setFmt = function(f) {
+  wgsInputFmt = f;
+  document.getElementById('decInputs').style.display = f === 'dec' ? '' : 'none';
+  document.getElementById('dmsInputs').style.display = f === 'dms' ? '' : 'none';
+  document.getElementById('fmtDecBtn').classList.toggle('active', f === 'dec');
+  document.getElementById('fmtDmsBtn').classList.toggle('active', f === 'dms');
+};
+window.setMinnaFmt = function(f) {
+  minnaInputFmt = f;
+  document.getElementById('mDecInputs').style.display = f === 'dec' ? '' : 'none';
+  document.getElementById('mDmsInputs').style.display = f === 'dms' ? '' : 'none';
+  document.getElementById('mFmtDecBtn').classList.toggle('active', f === 'dec');
+  document.getElementById('mFmtDmsBtn').classList.toggle('active', f === 'dms');
+};
 
-  // Step 2: convert from Minna West Belt to target
-  const out = document.getElementById('nno_output').value;
-  try {
-    let results = [
-      {label: 'Local Northing + Origin', value: fmt(absN) + ' m', raw: fmt(absN)},
-      {label: 'Local Easting + Origin',  value: fmt(absE) + ' m', raw: fmt(absE)},
-    ];
-
-    if (out === 'wgs84geo') {
-      const [lon, lat] = proj4('EPSG:26391', 'EPSG:4326', [absE, absN]);
-      results = results.concat([
-        {label: 'Latitude (WGS84)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-        {label: 'Longitude (WGS84)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-        {label: 'Latitude (DMS)',    value: toDMS(lat), raw: toDMS(lat)},
-        {label: 'Longitude (DMS)',   value: toDMS(lon), raw: toDMS(lon)},
-      ]);
-    } else {
-      const tgtCRS = CRS[out];
-      const [e2, n2] = proj4('EPSG:26391', tgtCRS, [absE, absN]);
-      const label = out.startsWith('wgs84') ? 'WGS84 UTM' : 'Minna';
-      const zone  = out.includes('31') ? '31N' : out.includes('32') ? '32N' : '';
-      results = results.concat([
-        {label: `${label} Northing${zone ? ' Z'+zone : ''}`, value: fmt(n2) + ' m', raw: fmt(n2)},
-        {label: `${label} Easting${zone ? ' Z'+zone : ''}`,  value: fmt(e2) + ' m', raw: fmt(e2)},
-      ]);
-      // Also show WGS84 lat/lon for reference
-      const [lon, lat] = proj4('EPSG:26391', 'EPSG:4326', [absE, absN]);
-      results = results.concat([
-        {label: 'Latitude (WGS84 ref)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-        {label: 'Longitude (WGS84 ref)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      ]);
-    }
-    showResult('resgrid_nno_utm', 'res_nno_utm', results);
-  } catch(e) {
-    showErr('err_nno_utm', 'Conversion error: ' + e.message);
-  }
-});
-
-// NNO Direct → UTM/WGS84 (no local origin — input is already on national grid)
-document.getElementById('btn_nno_direct').addEventListener('click', () => {
-  hideErr('err_nno_direct');
-  const n = parseFloat(document.getElementById('nnoDirect_n').value);
-  const e = parseFloat(document.getElementById('nnoDirect_e').value);
-  if (isNaN(n) || isNaN(e)) { showErr('err_nno_direct', 'Please enter valid Northing and Easting values.'); return; }
-
-  const inCRS = CRS[document.getElementById('nnoDirect_input').value];
-  const out   = document.getElementById('nnoDirect_output').value;
-
-  try {
-    let results = [];
-    if (out === 'wgs84geo') {
-      const [lon, lat] = proj4(inCRS, 'EPSG:4326', [e, n]);
-      results = [
-        {label: 'Latitude (WGS84)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-        {label: 'Longitude (WGS84)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-        {label: 'Latitude (DMS)',    value: toDMS(lat), raw: toDMS(lat)},
-        {label: 'Longitude (DMS)',   value: toDMS(lon), raw: toDMS(lon)},
-      ];
-    } else {
-      const tgtCRS = CRS[out];
-      const [e2, n2] = proj4(inCRS, tgtCRS, [e, n]);
-      const label = out.startsWith('wgs84') ? 'WGS84 UTM' : 'Minna';
-      const zone  = out.includes('31') ? '31N' : out.includes('32') ? '32N' : '';
-      results = [
-        {label: `${label} Northing${zone ? ' Z'+zone : ''}`, value: fmt(n2) + ' m', raw: fmt(n2)},
-        {label: `${label} Easting${zone ? ' Z'+zone : ''}`,  value: fmt(e2) + ' m', raw: fmt(e2)},
-      ];
-      // Also show WGS84 lat/lon for reference
-      const [lon, lat] = proj4(inCRS, 'EPSG:4326', [e, n]);
-      results = results.concat([
-        {label: 'Latitude (WGS84 ref)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-        {label: 'Longitude (WGS84 ref)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      ]);
-    }
-    showResult('resgrid_nno_direct', 'res_nno_direct', results);
-  } catch(e2) {
-    showErr('err_nno_direct', 'Conversion error: ' + e2.message);
-  }
-});
-
-// UTM/WGS84 → NNO local
-document.getElementById('btn_utm_nno').addEventListener('click', () => {
-  hideErr('err_utm_nno');
-  if (!selectedOrigin2) { showErr('err_utm_nno', 'Please select a local origin from the dropdown above.'); return; }
-  const inN  = parseFloat(document.getElementById('utm_nno_n').value);
-  const inE  = parseFloat(document.getElementById('utm_nno_e').value);
-  if (isNaN(inN) || isNaN(inE)) { showErr('err_utm_nno', 'Please enter valid Northing and Easting values.'); return; }
-  const inCRS = CRS[document.getElementById('utm_nno_input').value];
-  try {
-    // Convert input to Minna West Belt
-    const [absE, absN] = proj4(inCRS, 'EPSG:26391', [inE, inN]);
-    const localN = absN - selectedOrigin2.N;
-    const localE = absE - selectedOrigin2.E;
-    showResult('resgrid_utm_nno', 'res_utm_nno', [
-      {label: 'Local Northing (from ' + selectedOrigin2.town + ')', value: fmt(localN) + ' m', raw: fmt(localN)},
-      {label: 'Local Easting (from ' + selectedOrigin2.town + ')',  value: fmt(localE) + ' m', raw: fmt(localE)},
-      {label: 'Minna W.Belt Northing', value: fmt(absN) + ' m', raw: fmt(absN)},
-      {label: 'Minna W.Belt Easting',  value: fmt(absE) + ' m', raw: fmt(absE)},
-    ]);
-  } catch(e) { showErr('err_utm_nno', 'Conversion error: ' + e.message); }
-});
-
-// WGS84 → UTM
-// ── FORMAT TOGGLE ────────────────────────────────────────────────────
-let wgsInputFmt = 'dec'; // 'dec' | 'dms'
-
-function setFmt(fmt) {
-  wgsInputFmt = fmt;
-  document.getElementById('decInputs').style.display = fmt === 'dec' ? '' : 'none';
-  document.getElementById('dmsInputs').style.display = fmt === 'dms' ? '' : 'none';
-  document.getElementById('fmtDecBtn').classList.toggle('active', fmt === 'dec');
-  document.getElementById('fmtDmsBtn').classList.toggle('active', fmt === 'dms');
-  hideErr('err_wgs_utm');
-}
-
-// ── DMS PARSER ────────────────────────────────────────────────────────
-// Accepts all common formats:
-//   6° 52' 10.506" N   |   6 52 10.506 N   |   6°52′10.506″N
-//   6:52:10.506N       |   N6 52 10.506
 function parseDMSString(str) {
   if (!str || !str.trim()) return null;
   str = str.trim().toUpperCase();
-  // Extract hemisphere (N/S/E/W)
   let hem = null;
   str = str.replace(/[NSEW]/, m => { hem = m; return ' '; }).trim();
-  // Strip all non-numeric except dots, minus, spaces
   const parts = str.replace(/[°′″'":,]/g, ' ').trim().split(/\s+/).filter(Boolean);
   if (parts.length < 1) return null;
   const d = parseFloat(parts[0]) || 0;
@@ -1081,246 +780,276 @@ function parseDMSString(str) {
   return dd;
 }
 
-// Get lat/lon from whichever format is active
 function getWgsLatLon() {
   if (wgsInputFmt === 'dec') {
-    const lat = parseFloat(document.getElementById('wgs_utm_lat').value.replace(',', '.'));
-    const lon = parseFloat(document.getElementById('wgs_utm_lon').value.replace(',', '.'));
-    return { lat, lon };
+    return {
+      lat: parseFloat(document.getElementById('wgs_utm_lat').value.replace(',','.')),
+      lon: parseFloat(document.getElementById('wgs_utm_lon').value.replace(',','.'))
+    };
   }
-  // DMS mode — check paste boxes first, then D/M/S fields
-  const pasteLatStr = document.getElementById('dms_paste_lat').value.trim();
-  const pasteLonStr = document.getElementById('dms_paste_lon').value.trim();
-
+  const pLat = document.getElementById('dms_paste_lat').value.trim();
+  const pLon = document.getElementById('dms_paste_lon').value.trim();
   let lat, lon;
-  if (pasteLatStr) {
-    lat = parseDMSString(pasteLatStr);
-  } else {
-    const d = parseFloat(document.getElementById('lat_d').value) || 0;
-    const m = parseFloat(document.getElementById('lat_m').value) || 0;
-    const s = parseFloat(document.getElementById('lat_s').value) || 0;
-    const hem = document.getElementById('lat_hem').value;
-    lat = d + m / 60 + s / 3600;
-    if (hem === 'S') lat = -lat;
+  if (pLat) { lat = parseDMSString(pLat); }
+  else {
+    const d=parseFloat(document.getElementById('lat_d').value)||0, m=parseFloat(document.getElementById('lat_m').value)||0, s=parseFloat(document.getElementById('lat_s').value)||0;
+    lat = d+m/60+s/3600; if (document.getElementById('lat_hem').value==='S') lat=-lat;
   }
-  if (pasteLonStr) {
-    lon = parseDMSString(pasteLonStr);
-  } else {
-    const d = parseFloat(document.getElementById('lon_d').value) || 0;
-    const m = parseFloat(document.getElementById('lon_m').value) || 0;
-    const s = parseFloat(document.getElementById('lon_s').value) || 0;
-    const hem = document.getElementById('lon_hem').value;
-    lon = d + m / 60 + s / 3600;
-    if (hem === 'W') lon = -lon;
+  if (pLon) { lon = parseDMSString(pLon); }
+  else {
+    const d=parseFloat(document.getElementById('lon_d').value)||0, m=parseFloat(document.getElementById('lon_m').value)||0, s=parseFloat(document.getElementById('lon_s').value)||0;
+    lon = d+m/60+s/3600; if (document.getElementById('lon_hem').value==='W') lon=-lon;
   }
   return { lat, lon };
-}
-
-// ── WGS84 → UTM CONVERSION ────────────────────────────────────────────
-document.getElementById('btn_wgs_utm').addEventListener('click', () => {
-  hideErr('err_wgs_utm');
-  const { lat, lon } = getWgsLatLon();
-  if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
-    showErr('err_wgs_utm', 'Please enter valid coordinates in the selected format.'); return;
-  }
-  if (lat < -90 || lat > 90)   { showErr('err_wgs_utm', 'Latitude must be between -90° and 90°.'); return; }
-  if (lon < -180 || lon > 180) { showErr('err_wgs_utm', 'Longitude must be between -180° and 180°.'); return; }
-  try {
-    let zone = parseInt(document.getElementById('wgs_utm_zone').value);
-    if (isNaN(zone)) zone = autoZone(lon);
-    const outDatum = document.getElementById('wgs_utm_datum').value;
-
-    let tgtCRS, datumLabel;
-    if (outDatum === 'minna') {
-      // WGS84 → Minna UTM (applies Clarke 1880 + towgs84=-92,-93,122 shift)
-      // This matches SivanDesign and Mobile Topographer Pro
-      const minnaKey = zone === 31 ? 'EPSG:26331' : zone === 32 ? 'EPSG:26332' :
-        'MINNA_UTM_' + zone;
-      if (!proj4.defs(minnaKey) || minnaKey.startsWith('MINNA_UTM_')) {
-        proj4.defs(minnaKey,
-          '+proj=utm +zone=' + zone +
-          ' +a=6378249.145 +rf=293.465' +
-          ' +towgs84=-92,-93,122,0,0,0,0' +
-          ' +units=m +no_defs');
-      }
-      tgtCRS = minnaKey;
-      datumLabel = 'Minna / NNO';
-    } else {
-      // WGS84 → WGS84 UTM (no datum shift — pure GPS projection)
-      const wgsKey = 'EPSG:326' + String(zone).padStart(2, '0');
-      if (!proj4.defs(wgsKey)) {
-        proj4.defs(wgsKey,
-          '+proj=utm +zone=' + zone + ' +datum=WGS84 +units=m +no_defs');
-      }
-      tgtCRS = wgsKey;
-      datumLabel = 'WGS84';
-    }
-
-    const [e, n] = proj4('EPSG:4326', tgtCRS, [lon, lat]);
-    showResult('resgrid_wgs_utm', 'res_wgs_utm', [
-      {label: 'Output Datum',      value: datumLabel,        raw: datumLabel},
-      {label: 'UTM Zone',          value: zone + 'N',        raw: zone + 'N'},
-      {label: 'Northing',          value: fmt(n) + ' m',     raw: fmt(n)},
-      {label: 'Easting',           value: fmt(e) + ' m',     raw: fmt(e)},
-      {label: 'Lat (decimal °)',   value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-      {label: 'Lon (decimal °)',   value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      {label: 'Lat (DMS)',         value: toDMS(lat),         raw: toDMS(lat)},
-      {label: 'Lon (DMS)',         value: toDMS(lon),         raw: toDMS(lon)},
-    ]);
-  } catch(e) { showErr('err_wgs_utm', 'Conversion error: ' + e.message); }
-});
-
-// UTM → WGS84
-document.getElementById('btn_utm_wgs').addEventListener('click', () => {
-  hideErr('err_utm_wgs');
-  const n = parseFloat(document.getElementById('utm_wgs_n').value);
-  const e = parseFloat(document.getElementById('utm_wgs_e').value);
-  if (isNaN(n) || isNaN(e)) { showErr('err_utm_wgs', 'Please enter valid Northing and Easting values.'); return; }
-  const zStr   = document.getElementById('utm_wgs_zone').value;
-  const zone   = parseInt(zStr);
-  const datum  = document.getElementById('utm_wgs_datum').value;
-  try {
-    let srcCRS;
-    if (datum === 'wgs84') {
-      srcCRS = 'EPSG:326' + String(zone).padStart(2, '0');
-      if (!proj4.defs(srcCRS)) proj4.defs(srcCRS, '+proj=utm +zone=' + zone + ' +datum=WGS84 +units=m +no_defs');
-    } else {
-      srcCRS = zone === 31 ? 'EPSG:26331' : 'EPSG:26332';
-    }
-    const [lon, lat] = proj4(srcCRS, 'EPSG:4326', [e, n]);
-    showResult('resgrid_utm_wgs', 'res_utm_wgs', [
-      {label: 'Latitude (WGS84)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-      {label: 'Longitude (WGS84)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      {label: 'Latitude (DMS)',    value: toDMS(lat), raw: toDMS(lat)},
-      {label: 'Longitude (DMS)',   value: toDMS(lon), raw: toDMS(lon)},
-    ]);
-  } catch(e2) { showErr('err_utm_wgs', 'Conversion error: ' + e2.message); }
-});
-
-// WGS84 → Minna
-// ── WGS84 → MINNA FORMAT TOGGLE ─────────────────────────────────────
-let minnaInputFmt = 'dec';
-
-function setMinnaFmt(fmt) {
-  minnaInputFmt = fmt;
-  document.getElementById('mDecInputs').style.display = fmt === 'dec' ? '' : 'none';
-  document.getElementById('mDmsInputs').style.display = fmt === 'dms' ? '' : 'none';
-  document.getElementById('mFmtDecBtn').classList.toggle('active', fmt === 'dec');
-  document.getElementById('mFmtDmsBtn').classList.toggle('active', fmt === 'dms');
-  hideErr('err_wgs_minna');
 }
 
 function getMinnaLatLon() {
   if (minnaInputFmt === 'dec') {
-    const lat = parseFloat(document.getElementById('wgs_minna_lat').value.replace(',', '.'));
-    const lon = parseFloat(document.getElementById('wgs_minna_lon').value.replace(',', '.'));
-    return { lat, lon };
+    return {
+      lat: parseFloat(document.getElementById('wgs_minna_lat').value.replace(',','.')),
+      lon: parseFloat(document.getElementById('wgs_minna_lon').value.replace(',','.'))
+    };
   }
-  // DMS mode — paste boxes override D/M/S fields
-  const pasteLatStr = document.getElementById('m_dms_paste_lat').value.trim();
-  const pasteLonStr = document.getElementById('m_dms_paste_lon').value.trim();
+  const pLat = document.getElementById('m_dms_paste_lat').value.trim();
+  const pLon = document.getElementById('m_dms_paste_lon').value.trim();
   let lat, lon;
-  if (pasteLatStr) {
-    lat = parseDMSString(pasteLatStr);
-  } else {
-    const d = parseFloat(document.getElementById('m_lat_d').value) || 0;
-    const m = parseFloat(document.getElementById('m_lat_m').value) || 0;
-    const s = parseFloat(document.getElementById('m_lat_s').value) || 0;
-    const hem = document.getElementById('m_lat_hem').value;
-    lat = d + m / 60 + s / 3600;
-    if (hem === 'S') lat = -lat;
+  if (pLat) { lat = parseDMSString(pLat); }
+  else {
+    const d=parseFloat(document.getElementById('m_lat_d').value)||0, m=parseFloat(document.getElementById('m_lat_m').value)||0, s=parseFloat(document.getElementById('m_lat_s').value)||0;
+    lat = d+m/60+s/3600; if (document.getElementById('m_lat_hem').value==='S') lat=-lat;
   }
-  if (pasteLonStr) {
-    lon = parseDMSString(pasteLonStr);
-  } else {
-    const d = parseFloat(document.getElementById('m_lon_d').value) || 0;
-    const m = parseFloat(document.getElementById('m_lon_m').value) || 0;
-    const s = parseFloat(document.getElementById('m_lon_s').value) || 0;
-    const hem = document.getElementById('m_lon_hem').value;
-    lon = d + m / 60 + s / 3600;
-    if (hem === 'W') lon = -lon;
+  if (pLon) { lon = parseDMSString(pLon); }
+  else {
+    const d=parseFloat(document.getElementById('m_lon_d').value)||0, m=parseFloat(document.getElementById('m_lon_m').value)||0, s=parseFloat(document.getElementById('m_lon_s').value)||0;
+    lon = d+m/60+s/3600; if (document.getElementById('m_lon_hem').value==='W') lon=-lon;
   }
   return { lat, lon };
 }
 
-document.getElementById('btn_wgs_minna').addEventListener('click', () => {
-  hideErr('err_wgs_minna');
-  const { lat, lon } = getMinnaLatLon();
-  if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
-    showErr('err_wgs_minna', 'Please enter valid coordinates in the selected format.'); return;
-  }
-  if (lat < -90 || lat > 90)   { showErr('err_wgs_minna', 'Latitude must be between -90° and 90°.'); return; }
-  if (lon < -180 || lon > 180) { showErr('err_wgs_minna', 'Longitude must be between -180° and 180°.'); return; }
-  const outKey = document.getElementById('wgs_minna_out').value;
-  const outCRS = {geo:'EPSG:4263', utm31:'EPSG:26331', utm32:'EPSG:26332', west:'EPSG:26391', mid:'EPSG:26392', east:'EPSG:26393'}[outKey];
+// ── NNO → UTM ─────────────────────────────────────────────────────────────
+document.getElementById('btn_nno_utm').addEventListener('click', () => {
+  hideErr('err_nno_utm');
+  if (!selectedOrigin) { showErr('err_nno_utm','Please select a local origin from the dropdown above.'); return; }
+  const lN=parseFloat(document.getElementById('nno_n').value);
+  const lE=parseFloat(document.getElementById('nno_e').value);
+  if (isNaN(lN)||isNaN(lE)) { showErr('err_nno_utm','Please enter valid Northing and Easting values.'); return; }
+  const absN=lN+selectedOrigin.N, absE=lE+selectedOrigin.E;
+  const out=document.getElementById('nno_output').value;
   try {
-    if (outKey === 'geo') {
-      const [mLon, mLat] = proj4('EPSG:4326', 'EPSG:4263', [lon, lat]);
-      showResult('resgrid_wgs_minna', 'res_wgs_minna', [
-        {label: 'Minna Latitude',  value: fmt(mLat, 8) + '°', raw: fmt(mLat, 8)},
-        {label: 'Minna Longitude', value: fmt(mLon, 8) + '°', raw: fmt(mLon, 8)},
-        {label: 'Minna Lat (DMS)', value: toDMS(mLat), raw: toDMS(mLat)},
-        {label: 'Minna Lon (DMS)', value: toDMS(mLon), raw: toDMS(mLon)},
-        {label: 'Input Lat (Dec)', value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-        {label: 'Input Lon (Dec)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
+    let results=[
+      {label:'Absolute Northing (+ origin)',value:fmt(absN)+' m',raw:fmt(absN)},
+      {label:'Absolute Easting (+ origin)', value:fmt(absE)+' m',raw:fmt(absE)},
+    ];
+    if (out==='wgs84geo') {
+      const [lon,lat]=proj4('EPSG:26391','EPSG:4326',[absE,absN]);
+      results=results.concat([
+        {label:'Latitude (WGS84)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+        {label:'Longitude (WGS84)',value:fmt(lon,8)+'°',raw:fmt(lon,8)},
+        {label:'Lat (DMS)',        value:toDMS(lat),     raw:toDMS(lat)},
+        {label:'Lon (DMS)',        value:toDMS(lon),     raw:toDMS(lon)},
       ]);
     } else {
-      const [mE, mN] = proj4('EPSG:4326', outCRS, [lon, lat]);
-      showResult('resgrid_wgs_minna', 'res_wgs_minna', [
-        {label: 'Minna Northing',  value: fmt(mN) + ' m',     raw: fmt(mN)},
-        {label: 'Minna Easting',   value: fmt(mE) + ' m',     raw: fmt(mE)},
-        {label: 'Input Lat (Dec)', value: fmt(lat, 8) + '°',  raw: fmt(lat, 8)},
-        {label: 'Input Lon (Dec)', value: fmt(lon, 8) + '°',  raw: fmt(lon, 8)},
-        {label: 'Input Lat (DMS)', value: toDMS(lat),          raw: toDMS(lat)},
-        {label: 'Input Lon (DMS)', value: toDMS(lon),          raw: toDMS(lon)},
+      const tgt=CRS[out];
+      const [e2,n2]=proj4('EPSG:26391',tgt,[absE,absN]);
+      const label=out.startsWith('wgs84')?'WGS84 UTM':'Minna';
+      const zone=out.includes('31')?'31N':out.includes('32')?'32N':'';
+      results=results.concat([
+        {label:`${label} Northing${zone?' Z'+zone:''}`,value:fmt(n2)+' m',raw:fmt(n2)},
+        {label:`${label} Easting${zone?' Z'+zone:''}`, value:fmt(e2)+' m',raw:fmt(e2)},
+      ]);
+      const [lon,lat]=proj4('EPSG:26391','EPSG:4326',[absE,absN]);
+      results=results.concat([
+        {label:'Lat (WGS84 ref)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+        {label:'Lon (WGS84 ref)', value:fmt(lon,8)+'°',raw:fmt(lon,8)},
       ]);
     }
-  } catch(e) { showErr('err_wgs_minna', 'Conversion error: ' + e.message); }
+    showResult('resgrid_nno_utm','res_nno_utm',results);
+  } catch(e) { showErr('err_nno_utm','Conversion error: '+e.message); }
 });
 
-// Minna → WGS84
-const minnaWgsIn = document.getElementById('minna_wgs_in');
+// ── DATUM CONVERTER ───────────────────────────────────────────────────────
+document.getElementById('btn_nno_direct').addEventListener('click', () => {
+  hideErr('err_nno_direct');
+  const n=parseFloat(document.getElementById('nnoDirect_n').value);
+  const e=parseFloat(document.getElementById('nnoDirect_e').value);
+  if (isNaN(n)||isNaN(e)) { showErr('err_nno_direct','Please enter valid Northing and Easting values.'); return; }
+  const inCRS=CRS[document.getElementById('nnoDirect_input').value];
+  const out=document.getElementById('nnoDirect_output').value;
+  try {
+    let results=[];
+    if (out==='wgs84geo') {
+      const [lon,lat]=proj4(inCRS,'EPSG:4326',[e,n]);
+      results=[
+        {label:'Latitude (WGS84)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+        {label:'Longitude (WGS84)',value:fmt(lon,8)+'°',raw:fmt(lon,8)},
+        {label:'Lat (DMS)',        value:toDMS(lat),     raw:toDMS(lat)},
+        {label:'Lon (DMS)',        value:toDMS(lon),     raw:toDMS(lon)},
+      ];
+    } else {
+      const tgt=CRS[out];
+      const [e2,n2]=proj4(inCRS,tgt,[e,n]);
+      const label=out.startsWith('wgs84')?'WGS84 UTM':'Minna';
+      const zone=out.includes('31')?'31N':out.includes('32')?'32N':'';
+      results=[
+        {label:`${label} Northing${zone?' Z'+zone:''}`,value:fmt(n2)+' m',raw:fmt(n2)},
+        {label:`${label} Easting${zone?' Z'+zone:''}`, value:fmt(e2)+' m',raw:fmt(e2)},
+      ];
+      const [lon,lat]=proj4(inCRS,'EPSG:4326',[e,n]);
+      results=results.concat([
+        {label:'Lat (WGS84 ref)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+        {label:'Lon (WGS84 ref)', value:fmt(lon,8)+'°',raw:fmt(lon,8)},
+      ]);
+    }
+    showResult('resgrid_nno_direct','res_nno_direct',results);
+  } catch(e2) { showErr('err_nno_direct','Conversion error: '+e2.message); }
+});
+
+// ── UTM → NNO ─────────────────────────────────────────────────────────────
+document.getElementById('btn_utm_nno').addEventListener('click', () => {
+  hideErr('err_utm_nno');
+  if (!selectedOrigin2) { showErr('err_utm_nno','Please select a local origin from the dropdown above.'); return; }
+  const inN=parseFloat(document.getElementById('utm_nno_n').value);
+  const inE=parseFloat(document.getElementById('utm_nno_e').value);
+  if (isNaN(inN)||isNaN(inE)) { showErr('err_utm_nno','Please enter valid Northing and Easting values.'); return; }
+  const inCRS=CRS[document.getElementById('utm_nno_input').value];
+  try {
+    const [absE,absN]=proj4(inCRS,'EPSG:26391',[inE,inN]);
+    const localN=absN-selectedOrigin2.N, localE=absE-selectedOrigin2.E;
+    showResult('resgrid_utm_nno','res_utm_nno',[
+      {label:'Local Northing from '+selectedOrigin2.town,value:fmt(localN)+' m',raw:fmt(localN)},
+      {label:'Local Easting from '+selectedOrigin2.town, value:fmt(localE)+' m',raw:fmt(localE)},
+      {label:'Minna W.Belt Northing',value:fmt(absN)+' m',raw:fmt(absN)},
+      {label:'Minna W.Belt Easting', value:fmt(absE)+' m',raw:fmt(absE)},
+    ]);
+  } catch(e) { showErr('err_utm_nno','Conversion error: '+e.message); }
+});
+
+// ── WGS84 → UTM ───────────────────────────────────────────────────────────
+document.getElementById('btn_wgs_utm').addEventListener('click', () => {
+  hideErr('err_wgs_utm');
+  const {lat,lon}=getWgsLatLon();
+  if (isNaN(lat)||isNaN(lon)||lat===null||lon===null) { showErr('err_wgs_utm','Please enter valid coordinates.'); return; }
+  if (lat<-90||lat>90)   { showErr('err_wgs_utm','Latitude must be between -90° and 90°.'); return; }
+  if (lon<-180||lon>180) { showErr('err_wgs_utm','Longitude must be between -180° and 180°.'); return; }
+  try {
+    let zone=parseInt(document.getElementById('wgs_utm_zone').value);
+    if (isNaN(zone)) zone=autoZone(lon);
+    const outDatum=document.getElementById('wgs_utm_datum').value;
+    let tgtCRS, datumLabel;
+    if (outDatum==='minna') {
+      const minnaKey=zone===31?'EPSG:26331':zone===32?'EPSG:26332':'MINNA_UTM_'+zone;
+      if (!proj4.defs(minnaKey)||minnaKey.startsWith('MINNA_UTM_')) {
+        proj4.defs(minnaKey,'+proj=utm +zone='+zone+' +a=6378249.145 +rf=293.465 +towgs84=-92,-93,122,0,0,0,0 +units=m +no_defs');
+      }
+      tgtCRS=minnaKey; datumLabel='Minna / NNO';
+    } else {
+      const wgsKey='EPSG:326'+String(zone).padStart(2,'0');
+      if (!proj4.defs(wgsKey)) proj4.defs(wgsKey,'+proj=utm +zone='+zone+' +datum=WGS84 +units=m +no_defs');
+      tgtCRS=wgsKey; datumLabel='WGS84';
+    }
+    const [e,n]=proj4('EPSG:4326',tgtCRS,[lon,lat]);
+    showResult('resgrid_wgs_utm','res_wgs_utm',[
+      {label:'Output Datum',    value:datumLabel,       raw:datumLabel},
+      {label:'UTM Zone',        value:zone+'N',         raw:zone+'N'},
+      {label:'Northing',        value:fmt(n)+' m',      raw:fmt(n)},
+      {label:'Easting',         value:fmt(e)+' m',      raw:fmt(e)},
+      {label:'Lat (decimal °)', value:fmt(lat,8)+'°',   raw:fmt(lat,8)},
+      {label:'Lon (decimal °)', value:fmt(lon,8)+'°',   raw:fmt(lon,8)},
+      {label:'Lat (DMS)',       value:toDMS(lat),        raw:toDMS(lat)},
+      {label:'Lon (DMS)',       value:toDMS(lon),        raw:toDMS(lon)},
+    ]);
+  } catch(e) { showErr('err_wgs_utm','Conversion error: '+e.message); }
+});
+
+// ── UTM → WGS84 ───────────────────────────────────────────────────────────
+document.getElementById('btn_utm_wgs').addEventListener('click', () => {
+  hideErr('err_utm_wgs');
+  const n=parseFloat(document.getElementById('utm_wgs_n').value);
+  const e=parseFloat(document.getElementById('utm_wgs_e').value);
+  if (isNaN(n)||isNaN(e)) { showErr('err_utm_wgs','Please enter valid Northing and Easting values.'); return; }
+  const zone=parseInt(document.getElementById('utm_wgs_zone').value);
+  const datum=document.getElementById('utm_wgs_datum').value;
+  try {
+    let srcCRS;
+    if (datum==='wgs84') {
+      srcCRS='EPSG:326'+String(zone).padStart(2,'0');
+      if (!proj4.defs(srcCRS)) proj4.defs(srcCRS,'+proj=utm +zone='+zone+' +datum=WGS84 +units=m +no_defs');
+    } else {
+      srcCRS=zone===31?'EPSG:26331':'EPSG:26332';
+    }
+    const [lon,lat]=proj4(srcCRS,'EPSG:4326',[e,n]);
+    showResult('resgrid_utm_wgs','res_utm_wgs',[
+      {label:'Latitude (WGS84)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+      {label:'Longitude (WGS84)',value:fmt(lon,8)+'°',raw:fmt(lon,8)},
+      {label:'Lat (DMS)',        value:toDMS(lat),     raw:toDMS(lat)},
+      {label:'Lon (DMS)',        value:toDMS(lon),     raw:toDMS(lon)},
+    ]);
+  } catch(e2) { showErr('err_utm_wgs','Conversion error: '+e2.message); }
+});
+
+// ── WGS84 → MINNA ────────────────────────────────────────────────────────
+document.getElementById('btn_wgs_minna').addEventListener('click', () => {
+  hideErr('err_wgs_minna');
+  const {lat,lon}=getMinnaLatLon();
+  if (isNaN(lat)||isNaN(lon)||lat===null||lon===null) { showErr('err_wgs_minna','Please enter valid coordinates.'); return; }
+  if (lat<-90||lat>90)   { showErr('err_wgs_minna','Latitude must be between -90° and 90°.'); return; }
+  if (lon<-180||lon>180) { showErr('err_wgs_minna','Longitude must be between -180° and 180°.'); return; }
+  const outKey=document.getElementById('wgs_minna_out').value;
+  const outCRS={geo:'EPSG:4263',utm31:'EPSG:26331',utm32:'EPSG:26332',west:'EPSG:26391',mid:'EPSG:26392',east:'EPSG:26393'}[outKey];
+  try {
+    if (outKey==='geo') {
+      const [mLon,mLat]=proj4('EPSG:4326','EPSG:4263',[lon,lat]);
+      showResult('resgrid_wgs_minna','res_wgs_minna',[
+        {label:'Minna Latitude',  value:fmt(mLat,8)+'°',raw:fmt(mLat,8)},
+        {label:'Minna Longitude', value:fmt(mLon,8)+'°',raw:fmt(mLon,8)},
+        {label:'Minna Lat (DMS)', value:toDMS(mLat),    raw:toDMS(mLat)},
+        {label:'Minna Lon (DMS)', value:toDMS(mLon),    raw:toDMS(mLon)},
+      ]);
+    } else {
+      const [mE,mN]=proj4('EPSG:4326',outCRS,[lon,lat]);
+      showResult('resgrid_wgs_minna','res_wgs_minna',[
+        {label:'Minna Northing',  value:fmt(mN)+' m',   raw:fmt(mN)},
+        {label:'Minna Easting',   value:fmt(mE)+' m',   raw:fmt(mE)},
+        {label:'Input Lat (Dec)', value:fmt(lat,8)+'°', raw:fmt(lat,8)},
+        {label:'Input Lon (Dec)', value:fmt(lon,8)+'°', raw:fmt(lon,8)},
+        {label:'Lat (DMS)',       value:toDMS(lat),      raw:toDMS(lat)},
+        {label:'Lon (DMS)',       value:toDMS(lon),      raw:toDMS(lon)},
+      ]);
+    }
+  } catch(e) { showErr('err_wgs_minna','Conversion error: '+e.message); }
+});
+
+// ── MINNA → WGS84 ────────────────────────────────────────────────────────
+const minnaWgsIn=document.getElementById('minna_wgs_in');
 function updateMinnaLabels() {
-  const v = minnaWgsIn.value;
-  const isGeo = v === 'geo';
-  document.getElementById('minna_wgs_l1').textContent = isGeo ? 'Latitude (Minna)' : 'Northing (m)';
-  document.getElementById('minna_wgs_l2').textContent = isGeo ? 'Longitude (Minna)' : 'Easting (m)';
-  document.getElementById('minna_wgs_n').placeholder = isGeo ? 'e.g. 6.89210000' : 'e.g. 760000.000';
-  document.getElementById('minna_wgs_e').placeholder = isGeo ? 'e.g. 3.39870000' : 'e.g. 350000.000';
+  const isGeo=minnaWgsIn.value==='geo';
+  document.getElementById('minna_wgs_l1').textContent=isGeo?'Latitude (Minna)':'Northing (m)';
+  document.getElementById('minna_wgs_l2').textContent=isGeo?'Longitude (Minna)':'Easting (m)';
+  document.getElementById('minna_wgs_n').placeholder=isGeo?'e.g. 6.89210000':'e.g. 760000.000';
+  document.getElementById('minna_wgs_e').placeholder=isGeo?'e.g. 3.39870000':'e.g. 350000.000';
 }
-minnaWgsIn.addEventListener('change', updateMinnaLabels);
+minnaWgsIn.addEventListener('change',updateMinnaLabels);
 updateMinnaLabels();
 
 document.getElementById('btn_minna_wgs').addEventListener('click', () => {
   hideErr('err_minna_wgs');
-  const n = parseFloat(document.getElementById('minna_wgs_n').value);
-  const e = parseFloat(document.getElementById('minna_wgs_e').value);
-  if (isNaN(n) || isNaN(e)) { showErr('err_minna_wgs', 'Please enter valid coordinate values.'); return; }
-  const inKey = minnaWgsIn.value;
-  const inCRS = {geo:'EPSG:4263', utm31:'EPSG:26331', utm32:'EPSG:26332', west:'EPSG:26391', mid:'EPSG:26392', east:'EPSG:26393'}[inKey];
+  const n=parseFloat(document.getElementById('minna_wgs_n').value);
+  const e=parseFloat(document.getElementById('minna_wgs_e').value);
+  if (isNaN(n)||isNaN(e)) { showErr('err_minna_wgs','Please enter valid coordinate values.'); return; }
+  const inKey=minnaWgsIn.value;
+  const inCRS={geo:'EPSG:4263',utm31:'EPSG:26331',utm32:'EPSG:26332',west:'EPSG:26391',mid:'EPSG:26392',east:'EPSG:26393'}[inKey];
   try {
-    let lon, lat;
-    if (inKey === 'geo') {
-      [lon, lat] = proj4('EPSG:4263', 'EPSG:4326', [e, n]);
-    } else {
-      [lon, lat] = proj4(inCRS, 'EPSG:4326', [e, n]);
-    }
-    showResult('resgrid_minna_wgs', 'res_minna_wgs', [
-      {label: 'Latitude (WGS84)',  value: fmt(lat, 8) + '°', raw: fmt(lat, 8)},
-      {label: 'Longitude (WGS84)', value: fmt(lon, 8) + '°', raw: fmt(lon, 8)},
-      {label: 'Latitude (DMS)',    value: toDMS(lat), raw: toDMS(lat)},
-      {label: 'Longitude (DMS)',   value: toDMS(lon), raw: toDMS(lon)},
+    let lon,lat;
+    if (inKey==='geo') { [lon,lat]=proj4('EPSG:4263','EPSG:4326',[e,n]); }
+    else               { [lon,lat]=proj4(inCRS,'EPSG:4326',[e,n]); }
+    showResult('resgrid_minna_wgs','res_minna_wgs',[
+      {label:'Latitude (WGS84)', value:fmt(lat,8)+'°',raw:fmt(lat,8)},
+      {label:'Longitude (WGS84)',value:fmt(lon,8)+'°',raw:fmt(lon,8)},
+      {label:'Lat (DMS)',        value:toDMS(lat),     raw:toDMS(lat)},
+      {label:'Lon (DMS)',        value:toDMS(lon),     raw:toDMS(lon)},
     ]);
-  } catch(e2) { showErr('err_minna_wgs', 'Conversion error: ' + e2.message); }
+  } catch(e2) { showErr('err_minna_wgs','Conversion error: '+e2.message); }
 });
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
-  <script src="/pwa-init.js"></script>
 </body>
 </html>

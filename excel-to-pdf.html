@@ -1,229 +1,682 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel to PDF Converter – Free Online | Universal Converter Hub</title>
-  <meta name="description" content="Convert Excel spreadsheets (XLSX, XLS) to PDF instantly. High-quality output, no registration.">
-  <meta name="keywords" content="Excel to PDF, XLSX to PDF, convert Excel to PDF, free PDF converter, spreadsheet to PDF">
+  <title>Free Excel to PDF Converter – Convert XLSX, XLS to PDF Online | ConverterHub</title>
+  <meta name="description" content="Convert Excel to PDF free online. Upload XLSX, XLS or CSV and get a high-quality PDF instantly. Preserves tables, formatting and data. No signup, no watermark, 100% private — processed in your browser.">
+  <meta name="keywords" content="excel to pdf, xlsx to pdf, xls to pdf, convert excel to pdf free, spreadsheet to pdf, excel converter online free, csv to pdf">
   <link rel="canonical" href="https://converterhub.com.ng/excel-to-pdf.html">
-  <!-- Favicon for browser tab and Google search result icon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
-
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:title" content="Free Excel to PDF Converter – ConverterHub">
+  <meta property="og:description" content="Convert Excel to PDF free. No signup, no watermark. Supports XLSX, XLS and CSV. 100% private.">
+  <meta property="og:url" content="https://converterhub.com.ng/excel-to-pdf.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConverterHub">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question","name": "What Excel formats are supported?","acceptedAnswer": {"@type": "Answer","text": "We support .xlsx and .xls files. Both modern and legacy Excel formats work."}},
-      {"@type": "Question","name": "Will my formulas be visible in the PDF?","acceptedAnswer": {"@type": "Answer","text": "Yes, the resulting PDF will show the calculated values as they appear in Excel. Formulas themselves are not visible."}},
-      {"@type": "Question","name": "Can I convert multiple Excel files at once?","acceptedAnswer": {"@type": "Answer","text": "Yes, you can select multiple files. Each will be converted to its own PDF."}},
-      {"@type": "Question","name": "Is there a file size limit?","acceptedAnswer": {"@type": "Answer","text": "Files up to 50MB are accepted. Larger files may take longer to process."}},
-      {"@type": "Question","name": "Do I need to sign up?","acceptedAnswer": {"@type": "Answer","text": "No. The converter is completely free, no registration required."}}
-    ]
-  }
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Excel to PDF Converter","url":"https://converterhub.com.ng/excel-to-pdf.html","description":"Free online tool to convert Excel XLSX, XLS and CSV files to PDF. Runs entirely in your browser.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I convert Excel to PDF online for free?","acceptedAnswer":{"@type":"Answer","text":"Upload your XLSX, XLS or CSV file, select the sheet if needed, preview the data, then click Convert to PDF. Your PDF downloads automatically with no signup required."}},
+    {"@type":"Question","name":"Which Excel file formats are supported?","acceptedAnswer":{"@type":"Answer","text":"XLSX (Excel 2007+), XLS (Excel 97-2003) and CSV files are all fully supported."}},
+    {"@type":"Question","name":"Can I convert a specific sheet from a multi-sheet workbook?","acceptedAnswer":{"@type":"Answer","text":"Yes. After uploading, a sheet selector appears allowing you to choose which sheet to convert to PDF."}},
+    {"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"You can upload Excel files up to 50MB. Most spreadsheets are well under this limit."}},
+    {"@type":"Question","name":"Is my file secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All conversion happens entirely in your browser using SheetJS and pdf-lib. Your file never leaves your device and is never uploaded to any server."}},
+    {"@type":"Question","name":"Does it work on mobile phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. Works on Chrome for Android and Safari on iOS. No software installation needed."}}
+  ]}
   </script>
   <style>
-    /* FAQ Accordion Styles (same as previous pages) */
-    .faq-accordion { background: var(--bg-card); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--border-light); box-shadow: var(--shadow); margin: 2rem 0; }
-    .faq-accordion h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
-    .faq-item { border-bottom: 1px solid var(--border-light); margin-bottom: 0.5rem; }
-    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-    .faq-question:hover { color: var(--accent); }
-    .faq-question .icon { font-size: 1.2rem; transition: transform 0.2s; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0; color: var(--text-secondary); line-height: 1.6; }
-    .faq-answer p { padding-bottom: 1rem; }
-    .faq-item.active .faq-answer { max-height: 300px; transition: max-height 0.4s ease-in; }
-    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
-    .support-link { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
-    .support-link a { color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer; }
-    /* Feedback Button & Modal */
-    .feedback-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; z-index: 999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
-    .feedback-btn:hover { transform: scale(1.05); background: var(--accent-hover); }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-    .modal-content { background: var(--bg-secondary); border-radius: 24px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 20px; position: relative; }
-    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
-    .modal-close:hover { color: var(--accent); }
-    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+    .tool-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start;margin-top:24px}
+    @media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+    .tool-sidebar{display:flex;flex-direction:column;gap:16px}
+
+    /* Progress */
+    .prog-wrap{display:none;margin:12px 0}
+    .prog-wrap.show{display:block}
+    .prog-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:6px}
+    .prog-bar{height:100%;background:var(--brand-gradient);border-radius:3px;width:0%;transition:width .3s ease}
+    .prog-text{font-size:.82rem;color:var(--text-muted);text-align:center}
+
+    /* Sheet selector */
+    .sheet-selector{display:none;margin:12px 0}
+    .sheet-selector.show{display:block}
+    .sheet-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .sheet-tab{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg-subtle);color:var(--text-secondary);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+    .sheet-tab.active{border-color:var(--brand-primary);background:var(--bg-hover);color:var(--brand-primary)}
+
+    /* Preview table */
+    .preview-area{display:none;margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .preview-area.show{display:block}
+    .preview-header{background:var(--bg-subtle);padding:8px 14px;font-size:.8rem;color:var(--text-secondary);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+    .preview-header strong{color:var(--text-primary)}
+    .preview-scroll{overflow:auto;max-height:340px;background:#fff}
+    .preview-scroll table{border-collapse:collapse;width:100%;font-size:.78rem;min-width:400px}
+    .preview-scroll th,.preview-scroll td{border:1px solid #d1d5db;padding:5px 10px;text-align:left;white-space:nowrap;color:#111}
+    .preview-scroll th{background:#f3f4f6;font-weight:700;position:sticky;top:0;z-index:1}
+    .preview-scroll tr:nth-child(even) td{background:#f9fafb}
+
+    /* Result states */
+    .result-success{display:none;background:#f0fdf4;border:1px solid #86efac;color:#166534;border-radius:12px;padding:14px 16px;font-size:.9rem;font-weight:500;margin-top:12px}
+    body.dark .result-success{background:#052e16;border-color:#166534;color:#4ade80}
+    .result-success.show{display:block}
+    .result-error{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:14px 16px;font-size:.875rem;margin-top:12px}
+    body.dark .result-error{background:#450a0a;border-color:#991b1b;color:#fca5a5}
+    .result-error.show{display:block}
+
+    /* Trust pills */
+    .trust-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .trust-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:var(--bg-subtle);border:1px solid var(--border);font-size:.78rem;color:var(--text-secondary);font-weight:500}
+    .trust-pill .tp-icon{color:var(--brand-primary)}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .feature-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .feature-desc{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+
+    .steps-row{display:flex;gap:0;align-items:flex-start;flex-wrap:wrap;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:16px}
+    .step-item{text-align:center;flex:1;min-width:100px;padding:0 10px}
+    .step-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;font-size:.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .step-icon{font-size:1.4rem;margin-bottom:6px}
+    .step-label{font-size:.78rem;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+    .step-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4}
+    .step-arrow{color:var(--text-muted);font-size:1.1rem;padding-top:20px;flex-shrink:0}
+    @media(max-width:600px){.step-arrow{display:none}}
+
+    .compare-table{width:100%;border-collapse:collapse}
+    .compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:.875rem}
+    .compare-table th{background:var(--bg-subtle);font-weight:700;color:var(--text-secondary);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+    .compare-table tr:last-child td{border-bottom:none}
+    .check-yes{color:#16a34a;font-weight:700}
+
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s}
+    .related-pill:hover{border-color:var(--brand-primary);color:var(--brand-primary);background:var(--bg-hover)}
+    .sidebar-ad{background:var(--bg-subtle);border:1px dashed var(--border);border-radius:12px;padding:12px;text-align:center;overflow:hidden}
   </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content"><span class="modal-close" id="closeModal">&times;</span><h3>Help us improve</h3><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true"></iframe></div>
-</div>
-<div class="container">
-  <div class="top-bar">
-        <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2563eb"/>
-                <stop offset="1" stop-color="#7c3aed"/>
-              </linearGradient>
-            </defs>
-          </svg>
+
+<main class="ch-container">
+
+  <!-- Breadcrumb -->
+  <nav class="ch-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <span>File Tools</span>
+    <span class="sep">›</span>
+    <span class="current">Excel to PDF</span>
+  </nav>
+
+  <!-- Tool Header -->
+  <div class="ch-tool-header">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">📊</div>
+      <div>
+        <h1 class="ch-tool-title">Excel to PDF Converter</h1>
+        <div class="ch-tool-badges">
+          <span class="ch-badge ch-badge-green">✓ Free</span>
+          <span class="ch-badge ch-badge-green">✓ No Signup</span>
+          <span class="ch-badge ch-badge-blue">✓ No Watermark</span>
+          <span class="ch-badge ch-badge-blue">✓ 100% Private</span>
         </div>
-        <div class="logo-text">
-          <h1>Universal Converter Hub</h1>
-          <p>Convert Anything, Anywhere</p>
-        </div>
-      </a>
+      </div>
     </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i> Dark</div></div>
+    <p class="ch-tool-desc">Convert Excel spreadsheets (XLSX, XLS) and CSV files to PDF instantly. Preview your data before converting, select individual sheets from multi-sheet workbooks. Runs entirely in your browser — your files never leave your device.</p>
   </div>
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn active">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
+
+  <!-- AdSense top -->
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
-  <h2 class="section-title">Excel to PDF Converter – Print‑Ready PDFs</h2>
-  <div class="card">
-    <div class="drop-zone" id="excel2pdfDrop">📗 Drop .xlsx or .xls files here or click<input type="file" id="excel2pdfInput" accept=".xlsx,.xls" multiple></div>
-    <div id="excel2pdfFileList" class="file-list"></div>
-    <button class="btn" id="convertExcel2PdfBtn">Convert to PDF</button>
-    <div class="result-area" id="excel2pdfResult"></div>
-  </div>
-  <section class="faq-accordion">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What Excel formats are supported?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>We support .xlsx and .xls files. Both modern and legacy Excel formats work.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Will my formulas be visible in the PDF?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, the resulting PDF will show the calculated values as they appear in Excel. Formulas themselves are not visible.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I convert multiple Excel files at once?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Yes, you can select multiple files. Each will be converted to its own PDF.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Is there a file size limit?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Files up to 50MB are accepted. Larger files may take longer to process.</p></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Do I need to sign up?</span><span class="icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>No. The converter is completely free, no registration required.</p></div></div>
-    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
-  </section>
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
+
+  <!-- Tool Layout -->
+  <div class="tool-layout">
+
+    <!-- ── MAIN PANEL ─────────────────────────────────────── -->
+    <div>
+      <div class="ch-card">
+
+        <!-- Drop Zone -->
+        <div class="ch-dropzone" id="excelDrop" style="cursor:pointer;">
+          <input type="file" id="excelInput" accept=".xlsx,.xls,.csv">
+          <div class="ch-dropzone-icon">📊</div>
+          <div class="ch-dropzone-title">Drag & drop your Excel file here<br>or <span>click to browse</span></div>
+          <div class="ch-dropzone-sub" style="margin-top:8px;">.xlsx, .xls, .csv supported &nbsp;•&nbsp; Max 50MB &nbsp;•&nbsp; No signup</div>
+        </div>
+
+        <!-- File selected -->
+        <div id="excelFileList" style="margin-top:12px;"></div>
+
+        <!-- Sheet selector (multi-sheet workbooks) -->
+        <div class="sheet-selector" id="sheetSelector">
+          <p style="font-size:.82rem;font-weight:700;color:var(--text-primary);">📋 Select sheet to convert:</p>
+          <div class="sheet-tabs" id="sheetTabs"></div>
+        </div>
+
+        <!-- Preview area -->
+        <div class="preview-area" id="previewArea">
+          <div class="preview-header">
+            <strong id="previewTitle">Preview</strong>
+            <span style="font-size:.75rem;" id="previewInfo"></span>
+          </div>
+          <div class="preview-scroll" id="previewScroll"></div>
+        </div>
+
+        <!-- Convert options -->
+        <div id="convertOptions" style="display:none;margin-top:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div class="ch-form-group">
+              <label class="ch-label">Page Size</label>
+              <select class="ch-select" id="excelPageSize">
+                <option value="a4">A4</option>
+                <option value="letter">Letter</option>
+                <option value="a3">A3 (wider sheets)</option>
+              </select>
+            </div>
+            <div class="ch-form-group">
+              <label class="ch-label">Orientation</label>
+              <select class="ch-select" id="excelOrientation">
+                <option value="landscape" selected>Landscape (recommended)</option>
+                <option value="portrait">Portrait</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Convert button -->
+        <button class="ch-btn ch-btn-primary ch-btn-lg" id="convertExcelBtn" disabled style="width:100%;">
+          <i class="fas fa-file-pdf"></i> Convert to PDF
+        </button>
+
+        <!-- Progress -->
+        <div class="prog-wrap" id="excelProgWrap">
+          <div class="prog-track"><div class="prog-bar" id="excelProgBar"></div></div>
+          <div class="prog-text" id="excelProgText">Converting...</div>
+        </div>
+        <div class="result-success" id="excelSuccess"></div>
+        <div class="result-error"   id="excelError"></div>
+
+        <!-- Trust pills -->
+        <div class="trust-pills">
+          <div class="trust-pill"><span class="tp-icon">🔒</span> Files never leave device</div>
+          <div class="trust-pill"><span class="tp-icon">⚡</span> Instant conversion</div>
+          <div class="trust-pill"><span class="tp-icon">📱</span> Works on mobile</div>
+          <div class="trust-pill"><span class="tp-icon">🚫</span> No watermark</div>
+        </div>
+      </div>
+
+      <!-- AdSense mid -->
+      <div class="ch-ad-zone" style="margin-top:24px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- How it works -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:32px;margin-bottom:4px;">How to Convert Excel to PDF</h2>
+      <p style="color:var(--text-muted);font-size:.875rem;margin-bottom:0;">4 simple steps — takes under 30 seconds</p>
+      <div class="steps-row">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-icon">📂</div><div class="step-label">Upload File</div><div class="step-desc">Add XLSX, XLS or CSV</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-icon">📋</div><div class="step-label">Select Sheet</div><div class="step-desc">Pick sheet if multi-sheet</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-icon">👁️</div><div class="step-label">Preview Data</div><div class="step-desc">Review before converting</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-icon">⬇️</div><div class="step-label">Download PDF</div><div class="step-desc">File downloads instantly</div></div>
+      </div>
+
+      <!-- Features -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Why Use Our Excel to PDF Converter?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#d1fae5;">📊</div>
+          <div>
+            <div class="feature-title">All Excel Formats</div>
+            <div class="feature-desc">Supports XLSX (Excel 2007+), XLS (Excel 97-2003) and CSV files.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#dbeafe;">📋</div>
+          <div>
+            <div class="feature-title">Multi-Sheet Support</div>
+            <div class="feature-desc">Choose which sheet to convert from workbooks with multiple sheets.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fef3c7;">👁️</div>
+          <div>
+            <div class="feature-title">Live Preview</div>
+            <div class="feature-desc">See your spreadsheet data in a table preview before generating the PDF.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#f0fdf4;">🔒</div>
+          <div>
+            <div class="feature-title">100% Private</div>
+            <div class="feature-desc">All processing happens in your browser. Files never reach any server.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who can use -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Who Can Use This Tool?</h2>
+      <div class="feature-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));">
+        <div class="feature-card" style="flex-direction:column;text-align:center;gap:8px;">
+          <div style="font-size:1.8rem;">🎓</div>
+          <div class="feature-title">Students</div>
+          <div class="feature-desc">Convert data tables and grade sheets to PDF for submission.</div>
+        </div>
+        <div class="feature-card" style="flex-direction:column;text-align:center;gap:8px;">
+          <div style="font-size:1.8rem;">💼</div>
+          <div class="feature-title">Professionals</div>
+          <div class="feature-desc">Share financial reports and budgets in non-editable PDF format.</div>
+        </div>
+        <div class="feature-card" style="flex-direction:column;text-align:center;gap:8px;">
+          <div style="font-size:1.8rem;">🏢</div>
+          <div class="feature-title">Businesses</div>
+          <div class="feature-desc">Publish invoices, price lists and data exports as professional PDFs.</div>
+        </div>
+        <div class="feature-card" style="flex-direction:column;text-align:center;gap:8px;">
+          <div style="font-size:1.8rem;">📈</div>
+          <div class="feature-title">Analysts</div>
+          <div class="feature-desc">Save reports and dashboards as PDF for presentations and archiving.</div>
+        </div>
+      </div>
+
+      <!-- Compare table -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">What Our Tool Offers</h2>
+      <div class="ch-card" style="overflow:hidden;padding:0;">
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>ConverterHub</th></tr></thead>
+          <tbody>
+            <tr><td>Supports XLSX, XLS and CSV</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Multi-sheet workbook support</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Live data preview before conversion</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Landscape and portrait orientation</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>A4, Letter and A3 page sizes</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>No watermarks on output PDF</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>100% private — browser only</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Free, no registration</td><td class="check-yes">✓ Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="ch-card">
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How do I convert Excel to PDF for free? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Upload your XLSX, XLS or CSV file, select the sheet if needed, review the preview, then click Convert to PDF. Your PDF downloads automatically — no signup required.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Which Excel formats are supported? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>XLSX (Excel 2007 and later), XLS (Excel 97-2003) and CSV files are all fully supported.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Can I convert one sheet from a multi-sheet workbook? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. After uploading your file, sheet tabs will appear. Click any tab to switch between sheets and preview the data. Only the selected sheet will be converted to PDF.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is there a file size limit? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>You can upload Excel files up to 50MB. Most spreadsheets are well under this limit. Very large files with thousands of rows may take a moment to process.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is my file secure? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. All conversion happens entirely in your browser using SheetJS and pdf-lib. Your file never leaves your device and is never uploaded to any server.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Does it work on mobile phones? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. Works on Chrome for Android and Safari on iOS. No software installation required. Large spreadsheets may take slightly longer on mobile devices.</p></div>
+        </div>
+      </div>
+
+      <!-- Related tools -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Related Tools</h2>
+      <div class="related-grid">
+        <a href="csv-to-excel.html"     class="related-pill">📊 CSV to Excel</a>
+        <a href="pdf-to-word.html"      class="related-pill">📄 PDF to Word</a>
+        <a href="word-to-pdf.html"      class="related-pill">📝 Word to PDF</a>
+        <a href="image-to-pdf.html"     class="related-pill">🖼 Image to PDF</a>
+        <a href="pdf-merge-split.html"  class="related-pill">🔀 PDF Merge & Split</a>
+        <a href="file-compressor.html"  class="related-pill">📦 File Compressor</a>
+      </div>
+
+      <!-- Bottom AdSense -->
+      <div class="ch-ad-zone" style="margin-top:32px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+    <div class="tool-sidebar">
+      <div class="ch-card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">📊→📄</div>
+        <div style="font-size:1.2rem;font-weight:800;color:var(--brand-primary);">Excel to PDF</div>
+        <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Browser-Based • No Uploads</div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--brand-primary);">50MB</div><div style="font-size:.72rem;color:var(--text-muted);">Max file size</div></div>
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--brand-primary);">3</div><div style="font-size:.72rem;color:var(--text-muted);">Formats (XLSX/XLS/CSV)</div></div>
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--brand-primary);">Multi</div><div style="font-size:.72rem;color:var(--text-muted);">Sheet support</div></div>
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--brand-primary);">Free</div><div style="font-size:.72rem;color:var(--text-muted);">No payment</div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-ad">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">💡 Tips</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Use Landscape orientation for wide spreadsheets</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Use A3 page size for very wide tables</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Preview first to check data looks right</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Use .xlsx format for best compatibility</li>
+        </ul>
+      </div>
+
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">📋 Supported Formats</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;">
+            <span style="background:#d1fae5;padding:4px 10px;border-radius:8px;font-weight:700;color:#065f46;">.xlsx</span>
+            <span style="color:var(--text-secondary);">Excel 2007 and later</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;">
+            <span style="background:#d1fae5;padding:4px 10px;border-radius:8px;font-weight:700;color:#065f46;">.xls</span>
+            <span style="color:var(--text-secondary);">Excel 97–2003</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;">
+            <span style="background:#d1fae5;padding:4px 10px;border-radius:8px;font-weight:700;color:#065f46;">.csv</span>
+            <span style="color:var(--text-secondary);">Comma-separated values</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ch-card" style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);border-color:transparent;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">📰</div>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px;">Tivora Hub Blog</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5;">Tips, productivity hacks and ways to make money online.</div>
+        <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener"
+           class="ch-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);width:100%;justify-content:center;font-size:.82rem;">
+          Visit Blog →
+        </a>
+      </div>
+    </div>
+
+  </div><!-- end tool-layout -->
+
+</main>
+
+<!-- SheetJS: reads Excel/CSV files -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<!-- html2canvas: renders table to canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- pdf-lib: builds PDF from canvas image -->
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="js/common.js"></script>
 <script>
-  // Accordion functionality
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => { const button = item.querySelector('.faq-question'); const iconSpan = button.querySelector('.icon i'); button.addEventListener('click', () => { const isActive = item.classList.contains('active'); if (!isActive) { item.classList.add('active'); button.setAttribute('aria-expanded', 'true'); iconSpan.classList.remove('fa-plus'); iconSpan.classList.add('fa-minus'); } else { item.classList.remove('active'); button.setAttribute('aria-expanded', 'false'); iconSpan.classList.remove('fa-minus'); iconSpan.classList.add('fa-plus'); } }); });
-  // Modal logic
-  const modal = document.getElementById('feedbackModal'); const feedbackBtn = document.getElementById('feedbackBtn'); const closeModal = document.getElementById('closeModal'); const supportLink = document.getElementById('supportLink'); function openModal() { modal.style.display = 'flex'; } feedbackBtn.addEventListener('click', openModal); supportLink.addEventListener('click', openModal); closeModal.addEventListener('click', () => { modal.style.display = 'none'; }); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-  // Excel to PDF logic
-  const excel2pdfInput = document.getElementById('excel2pdfInput'); const excel2pdfDrop = document.getElementById('excel2pdfDrop');
-  excel2pdfInput.addEventListener('change', () => updateFileList('excel2pdfFileList', excel2pdfInput.files));
-  excel2pdfDrop.addEventListener('click', () => excel2pdfInput.click());
-  excel2pdfDrop.addEventListener('dragover', e => e.preventDefault());
-  excel2pdfDrop.addEventListener('drop', e => { e.preventDefault(); excel2pdfInput.files = e.dataTransfer.files; updateFileList('excel2pdfFileList', excel2pdfInput.files); });
-  document.getElementById('convertExcel2PdfBtn').addEventListener('click', async () => {
-    const files = Array.from(excel2pdfInput.files);
-    if (!files.length) { document.getElementById('excel2pdfResult').innerText = 'Select Excel files.'; return; }
-    const resultDiv = document.getElementById('excel2pdfResult');
-    resultDiv.innerText = 'Converting...';
-    for (const file of files) {
-      const data = await file.arrayBuffer();
-      const workbook = XLSX.read(data, { type: 'array' });
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
-      const html = XLSX.utils.sheet_to_html(sheet);
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      doc.html(html, {
-        callback: function(doc) {
-          doc.save(file.name.replace(/\.(xlsx|xls)$/i, '.pdf'));
-        },
-        x: 10,
-        y: 10,
-        width: 180,
-        windowWidth: 800
-      });
+  // ── STATE ─────────────────────────────────────────────────────
+  let workbook   = null;
+  let activeSheet = '';
+  let excelFile  = null;
+
+  // ── HELPERS ──────────────────────────────────────────────────
+  function formatBytes(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+    return (b/1048576).toFixed(1) + ' MB';
+  }
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.style.display = 'none';
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+  }
+  function setProg(pct) { document.getElementById('excelProgBar').style.width = pct + '%'; }
+  function showProg(on, text) {
+    document.getElementById('excelProgWrap').classList.toggle('show', on);
+    if (text) document.getElementById('excelProgText').textContent = text;
+  }
+  function showSuccess(msg) {
+    const el = document.getElementById('excelSuccess');
+    el.innerHTML = '✅ ' + msg; el.classList.add('show');
+    document.getElementById('excelError').classList.remove('show');
+  }
+  function showError(msg) {
+    const el = document.getElementById('excelError');
+    el.textContent = '⚠️ ' + msg; el.classList.add('show');
+    document.getElementById('excelSuccess').classList.remove('show');
+  }
+  function clearResults() {
+    document.getElementById('excelSuccess').classList.remove('show');
+    document.getElementById('excelError').classList.remove('show');
+  }
+
+  // ── FILE LOAD ─────────────────────────────────────────────────
+  const excelInput = document.getElementById('excelInput');
+  const excelDrop  = document.getElementById('excelDrop');
+
+  function loadFile(file) {
+    if (!file) return;
+    const ext = file.name.split('.').pop().toLowerCase();
+    if (!['xlsx','xls','csv'].includes(ext)) {
+      showError('Please upload an .xlsx, .xls or .csv file.'); return;
     }
-    resultDiv.innerText = '✅ PDF(s) generated.';
+    if (file.size > 52428800) { showError('File too large. Maximum 50MB.'); return; }
+    excelFile = file;
+
+    // Show file item
+    document.getElementById('excelFileList').innerHTML = `
+      <div class="ch-file-item">
+        <span class="ch-file-item-icon">📊</span>
+        <span class="ch-file-item-name">${file.name}</span>
+        <span class="ch-file-item-size">${formatBytes(file.size)}</span>
+        <button class="ch-file-item-del" onclick="resetTool()">✕</button>
+      </div>`;
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        workbook = XLSX.read(e.target.result, { type: 'array' });
+        buildSheetTabs();
+        selectSheet(workbook.SheetNames[0]);
+      } catch(err) {
+        showError('Could not read file: ' + (err.message || 'unknown error'));
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function resetTool() {
+    workbook = null; activeSheet = ''; excelFile = null;
+    excelInput.value = '';
+    document.getElementById('excelFileList').innerHTML = '';
+    document.getElementById('sheetSelector').classList.remove('show');
+    document.getElementById('previewArea').classList.remove('show');
+    document.getElementById('convertOptions').style.display = 'none';
+    document.getElementById('convertExcelBtn').disabled = true;
+    clearResults(); showProg(false);
+  }
+
+  excelDrop.addEventListener('click', () => excelInput.click());
+  excelDrop.addEventListener('dragover', e => { e.preventDefault(); excelDrop.classList.add('dragover'); });
+  excelDrop.addEventListener('dragleave', () => excelDrop.classList.remove('dragover'));
+  excelDrop.addEventListener('drop', e => {
+    e.preventDefault(); excelDrop.classList.remove('dragover');
+    loadFile(e.dataTransfer.files[0]);
+  });
+  excelInput.addEventListener('change', () => { loadFile(excelInput.files[0]); excelInput.value = ''; });
+
+  // ── SHEET TABS ────────────────────────────────────────────────
+  function buildSheetTabs() {
+    const tabs = document.getElementById('sheetTabs');
+    tabs.innerHTML = '';
+    workbook.SheetNames.forEach(name => {
+      const btn = document.createElement('button');
+      btn.className = 'sheet-tab';
+      btn.textContent = name;
+      btn.addEventListener('click', () => selectSheet(name));
+      tabs.appendChild(btn);
+    });
+    const selector = document.getElementById('sheetSelector');
+    selector.classList.toggle('show', workbook.SheetNames.length > 1);
+  }
+
+  function selectSheet(name) {
+    activeSheet = name;
+    document.querySelectorAll('.sheet-tab').forEach(t => {
+      t.classList.toggle('active', t.textContent === name);
+    });
+    renderPreview(name);
+    document.getElementById('convertOptions').style.display = '';
+    document.getElementById('convertExcelBtn').disabled = false;
+  }
+
+  // ── PREVIEW ───────────────────────────────────────────────────
+  function renderPreview(sheetName) {
+    const sheet  = workbook.Sheets[sheetName];
+    const data   = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    if (!data.length) { document.getElementById('previewScroll').innerHTML = '<p style="padding:16px;color:#666;">Sheet is empty.</p>'; return; }
+
+    const maxCols = Math.max(...data.map(r => r.length));
+    const preview = data.slice(0, 50); // show first 50 rows in preview
+
+    let html = '<table><thead><tr>';
+    for (let c = 0; c < maxCols; c++) html += `<th>${preview[0][c] !== undefined ? preview[0][c] : ''}</th>`;
+    html += '</tr></thead><tbody>';
+    for (let r = 1; r < preview.length; r++) {
+      html += '<tr>';
+      for (let c = 0; c < maxCols; c++) html += `<td>${preview[r][c] !== undefined ? preview[r][c] : ''}</td>`;
+      html += '</tr>';
+    }
+    html += '</tbody></table>';
+
+    document.getElementById('previewScroll').innerHTML = html;
+    document.getElementById('previewTitle').textContent = sheetName;
+    document.getElementById('previewInfo').textContent = `${data.length} rows × ${maxCols} columns` + (data.length > 50 ? ' (showing first 50)' : '');
+    document.getElementById('previewArea').classList.add('show');
+  }
+
+  // ── CONVERT ──────────────────────────────────────────────────
+  document.getElementById('convertExcelBtn').addEventListener('click', async () => {
+    clearResults();
+    if (!workbook || !activeSheet) { showError('Please upload an Excel file first.'); return; }
+    if (typeof html2canvas === 'undefined' || typeof PDFLib === 'undefined') {
+      showError('Libraries still loading. Please wait a moment.'); return;
+    }
+
+    showProg(true, 'Rendering spreadsheet...');
+    setProg(10);
+
+    try {
+      // Build full HTML table (all rows) into a hidden div
+      const sheet  = workbook.Sheets[activeSheet];
+      const data   = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      const maxCols = Math.max(...data.map(r => r.length));
+
+      let html = `<table style="border-collapse:collapse;font-family:Calibri,Arial,sans-serif;font-size:10pt;">`;
+      data.forEach((row, ri) => {
+        html += '<tr>';
+        for (let c = 0; c < maxCols; c++) {
+          const val = row[c] !== undefined ? row[c] : '';
+          const style = ri === 0
+            ? 'border:1px solid #999;padding:5px 10px;background:#f3f4f6;font-weight:700;white-space:nowrap;'
+            : 'border:1px solid #d1d5db;padding:5px 10px;white-space:nowrap;background:' + (ri%2===0?'#f9fafb':'#fff');
+          html += `<td style="${style}">${val}</td>`;
+        }
+        html += '</tr>';
+      });
+      html += '</table>';
+
+      const container = document.createElement('div');
+      container.style.cssText = 'position:fixed;left:-9999px;top:0;background:#fff;padding:24px;';
+      container.innerHTML = html;
+      document.body.appendChild(container);
+
+      showProg(true, 'Capturing table image...');
+      setProg(40);
+
+      const canvas = await html2canvas(container, {
+        scale: 2, backgroundColor: '#ffffff',
+        useCORS: true, logging: false
+      });
+      document.body.removeChild(container);
+
+      showProg(true, 'Building PDF...');
+      setProg(70);
+
+      const pageSizeKey = document.getElementById('excelPageSize').value;
+      const orientation = document.getElementById('excelOrientation').value;
+      const SIZES = { a4:[595.28,841.89], letter:[612,792], a3:[841.89,1190.55] };
+      let [pageW, pageH] = SIZES[pageSizeKey];
+      if (orientation === 'landscape') [pageW, pageH] = [pageH, pageW];
+
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const imgData  = canvas.toDataURL('image/jpeg', 0.92);
+      const jpgBytes = await (await fetch(imgData)).arrayBuffer();
+      const jpgImage = await pdfDoc.embedJpg(jpgBytes);
+
+      const imgW = jpgImage.width, imgH = jpgImage.height;
+      const margin = 28;
+      const drawW  = pageW - margin*2;
+      const scale  = drawW / imgW;
+      const drawH  = imgH * scale;
+
+      if (drawH <= pageH - margin*2) {
+        const page = pdfDoc.addPage([pageW, pageH]);
+        page.drawImage(jpgImage, { x: margin, y: pageH - margin - drawH, width: drawW, height: drawH });
+      } else {
+        const sliceH = Math.floor((pageH - margin*2) / scale);
+        let yOffset  = 0;
+        while (yOffset < imgH) {
+          const sh = Math.min(sliceH, imgH - yOffset);
+          const sliceCanvas = document.createElement('canvas');
+          sliceCanvas.width = imgW; sliceCanvas.height = sh;
+          sliceCanvas.getContext('2d').drawImage(canvas, 0, yOffset, imgW, sh, 0, 0, imgW, sh);
+          const sd = sliceCanvas.toDataURL('image/jpeg', 0.92);
+          const sb = await (await fetch(sd)).arrayBuffer();
+          const si = await pdfDoc.embedJpg(sb);
+          const ph = sh * scale + margin*2;
+          const pg = pdfDoc.addPage([pageW, ph]);
+          pg.drawImage(si, { x: margin, y: margin, width: drawW, height: sh * scale });
+          yOffset += sh;
+        }
+      }
+
+      showProg(true, 'Finalising PDF...');
+      setProg(95);
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      setProg(100);
+      setTimeout(() => showProg(false), 500);
+
+      const outName = excelFile.name.replace(/\.(xlsx|xls|csv)$/i, '') + '.pdf';
+      downloadBlob(blob, outName);
+      showSuccess(`Converted "${activeSheet}" to PDF (${formatBytes(blob.size)}) — downloading now.`);
+    } catch(err) {
+      showProg(false);
+      showError('Conversion failed: ' + (err.message || 'unknown error') + '. Please try again.');
+    }
   });
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
-  <script src="/pwa-init.js"></script>
+
 </body>
 </html>

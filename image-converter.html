@@ -78,11 +78,28 @@
     .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;}
     .modal iframe{width:100%;height:500px;border:none;border-radius:12px;}
     footer{text-align:center;padding:2rem;color:var(--text-secondary);border-top:1px solid var(--border-light);margin-top:2rem;}
-    @media (max-width:600px){.container{padding:1rem;}}
+    @media (max-width:600px){
+      .container{padding:1rem;}
+      .top-bar > div{max-width:100%;}
+      .feedback-btn{right:12px;bottom:12px;padding:.7rem 1rem;}
+      #cookieBanner{padding:1rem !important;}
+      #cookieBanner > div > div:first-child{min-width:0 !important;}
+    }
+    html,body{width:100%;max-width:100%;overflow-x:clip;}
+    img,svg,video,canvas,iframe{max-width:100%;}
     .quality-slider{margin:0.5rem 0;width:100%;}
   </style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#2563eb">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- Feedback Button & Modal -->
@@ -121,21 +138,15 @@
     <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
     <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
   </div>
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
+  <div class="ad-universal">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5268090468184213"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div></div>
 
   <h2 class="section-title"><i class="fas fa-image"></i> Image Converter – Real Conversion</h2>
   <div class="card">
@@ -168,14 +179,15 @@ loadAdIfNotInApp(function() {
     <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
   </section>
 
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
+  <div class="ad-universal">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5268090468184213"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
   <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
 </div>
 
@@ -323,5 +335,35 @@ loadAdIfNotInApp(function() {
 });
 </script>
   <script src="/pwa-init.js"></script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#f1f5f9;padding:1rem 1.5rem;box-shadow:0 -4px 20px rgba(0,0,0,.3);font-family:Inter,Arial,sans-serif;">
+  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;">
+    <div style="flex:1;min-width:260px;font-size:.88rem;line-height:1.6;">
+      <strong style="font-size:.95rem;">&#127850; We use cookies</strong><br>
+      We use cookies and Google AdSense to serve ads and analyse traffic. By clicking <strong>Accept</strong> you consent to our use of cookies as described in our <a href="/privacy-policy.html" style="color:#60a5fa;text-decoration:underline;">Privacy Policy</a>.
+    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;flex-shrink:0;">
+      <button id="cookieAccept" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:.6rem 1.4rem;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;">Accept All</button>
+      <button id="cookieDecline" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:.6rem 1.4rem;font-size:.88rem;cursor:pointer;font-family:inherit;">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    document.getElementById('cookieBanner').style.display = 'block';
+  }
+  document.getElementById('cookieAccept').addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+  document.getElementById('cookieDecline').addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+})();
+</script>
 </body>
 </html>

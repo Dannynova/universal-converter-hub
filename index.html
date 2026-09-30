@@ -1,386 +1,791 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal Converter Hub – Free Online Conversion Tools</title>
-  <meta name="description" content="Free online tools: PDF to Word, image converter, image compressor, QR code generator, password generator, text-to-speech, language translator, CSV/Excel, unit converter, land calculator, currency converter, DWG to KMZ.">
-  <meta name="keywords" content="free online converter, PDF to Word, image converter, QR code generator, password generator, text to speech, language translator, unit converter, currency converter, DWG to KMZ">
+  <title>ConverterHub – Free Online Converter Tools: PDF, Image, Coordinates & More</title>
+  <meta name="description" content="Free online tools for PDF conversion, image editing, coordinate conversion, resume building, OCR, loan calculator and more. No signup, no watermark, 100% browser-based.">
+  <meta name="keywords" content="free online converter, pdf to word, image to pdf, resume builder, ocr, loan calculator, background remover, coordinate converter, nigeria minna utm nno">
   <link rel="canonical" href="https://converterhub.com.ng/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E">
-  <meta property="og:title" content="Universal Converter Hub – Free Online File Converter & Tools">
-  <meta property="og:description" content="Convert PDF to Word, convert images, compress files, generate QR codes, and more. No registration, fast and secure.">
-  <meta property="og:image" content="https://converterhub.com.ng/logo.png">
+  <meta property="og:title" content="ConverterHub – Free Online Converter Tools">
+  <meta property="og:description" content="PDF, image, coordinate, resume and finance tools — free, no signup, 100% browser-based.">
   <meta property="og:url" content="https://converterhub.com.ng">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConverterHub">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Universal Converter Hub",
-    "description": "Free online PDF to Word, image converter, image compressor, QR code generator, password generator, text-to-speech, language translator, CSV/Excel converter, unit converter, land calculator, currency converter, DWG to KMZ.",
-    "url": "https://converterhub.com.ng",
-    "applicationCategory": "Utility",
-    "operatingSystem": "All",
-    "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question","name": "Do I need to create an account?","acceptedAnswer": {"@type": "Answer","text": "No. All our tools are completely free and require no registration."}},
-      {"@type": "Question","name": "Is my data secure?","acceptedAnswer": {"@type": "Answer","text": "Yes. Files are processed securely and automatically deleted after conversion."}},
-      {"@type": "Question","name": "Are there any file size limits?","acceptedAnswer": {"@type": "Answer","text": "Most tools accept files up to 50MB. Larger files may take longer to process."}},
-      {"@type": "Question","name": "Can I use these tools on my phone?","acceptedAnswer": {"@type": "Answer","text": "Absolutely. Our website is fully responsive and works on all devices."}}
-    ]
-  }
-  </script>
+  <meta name="twitter:site" content="@ConverterHub">
+  <meta name="twitter:creator" content="@ConverterHub">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="ConverterHub">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="geo.region" content="NG">
+  <meta name="geo.placename" content="Nigeria">
+  <link rel="alternate" hreflang="en" href="https://converterhub.com.ng/">
+  <link rel="alternate" hreflang="x-default" href="https://converterhub.com.ng/">
+  <meta property="og:image" content="https://converterhub.com.ng/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Prevent dark mode flash -->
+  <script>
+    (function(){
+      var t=localStorage.getItem('ch_theme');
+      if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ItemList","name":"Free Online Converter Tools","description":"Complete list of free online tools available on ConverterHub","url":"https://converterhub.com.ng","numberOfItems":25,"itemListElement":[
+    {"@type":"ListItem","position":1,"name":"PDF to Word Converter","url":"https://converterhub.com.ng/pdf-to-word.html"},
+    {"@type":"ListItem","position":2,"name":"Word to PDF Converter","url":"https://converterhub.com.ng/word-to-pdf.html"},
+    {"@type":"ListItem","position":3,"name":"Coordinate Converter","url":"https://converterhub.com.ng/coordinate-converter.html"},
+    {"@type":"ListItem","position":4,"name":"Resume Builder","url":"https://converterhub.com.ng/resume-builder.html"},
+    {"@type":"ListItem","position":5,"name":"Loan Calculator","url":"https://converterhub.com.ng/loan-calculator.html"},
+    {"@type":"ListItem","position":6,"name":"Background Remover","url":"https://converterhub.com.ng/background-remover.html"},
+    {"@type":"ListItem","position":7,"name":"OCR Image to Text","url":"https://converterhub.com.ng/ocr-image-to-text.html"},
+    {"@type":"ListItem","position":8,"name":"Image to PDF","url":"https://converterhub.com.ng/image-to-pdf.html"},
+    {"@type":"ListItem","position":9,"name":"PDF Merge and Split","url":"https://converterhub.com.ng/pdf-merge-split.html"},
+    {"@type":"ListItem","position":10,"name":"Image Compressor","url":"https://converterhub.com.ng/image-compressor.html"}
+  ]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng","logo":"https://converterhub.com.ng/logo.png","contactPoint":{"@type":"ContactPoint","email":"dannynova32@gmail.com","contactType":"customer support"},"sameAs":["https://tivorahub.blogspot.com"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"ConverterHub","url":"https://converterhub.com.ng","description":"Free online tools for PDF, image, coordinate, resume and finance tasks.","potentialAction":{"@type":"SearchAction","target":"https://converterhub.com.ng/?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
   <style>
-    .logo a { display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit; }
-    .logo-icon svg { display:block;width:48px;height:48px;border-radius:12px;box-shadow:var(--shadow); }
-    .logo-text h1 { font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent; }
-    .logo-text p { font-size:0.75rem;color:var(--text-secondary); }
-    @media(max-width:600px){.logo-icon svg{width:36px;height:36px;}.logo-text h1{font-size:1.2rem;}}
-    .hero{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);border-radius:32px;padding:3rem 2rem;margin:2rem 0;border:1px solid var(--border-light);box-shadow:var(--shadow);}
-    .hero h1{font-size:2rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent;}
-    .hero p{margin-bottom:1rem;line-height:1.6;color:var(--text-secondary);}
-    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;}
-    .hero .btn{padding:0.8rem 2rem;font-size:1rem;}
-    .trust-badge{display:flex;flex-wrap:wrap;gap:2rem;font-size:0.9rem;color:var(--text-secondary);margin-top:1rem;}
-    .trust-badge i{margin-right:0.5rem;color:var(--accent);}
-    .seo-intro{background:var(--bg-card);border-radius:24px;padding:2rem;margin:2rem 0;border:1px solid var(--border-light);text-align:center;}
-    .seo-intro p{max-width:900px;margin:0 auto;line-height:1.6;color:var(--text-secondary);}
-    .why-choose{background:var(--bg-card);border-radius:24px;padding:2rem;margin:2rem 0;border:1px solid var(--border-light);}
-    .why-choose h2{text-align:center;margin-bottom:1.5rem;}
-    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:1rem;}
-    .feature-item{text-align:center;padding:1rem;}
-    .feature-item i{font-size:2rem;color:var(--accent);margin-bottom:0.5rem;}
-    .feature-item h3{font-size:1.2rem;margin-bottom:0.5rem;}
-    .feature-item p{font-size:0.9rem;color:var(--text-secondary);}
-    .faq-accordion{background:var(--bg-card);border-radius:24px;padding:1.5rem;border:1px solid var(--border-light);box-shadow:var(--shadow);margin:2rem 0;}
-    .faq-accordion h2{font-size:1.6rem;font-weight:600;margin-bottom:1rem;text-align:center;}
-    .faq-item{border-bottom:1px solid var(--border-light);margin-bottom:0.5rem;}
-    .faq-item summary{font-weight:600;padding:1rem 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
-    .faq-item summary::-webkit-details-marker{display:none;}
-    .faq-item summary::after{content:'\f067';font-family:'Font Awesome 6 Free';font-weight:900;font-size:1.2rem;color:var(--accent);transition:transform 0.2s;}
-    .faq-item[open] summary::after{content:'\f068';}
-    .faq-item .faq-answer{padding:0 0 1rem 0;color:var(--text-secondary);line-height:1.6;}
-    .support-link{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light);}
-    .support-link a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer;}
-    .card h3{font-size:1.3rem;margin-bottom:0.5rem;}
-    .card p{color:var(--text-secondary);margin-bottom:1rem;}
-    .donate-button{background:#e53935!important;color:white!important;border:none;}
-    .donate-button:hover{background:#c62828!important;}
-    .feedback-btn{position:fixed;bottom:20px;right:20px;background:var(--accent);color:white;border:none;border-radius:50px;padding:0.8rem 1.5rem;font-weight:600;cursor:pointer;z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:transform 0.2s;}
-    .feedback-btn:hover{transform:scale(1.05);background:var(--accent-hover);}
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;justify-content:center;align-items:center;}
-    .modal-content{background:var(--bg-secondary);border-radius:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;padding:20px;position:relative;}
-    .modal-close{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:var(--text-secondary);}
-    .modal-close:hover{color:var(--accent);}
-    .modal iframe{width:100%;height:500px;border:none;border-radius:12px;}
-    @media(max-width:600px){.hero h1{font-size:1.6rem;}.hero p{font-size:0.95rem;}.trust-badge{gap:1rem;}.hero-buttons .btn{padding:0.6rem 1.2rem;}.feedback-btn{padding:0.6rem 1.2rem;}}
-    .skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:white;padding:8px 12px;text-decoration:none;z-index:100;font-weight:500;}
-    .skip-link:focus{top:0;}
-    .dark-toggle{cursor:pointer;user-select:none;}
+    /* ── HOME-ONLY DARK HERO ─────────────────────────────────── */
+    .home-dark-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      margin: 0 calc(-1 * var(--space-md));
+      padding: 0 var(--space-md);
+    }
+    @media(min-width:640px) {
+      .home-dark-section {
+        margin: 0 calc(-1 * var(--space-lg));
+        padding: 0 var(--space-lg);
+      }
+    }
+    @media(min-width:1024px) {
+      .home-dark-section {
+        margin: 0 calc(-1 * var(--space-xl));
+        padding: 0 var(--space-xl);
+      }
+    }
+    .home-hero { padding: 60px 0 70px; }
+    .home-hero-left { flex: 1; min-width: 0; }
+    .home-hero-right {
+      flex: 0 0 420px;
+      max-width: 420px;
+    }
+    @media(max-width:900px) { .home-hero-right { display: none; } }
 
-    /* ── GET THE APP SECTION ──────────────────────────────── */
-    .app-download-section{background:linear-gradient(135deg,#1e40af 0%,#4c1d95 100%);border-radius:24px;padding:2rem;margin:2rem 0;color:white;}
-    .app-download-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
-    .app-download-left{display:flex;align-items:center;gap:1.2rem;flex:1;min-width:220px;}
-    .app-icon-wrap{flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));}
-    .app-download-text h2{font-size:1.3rem;font-weight:700;margin:0 0 4px 0;color:white;}
-    .app-download-text p{font-size:0.9rem;opacity:0.85;margin:0 0 6px 0;}
-    .app-stars{font-size:0.8rem;opacity:0.9;}
-    .app-stars span{opacity:0.75;margin-left:4px;}
-    .app-download-buttons{display:flex;flex-direction:column;gap:10px;min-width:200px;}
-    .dl-btn{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:14px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:transform 0.15s,box-shadow 0.15s;white-space:nowrap;}
-    .dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
-    .dl-btn-play{background:white;color:#1e40af;}
-    .dl-btn-apk{background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(8px);}
-    .dl-btn svg{flex-shrink:0;}
-    .dl-btn-label{display:flex;flex-direction:column;line-height:1.2;}
-    .dl-btn-label small{font-size:0.7rem;font-weight:400;opacity:0.75;}
-    @media(max-width:600px){.app-download-inner{flex-direction:column;align-items:flex-start;}.app-download-buttons{width:100%;}.dl-btn{justify-content:center;}}
+    /* Star dots background */
+    .home-dark-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,.1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.08) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .home-dark-section { position: relative; }
+
+    /* Hero text override for dark bg */
+    .home-hero-badge {
+      background: rgba(96,165,250,.15);
+      color: #93c5fd;
+      border-color: rgba(96,165,250,.25);
+    }
+    .home-hero-title { color: #f8fafc; font-size: 3rem; }
+    @media(max-width:640px) { .home-hero-title { font-size: 2rem; } }
+    .home-hero-title .highlight {
+      background: linear-gradient(135deg, #60a5fa, #c084fc);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .home-hero-desc { color: rgba(248,250,252,.75); }
+    .home-hero-trust-item { color: rgba(248,250,252,.55); }
+    .home-hero-trust-item .check { color: #4ade80; }
+
+    /* Upload card */
+    .hero-upload-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-upload-inner {
+      border: 2px dashed rgba(255,255,255,.2);
+      border-radius: 16px;
+      padding: 40px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .hero-upload-inner:hover { border-color: rgba(96,165,250,.6); }
+    .hero-upload-icon { font-size: 3rem; margin-bottom: 16px; }
+    .hero-upload-title { color: #f8fafc; font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .hero-upload-title span { color: #60a5fa; cursor: pointer; }
+    .hero-upload-sub { color: rgba(248,250,252,.45); font-size: .8rem; }
+    .hero-tool-icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 0 8px;
+    }
+    .hero-tool-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .hero-tool-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      transition: transform .15s;
+    }
+    .hero-tool-icon-wrap:hover { transform: translateY(-2px); }
+    .hero-tool-icon-lbl { font-size: .65rem; color: rgba(255,255,255,.5); text-align: center; }
+
+    /* Popular tools scrollable row on mobile */
+    .popular-scroll {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    @media(max-width:900px) { .popular-scroll { grid-template-columns: repeat(3,1fr); } }
+    @media(max-width:540px) { .popular-scroll { grid-template-columns: repeat(2,1fr); } }
+
+    /* How it works connector arrows */
+    .how-connector {
+      display: flex;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      padding-top: 24px;
+    }
+    @media(max-width:768px) { .how-connector { display: none; } }
+
+    /* Search bar */
+    .home-search-wrap { position: relative; max-width: 600px; margin: 0 auto 40px; }
+    .home-search {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: .95rem;
+      font-family: inherit;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-md);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .home-search:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12), var(--shadow-md);
+    }
+    .home-search-icon {
+      position: absolute; left: 18px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted); font-size: 1rem; pointer-events: none;
+    }
+    .home-search-clear {
+      position: absolute; right: 16px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--text-muted); cursor: pointer; display: none;
+      font-size: .9rem;
+    }
+    /* No results message */
+    .no-results { display: none; text-align: center; padding: 40px; color: var(--text-muted); }
   </style>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" id="closeModal">&times;</span>
-    <h3>Help us improve</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback form"></iframe>
-  </div>
-</div>
-<div class="container">
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-            <path d="M15 18h18v3H15v-3zm0 6h12v3H15v-3zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/>
-            <path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/>
-              </linearGradient>
-            </defs>
-          </svg>
+
+<div class="ch-container">
+
+  <!-- ══ DARK HERO SECTION ════════════════════════════════════ -->
+  <div class="home-dark-section">
+    <div class="ch-container" style="padding:0;">
+      <div class="home-hero" style="display:flex;gap:48px;align-items:center;">
+
+        <!-- Left: text -->
+        <div class="home-hero-left">
+          <div class="home-hero-badge">✅ 100% Free &nbsp;•&nbsp; No Signup &nbsp;•&nbsp; No Limits</div>
+          <h1 class="home-hero-title">
+            All Your Conversions.<br>
+            Simple. Fast. <span class="highlight">Free.</span>
+          </h1>
+          <p class="home-hero-desc">
+            ConverterHub provides 100+ free online tools for file, geospatial, image, document and unit conversions. No signup. No limits. Just easy conversions.
+          </p>
+          <!-- Play Store badge -->
+          <a href="https://play.google.com/store/apps/details?id=com.converterhub.converterhub"
+             target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 20px;color:#f8fafc;text-decoration:none;margin-bottom:16px;transition:background .2s;"
+             onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+            <span style="font-size:1.6rem;">▶</span>
+            <span style="text-align:left;line-height:1.3;">
+              <span style="display:block;font-size:.65rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em;">Get it on</span>
+              <span style="font-size:.95rem;font-weight:800;">Google Play</span>
+            </span>
+          </a>
+
+          <div class="home-hero-cta" style="margin-bottom:24px;">
+            <a href="pdf-to-word.html" class="ch-btn ch-btn-primary ch-btn-lg">
+              <i class="fas fa-rocket"></i> Explore Tools
+            </a>
+            <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener" class="ch-btn ch-btn-lg" style="background:rgba(255,255,255,.1);color:#f8fafc;border:1px solid rgba(255,255,255,.2);">
+              <i class="fas fa-play-circle"></i> How It Works
+            </a>
+          </div>
+          <div class="home-hero-trust">
+            <div class="home-hero-trust-item"><span class="check">✓</span> 100+ Tools</div>
+            <div class="home-hero-trust-item"><span class="check">✓</span> Secure</div>
+            <div class="home-hero-trust-item"><span class="check">✓</span> Fast</div>
+            <div class="home-hero-trust-item"><span class="check">✓</span> Mobile Friendly</div>
+          </div>
         </div>
-        <div class="logo-text">
-          <h1>Universal Converter Hub</h1>
-          <p>Convert Anything, Anywhere</p>
+
+        <!-- Right: upload card -->
+        <div class="home-hero-right">
+          <div class="hero-upload-card">
+            <div class="hero-upload-inner" onclick="document.getElementById('heroFileInput').click()">
+              <input type="file" id="heroFileInput" style="display:none;" onchange="heroHandleFile(this)">
+              <div class="hero-upload-icon">☁️</div>
+              <div class="hero-upload-title">Drag & drop your file here<br>or <span>click to browse</span></div>
+              <div class="hero-upload-sub" style="margin-top:8px;">Supports 200+ file formats</div>
+            </div>
+            <div class="hero-tool-icons">
+              <a href="pdf-to-word.html" class="hero-tool-icon-item">
+                <div class="hero-tool-icon-wrap" style="background:#fee2e2;">📄</div>
+                <span class="hero-tool-icon-lbl">PDF</span>
+              </a>
+              <a href="dwg-to-kmz.html" class="hero-tool-icon-item">
+                <div class="hero-tool-icon-wrap" style="background:#ccfbf1;">🗺</div>
+                <span class="hero-tool-icon-lbl">KMZ</span>
+              </a>
+              <a href="image-editor.html" class="hero-tool-icon-item">
+                <div class="hero-tool-icon-wrap" style="background:#ede9fe;">🎨</div>
+                <span class="hero-tool-icon-lbl">Image</span>
+              </a>
+              <a href="coordinate-converter.html" class="hero-tool-icon-item">
+                <div class="hero-tool-icon-wrap" style="background:#dbeafe;">🧭</div>
+                <span class="hero-tool-icon-lbl">Coords</span>
+              </a>
+              <a href="resume-builder.html" class="hero-tool-icon-item">
+                <div class="hero-tool-icon-wrap" style="background:#fef3c7;">📝</div>
+                <span class="hero-tool-icon-lbl">Resume</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-    </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
-      <a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button" aria-label="Donate via Flutterwave"><i class="fas fa-heart"></i> Donate</a>
-      <div class="dark-toggle" id="darkToggle" role="button" tabindex="0" aria-label="Toggle dark mode"><i class="fas fa-moon"></i> Dark</div>
-    </div>
-  </div>
-  <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn active">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
-  </div>
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-  <section class="hero">
-    <h1>Universal Converter Hub</h1>
-    <p>Universal Converter Hub is a powerful all-in-one platform designed to make file conversion and digital tasks simple, fast, and accessible. Whether you need to convert PDF to Word, compress images, edit photos, generate QR codes, or translate text, our tools are built to deliver accurate results instantly.</p>
-    <p>Our platform supports a wide range of formats, including PDF, DOCX, JPG, PNG, MP4, CSV, and more. With cloud-based processing, you can complete tasks directly from your browser without installing any software.</p>
-    <p>We prioritize speed, security, and ease of use. All uploaded files are processed securely and automatically deleted after conversion to protect your privacy.</p>
-    <p>Whether you're editing images, converting documents, or using productivity tools, Universal Converter Hub provides everything you need in one place — completely free.</p>
-    <div class="hero-buttons">
-      <a href="pdf-to-word.html" class="btn">📄 Convert PDF to Word</a>
-      <a href="image-converter.html" class="btn">🎨 Convert Images</a>
-      <a href="image-compressor.html" class="btn">🗜️ Compress Files</a>
-    </div>
-    <div class="trust-badge">
-      <span><i class="fas fa-check-circle"></i> No Registration</span>
-      <span><i class="fas fa-bolt"></i> Lightning Fast</span>
-      <span><i class="fas fa-shield-alt"></i> Secure Processing</span>
-      <span><i class="fas fa-globe"></i> Used Worldwide</span>
-    </div>
-  </section>
-  <div class="seo-intro">
-    <p><strong>Universal Converter Hub</strong> is your all‑in‑one platform for free online tools. Easily convert PDF to Word, convert images, compress files, generate QR codes, and more — all from your browser. No downloads, no registration, just instant results.</p>
-  </div>
-  <main id="main-content">
-    <h2 class="section-title">All-in-One Online Tools</h2>
-    <div class="card-grid">
-      <div class="card"><div class="card-header"><i class="fas fa-file-pdf"></i><h3>PDF to Word Converter</h3></div><p>Convert PDF files to editable Word documents with accurate formatting.</p><a href="pdf-to-word.html" class="btn">Try Now</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-edit"></i><h3>Image Converter</h3></div><p>Convert, crop, resize, and transform images with professional tools online.</p><a href="image-converter.html" class="btn">Convert Image</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-compress-alt"></i><h3>Image Compressor</h3></div><p>Reduce image file size without losing quality.</p><a href="image-compressor.html" class="btn">Compress</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-qrcode"></i><h3>QR Code Generator</h3></div><p>Create custom QR codes for URLs, text, and contact info.</p><a href="qr-code-generator.html" class="btn">Generate</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-key"></i><h3>Password Generator</h3></div><p>Generate strong, secure random passwords instantly.</p><a href="password-generator.html" class="btn">Generate</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-volume-up"></i><h3>Text to Speech</h3></div><p>Convert any text to natural-sounding speech.</p><a href="text-to-speech.html" class="btn">Listen</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-language"></i><h3>Language Translator</h3></div><p>Translate text between 100+ languages with no length limit.</p><a href="language-translator.html" class="btn">Translate</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-table"></i><h3>CSV to Excel Converter</h3></div><p>Convert CSV files to Excel (XLSX) and vice versa.</p><a href="csv-to-excel.html" class="btn">Convert</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-file-excel"></i><h3>Excel to PDF Converter</h3></div><p>Turn Excel spreadsheets into high-quality PDF documents.</p><a href="excel-to-pdf.html" class="btn">Convert</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-ruler-combined"></i><h3>Unit Converter</h3></div><p>Convert length, weight, volume, temperature, area, speed, data, pressure.</p><a href="unit-converter.html" class="btn">Convert Units</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-map-marker-alt"></i><h3>Land / Plot Calculator</h3></div><p>Calculate plot sizes, acres to plots, hectares, square meters.</p><a href="land-calculator.html" class="btn">Calculate</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-draw-polygon"></i><h3>DWG to KMZ Converter</h3></div><p>Create Google Earth markers from DWG files or UTM coordinates.</p><a href="dwg-to-kmz.html" class="btn">Convert</a></div>
-      <div class="card"><div class="card-header"><i class="fas fa-dollar-sign"></i><h3>Currency Converter</h3></div><p>Live exchange rates, time zone converter, date difference calculator.</p><a href="currency-converter.html" class="btn">Convert</a></div>
-    </div>
-    <div class="why-choose">
-      <h2>Why Choose Universal Converter Hub?</h2>
-      <div class="features-grid">
-        <div class="feature-item"><i class="fas fa-cloud-upload-alt"></i><h3>Fast Cloud Processing</h3><p>All conversions happen in the cloud – no waiting, no slowdowns.</p></div>
-        <div class="feature-item"><i class="fas fa-trash-alt"></i><h3>Secure File Handling</h3><p>Files are automatically deleted after processing. Your privacy is protected.</p></div>
-        <div class="feature-item"><i class="fas fa-mobile-alt"></i><h3>Works on Any Device</h3><p>Mobile, tablet, desktop – our tools are fully responsive.</p></div>
-        <div class="feature-item"><i class="fas fa-download"></i><h3>No Software Installation</h3><p>100% browser-based. Nothing to download or install.</p></div>
-        <div class="feature-item"><i class="fas fa-gem"></i><h3>Free Forever</h3><p>All tools are completely free with no hidden costs.</p></div>
       </div>
     </div>
-    <section class="faq-accordion">
-      <h2>Frequently Asked Questions</h2>
-      <details class="faq-item"><summary>Do I need to create an account?</summary><div class="faq-answer"><p>No. All our tools are completely free and require no registration.</p></div></details>
-      <details class="faq-item"><summary>Is my data secure?</summary><div class="faq-answer"><p>Yes. Files are processed securely and automatically deleted after conversion.</p></div></details>
-      <details class="faq-item"><summary>Are there any file size limits?</summary><div class="faq-answer"><p>Most tools accept files up to 50MB. Larger files may take longer to process.</p></div></details>
-      <details class="faq-item"><summary>Can I use these tools on my phone?</summary><div class="faq-answer"><p>Absolutely. Our website is fully responsive and works on all devices.</p></div></details>
-      <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
-    </section>
-    <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-  </main>
+  </div>
+  <!-- END DARK SECTION -->
 
-  <!-- ── GET THE APP SECTION ──────────────────────────────── -->
-  <div class="app-download-section" id="get-app"></div>
+  <!-- ══ MAIN CONTENT ════════════════════════════════════════ -->
 
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
+  <!-- Search -->
+  <div style="padding:40px 0 0;">
+    <div class="home-search-wrap">
+      <i class="fas fa-search home-search-icon"></i>
+      <input type="text" class="home-search" id="homeSearch" placeholder="Search 100+ tools... e.g. PDF, coordinates, resume, OCR">
+      <button class="home-search-clear" id="homeSearchClear">✕</button>
+    </div>
+  </div>
+
+  <!-- No results -->
+  <div class="no-results" id="noResults">
+    <div style="font-size:2rem;margin-bottom:12px;">🔍</div>
+    <p>No tools found for "<strong id="noResultsQuery"></strong>"</p>
+    <p style="font-size:.85rem;margin-top:8px;">Try a different keyword like "PDF", "image" or "coordinates"</p>
+  </div>
+
+  <!-- AdSense top -->
+  <div class="ch-ad-zone" id="adTop">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Popular Tools -->
+  <section id="sectionPopular">
+    <div class="ch-section-head">
+      <h2 class="ch-section-title">⭐ Popular Tools</h2>
+      <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener" class="ch-section-link">View all tools →</a>
+    </div>
+    <div class="popular-scroll" id="toolGrid">
+
+      <a href="pdf-to-word.html" class="ch-tool-card" data-keywords="pdf word convert docx document">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">📄</div>
+        <div class="ch-tool-card-name">PDF to Word</div>
+        <div class="ch-tool-card-desc">Convert PDF files to editable Word documents.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-popular">Popular</span>
+      </a>
+
+      <a href="dwg-to-kmz.html" class="ch-tool-card" data-keywords="dwg kmz utm google earth autocad coordinates survey">
+        <div class="ch-tool-card-icon" style="background:#ccfbf1;">🗺</div>
+        <div class="ch-tool-card-name">DWG to KMZ</div>
+        <div class="ch-tool-card-desc">Convert AutoCAD DWG files to KMZ for Google Earth.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+      <a href="image-compressor.html" class="ch-tool-card" data-keywords="image compress reduce jpg png webp size">
+        <div class="ch-tool-card-icon" style="background:#ede9fe;">🗃</div>
+        <div class="ch-tool-card-name">Image Compressor</div>
+        <div class="ch-tool-card-desc">Compress images without losing quality.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+      <a href="file-compressor.html" class="ch-tool-card" data-keywords="compress pdf file zip reduce size">
+        <div class="ch-tool-card-icon" style="background:#fef3c7;">📦</div>
+        <div class="ch-tool-card-name">Compress PDF</div>
+        <div class="ch-tool-card-desc">Reduce PDF file size online instantly.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-hot">Hot</span>
+      </a>
+
+      <a href="unit-converter.html" class="ch-tool-card" data-keywords="unit convert length weight temperature area speed">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">📐</div>
+        <div class="ch-tool-card-name">Unit Converter</div>
+        <div class="ch-tool-card-desc">Convert between units instantly.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Browse by Category -->
+  <section style="margin-top:56px;" id="sectionCategories">
+    <div class="ch-section-head">
+      <h2 class="ch-section-title">Browse Tools By Category</h2>
+    </div>
+    <div class="ch-cat-grid">
+
+      <div class="ch-cat-card" style="border-top:3px solid #2563eb;">
+        <div class="ch-cat-card-icon" style="background:#eff6ff;">📁</div>
+        <div class="ch-cat-card-title">File Tools</div>
+        <div class="ch-cat-count">25+ tools</div>
+        <div class="ch-cat-card-desc">Tools for documents, compression, and file conversions including PDF, Word, Excel and more.</div>
+        <a href="pdf-to-word.html" class="ch-cat-explore">Explore →</a>
+      </div>
+
+      <div class="ch-cat-card" style="border-top:3px solid #0f766e;">
+        <div class="ch-cat-card-icon" style="background:#f0fdfa;">🌐</div>
+        <div class="ch-cat-card-title">Geospatial Tools</div>
+        <div class="ch-cat-count">15+ tools</div>
+        <div class="ch-cat-card-desc">Convert and transform geospatial files and coordinates. NNO, Minna, UTM, WGS84 and 31 countries.</div>
+        <a href="coordinate-converter.html" class="ch-cat-explore">Explore →</a>
+      </div>
+
+      <div class="ch-cat-card" style="border-top:3px solid #7c3aed;">
+        <div class="ch-cat-card-icon" style="background:#f5f3ff;">🎨</div>
+        <div class="ch-cat-card-title">Image Tools</div>
+        <div class="ch-cat-count">20+ tools</div>
+        <div class="ch-cat-card-desc">Convert, resize, compress and edit images. AI background removal, OCR and more.</div>
+        <a href="image-editor.html" class="ch-cat-explore">Explore →</a>
+      </div>
+
+      <div class="ch-cat-card" style="border-top:3px solid #d97706;">
+        <div class="ch-cat-card-icon" style="background:#fffbeb;">🔄</div>
+        <div class="ch-cat-card-title">Converters</div>
+        <div class="ch-cat-count">30+ tools</div>
+        <div class="ch-cat-card-desc">Unit, currency, data and other converters. Resume builder, loan calculator and more.</div>
+        <a href="unit-converter.html" class="ch-cat-explore">Explore →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- All Tools Grid -->
+  <section style="margin-top:56px;" id="sectionAll">
+    <div class="ch-section-head">
+      <h2 class="ch-section-title">All Tools</h2>
+    </div>
+    <div class="ch-tool-grid" id="allToolsGrid">
+
+      <!-- FILE TOOLS -->
+      <a href="pdf-to-word.html" class="ch-tool-card" data-keywords="pdf word convert docx document">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">📄</div>
+        <div class="ch-tool-card-name">PDF to Word</div>
+        <div class="ch-tool-card-desc">Convert PDF to editable Word docs.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-popular">Popular</span>
+      </a>
+      <a href="word-to-pdf.html" class="ch-tool-card" data-keywords="word pdf docx convert document">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">📝</div>
+        <div class="ch-tool-card-name">Word to PDF</div>
+        <div class="ch-tool-card-desc">Convert Word documents to PDF.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="pdf-merge-split.html" class="ch-tool-card" data-keywords="pdf merge split combine pages separate">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">🔀</div>
+        <div class="ch-tool-card-name">PDF Merge & Split</div>
+        <div class="ch-tool-card-desc">Merge multiple PDFs or split into pages.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="image-to-pdf.html" class="ch-tool-card" data-keywords="image jpg png pdf convert combine">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">🖼</div>
+        <div class="ch-tool-card-name">Image to PDF</div>
+        <div class="ch-tool-card-desc">Combine JPG/PNG images into one PDF.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-new">New</span>
+      </a>
+      <a href="excel-to-pdf.html" class="ch-tool-card" data-keywords="excel pdf spreadsheet convert xlsx">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">📊</div>
+        <div class="ch-tool-card-name">Excel to PDF</div>
+        <div class="ch-tool-card-desc">Convert Excel spreadsheets to PDF.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="ocr-image-to-text.html" class="ch-tool-card" data-keywords="ocr text image extract scan photo">
+        <div class="ch-tool-card-icon" style="background:#ede9fe;">🔎</div>
+        <div class="ch-tool-card-name">OCR Image to Text</div>
+        <div class="ch-tool-card-desc">Extract text from images and scans.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-new">New</span>
+      </a>
+      <a href="file-compressor.html" class="ch-tool-card" data-keywords="compress file pdf image zip reduce size">
+        <div class="ch-tool-card-icon" style="background:#fef3c7;">📦</div>
+        <div class="ch-tool-card-name">File Compressor</div>
+        <div class="ch-tool-card-desc">Compress PDFs, images and ZIPs.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="csv-to-excel.html" class="ch-tool-card" data-keywords="csv excel convert spreadsheet table">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">🗂</div>
+        <div class="ch-tool-card-name">CSV to Excel</div>
+        <div class="ch-tool-card-desc">Convert CSV files to Excel and back.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+      <!-- GEO TOOLS -->
+      <a href="coordinate-converter.html" class="ch-tool-card" data-keywords="coordinate utm wgs84 minna nno nigeria survey gis convert">
+        <div class="ch-tool-card-icon" style="background:#ccfbf1;">🧭</div>
+        <div class="ch-tool-card-name">Coordinate Converter</div>
+        <div class="ch-tool-card-desc">NNO↔UTM↔WGS84↔Minna. 31 countries.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-popular">Popular</span>
+      </a>
+      <a href="dwg-to-kmz.html" class="ch-tool-card" data-keywords="dwg kmz utm kmz google earth autocad">
+        <div class="ch-tool-card-icon" style="background:#ccfbf1;">🗺</div>
+        <div class="ch-tool-card-name">UTM to KMZ</div>
+        <div class="ch-tool-card-desc">Convert UTM coordinates to Google Earth KMZ.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="land-calculator.html" class="ch-tool-card" data-keywords="land plot area acres hectares square metres calculate">
+        <div class="ch-tool-card-icon" style="background:#ccfbf1;">🏞</div>
+        <div class="ch-tool-card-name">Land Calculator</div>
+        <div class="ch-tool-card-desc">Calculate land area, plots, acres and hectares.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+      <!-- IMAGE TOOLS -->
+      <a href="background-remover.html" class="ch-tool-card" data-keywords="background remove transparent png ai photo">
+        <div class="ch-tool-card-icon" style="background:#ede9fe;">✂️</div>
+        <div class="ch-tool-card-name">Background Remover</div>
+        <div class="ch-tool-card-desc">AI background removal. Transparent PNG.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-hot">Hot</span>
+      </a>
+      <a href="image-editor.html" class="ch-tool-card" data-keywords="image edit crop resize filter photo">
+        <div class="ch-tool-card-icon" style="background:#ede9fe;">🎨</div>
+        <div class="ch-tool-card-name">Image Editor</div>
+        <div class="ch-tool-card-desc">Crop, resize, rotate and filter images.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="image-compressor.html" class="ch-tool-card" data-keywords="image compress reduce jpg png size">
+        <div class="ch-tool-card-icon" style="background:#ede9fe;">🗃</div>
+        <div class="ch-tool-card-name">Image Compressor</div>
+        <div class="ch-tool-card-desc">Reduce image file size without quality loss.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="youtube-thumbnail-downloader.html" class="ch-tool-card" data-keywords="youtube thumbnail download video">
+        <div class="ch-tool-card-icon" style="background:#fee2e2;">📺</div>
+        <div class="ch-tool-card-name">YouTube Thumbnail</div>
+        <div class="ch-tool-card-desc">Download YouTube thumbnails in full resolution.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+      <!-- CONVERTERS & MORE -->
+      <a href="resume-builder.html" class="ch-tool-card" data-keywords="resume cv builder template pdf word career">
+        <div class="ch-tool-card-icon" style="background:#dbeafe;">📋</div>
+        <div class="ch-tool-card-name">Resume Builder</div>
+        <div class="ch-tool-card-desc">Build a professional resume. PDF + Word.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-new">New</span>
+      </a>
+      <a href="loan-calculator.html" class="ch-tool-card" data-keywords="loan mortgage auto personal calculator payment finance">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">💰</div>
+        <div class="ch-tool-card-name">Loan Calculator</div>
+        <div class="ch-tool-card-desc">Mortgage, auto and personal loan calculator.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+        <span class="ch-tool-badge ch-tool-badge-popular">Popular</span>
+      </a>
+      <a href="currency-converter.html" class="ch-tool-card" data-keywords="currency exchange rate naira dollar pound euro">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">💱</div>
+        <div class="ch-tool-card-name">Currency Converter</div>
+        <div class="ch-tool-card-desc">Live exchange rates. 150+ currencies incl. NGN.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="unit-converter.html" class="ch-tool-card" data-keywords="unit convert length weight temperature area speed">
+        <div class="ch-tool-card-icon" style="background:#d1fae5;">📐</div>
+        <div class="ch-tool-card-name">Unit Converter</div>
+        <div class="ch-tool-card-desc">Length, weight, temperature, area and more.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="language-translator.html" class="ch-tool-card" data-keywords="translate language text 100 languages">
+        <div class="ch-tool-card-icon" style="background:#dbeafe;">🌐</div>
+        <div class="ch-tool-card-name">Language Translator</div>
+        <div class="ch-tool-card-desc">Translate text between 100+ languages.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="text-to-speech.html" class="ch-tool-card" data-keywords="text speech audio listen voice tts">
+        <div class="ch-tool-card-icon" style="background:#dbeafe;">🔊</div>
+        <div class="ch-tool-card-name">Text to Speech</div>
+        <div class="ch-tool-card-desc">Convert text to natural-sounding speech.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="qr-code-generator.html" class="ch-tool-card" data-keywords="qr code generate url text contact scan">
+        <div class="ch-tool-card-icon" style="background:#fef3c7;">📱</div>
+        <div class="ch-tool-card-name">QR Code Generator</div>
+        <div class="ch-tool-card-desc">Generate QR codes for URLs, text and more.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+      <a href="password-generator.html" class="ch-tool-card" data-keywords="password generator secure random strong">
+        <div class="ch-tool-card-icon" style="background:#fef3c7;">🔐</div>
+        <div class="ch-tool-card-name">Password Generator</div>
+        <div class="ch-tool-card-desc">Generate strong, secure random passwords.</div>
+        <div class="ch-tool-card-arrow">Use tool →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Ad mid -->
+  <div class="ch-ad-zone" style="margin-top:40px;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- How It Works -->
+  <section style="margin-top:56px;" id="sectionHow">
+    <div class="ch-section-head" style="justify-content:center;text-align:center;flex-direction:column;gap:8px;">
+      <h2 class="ch-section-title">How It Works</h2>
+      <p style="color:var(--text-muted);font-size:.9rem;">4 simple steps to convert anything</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:0;flex-wrap:wrap;justify-content:center;">
+
+      <div class="ch-how-card" style="max-width:220px;">
+        <div class="ch-how-num">1</div>
+        <div style="font-size:2rem;margin-bottom:12px;">🔧</div>
+        <div class="ch-how-title">Choose a tool</div>
+        <div class="ch-how-desc">Select the tool you need from our collection.</div>
+      </div>
+      <div class="how-connector">→</div>
+      <div class="ch-how-card" style="max-width:220px;">
+        <div class="ch-how-num">2</div>
+        <div style="font-size:2rem;margin-bottom:12px;">⬆️</div>
+        <div class="ch-how-title">Upload or input</div>
+        <div class="ch-how-desc">Upload your file or enter the data required.</div>
+      </div>
+      <div class="how-connector">→</div>
+      <div class="ch-how-card" style="max-width:220px;">
+        <div class="ch-how-num">3</div>
+        <div style="font-size:2rem;margin-bottom:12px;">⚙️</div>
+        <div class="ch-how-title">Convert</div>
+        <div class="ch-how-desc">We process your file instantly and securely.</div>
+      </div>
+      <div class="how-connector">→</div>
+      <div class="ch-how-card" style="max-width:220px;">
+        <div class="ch-how-num">4</div>
+        <div style="font-size:2rem;margin-bottom:12px;">⬇️</div>
+        <div class="ch-how-title">Download result</div>
+        <div class="ch-how-desc">Download your converted file or view results.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trust section -->
+  <div class="ch-trust" id="sectionTrust">
+    <div class="ch-trust-left">
+      <div class="ch-trust-title">Trusted by users worldwide</div>
+      <div class="ch-trust-desc">ConverterHub is used by students, professionals and businesses in 190+ countries. All tools are free, fast and completely private — your files never leave your device.</div>
+    </div>
+    <div class="ch-trust-stats">
+      <div>
+        <div class="ch-trust-stat-num">10M+</div>
+        <div class="ch-trust-stat-lbl">Users</div>
+      </div>
+      <div>
+        <div class="ch-trust-stat-num">190+</div>
+        <div class="ch-trust-stat-lbl">Countries</div>
+      </div>
+      <div>
+        <div class="ch-trust-stat-num">100%</div>
+        <div class="ch-trust-stat-lbl">Secure</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- From Our Blog -->
+  <section style="margin-top:56px;" id="sectionBlog">
+    <div class="ch-section-head">
+      <h2 class="ch-section-title">📰 From Our Blog</h2>
+      <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener" class="ch-section-link">View all posts →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+
+      <a href="https://tivorahub.blogspot.com/2026/06/20-legitimate-ways-to-make-money-from.html" target="_blank" rel="noopener" class="ch-tool-card" style="text-decoration:none;">
+        <div style="background:#fef3c7;border-radius:10px;padding:12px;font-size:1.5rem;margin-bottom:8px;display:inline-block;">💰</div>
+        <div class="ch-tool-card-name">20 Legitimate Ways to Make Money From Home in 2026</div>
+        <div class="ch-tool-card-desc">No scams, just real methods that are actually working for people in 2026.</div>
+        <div class="ch-tool-card-arrow" style="margin-top:8px;">Read on Tivora Hub →</div>
+      </a>
+
+      <a href="https://tivorahub.blogspot.com/2026/06/how-to-make-money-online-with-no.html" target="_blank" rel="noopener" class="ch-tool-card" style="text-decoration:none;">
+        <div style="background:#dbeafe;border-radius:10px;padding:12px;font-size:1.5rem;margin-bottom:8px;display:inline-block;">🚀</div>
+        <div class="ch-tool-card-name">How to Make Money Online With No Experience in 2026</div>
+        <div class="ch-tool-card-desc">The most honest, practical guide for absolute beginners starting from zero.</div>
+        <div class="ch-tool-card-arrow" style="margin-top:8px;">Read on Tivora Hub →</div>
+      </a>
+
+      <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener" class="ch-tool-card" style="text-decoration:none;background:linear-gradient(135deg,#1e3a8a,#4c1d95);color:#fff;border-color:transparent;">
+        <div style="font-size:2rem;margin-bottom:12px;">📖</div>
+        <div class="ch-tool-card-name" style="color:#fff;">More on Tivora Hub</div>
+        <div class="ch-tool-card-desc" style="color:rgba(255,255,255,.75);">Productivity tips, side hustles, AI tools and strategies for entrepreneurs and freelancers.</div>
+        <div class="ch-tool-card-arrow" style="color:#93c5fd;margin-top:8px;">Visit Tivora Hub →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ch-faq" id="sectionFaq">
+    <div class="ch-section-head" style="justify-content:center;text-align:center;flex-direction:column;">
+      <h2 class="ch-section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="ch-card">
+      <div class="ch-faq-item">
+        <button class="ch-faq-q">Are all tools on ConverterHub free? <span class="fq-icon">+</span></button>
+        <div class="ch-faq-a"><p>Yes. Every tool is completely free with no registration, no watermark and no hidden fees. Forever.</p></div>
+      </div>
+      <div class="ch-faq-item">
+        <button class="ch-faq-q">Do my files get uploaded to a server? <span class="fq-icon">+</span></button>
+        <div class="ch-faq-a"><p>No. All processing happens entirely in your browser. Your files never leave your device and are never sent to any server. We physically do not have file processing servers.</p></div>
+      </div>
+      <div class="ch-faq-item">
+        <button class="ch-faq-q">Do the tools work on mobile phones? <span class="fq-icon">+</span></button>
+        <div class="ch-faq-a"><p>Yes. All tools are fully responsive and work on Android, iOS, tablets and desktops. Our tools also work inside Android WebView applications.</p></div>
+      </div>
+      <div class="ch-faq-item">
+        <button class="ch-faq-q">What is the coordinate converter used for? <span class="fq-icon">+</span></button>
+        <div class="ch-faq-a"><p>It converts between Nigerian NNO/Minna Datum coordinates and WGS84/UTM, supporting all three Nigeria belts and coordinate systems for 31 countries worldwide. Results match SivanDesign and Mobile Topographer Pro accuracy.</p></div>
+      </div>
+      <div class="ch-faq-item">
+        <button class="ch-faq-q">How many languages does ConverterHub support? <span class="fq-icon">+</span></button>
+        <div class="ch-faq-a"><p>ConverterHub supports 8 interface languages: English, French, Spanish, German, Portuguese, Arabic, Chinese and Hindi. Select your preferred language from the globe icon in the header. Your choice is saved automatically.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom ad -->
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+</div><!-- end .ch-container -->
+
+<script src="js/common.js"></script>
 <script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
-<script>
-  const darkToggle = document.getElementById('darkToggle');
-  if (darkToggle) {
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
-    });
-    darkToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); darkToggle.click(); }
-    });
+  // ── Hero file upload redirect ────────────────────────────────
+  function heroHandleFile(input) {
+    if (!input.files[0]) return;
+    const name = input.files[0].name.toLowerCase();
+    let dest = 'pdf-to-word.html';
+    if (name.endsWith('.docx') || name.endsWith('.doc')) dest = 'word-to-pdf.html';
+    else if (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.webp')) dest = 'image-to-pdf.html';
+    else if (name.endsWith('.pdf')) dest = 'pdf-to-word.html';
+    window.location.href = dest;
   }
-  (function() {
-    const modal = document.getElementById('feedbackModal');
-    const feedbackBtn = document.getElementById('feedbackBtn');
-    const closeModal = document.getElementById('closeModal');
-    const supportLink = document.getElementById('supportLink');
-    function openModal(e) { if (e) e.preventDefault(); if (modal) modal.style.display = 'flex'; }
-    function closeModalFunc() { if (modal) modal.style.display = 'none'; }
-    if (feedbackBtn) feedbackBtn.addEventListener('click', openModal);
-    if (supportLink) supportLink.addEventListener('click', openModal);
-    if (closeModal) closeModal.addEventListener('click', closeModalFunc);
-    window.addEventListener('click', (e) => { if (e.target === modal) closeModalFunc(); });
-  })();
+
+  // ── Search ─────────────────────────────────────────────────
+  const searchInput  = document.getElementById('homeSearch');
+  const searchClear  = document.getElementById('homeSearchClear');
+  const allCards     = document.querySelectorAll('#allToolsGrid .ch-tool-card');
+  const noResults    = document.getElementById('noResults');
+  const noResultsQ   = document.getElementById('noResultsQuery');
+  const popularSec   = document.getElementById('sectionPopular');
+  const catSec       = document.getElementById('sectionCategories');
+  const adTop        = document.getElementById('adTop');
+
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    searchClear.style.display = q ? 'block' : 'none';
+
+    if (!q) {
+      allCards.forEach(c => c.style.display = '');
+      noResults.style.display = 'none';
+      popularSec.style.display = '';
+      catSec.style.display = '';
+      adTop.style.display = '';
+      return;
+    }
+
+    popularSec.style.display = 'none';
+    catSec.style.display = 'none';
+    adTop.style.display = 'none';
+
+    let found = 0;
+    allCards.forEach(card => {
+      const text = (card.dataset.keywords + ' ' + card.querySelector('.ch-tool-card-name').textContent + ' ' + card.querySelector('.ch-tool-card-desc').textContent).toLowerCase();
+      const match = text.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) found++;
+    });
+
+    if (found === 0) {
+      noResults.style.display = 'block';
+      noResultsQ.textContent = this.value.trim();
+    } else {
+      noResults.style.display = 'none';
+    }
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    allCards.forEach(c => c.style.display = '');
+    noResults.style.display = 'none';
+    popularSec.style.display = '';
+    catSec.style.display = '';
+    adTop.style.display = '';
+    searchInput.focus();
+  });
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
-<script>
-// ── GET THE APP — smart download section ───────────────────
-// Hidden inside the app (ConverterHubApp User-Agent).
-// Android: Play Store (primary) + APK (secondary)
-// iPhone: PWA instructions
-// Desktop: Play Store + APK
-(function() {
-  var isInApp = /ConverterHubApp/i.test(navigator.userAgent);
-  var section = document.getElementById('get-app');
-  if (isInApp || !section) return;
 
-  var isAndroid = /android/i.test(navigator.userAgent);
-  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-
-  var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.converterhub.converterhub';
-  var APK_URL  = 'https://github.com/Dannynova/universal-converter-hub/releases/download/v1.1.0/ConverterHub-v1.0.apk.apk';
-
-  var iconSvg =
-    '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="48" height="48" rx="14" fill="url(#dlG)"/>' +
-      '<g stroke="#fff" stroke-width="2.5" stroke-linecap="round">' +
-        '<line x1="14" y1="17" x2="26" y2="17"/>' +
-        '<line x1="14" y1="24" x2="23" y2="24"/>' +
-        '<line x1="14" y1="31" x2="21" y2="31"/>' +
-      '</g>' +
-      '<path d="M26 12 L32 17 L26 22" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '<circle cx="33" cy="33" r="5" fill="none" stroke="#fff" stroke-width="2.5"/>' +
-      '<line x1="36.5" y1="36.5" x2="40" y2="40" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>' +
-      '<defs><linearGradient id="dlG" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">' +
-        '<stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/>' +
-      '</linearGradient></defs>' +
-    '</svg>';
-
-  var playBtn =
-    '<a href="' + PLAY_URL + '" target="_blank" rel="noopener" class="dl-btn dl-btn-play">' +
-      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none">' +
-        '<path d="M3 3.5L13.5 12 3 20.5V3.5Z" fill="#34A853"/>' +
-        '<path d="M3 3.5L13.5 12 8.5 17 3 3.5Z" fill="#FBBC04"/>' +
-        '<path d="M3 20.5L8.5 17 13.5 12 3 20.5Z" fill="#EA4335"/>' +
-        '<path d="M13.5 12L21 7.5 21 16.5 13.5 12Z" fill="#4285F4"/>' +
-        '<path d="M13.5 12L21 7.5 8.5 7 13.5 12Z" fill="#FBBC04"/>' +
-      '</svg>' +
-      '<div class="dl-btn-label"><small>Get it on</small>Google Play</div>' +
-    '</a>';
-
-  var apkBtn =
-    '<a href="' + APK_URL + '" class="dl-btn dl-btn-apk" download>' +
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>' +
-        '<polyline points="7 10 12 15 17 10"/>' +
-        '<line x1="12" y1="15" x2="12" y2="3"/>' +
-      '</svg>' +
-      '<div class="dl-btn-label"><small>Direct download</small>Download APK</div>' +
-    '</a>';
-
-  var iosBox =
-    '<div style="background:rgba(255,255,255,0.12);border-radius:14px;padding:14px 18px;text-align:center;border:1.5px solid rgba(255,255,255,0.3);">' +
-      '<div style="font-size:1.5rem;margin-bottom:6px;">📱</div>' +
-      '<div style="font-weight:600;margin-bottom:4px;">Install on iPhone</div>' +
-      '<div style="font-size:0.82rem;opacity:0.85;">Tap <b>Share</b> then <b>Add to Home Screen</b> in Safari</div>' +
-    '</div>';
-
-  var buttons = isIOS ? iosBox : (playBtn + apkBtn);
-
-  section.innerHTML =
-    '<div class="app-download-inner">' +
-      '<div class="app-download-left">' +
-        '<div class="app-icon-wrap">' + iconSvg + '</div>' +
-        '<div class="app-download-text">' +
-          '<h2>Get the ConverterHub App</h2>' +
-          '<p>All 16+ tools in your pocket. Free, fast &amp; no sign-up.</p>' +
-          '<div class="app-stars">⭐⭐⭐⭐⭐ <span>Now live on Android</span></div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="app-download-buttons">' + buttons + '</div>' +
-    '</div>';
-})();
-</script>
-<script src="/pwa-init.js"></script>
 </body>
 </html>

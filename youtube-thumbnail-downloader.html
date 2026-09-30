@@ -1,1069 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
-  <script>
-    // ── APP DETECTION ─────────────────────────────────────────
-    // True only when this page is loaded inside the ConverterHub
-    // mobile app (identified by its custom User-Agent). Lets us
-    // skip Adsterra ad scripts inside the app, since some of its
-    // lower-tier formats can serve deceptive/scam ads that risk
-    // Play Store rejection. Normal website visitors are completely
-    // unaffected — this only activates inside the app itself.
-    function isConverterHubApp() {
-      return navigator.userAgent.indexOf('ConverterHubApp') !== -1;
-    }
-    function loadAdIfNotInApp(loadAdFn) {
-      if (isConverterHubApp()) return;
-      loadAdFn();
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Thumbnail Downloader – Batch, HD & CSV Export | Universal Converter Hub</title>
-  <meta name="description" content="Download YouTube thumbnails in HD quality (1280x720). Supports single videos, batch URLs, CSV export, and ZIP download. Free, no watermark, no registration.">
-  <meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail grabber, extract youtube thumbnail, batch thumbnail download, copy youtube thumbnail">
+  <title>YouTube Thumbnail Downloader – HD, Batch & ZIP Download | ConverterHub</title>
+  <meta name="description" content="Download YouTube thumbnails in HD quality (1280×720). Single video or batch up to 100 URLs. 5 resolutions, ZIP download, CSV export, copy to clipboard. Free, no signup.">
+  <meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail grabber, hd thumbnail download, batch youtube thumbnail, youtube shorts thumbnail">
   <link rel="canonical" href="https://converterhub.com.ng/youtube-thumbnail-downloader.html">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Cpath d='M20 24h24v4H20v-4zm0 8h16v4H20v-4zm0 8h24v4H20v-4zM40 16l8 8-8 8' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='44' cy='44' r='6' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M48 48l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-  
-  <!-- Google AdSense Code -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213"
-     crossorigin="anonymous"></script>
-
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:title" content="YouTube Thumbnail Downloader – HD Batch Download | ConverterHub">
+  <meta property="og:description" content="Download YouTube thumbnails in HD. Single or batch up to 100 URLs. ZIP, CSV, copy to clipboard. Free.">
+  <meta property="og:url" content="https://converterhub.com.ng/youtube-thumbnail-downloader.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConverterHub">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23dc2626'/%3E%3Cpath d='M20 16l12 8-12 8z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <style>
-    /* Additional styles – refined for readability */
-    .hero {
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-      border-radius: 32px;
-      padding: 2rem 2rem;
-      margin: 2rem 0;
-      text-align: center;
-      border: 1px solid var(--border-light);
-    }
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, var(--accent), #a855f7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.01em;
-    }
-    .hero p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      max-width: 800px;
-      margin: 0 auto 1.25rem;
-      line-height: 1.5;
-      font-weight: 400;
-    }
-    .hero-intro {
-      max-width: 700px;
-      margin: 1rem auto 1.5rem;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-    }
-    .trust-badge {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-      margin-top: 1rem;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    .feature-card {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 1.2rem;
-      text-align: center;
-      border: 1px solid var(--border-light);
-    }
-    .feature-card i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    .feature-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-    .feature-card p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      line-height: 1.4;
-    }
-    .how-to-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin: 1.5rem 0;
-    }
-    .step {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 1rem;
-      text-align: center;
-      width: 160px;
-      border: 1px solid var(--border-light);
-    }
-    .step i {
-      font-size: 1.8rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    .step span {
-      font-weight: 400;
-      line-height: 1.4;
-      font-size: 0.9rem;
-    }
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-    }
-    .comparison-table th, .comparison-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border-light);
-      font-weight: 400;
-      line-height: 1.5;
-    }
-    .comparison-table th {
-      font-weight: 600;
-    }
-    .related-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin: 1.5rem 0;
-    }
-    .related-tool-card {
-      background: var(--bg-card);
-      border-radius: 40px;
-      padding: 0.5rem 1.5rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      border: 1px solid var(--border-light);
-      transition: all 0.2s;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .related-tool-card:hover {
-      background: var(--accent);
-      color: white;
-    }
-    /* Tool interface – same as other pages */
-    .tab-bar {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 0.5rem;
-    }
-    .tab-btn {
-      background: none;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: 1rem;
-    }
-    .tab-btn.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-    }
-    .batch-input {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-light);
-      background: var(--bg-secondary);
-      font-family: monospace;
-      resize: vertical;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-    .batch-actions {
-      display: flex;
-      gap: 1rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-    .results-table {
-      overflow-x: auto;
-      margin-top: 1rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border-light);
-      font-weight: 400;
-    }
-    .resolutions-cell {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .resolution-badge {
-      background: var(--accent);
-      color: white;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    .resolution-badge:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-    .single-resolutions {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .res-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
-      padding: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    /* COOL DOWNLOAD BUTTON STYLES */
-    .res-actions {
-      display: flex;
-      gap: 0.6rem;
-    }
-    .download-btn, .copy-btn {
-      background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%);
-      border: none;
-      border-radius: 40px;
-      padding: 0.5rem 1rem;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-    }
-    .download-btn i, .copy-btn i {
-      font-size: 0.9rem;
-    }
-    .download-btn:hover, .copy-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(37,99,235,0.3);
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    }
-    .download-btn:active, .copy-btn:active {
-      transform: translateY(1px);
-    }
-    .copy-btn {
-      background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
-    }
-    .copy-btn:hover {
-      background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-      box-shadow: 0 6px 14px rgba(75,85,99,0.3);
-    }
-    .thumbnail-preview {
-      text-align: center;
-      margin: 1rem 0;
-    }
-    .thumbnail-preview img {
-      max-width: 100%;
-      border-radius: 16px;
-      max-height: 200px;
-      object-fit: contain;
-    }
-    .yt-input-group {
-      display: flex;
-      gap: 1rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-    .yt-input-group input {
-      flex: 1;
-      padding: 0.8rem;
-      border-radius: 40px;
-      border: 1px solid var(--border-light);
-      background: var(--bg-secondary);
-      font-weight: 400;
-    }
-    .btn {
-      background: linear-gradient(135deg, var(--accent), #1e40af);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(37,99,235,0.3);
-    }
-    /* FAQ – matching other pages with improved readability */
-    .faq-accordion {
-      background: var(--bg-card);
-      border-radius: 24px;
-      padding: 1.5rem;
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow);
-      margin: 2rem 0;
-    }
-    .faq-accordion h2 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border-light);
-      margin-bottom: 0.5rem;
-    }
-    .faq-item summary {
-      font-weight: 600;
-      padding: 1rem 0;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1rem;
-    }
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-    .faq-item summary::after {
-      content: '\f067';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      font-size: 1rem;
-      color: var(--accent);
-      transition: transform 0.2s;
-    }
-    .faq-item[open] summary::after {
-      content: '\f068';
-    }
-    .faq-item .faq-answer {
-      padding: 0 0 1rem 0;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-weight: 400;
-    }
-    .support-link {
-      text-align: center;
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-light);
-    }
-    .support-link a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    /* Feedback button & modal – fixed and working */
-    .feedback-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, var(--accent), #1e40af);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 0.8rem 1.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
-    }
-    .feedback-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: var(--bg-secondary);
-      border-radius: 24px;
-      width: 90%;
-      max-width: 600px;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 20px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text-secondary);
-    }
-    .modal-close:hover {
-      color: var(--accent);
-    }
-    .modal iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 12px;
-    }
-    /* Adjust line-height for long texts */
-    .seo-intro p {
-      line-height: 1.6;
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-    .seo-intro h2 {
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    .use-case-item {
-      background: var(--dropzone-bg);
-      border-radius: 40px;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-  </style>
-  <!-- FAQ Schema -->
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question","name": "What thumbnail resolutions are available?","acceptedAnswer": {"@type": "Answer","text": "We offer 5 resolutions: maxresdefault (1280×720), sddefault (640×480), hqdefault (480×360), mqdefault (320×180), and default (120×90)."}},
-      {"@type": "Question","name": "Can I download thumbnails from YouTube Shorts?","acceptedAnswer": {"@type": "Answer","text": "Yes, our tool fully supports YouTube Shorts URLs."}},
-      {"@type": "Question","name": "Is this tool free?","acceptedAnswer": {"@type": "Answer","text": "Yes, 100% free. No registration, no watermark, no hidden fees."}},
-      {"@type": "Question","name": "Do I need to sign up?","acceptedAnswer": {"@type": "Answer","text": "No sign-up required. Just paste the URL and download."}},
-      {"@type": "Question","name": "Can I copy the actual thumbnail image?","acceptedAnswer": {"@type": "Answer","text": "Yes, click the Copy button and the image is copied to your clipboard. You can paste it into chat, documents, or image converters."}}
-    ]
-  }
+  {"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","url":"https://converterhub.com.ng/youtube-thumbnail-downloader.html","description":"Free YouTube thumbnail downloader. Download HD thumbnails from any YouTube video. Batch mode, ZIP download, CSV export. No signup required.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
   </script>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What thumbnail resolutions are available?","acceptedAnswer":{"@type":"Answer","text":"Five resolutions: maxresdefault (1280×720), sddefault (640×480), hqdefault (480×360), mqdefault (320×180) and default (120×90). The highest available quality is shown first."}},
+    {"@type":"Question","name":"Can I download thumbnails from YouTube Shorts?","acceptedAnswer":{"@type":"Answer","text":"Yes. YouTube Shorts URLs are fully supported. Paste the Shorts link and it works exactly like a regular video URL."}},
+    {"@type":"Question","name":"How many URLs can I process in batch mode?","acceptedAnswer":{"@type":"Answer","text":"Up to 100 YouTube URLs at once in batch mode. Results show in a table and can be downloaded as a ZIP file or exported to CSV."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No registration, no watermarks, no hidden fees."}},
+    {"@type":"Question","name":"How does the copy image button work?","acceptedAnswer":{"@type":"Answer","text":"Click Copy next to any resolution. The thumbnail image is fetched and copied to your clipboard so you can paste it into documents, chats or image editors."}},
+    {"@type":"Question","name":"Do you store or log any video data?","acceptedAnswer":{"@type":"Answer","text":"No. All processing happens in your browser. We do not store any video IDs, URLs or thumbnails on any server."}}
+  ]}
+  </script>
+  <style>
+    .tool-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start;margin-top:24px}
+    @media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+    .tool-sidebar{display:flex;flex-direction:column;gap:16px}
+
+    /* Mode tabs */
+    .mode-tabs{display:flex;gap:6px;margin-bottom:16px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:14px;padding:5px}
+    .mode-tab{flex:1;padding:10px 12px;border-radius:10px;font-size:.88rem;font-weight:600;color:var(--text-secondary);border:none;background:none;cursor:pointer;transition:all .15s;text-align:center;font-family:inherit}
+    .mode-tab.active{background:var(--bg-card);color:#dc2626;box-shadow:var(--shadow-sm)}
+    .mode-tab:hover:not(.active){color:var(--text-primary)}
+
+    /* Thumbnail preview grid */
+    .thumb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:14px;display:none}
+    .thumb-grid.show{display:grid}
+    .thumb-card{background:var(--bg-subtle);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .thumb-card img{width:100%;display:block;background:#000;min-height:80px;object-fit:cover}
+    .thumb-card-footer{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .thumb-res-label{font-size:.75rem;font-weight:700;color:var(--text-secondary)}
+    .thumb-actions{display:flex;gap:6px}
+    .thumb-action-btn{background:none;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.75rem;font-weight:600;padding:5px 10px;color:var(--text-secondary);transition:all .15s;font-family:inherit}
+    .thumb-action-btn:hover{border-color:var(--brand-primary);color:var(--brand-primary)}
+    .thumb-action-btn.dl{background:#dc2626;border-color:#dc2626;color:#fff}
+    .thumb-action-btn.dl:hover{background:#b91c1c;border-color:#b91c1c}
+
+    /* Batch table */
+    .batch-table-wrap{display:none;margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .batch-table-wrap.show{display:block}
+    .batch-scroll{overflow-x:auto;max-height:400px;overflow-y:auto}
+    .batch-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:500px}
+    .batch-table th{background:var(--bg-subtle);padding:10px 12px;text-align:left;font-weight:700;color:var(--text-secondary);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0;z-index:1}
+    .batch-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+    .batch-table tr:last-child td{border-bottom:none}
+    .batch-thumb-preview{width:80px;height:45px;object-fit:cover;border-radius:6px;background:#000}
+    .batch-dl-btn{background:#dc2626;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:.75rem;font-weight:600;cursor:pointer;font-family:inherit}
+
+    /* Error */
+    .yt-error{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;padding:10px 14px;font-size:.875rem;margin-top:10px}
+    body.dark .yt-error{background:#450a0a;border-color:#991b1b;color:#fca5a5}
+    .yt-error.show{display:block}
+
+    /* Trust pills */
+    .trust-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .trust-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:var(--bg-subtle);border:1px solid var(--border);font-size:.78rem;color:var(--text-secondary);font-weight:500}
+    .trust-pill .tp-icon{color:#dc2626}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:12px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .feature-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .feature-desc{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+
+    .steps-row{display:flex;gap:0;align-items:flex-start;flex-wrap:wrap;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:16px}
+    .step-item{text-align:center;flex:1;min-width:100px;padding:0 10px}
+    .step-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#dc2626,#ea580c);color:#fff;font-size:.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .step-icon{font-size:1.4rem;margin-bottom:6px}
+    .step-label{font-size:.78rem;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+    .step-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4}
+    .step-arrow{color:var(--text-muted);font-size:1.1rem;padding-top:20px;flex-shrink:0}
+    @media(max-width:600px){.step-arrow{display:none}}
+
+    .compare-table{width:100%;border-collapse:collapse}
+    .compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:.875rem}
+    .compare-table th{background:var(--bg-subtle);font-weight:700;color:var(--text-secondary);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+    .compare-table tr:last-child td{border-bottom:none}
+    .check-yes{color:#16a34a;font-weight:700}
+
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s}
+    .related-pill:hover{border-color:var(--brand-primary);color:var(--brand-primary);background:var(--bg-hover)}
+    .sidebar-ad{background:var(--bg-subtle);border:1px dashed var(--border);border-radius:12px;padding:12px;text-align:center;overflow:hidden}
+    .copy-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#1e293b;color:#fff;padding:10px 20px;border-radius:30px;font-size:.85rem;font-weight:600;transition:transform .3s ease;z-index:9999;pointer-events:none}
+    .copy-toast.show{transform:translateX(-50%) translateY(0)}
+  </style>
 </head>
 <body>
-<!-- Feedback Button & Modal (working) -->
-<button class="feedback-btn" id="feedbackBtn"><i class="fas fa-comment"></i> Feedback</button>
-<div id="feedbackModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" id="closeModal">&times;</span>
-    <h3>Help us improve</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3lSXhErGk4SkEtavymnSQ439gd1mxA8h0isCyYJFeRkk5mw/viewform?embedded=true" title="Feedback form"></iframe>
-  </div>
-</div>
 
-<div class="container">
-  <!-- Header -->
-  <div class="top-bar">
-    <div class="logo">
-      <a href="index.html" aria-label="Universal Converter Hub home">
-        <div class="logo-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="url(#logoGrad)"/><path d="M15 18h18v3H15v-3zm0 6h16v3H15v-4zm0 6h18v3H15v-3zM30 12l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="33" cy="33" r="4.5" stroke="white" stroke-width="2.5"/><path d="M36 36l4.5 4.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/><defs><linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg></div>
-        <div class="logo-text"><h1>Universal Converter Hub</h1><p>Convert Anything, Anywhere</p></div>
-      </a>
-    </div>
-    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;"><a href="https://flutterwave.com/donate/ffvpblnvhvvz" target="_blank" class="donate-button"><i class="fas fa-heart"></i> Donate</a><div class="dark-toggle" id="darkToggle" role="button" tabindex="0"><i class="fas fa-moon"></i> Dark</div></div>
-  </div>
+<div class="copy-toast" id="copyToast">✅ Image copied!</div>
 
-  <!-- Navigation -->
-    <div class="nav-links" aria-label="Main navigation">
-    <a href="background-remover.html" class="nav-btn">&#9986;&#65039; Background Remover</a>
-    <a href="ocr-image-to-text.html" class="nav-btn">&#128270; OCR Image to Text</a>
-    <a href="index.html" class="nav-btn">&#127968; Home</a>
-    <a href="guides.html" class="nav-btn">&#128216; Guides</a>
-    <a href="pdf-to-word.html" class="nav-btn">&#128196; PDF to Word</a>
-    <a href="pdf-merge-split.html" class="nav-btn">&#128195; PDF Merge &amp; Split</a>
-    <a href="image-to-pdf.html" class="nav-btn">&#128247; Image to PDF</a>
-    <a href="resume-builder.html" class="nav-btn">&#128221; Resume Builder</a>
-    <a href="loan-calculator.html" class="nav-btn">&#128176; Loan Calculator</a>
-    <a href="image-converter.html" class="nav-btn">&#127912; Image Converter</a>
-    <a href="image-compressor.html" class="nav-btn">&#128451;&#65039; Image Compressor</a>
-    <a href="file-compressor.html" class="nav-btn">&#128230; File Compressor</a>
-    <a href="qr-code-generator.html" class="nav-btn">&#128241; QR Code</a>
-    <a href="password-generator.html" class="nav-btn">&#128272; Password</a>
-    <a href="text-to-speech.html" class="nav-btn">&#128266; Text to Speech</a>
-    <a href="language-translator.html" class="nav-btn">&#127760; Translator</a>
-    <a href="csv-to-excel.html" class="nav-btn">&#128202; Excel</a>
-    <a href="excel-to-pdf.html" class="nav-btn">&#128196; Excel&#8594;PDF</a>
-    <a href="unit-converter.html" class="nav-btn">&#128208; Units</a>
-    <a href="land-calculator.html" class="nav-btn">&#127966;&#65039; Land</a>
-    <a href="dwg-to-kmz.html" class="nav-btn">&#128506;&#65039; DWG&#8594;KMZ</a>
-    <a href="coordinate-converter.html" class="nav-btn">&#129517; Coordinate Converter</a>
-    <a href="currency-converter.html" class="nav-btn">&#128176; Currency</a>
-    <a href="youtube-thumbnail-downloader.html" class="nav-btn active">&#128248; YouTube Thumbnail</a>
-    <a href="word-to-pdf.html" class="nav-btn">&#128221; Word to PDF</a>
-  </div>
+<main class="ch-container">
 
-  <!-- Top Ad Banner -->
-  <div class="ad-universal"><div class="ad-show-desktop"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'dcb1d6f117050a40765d2bebf40448ac','format':'iframe','height':90,'width':728,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/dcb1d6f117050a40765d2bebf40448ac/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div><div class="ad-show-mobile"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div></div>
+  <nav class="ch-breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Video Tools</span><span class="sep">›</span>
+    <span class="current">YouTube Thumbnail Downloader</span>
+  </nav>
 
-  <!-- HERO SECTION – introduction text only -->
-  <section class="hero">
-    <h1>YouTube Thumbnail Downloader – Download HD Thumbnails Instantly</h1>
-    <p>Extract and save YouTube thumbnails in up to 1280x720 resolution. Free, fast, and no sign‑up required.</p>
-    <div class="hero-intro">
-      <i class="fas fa-arrow-down"></i> Simply paste any YouTube URL in the tool below, click <strong>“Load Thumbnail”</strong>, and choose your preferred resolution. Batch download, CSV export, and ZIP support also available.
-    </div>
-    <div class="trust-badge">
-      <span><i class="fas fa-check-circle"></i> No Watermark</span>
-      <span><i class="fas fa-user-slash"></i> No Registration</span>
-      <span><i class="fas fa-mobile-alt"></i> Works on Mobile & Desktop</span>
-      <span><i class="fas fa-gem"></i> 100% Free</span>
-    </div>
-  </section>
-
-  <!-- Ad after hero -->
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-
-  <!-- SEO INTRODUCTION -->
-  <div class="seo-intro">
-    <h2>YouTube Thumbnail Downloader – Extract Thumbnails in HD</h2>
-    <p><strong>Universal Converter Hub's YouTube Thumbnail Downloader</strong> is a free online tool that lets you download thumbnails from any YouTube video in high resolution. Whether you're a content creator looking for inspiration, a marketer analysing competitors, or a designer needing assets, our tool gives you instant access to thumbnails in multiple sizes – up to 1280×720 pixels (maxres).</p>
-    <p>Simply paste any YouTube video URL – including standard watch links, youtu.be shortened URLs, and YouTube Shorts – and click “Load Thumbnail”. You'll see a preview and be able to choose from five resolutions: maxres (1280×720), sd (640×480), hq (480×360), mq (320×180), and default (120×90). For power users, we offer a <strong>batch mode</strong> where you can paste up to 100 URLs at once, get a table with video titles and all thumbnail links, export everything to CSV, or download all thumbnails as a single ZIP file.</p>
-    <p>Our service is completely free, requires no registration, and adds no watermarks. All processing happens in your browser – we never upload your data. This tool is trusted by content creators, SEO specialists, social media managers, and educators worldwide. It's fast, secure, and works on any device (mobile, tablet, desktop).</p>
-  </div>
-
-  <!-- FEATURES SECTION -->
-  <div class="feature-grid">
-    <div class="feature-card"><i class="fas fa-layer-group"></i><h3>Batch Download</h3><p>Multiple URLs → one ZIP file</p></div>
-    <div class="feature-card"><i class="fas fa-file-csv"></i><h3>CSV Export</h3><p>Export thumbnail URLs + metadata</p></div>
-    <div class="feature-card"><i class="fas fa-image"></i><h3>Copy Image</h3><p>Copy thumbnail directly to clipboard</p></div>
-    <div class="feature-card"><i class="fas fa-link"></i><h3>HD Resolutions</h3><p>5 sizes up to 1280x720</p></div>
-  </div>
-
-  <!-- TOOL INTERFACE – MAIN THUMBNAIL DOWNLOADER (FULLY FUNCTIONAL) -->
-  <div class="card">
-    <div class="tab-bar">
-      <button class="tab-btn active" data-tab="single">🎬 Single Video</button>
-      <button class="tab-btn" data-tab="batch">📦 Batch URLs</button>
-    </div>
-
-    <!-- Single Video Tab -->
-    <div id="singleTab" class="tab-content">
-      <div class="yt-input-group">
-        <input type="text" id="singleUrl" placeholder="Paste any YouTube URL (video, Shorts, youtu.be)">
-        <button class="btn" id="loadSingleBtn">Load Thumbnail</button>
+  <div class="ch-tool-header">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">📸</div>
+      <div>
+        <h1 class="ch-tool-title">YouTube Thumbnail Downloader</h1>
+        <div class="ch-tool-badges">
+          <span class="ch-badge" style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;">▶ HD 1280×720</span>
+          <span class="ch-badge ch-badge-green">✓ Batch up to 100</span>
+          <span class="ch-badge ch-badge-blue">✓ ZIP & CSV</span>
+          <span class="ch-badge ch-badge-blue">✓ Free</span>
+        </div>
       </div>
-      <div id="singlePreview" class="thumbnail-preview"></div>
-      <div id="singleResolutions" class="single-resolutions" style="display:none;"></div>
-      <div id="singleResult" class="result-area"></div>
     </div>
+    <p class="ch-tool-desc">Download YouTube thumbnails in up to 1280×720 HD quality. Single video or batch up to 100 URLs at once. Download as ZIP, export to CSV, or copy to clipboard. Supports standard YouTube links, youtu.be short URLs and YouTube Shorts.</p>
+  </div>
 
-    <!-- Batch URLs Tab -->
-    <div id="batchTab" class="tab-content" style="display:none;">
-      <textarea id="batchUrls" rows="4" class="batch-input" placeholder="Enter one YouTube URL per line&#10;https://www.youtube.com/watch?v=abc123&#10;https://youtu.be/def456&#10;https://youtube.com/shorts/ghi789"></textarea>
-      <div class="batch-actions">
-        <button class="btn" id="processBatchBtn">Process & Show Table</button>
-        <button class="btn" id="exportCsvBtn" disabled>📄 Export to CSV</button>
-        <button class="btn" id="downloadZipBtn" disabled>📦 Download All as ZIP</button>
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="tool-layout">
+    <div>
+      <div class="ch-card">
+
+        <!-- Mode tabs -->
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="single">🎬 Single Video</button>
+          <button class="mode-tab" data-mode="batch">📦 Batch URLs</button>
+        </div>
+
+        <!-- ── SINGLE MODE ──────────────────────────────────── -->
+        <div id="singlePanel">
+          <div class="ch-form-group">
+            <label class="ch-label">YouTube Video URL</label>
+            <div style="display:flex;gap:8px;">
+              <input type="url" class="ch-input" id="ytUrl"
+                placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="flex:1;">
+              <button class="ch-btn ch-btn-primary" id="loadThumbBtn">
+                <i class="fas fa-search"></i> Load
+              </button>
+            </div>
+            <div style="font-size:.75rem;color:var(--text-muted);margin-top:6px;">
+              Supports youtube.com/watch, youtu.be, YouTube Shorts (/shorts/)
+            </div>
+          </div>
+
+          <div class="yt-error" id="singleError"></div>
+
+          <!-- Thumbnail preview cards (5 resolutions) -->
+          <div class="thumb-grid" id="thumbGrid"></div>
+        </div>
+
+        <!-- ── BATCH MODE ───────────────────────────────────── -->
+        <div id="batchPanel" style="display:none;">
+          <div class="ch-form-group">
+            <label class="ch-label">YouTube URLs (one per line, up to 100)</label>
+            <textarea class="ch-textarea" id="batchUrls" rows="6"
+              placeholder="https://www.youtube.com/watch?v=XXXXXXX&#10;https://youtu.be/XXXXXXX&#10;https://www.youtube.com/shorts/XXXXXXX"></textarea>
+          </div>
+          <button class="ch-btn ch-btn-primary ch-btn-lg" id="processBatchBtn" style="width:100%;margin-bottom:10px;">
+            <i class="fas fa-table"></i> Process & Show Table
+          </button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="ch-btn ch-btn-secondary" id="exportCsvBtn" disabled>
+              <i class="fas fa-file-csv"></i> Export CSV
+            </button>
+            <button class="ch-btn ch-btn-secondary" id="downloadZipBtn" disabled>
+              <i class="fas fa-file-archive"></i> Download ZIP
+            </button>
+          </div>
+
+          <div class="yt-error" id="batchError"></div>
+
+          <div class="batch-table-wrap" id="batchTableWrap">
+            <div class="batch-scroll">
+              <table class="batch-table">
+                <thead><tr><th>Preview</th><th>Video ID</th><th>HD (1280×720)</th><th>Download</th></tr></thead>
+                <tbody id="batchTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-pills">
+          <div class="trust-pill"><span class="tp-icon">▶</span> HD 1280×720</div>
+          <div class="trust-pill"><span class="tp-icon">📦</span> Batch up to 100</div>
+          <div class="trust-pill"><span class="tp-icon">🚫</span> No watermark</div>
+          <div class="trust-pill"><span class="tp-icon">🆓</span> Free</div>
+        </div>
       </div>
-      <div id="batchProgress" class="result-area"></div>
-      <div id="batchTableContainer" class="results-table" style="display:none;"></div>
+
+      <div class="ch-ad-zone" style="margin-top:24px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- How it works -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:32px;margin-bottom:4px;">How to Download YouTube Thumbnails</h2>
+      <div class="steps-row">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-icon">📋</div><div class="step-label">Copy URL</div><div class="step-desc">Copy the YouTube video link</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-icon">📝</div><div class="step-label">Paste URL</div><div class="step-desc">Paste into the input box</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-icon">🔍</div><div class="step-label">Load</div><div class="step-desc">Click Load to see all resolutions</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-icon">⬇️</div><div class="step-label">Download</div><div class="step-desc">Save, copy or ZIP thumbnails</div></div>
+      </div>
+
+      <!-- Features -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Why Use Our YouTube Thumbnail Downloader?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fee2e2;">📐</div>
+          <div>
+            <div class="feature-title">5 HD Resolutions</div>
+            <div class="feature-desc">From 120×90 to 1280×720 HD. Choose the size you need for any use case.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#dbeafe;">📦</div>
+          <div>
+            <div class="feature-title">Batch + ZIP</div>
+            <div class="feature-desc">Process up to 100 URLs at once and download all thumbnails as a single ZIP file.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#d1fae5;">📄</div>
+          <div>
+            <div class="feature-title">CSV Export</div>
+            <div class="feature-desc">Export video IDs and all thumbnail URLs to a CSV for research or reporting.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fef3c7;">📋</div>
+          <div>
+            <div class="feature-title">Copy to Clipboard</div>
+            <div class="feature-desc">Copy any thumbnail image directly to clipboard — paste into chats, docs or editors.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compare table -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">What Our Tool Offers</h2>
+      <div class="ch-card" style="overflow:hidden;padding:0;">
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>ConverterHub</th></tr></thead>
+          <tbody>
+            <tr><td>HD thumbnail (1280×720)</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>5 resolution options</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Batch mode (up to 100 URLs)</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>ZIP download of all thumbnails</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>CSV export with metadata</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Copy image to clipboard</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>YouTube Shorts support</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>No watermarks</td><td class="check-yes">✓ Yes</td></tr>
+            <tr><td>Free, no registration</td><td class="check-yes">✓ Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="ch-card">
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What thumbnail resolutions are available? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Five resolutions: maxresdefault (1280×720), sddefault (640×480), hqdefault (480×360), mqdefault (320×180) and default (120×90). The highest available quality is shown first.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Can I download thumbnails from YouTube Shorts? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. YouTube Shorts URLs (youtube.com/shorts/...) are fully supported. Paste the Shorts link and it works exactly like a regular video URL.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How many URLs can I process in batch mode? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Up to 100 YouTube URLs at once in batch mode. Results are shown in a table and can be downloaded as a ZIP file or exported to CSV.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is this tool free? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes, completely free. No registration, no watermarks, no hidden fees.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How does the copy image button work? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Click the Copy button next to any resolution. The thumbnail image is fetched and copied to your clipboard so you can paste it into documents, chats or image editors.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Do you store any video data? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>No. All processing happens in your browser. We do not store any video IDs, URLs or thumbnails on any server.</p></div>
+        </div>
+      </div>
+
+      <!-- Related tools -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Related Tools</h2>
+      <div class="related-grid">
+        <a href="image-compressor.html"    class="related-pill">🗃 Image Compressor</a>
+        <a href="background-remover.html"  class="related-pill">✂️ Background Remover</a>
+        <a href="qr-code-generator.html"   class="related-pill">📱 QR Code Generator</a>
+        <a href="file-compressor.html"     class="related-pill">📦 File Compressor</a>
+        <a href="image-to-pdf.html"        class="related-pill">🖼 Image to PDF</a>
+        <a href="ocr-image-to-text.html"   class="related-pill">🔎 OCR Image to Text</a>
+      </div>
+
+      <div class="ch-ad-zone" style="margin-top:32px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+    <div class="tool-sidebar">
+      <div class="ch-card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">📸▶️</div>
+        <div style="font-size:1.1rem;font-weight:800;color:#dc2626;">YouTube Thumbnails</div>
+        <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">HD • Batch • ZIP • CSV</div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div><div style="font-size:1rem;font-weight:700;color:#dc2626;">5</div><div style="font-size:.72rem;color:var(--text-muted);">Resolutions</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:#dc2626;">100</div><div style="font-size:.72rem;color:var(--text-muted);">Batch limit</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:#dc2626;">HD</div><div style="font-size:.72rem;color:var(--text-muted);">1280×720</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:#dc2626;">Free</div><div style="font-size:.72rem;color:var(--text-muted);">No signup</div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-ad">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">🎯 Supported URL formats</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:.78rem;color:var(--text-secondary);font-family:monospace;background:var(--bg-subtle);border-radius:6px;padding:6px 10px;">youtube.com/watch?v=...</li>
+          <li style="font-size:.78rem;color:var(--text-secondary);font-family:monospace;background:var(--bg-subtle);border-radius:6px;padding:6px 10px;">youtu.be/...</li>
+          <li style="font-size:.78rem;color:var(--text-secondary);font-family:monospace;background:var(--bg-subtle);border-radius:6px;padding:6px 10px;">youtube.com/shorts/...</li>
+          <li style="font-size:.78rem;color:var(--text-secondary);font-family:monospace;background:var(--bg-subtle);border-radius:6px;padding:6px 10px;">youtube.com/embed/...</li>
+        </ul>
+      </div>
+
+      <div class="ch-card" style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);border-color:transparent;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">📰</div>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px;">Tivora Hub Blog</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5;">Tips, productivity hacks and ways to make money online.</div>
+        <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener"
+           class="ch-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);width:100%;justify-content:center;font-size:.82rem;">
+          Visit Blog →
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- HOW TO USE -->
-  <div class="seo-intro" style="background: var(--bg-card);">
-    <h2>How to Download YouTube Thumbnails</h2>
-    <div class="how-to-steps">
-      <div class="step"><i class="fas fa-copy"></i><br><span>1. Copy the YouTube video URL</span></div>
-      <div class="step"><i class="fas fa-paste"></i><br><span>2. Paste it into the input box</span></div>
-      <div class="step"><i class="fas fa-download"></i><br><span>3. Click “Load Thumbnail”</span></div>
-      <div class="step"><i class="fas fa-images"></i><br><span>4. Choose your preferred resolution</span></div>
-      <div class="step"><i class="fas fa-save"></i><br><span>5. Save or copy the image</span></div>
-    </div>
-    <p>For batch processing, simply switch to the “Batch URLs” tab, paste multiple URLs (one per line), and click “Process & Show Table”. You can then download individual thumbnails, export the whole list to CSV, or download all thumbnails as a ZIP file.</p>
-  </div>
+</main>
 
-  <!-- USE CASES -->
-  <div class="seo-intro">
-    <h2>Who Uses This Tool?</h2>
-    <div class="use-case-list" style="display:flex; flex-wrap:wrap; gap:0.8rem; margin:1rem 0;">
-      <span class="use-case-item">🎨 Content creators (thumbnail inspiration)</span>
-      <span class="use-case-item">📈 SEO experts (analyse competitors)</span>
-      <span class="use-case-item">🖼️ Designers (download assets)</span>
-      <span class="use-case-item">📱 Social media managers</span>
-      <span class="use-case-item">📚 Educators & researchers</span>
-    </div>
-  </div>
-
-  <!-- COMPARISON TABLE -->
-  <div class="seo-intro" style="background: var(--bg-card);">
-    <h2>What Makes Our Tool Different?</h2>
-    <table class="comparison-table">
-      <thead><tr><th>Feature</th><th>Our YouTube Thumbnail Downloader</th></tr></thead>
-      <tbody>
-        <tr><td>Batch download (multiple URLs)</td><td>✅ Yes (ZIP file)</td></tr>
-        <tr><td>CSV export for research</td><td>✅ Yes</tr>
-        <tr><td>Copy image to clipboard (not just URL)</td><td>✅ Yes</td>
-        <tr><td>No watermark</td><td>✅ Yes</td>
-        <tr><td>Supports YouTube Shorts</td><td>✅ Yes</td>
-      </tbody>
-    </table>
-    <p>Our tool is designed for speed and ease of use – no sign‑up, no hidden costs, and full client‑side processing for your privacy.</p>
-  </div>
-
-  <!-- INTERNAL LINKING -->
-  <div class="seo-intro">
-    <h2>Related Tools You Might Like</h2>
-    <div class="related-tools">
-      <a href="image-converter.html" class="related-tool-card">🎨 Image Converter</a>
-      <a href="image-compressor.html" class="related-tool-card">🗜️ Image Compressor</a>
-      <!-- Video Compressor link removed -->
-      <a href="qr-code-generator.html" class="related-tool-card">📱 QR Code Generator</a>
-    </div>
-  </div>
-
-  <!-- FAQ SECTION -->
-  <section class="faq-accordion">
-    <h2>Frequently Asked Questions</h2>
-    <details class="faq-item">
-      <summary>What thumbnail resolutions are available?</summary>
-      <div class="faq-answer"><p>We offer 5 resolutions: maxresdefault (1280×720), sddefault (640×480), hqdefault (480×360), mqdefault (320×180), and default (120×90). The highest quality is shown first.</p></div>
-    </details>
-    <details class="faq-item">
-      <summary>Can I download thumbnails from YouTube Shorts?</summary>
-      <div class="faq-answer"><p>Yes, our tool fully supports YouTube Shorts URLs. Just paste the Shorts link and it will work exactly like a regular video.</p></div>
-    </details>
-    <details class="faq-item">
-      <summary>Is this tool free?</summary>
-      <div class="faq-answer"><p>Yes, 100% free. No registration, no watermark, no hidden fees. We only show unobtrusive ads to keep the service running.</p></div>
-    </details>
-    <details class="faq-item">
-      <summary>How does the copy image button work?</summary>
-      <div class="faq-answer"><p>Click the "Copy" button next to any resolution. The thumbnail image is copied to your clipboard – you can paste it directly into chat (WhatsApp, Telegram), documents (Word, Google Docs), or image converters (Photoshop, GIMP).</p></div>
-    </details>
-    <div class="support-link"><a id="supportLink">📧 Still have questions? Contact support</a></div>
-  </section>
-
-  <!-- Bottom Ad -->
-  <div class="ad-universal"><script>
-loadAdIfNotInApp(function() {
-  atOptions = {'key':'0903b30bbe671500b3e5b3d22a792290','format':'iframe','height':250,'width':300,'params':{}};
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/0903b30bbe671500b3e5b3d22a792290/invoke.js';
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-});
-</script></div>
-  <footer>© 2026 Universal Converter Hub – All tools are free. Ads help us improve. &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy Policy</a></footer>
-</div>
-
+<!-- JSZip for batch ZIP download -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="js/common.js"></script>
 <script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/38/17/7c/38177c67823787ba4f941b47e5cf23b9.js';
-  document.body.appendChild(s);
-});
-</script>
-<script>
-  // Dark mode toggle
-  const darkToggle = document.getElementById('darkToggle');
-  darkToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    darkToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
+(function(){
+  var RESOLUTIONS = [
+    {key:'maxresdefault', label:'MaxRes (1280×720)', w:1280, h:720},
+    {key:'sddefault',     label:'SD (640×480)',       w:640,  h:480},
+    {key:'hqdefault',     label:'HQ (480×360)',       w:480,  h:360},
+    {key:'mqdefault',     label:'MQ (320×180)',       w:320,  h:180},
+    {key:'default',       label:'Default (120×90)',   w:120,  h:90}
+  ];
+
+  var currentMode = 'single';
+  var batchResults = [];
+
+  // ── MODE TABS ─────────────────────────────────────────────────
+  document.querySelectorAll('.mode-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.mode-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentMode = tab.dataset.mode;
+      document.getElementById('singlePanel').style.display = currentMode==='single' ? '' : 'none';
+      document.getElementById('batchPanel').style.display  = currentMode==='batch'  ? '' : 'none';
+    });
   });
-  darkToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); darkToggle.click(); } });
 
-  // Feedback modal – working
-  const modal = document.getElementById('feedbackModal');
-  const feedbackBtn = document.getElementById('feedbackBtn');
-  const closeModal = document.getElementById('closeModal');
-  const supportLink = document.getElementById('supportLink');
-  function openModal() { modal.style.display = 'flex'; }
-  function closeModalFunc() { modal.style.display = 'none'; }
-  if (feedbackBtn) feedbackBtn.addEventListener('click', openModal);
-  if (supportLink) supportLink.addEventListener('click', openModal);
-  if (closeModal) closeModal.addEventListener('click', closeModalFunc);
-  window.addEventListener('click', (e) => { if (e.target === modal) closeModalFunc(); });
-
-  // Helper functions
-  function extractVideoId(url) {
-    const patterns = [
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?#]+)/,
-      /youtube\.com\/shorts\/([^&?#]+)/
+  // ── EXTRACT VIDEO ID ─────────────────────────────────────────
+  function extractId(url){
+    url = url.trim();
+    var patterns = [
+      /[?&]v=([A-Za-z0-9_-]{11})/,
+      /youtu\.be\/([A-Za-z0-9_-]{11})/,
+      /\/shorts\/([A-Za-z0-9_-]{11})/,
+      /\/embed\/([A-Za-z0-9_-]{11})/,
+      /\/v\/([A-Za-z0-9_-]{11})/
     ];
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match) return match[1];
+    for (var i=0; i<patterns.length; i++){
+      var m = url.match(patterns[i]);
+      if (m) return m[1];
     }
     return null;
   }
 
-  const resolutions = [
-    { name: 'Max Resolution (1280×720)', quality: 'maxresdefault', width: 1280, height: 720 },
-    { name: 'High Quality (640×480)', quality: 'sddefault', width: 640, height: 480 },
-    { name: 'Medium Quality (480×360)', quality: 'hqdefault', width: 480, height: 360 },
-    { name: 'Low Quality (320×180)', quality: 'mqdefault', width: 320, height: 180 },
-    { name: 'Very Low (120×90)', quality: 'default', width: 120, height: 90 }
-  ];
+  function thumbUrl(id, res){ return 'https://img.youtube.com/vi/'+id+'/'+res+'.jpg'; }
 
-  // Robust download function using fetch + blob
-  async function downloadImage(url, filename) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Network response was not ok');
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(blobUrl);
-      return true;
-    } catch (error) {
-      console.warn('Fetch download failed, falling back to direct link', error);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      a.target = '_blank';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      return false;
-    }
+  // ── SINGLE MODE ───────────────────────────────────────────────
+  document.getElementById('loadThumbBtn').addEventListener('click', loadSingle);
+  document.getElementById('ytUrl').addEventListener('keydown', function(e){
+    if (e.key==='Enter') loadSingle();
+  });
+
+  function loadSingle(){
+    var url  = document.getElementById('ytUrl').value.trim();
+    var errEl= document.getElementById('singleError');
+    errEl.classList.remove('show');
+    document.getElementById('thumbGrid').classList.remove('show');
+    document.getElementById('thumbGrid').innerHTML = '';
+
+    if (!url){ errEl.textContent='⚠️ Please enter a YouTube URL.'; errEl.classList.add('show'); return; }
+    var id = extractId(url);
+    if (!id){ errEl.textContent='⚠️ Could not extract a video ID from this URL. Please check the link.'; errEl.classList.add('show'); return; }
+
+    var grid = document.getElementById('thumbGrid');
+    RESOLUTIONS.forEach(function(res){
+      var url2 = thumbUrl(id, res.key);
+      var card = document.createElement('div');
+      card.className = 'thumb-card';
+      card.innerHTML =
+        '<img src="'+url2+'" alt="'+res.label+'" loading="lazy">'+
+        '<div class="thumb-card-footer">'+
+          '<span class="thumb-res-label">'+res.label+'</span>'+
+          '<div class="thumb-actions">'+
+            '<button class="thumb-action-btn" data-url="'+url2+'" data-id="'+id+'" data-res="'+res.key+'">Copy</button>'+
+            '<button class="thumb-action-btn dl" data-url="'+url2+'" data-name="'+id+'_'+res.key+'.jpg'+'">⬇ Save</button>'+
+          '</div>'+
+        '</div>';
+      grid.appendChild(card);
+    });
+
+    // Wire buttons
+    grid.querySelectorAll('.thumb-action-btn:not(.dl)').forEach(function(btn){
+      btn.addEventListener('click', function(){ copyImgToClipboard(btn.dataset.url); });
+    });
+    grid.querySelectorAll('.thumb-action-btn.dl').forEach(function(btn){
+      btn.addEventListener('click', function(){ downloadImg(btn.dataset.url, btn.dataset.name); });
+    });
+
+    grid.classList.add('show');
   }
 
-  // Enhanced copy function: tries ClipboardItem, then canvas method, then URL as last resort (but still shows "Copied!")
-  async function copyImageToClipboard(url) {
-    // Helper to copy a blob
-    async function copyBlob(blob) {
-      if (typeof ClipboardItem !== 'undefined') {
-        const item = new ClipboardItem({ [blob.type]: blob });
-        await navigator.clipboard.write([item]);
-        return true;
-      }
-      return false;
-    }
+  // ── BATCH MODE ────────────────────────────────────────────────
+  document.getElementById('processBatchBtn').addEventListener('click', function(){
+    var lines = document.getElementById('batchUrls').value.split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
+    var errEl = document.getElementById('batchError');
+    errEl.classList.remove('show');
+    document.getElementById('batchTableWrap').classList.remove('show');
+    batchResults = [];
 
-    try {
-      // 1. Fetch the image as a blob
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Fetch failed');
-      const blob = await response.blob();
-      
-      // 2. Try direct ClipboardItem
-      let success = await copyBlob(blob);
-      if (success) return true;
-      
-      // 3. Fallback: canvas method (convert to PNG)
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      const imgUrl = URL.createObjectURL(blob);
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = imgUrl;
-      });
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      URL.revokeObjectURL(imgUrl);
-      
-      const pngBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-      if (pngBlob) {
-        success = await copyBlob(pngBlob);
-        if (success) return true;
-      }
-      
-      // 4. Last resort: copy URL (but we still return false to indicate fallback used)
-      await navigator.clipboard.writeText(url);
-      return false;
-    } catch (err) {
-      console.warn('All copy methods failed, copying URL as last resort', err);
-      await navigator.clipboard.writeText(url);
-      return false;
-    }
+    if (!lines.length){ errEl.textContent='⚠️ Please enter at least one URL.'; errEl.classList.add('show'); return; }
+    if (lines.length > 100){ lines = lines.slice(0,100); }
+
+    var tbody = document.getElementById('batchTableBody');
+    tbody.innerHTML = '';
+
+    lines.forEach(function(line, idx){
+      var id = extractId(line);
+      if (!id) return;
+      var maxUrl = thumbUrl(id,'maxresdefault');
+      batchResults.push({id:id, url:maxUrl, line:line});
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><img class="batch-thumb-preview" src="'+thumbUrl(id,'mqdefault')+'" loading="lazy" alt=""></td>'+
+        '<td style="font-family:monospace;font-size:.8rem;">'+id+'</td>'+
+        '<td style="font-size:.78rem;word-break:break-all;color:var(--text-muted);">'+maxUrl+'</td>'+
+        '<td><button class="batch-dl-btn" data-url="'+maxUrl+'" data-name="'+id+'_maxres.jpg">⬇ HD</button></td>';
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('.batch-dl-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ downloadImg(btn.dataset.url, btn.dataset.name); });
+    });
+
+    document.getElementById('batchTableWrap').classList.add('show');
+    document.getElementById('exportCsvBtn').disabled  = batchResults.length === 0;
+    document.getElementById('downloadZipBtn').disabled= batchResults.length === 0;
+  });
+
+  // CSV Export
+  document.getElementById('exportCsvBtn').addEventListener('click', function(){
+    if (!batchResults.length) return;
+    var rows = ['Video ID,MaxRes URL,SD URL,HQ URL'];
+    batchResults.forEach(function(r){
+      rows.push([r.id, thumbUrl(r.id,'maxresdefault'), thumbUrl(r.id,'sddefault'), thumbUrl(r.id,'hqdefault')].join(','));
+    });
+    var blob = new Blob([rows.join('\n')], {type:'text/csv'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'youtube_thumbnails.csv'; a.style.display='none';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // ZIP Download
+  document.getElementById('downloadZipBtn').addEventListener('click', async function(){
+    if (!batchResults.length || typeof JSZip==='undefined') return;
+    var btn = document.getElementById('downloadZipBtn');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Zipping...';
+    var zip = new JSZip();
+    var folder = zip.folder('thumbnails');
+    var fetches = batchResults.map(function(r){
+      return fetch(r.url).then(function(res){ return res.blob(); }).then(function(blob){
+        folder.file(r.id+'_maxres.jpg', blob);
+      }).catch(function(){});
+    });
+    await Promise.all(fetches);
+    var blob = await zip.generateAsync({type:'blob'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'thumbnails.zip'; a.style.display='none';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-file-archive"></i> Download ZIP';
+  });
+
+  // ── HELPERS ──────────────────────────────────────────────────
+  function downloadImg(url, name){
+    fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = name; a.style.display='none';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    }).catch(function(){ window.open(url,'_blank'); });
   }
 
-  // Single video logic (fully functional)
-  const singleUrlInput = document.getElementById('singleUrl');
-  const loadSingleBtn = document.getElementById('loadSingleBtn');
-  const singlePreview = document.getElementById('singlePreview');
-  const singleResolutionsDiv = document.getElementById('singleResolutions');
-  const singleResult = document.getElementById('singleResult');
-
-  loadSingleBtn.addEventListener('click', () => {
-    const url = singleUrlInput.value.trim();
-    const videoId = extractVideoId(url);
-    if (!videoId) {
-      singleResult.innerHTML = '❌ Invalid YouTube URL.';
-      singlePreview.innerHTML = '';
-      singleResolutionsDiv.style.display = 'none';
-      return;
-    }
-    singleResult.innerHTML = `✅ Video ID: ${videoId}`;
-    const previewUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    const img = new Image();
-    img.onload = () => { singlePreview.innerHTML = `<img src="${previewUrl}" alt="Preview">`; };
-    img.onerror = () => { singlePreview.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="Preview">`; };
-    img.src = previewUrl;
-
-    singleResolutionsDiv.innerHTML = '';
-    resolutions.forEach(res => {
-      const imgUrl = `https://img.youtube.com/vi/${videoId}/${res.quality}.jpg`;
-      const card = document.createElement('div');
-      card.className = 'res-card';
-      card.innerHTML = `
-        <div class="res-info">
-          <span class="res-name">${res.name}</span>
-          <span class="res-dimensions">${res.width}×${res.height}</span>
-        </div>
-        <div class="res-actions">
-          <button class="download-btn" data-url="${imgUrl}" data-filename="yt_thumb_${videoId}_${res.quality}.jpg"><i class="fas fa-download"></i> Download</button>
-          <button class="copy-btn" data-url="${imgUrl}"><i class="fas fa-copy"></i> Copy</button>
-        </div>
-      `;
-      singleResolutionsDiv.appendChild(card);
-    });
-    // Attach download events
-    document.querySelectorAll('#singleResolutions .download-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        downloadImage(btn.dataset.url, btn.dataset.filename);
-      });
-    });
-    // Attach copy events – always shows "Copied!" regardless of fallback
-    document.querySelectorAll('#singleResolutions .copy-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        await copyImageToClipboard(btn.dataset.url);
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copy'; }, 2000);
-      });
-    });
-    singleResolutionsDiv.style.display = 'grid';
-    singleResult.innerHTML = `✅ ${resolutions.length} resolutions available.`;
-  });
-
-  // Batch processing (fully functional)
-  const batchUrlsTextarea = document.getElementById('batchUrls');
-  const processBatchBtn = document.getElementById('processBatchBtn');
-  const exportCsvBtn = document.getElementById('exportCsvBtn');
-  const downloadZipBtn = document.getElementById('downloadZipBtn');
-  const batchProgress = document.getElementById('batchProgress');
-  const batchTableContainer = document.getElementById('batchTableContainer');
-  let batchData = [];
-
-  async function fetchVideoTitle(videoId) {
-    try {
-      const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
-      const data = await res.json();
-      return data.title || videoId;
-    } catch { return videoId; }
-  }
-
-  processBatchBtn.addEventListener('click', async () => {
-    const rawUrls = batchUrlsTextarea.value.split(/\r?\n/).filter(u => u.trim());
-    if (rawUrls.length === 0) {
-      batchProgress.innerHTML = '⚠️ Please enter at least one URL.';
-      return;
-    }
-    batchProgress.innerHTML = `⏳ Processing ${rawUrls.length} URLs...`;
-    batchData = [];
-    const validEntries = [];
-    for (const url of rawUrls) {
-      const videoId = extractVideoId(url);
-      if (videoId) {
-        const title = await fetchVideoTitle(videoId);
-        validEntries.push({ videoId, title, url });
-      } else {
-        batchProgress.innerHTML += `<br>❌ Invalid URL: ${url}`;
-      }
-    }
-    if (validEntries.length === 0) return;
-    batchData = validEntries;
-    let tableHtml = '<table><thead><tr><th>Video Title</th><th>Resolutions</th><th>Copy Maxres</th></tr></thead><tbody>';
-    for (const entry of batchData) {
-      let resButtons = '';
-      resolutions.forEach(res => {
-        const imgUrl = `https://img.youtube.com/vi/${entry.videoId}/${res.quality}.jpg`;
-        resButtons += `<span class="resolution-badge" data-url="${imgUrl}" data-filename="${entry.videoId}_${res.quality}.jpg">${res.width}×${res.height}</span>`;
-      });
-      tableHtml += `<tr>
-        <td><a href="${entry.url}" target="_blank">${escapeHtml(entry.title)}</a></td>
-        <td class="resolutions-cell">${resButtons}</td>
-        <td><i class="fas fa-copy copy-icon" data-url="https://img.youtube.com/vi/${entry.videoId}/maxresdefault.jpg" title="Copy maxres image"></i></td>
-      </tr>`;
-    }
-    tableHtml += '</tbody></table>';
-    batchTableContainer.innerHTML = tableHtml;
-    batchTableContainer.style.display = 'block';
-    batchProgress.innerHTML = `✅ Processed ${batchData.length} videos. You can now export CSV or download ZIP.`;
-    exportCsvBtn.disabled = false;
-    downloadZipBtn.disabled = false;
-
-    document.querySelectorAll('.resolution-badge').forEach(badge => {
-      badge.addEventListener('click', () => {
-        downloadImage(badge.dataset.url, badge.dataset.filename);
-      });
-    });
-    document.querySelectorAll('.copy-icon').forEach(icon => {
-      icon.addEventListener('click', async () => {
-        await copyImageToClipboard(icon.dataset.url);
-        icon.classList.remove('fa-copy');
-        icon.classList.add('fa-check');
-        setTimeout(() => {
-          icon.classList.remove('fa-check');
-          icon.classList.add('fa-copy');
-        }, 2000);
-      });
-    });
-  });
-
-  exportCsvBtn.addEventListener('click', () => {
-    if (!batchData.length) return;
-    let csvRows = [['Video Title', 'Video URL', 'Video ID', 'Maxres URL', 'SD URL', 'HQ URL', 'MQ URL', 'Default URL']];
-    for (const entry of batchData) {
-      csvRows.push([entry.title, entry.url, entry.videoId,
-        `https://img.youtube.com/vi/${entry.videoId}/maxresdefault.jpg`,
-        `https://img.youtube.com/vi/${entry.videoId}/sddefault.jpg`,
-        `https://img.youtube.com/vi/${entry.videoId}/hqdefault.jpg`,
-        `https://img.youtube.com/vi/${entry.videoId}/mqdefault.jpg`,
-        `https://img.youtube.com/vi/${entry.videoId}/default.jpg`]);
-    }
-    const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'youtube_thumbnails.csv';
-    link.click();
-  });
-
-  downloadZipBtn.addEventListener('click', async () => {
-    if (!batchData.length) return;
-    const zip = new JSZip();
-    const folder = zip.folder('youtube_thumbnails');
-    let count = 0;
-    batchProgress.innerHTML = '⏳ Preparing ZIP...';
-    for (const entry of batchData) {
-      for (const res of resolutions) {
-        const url = `https://img.youtube.com/vi/${entry.videoId}/${res.quality}.jpg`;
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            const blob = await response.blob();
-            folder.file(`${entry.videoId}_${res.quality}.jpg`, blob);
-            count++;
-          }
-        } catch (e) {}
-      }
-    }
-    const content = await zip.generateAsync({ type: 'blob' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(content);
-    link.download = 'youtube_thumbnails.zip';
-    link.click();
-    batchProgress.innerHTML = `✅ ZIP downloaded with ${count} thumbnails.`;
-  });
-
-  function escapeHtml(str) {
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
+  function copyImgToClipboard(url){
+    fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
+      var item = new ClipboardItem({'image/png': blob});
+      return navigator.clipboard.write([item]);
+    }).then(function(){
+      showToast('✅ Image copied!');
+    }).catch(function(){
+      navigator.clipboard.writeText(url).then(function(){ showToast('✅ URL copied!'); });
     });
   }
 
-  // Tab switching
-  const tabs = document.querySelectorAll('.tab-btn');
-  const singleTab = document.getElementById('singleTab');
-  const batchTab = document.getElementById('batchTab');
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      if (btn.dataset.tab === 'single') {
-        singleTab.style.display = 'block';
-        batchTab.style.display = 'none';
-      } else {
-        singleTab.style.display = 'none';
-        batchTab.style.display = 'block';
-      }
-    });
-  });
+  function showToast(msg){
+    var t = document.getElementById('copyToast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 2000);
+  }
+
+})();
 </script>
-<script>
-loadAdIfNotInApp(function() {
-  var s = document.createElement('script');
-  s.src = 'https://willingcease.com/84/25/b8/8425b8563c3b191f0fcb0c82a366c826.js';
-  document.body.appendChild(s);
-});
-</script>
-  <script src="/pwa-init.js"></script>
+
 </body>
 </html>
