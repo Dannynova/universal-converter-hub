@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Converter – Convert JPEG, PNG, GIF, SVG Online | ConverterHub</title>
+  <meta name="description" content="Convert images between JPEG, PNG, GIF and SVG formats online. Batch convert multiple images at once. Adjust JPEG quality. Free, no signup, runs in your browser.">
+  <meta name="keywords" content="image converter, convert PNG to JPEG, JPEG to PNG, SVG to PNG, GIF converter, batch image converter, free image format converter online">
+  <link rel="canonical" href="https://converterhub.com.ng/image-converter.html">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:title" content="Free Image Converter – JPEG, PNG, GIF, SVG | ConverterHub">
+  <meta property="og:description" content="Convert images between JPEG, PNG, GIF and SVG. Batch convert, adjust quality. Free, no signup.">
+  <meta property="og:url" content="https://converterhub.com.ng/image-converter.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConverterHub">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%232563eb'/%3E%3Cpath d='M14 18h20v3H14v-3zm0 6h13v3H14v-3zm0 6h20v3H14v-3z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t=localStorage.getItem('ch_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}})();</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268090468184213" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Image Converter","url":"https://converterhub.com.ng/image-converter.html","description":"Free online image converter. Convert between JPEG, PNG, GIF and SVG formats. Batch convert multiple images. Adjust JPEG quality. Runs entirely in your browser.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ConverterHub","url":"https://converterhub.com.ng"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What image formats are supported?","acceptedAnswer":{"@type":"Answer","text":"You can convert between JPEG, PNG, GIF and SVG formats. Select your output format from the dropdown before converting."}},
+    {"@type":"Question","name":"Does this actually convert the image format?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each image is loaded, drawn onto an HTML canvas, and exported to your chosen format. This is a real format conversion, not a file rename."}},
+    {"@type":"Question","name":"Can I convert multiple images at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select or drop multiple image files and each one will be converted and downloaded individually."}},
+    {"@type":"Question","name":"How does JPEG quality work?","acceptedAnswer":{"@type":"Answer","text":"When converting to JPEG, a quality slider lets you choose from 10% to 100%. Higher quality means larger file size. 85-90% is usually the best balance."}},
+    {"@type":"Question","name":"Will SVG files be converted correctly?","acceptedAnswer":{"@type":"Answer","text":"SVG files are rendered onto a canvas and exported as PNG, JPEG or GIF. Note that the original vector data is rasterised — the output will be a bitmap image."}},
+    {"@type":"Question","name":"Is the image converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No registration, no watermarks, no hidden fees. All conversion runs in your browser."}}
+  ]}
+  </script>
+  <style>
+    .tool-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start;margin-top:24px}
+    @media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+    .tool-sidebar{display:flex;flex-direction:column;gap:16px}
+
+    /* File list */
+    .file-list{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+    .file-item{display:flex;align-items:center;gap:12px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.875rem}
+    .file-thumb{width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;background:var(--border);}
+    .file-name{flex:1;font-weight:600;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .file-size{color:var(--text-muted);font-size:.78rem;flex-shrink:0}
+    .file-remove{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.9rem;padding:0 4px}
+    .file-remove:hover{color:#dc2626}
+
+    /* Quality slider */
+    .quality-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:12px;margin-bottom:14px}
+    .quality-row label{font-size:.85rem;font-weight:700;color:var(--text-secondary);white-space:nowrap}
+    .quality-row input[type=range]{flex:1;accent-color:var(--brand-primary);cursor:pointer}
+    .quality-val{font-size:1rem;font-weight:800;color:var(--brand-primary);min-width:42px;text-align:center}
+
+    /* Format badges */
+    .format-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+    .fmt-badge{padding:8px 6px;border-radius:10px;font-size:.78rem;font-weight:700;text-align:center;border:2px solid var(--border);background:var(--bg-subtle);color:var(--text-muted);cursor:pointer;transition:all .15s;font-family:inherit}
+    .fmt-badge.active{border-color:var(--brand-primary);background:var(--bg-hover);color:var(--brand-primary)}
+    .fmt-badge:hover:not(.active){border-color:var(--brand-primary);color:var(--brand-primary)}
+
+    /* Result area */
+    .result-area{margin-top:14px}
+    .result-item{display:flex;align-items:center;gap:10px;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:.85rem}
+    body.dark .result-item{background:#052e16;border-color:#166534;color:#86efac}
+    .result-icon{font-size:1.1rem;}
+
+    /* Trust pills */
+    .trust-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .trust-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:var(--bg-subtle);border:1px solid var(--border);font-size:.78rem;color:var(--text-secondary);font-weight:500}
+    .trust-pill .tp-icon{color:var(--brand-primary)}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:12px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .feature-title{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .feature-desc{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+
+    .steps-row{display:flex;gap:0;align-items:flex-start;flex-wrap:wrap;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:16px}
+    .step-item{text-align:center;flex:1;min-width:100px;padding:0 10px}
+    .step-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;font-size:.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .step-icon{font-size:1.4rem;margin-bottom:6px}
+    .step-label{font-size:.78rem;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+    .step-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4}
+    .step-arrow{color:var(--text-muted);font-size:1.1rem;padding-top:20px;flex-shrink:0}
+    @media(max-width:600px){.step-arrow{display:none}}
+
+    .compare-table{width:100%;border-collapse:collapse}
+    .compare-table th,.compare-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:.875rem}
+    .compare-table th{background:var(--bg-subtle);font-weight:700;color:var(--text-secondary);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .compare-table tr:last-child td{border-bottom:none}
+    .check-yes{color:#16a34a;font-weight:700}
+
+    .related-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .related-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;background:var(--bg-card);border:1px solid var(--border);text-decoration:none;color:var(--text-secondary);font-size:.85rem;font-weight:500;transition:all .15s}
+    .related-pill:hover{border-color:var(--brand-primary);color:var(--brand-primary);background:var(--bg-hover)}
+    .sidebar-ad{background:var(--bg-subtle);border:1px dashed var(--border);border-radius:12px;padding:12px;text-align:center;overflow:hidden}
+  </style>
+</head>
+<body>
+
+<main class="ch-container">
+
+  <nav class="ch-breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Image Tools</span><span class="sep">›</span>
+    <span class="current">Image Converter</span>
+  </nav>
+
+  <div class="ch-tool-header">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:#fce7f3;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🎨</div>
+      <div>
+        <h1 class="ch-tool-title">Image Converter</h1>
+        <div class="ch-tool-badges">
+          <span class="ch-badge ch-badge-green">✓ JPEG, PNG, GIF, SVG</span>
+          <span class="ch-badge ch-badge-green">✓ Batch Convert</span>
+          <span class="ch-badge ch-badge-blue">✓ Quality Control</span>
+          <span class="ch-badge ch-badge-blue">✓ Free</span>
+        </div>
+      </div>
+    </div>
+    <p class="ch-tool-desc">Convert images between JPEG, PNG, GIF and SVG formats instantly. Upload multiple images at once, choose your output format and quality, and download your converted files. All conversion happens in your browser — your images never leave your device.</p>
+  </div>
+
+  <div class="ch-ad-zone">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+         data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="tool-layout">
+    <div>
+      <div class="ch-card">
+
+        <!-- Output format selector -->
+        <div class="ch-form-group">
+          <label class="ch-label">Output Format</label>
+          <div class="format-grid">
+            <button class="fmt-badge active" data-mime="image/jpeg" data-ext="jpg">JPEG</button>
+            <button class="fmt-badge" data-mime="image/png" data-ext="png">PNG</button>
+            <button class="fmt-badge" data-mime="image/gif" data-ext="gif">GIF</button>
+            <button class="fmt-badge" data-mime="image/webp" data-ext="webp">WEBP</button>
+          </div>
+        </div>
+
+        <!-- JPEG quality (shown only for JPEG/WEBP) -->
+        <div class="quality-row" id="qualityRow">
+          <label>Quality</label>
+          <input type="range" id="jpegQuality" min="10" max="100" value="90"
+                 oninput="document.getElementById('qualityVal').textContent=this.value+'%'">
+          <span class="quality-val" id="qualityVal">90%</span>
+        </div>
+
+        <!-- Drop zone -->
+        <div class="ch-dropzone" id="dropZone" style="cursor:pointer;">
+          <input type="file" id="fileInput" multiple accept="image/*">
+          <div class="ch-dropzone-icon">🖼️</div>
+          <div class="ch-dropzone-title">Drag & drop images here<br>or <span>click to browse</span></div>
+          <div class="ch-dropzone-sub">JPEG, PNG, GIF, SVG, WEBP &nbsp;•&nbsp; Multiple files OK</div>
+        </div>
+
+        <!-- File list -->
+        <div class="file-list" id="fileList"></div>
+
+        <!-- Error -->
+        <div id="convertError" style="display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;padding:10px 14px;font-size:.875rem;margin-top:10px;"></div>
+
+        <!-- Convert button -->
+        <button class="ch-btn ch-btn-primary ch-btn-lg" id="convertBtn" disabled style="width:100%;margin-top:14px;">
+          <i class="fas fa-sync-alt"></i> Convert & Download
+        </button>
+
+        <!-- Result area -->
+        <div class="result-area" id="resultArea"></div>
+
+        <div class="trust-pills">
+          <div class="trust-pill"><span class="tp-icon">🔒</span> Images never leave device</div>
+          <div class="trust-pill"><span class="tp-icon">📦</span> Batch convert</div>
+          <div class="trust-pill"><span class="tp-icon">🎚</span> Quality control</div>
+          <div class="trust-pill"><span class="tp-icon">🆓</span> Free</div>
+        </div>
+      </div>
+
+      <div class="ch-ad-zone" style="margin-top:24px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- How it works -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:32px;margin-bottom:4px;">How to Convert Images</h2>
+      <div class="steps-row">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-icon">🖼</div><div class="step-label">Upload Images</div><div class="step-desc">Drop or click to browse</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-icon">🎨</div><div class="step-label">Pick Format</div><div class="step-desc">JPEG, PNG, GIF or WEBP</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-icon">🎚</div><div class="step-label">Set Quality</div><div class="step-desc">Adjust for JPEG/WEBP</div></div>
+        <div class="step-arrow">→</div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-icon">⬇️</div><div class="step-label">Download</div><div class="step-desc">Files save automatically</div></div>
+      </div>
+
+      <!-- Format comparison -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Which Format Should I Use?</h2>
+      <div class="ch-card" style="overflow:hidden;padding:0;">
+        <table class="compare-table">
+          <thead><tr><th>Format</th><th>Best For</th><th>Transparency</th><th>File Size</th></tr></thead>
+          <tbody>
+            <tr><td><strong>JPEG</strong></td><td>Photos, real-world images</td><td>❌ No</td><td>Small</td></tr>
+            <tr><td><strong>PNG</strong></td><td>Screenshots, logos, graphics with sharp edges</td><td class="check-yes">✓ Yes</td><td>Medium</td></tr>
+            <tr><td><strong>GIF</strong></td><td>Simple animations, icons with few colours</td><td class="check-yes">✓ Yes</td><td>Small</td></tr>
+            <tr><td><strong>WEBP</strong></td><td>Web images — best compression with quality</td><td class="check-yes">✓ Yes</td><td>Smallest</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Features -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Why Use Our Image Converter?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fce7f3;">🎨</div>
+          <div><div class="feature-title">4 Output Formats</div><div class="feature-desc">Convert to JPEG, PNG, GIF or WEBP — the most widely supported image formats.</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#dbeafe;">📦</div>
+          <div><div class="feature-title">Batch Convert</div><div class="feature-desc">Upload multiple images at once and convert them all in a single click.</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#d1fae5;">🎚</div>
+          <div><div class="feature-title">JPEG Quality Slider</div><div class="feature-desc">Control the output quality from 10% to 100% to balance file size and clarity.</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#fef3c7;">🔒</div>
+          <div><div class="feature-title">100% Private</div><div class="feature-desc">All conversion happens in your browser using HTML Canvas. Your images never leave your device.</div></div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="ch-card">
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">What image formats are supported? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>You can convert between JPEG, PNG, GIF and WEBP formats. Select your desired output format using the format buttons before uploading.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Does this actually convert the image format? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. Each image is loaded, drawn onto an HTML canvas, and exported in your chosen format. This is a real format conversion — not just a file rename.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Can I convert multiple images at once? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes. Select or drop multiple image files and each one will be converted and downloaded individually in your chosen format.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">How does the JPEG quality slider work? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>When converting to JPEG or WEBP, the quality slider controls the compression level from 10% (smallest file, lowest quality) to 100% (largest file, best quality). 85–90% is usually the best balance for photos.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Will SVG files convert correctly? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>SVG files are rendered onto a canvas and exported as a raster image (JPEG, PNG or GIF). The original vector data is rasterised, so the output will be a bitmap at screen resolution.</p></div>
+        </div>
+        <div class="ch-faq-item">
+          <button class="ch-faq-q">Is the image converter free? <span class="fq-icon">+</span></button>
+          <div class="ch-faq-a"><p>Yes, completely free. No registration, no watermarks, no hidden fees. All conversion runs directly in your browser.</p></div>
+        </div>
+      </div>
+
+      <!-- Related -->
+      <h2 style="font-size:1.2rem;font-weight:700;margin-top:40px;margin-bottom:4px;">Related Tools</h2>
+      <div class="related-grid">
+        <a href="image-compressor.html"   class="related-pill">🗃 Image Compressor</a>
+        <a href="background-remover.html" class="related-pill">✂️ Background Remover</a>
+        <a href="image-to-pdf.html"       class="related-pill">🖼 Image to PDF</a>
+        <a href="ocr-image-to-text.html"  class="related-pill">🔎 OCR Image to Text</a>
+        <a href="file-compressor.html"    class="related-pill">📦 File Compressor</a>
+        <a href="pdf-to-word.html"        class="related-pill">📄 PDF to Word</a>
+      </div>
+
+      <div class="ch-ad-zone" style="margin-top:32px;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+    <div class="tool-sidebar">
+      <div class="ch-card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">🎨🔄</div>
+        <div style="font-size:1.2rem;font-weight:800;color:var(--brand-primary);">Image Converter</div>
+        <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Canvas-Based • Browser Only</div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">4</div><div style="font-size:.72rem;color:var(--text-muted);">Formats</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">Batch</div><div style="font-size:.72rem;color:var(--text-muted);">Multi-file</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">10–100%</div><div style="font-size:.72rem;color:var(--text-muted);">Quality range</div></div>
+          <div><div style="font-size:1rem;font-weight:700;color:var(--brand-primary);">Free</div><div style="font-size:.72rem;color:var(--text-muted);">No signup</div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-ad">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5268090468184213"
+             data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="ch-card">
+        <div style="font-size:.85rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">💡 Tips</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Use PNG for logos and graphics that need transparency</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Use JPEG at 85–90% quality for photos</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> WEBP gives the smallest file size for web images</li>
+          <li style="display:flex;gap:8px;font-size:.82rem;color:var(--text-secondary);"><span style="color:var(--brand-primary);flex-shrink:0;">✓</span> Converting PNG → JPEG removes transparency</li>
+        </ul>
+      </div>
+
+      <div class="ch-card" style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);border-color:transparent;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">📰</div>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px;">Tivora Hub Blog</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5;">Tips, productivity hacks and ways to make money online.</div>
+        <a href="https://tivorahub.blogspot.com" target="_blank" rel="noopener"
+           class="ch-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);width:100%;justify-content:center;font-size:.82rem;">
+          Visit Blog →
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/common.js"></script>
+<script>
+(function(){
+  var selectedMime = 'image/jpeg';
+  var selectedExt  = 'jpg';
+  var files = [];
+
+  // ── FORMAT BUTTONS ────────────────────────────────────────────
+  document.querySelectorAll('.fmt-badge').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.fmt-badge').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedMime = btn.dataset.mime;
+      selectedExt  = btn.dataset.ext;
+      var showQuality = selectedMime === 'image/jpeg' || selectedMime === 'image/webp';
+      document.getElementById('qualityRow').style.display = showQuality ? '' : 'none';
+    });
+  });
+
+  // ── FILE INPUT ────────────────────────────────────────────────
+  var drop  = document.getElementById('dropZone');
+  var input = document.getElementById('fileInput');
+
+  drop.addEventListener('click', function(){ input.click(); });
+  drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('dragover'); });
+  drop.addEventListener('dragleave', function(){ drop.classList.remove('dragover'); });
+  drop.addEventListener('drop', function(e){
+    e.preventDefault(); drop.classList.remove('dragover');
+    addFiles(Array.from(e.dataTransfer.files).filter(function(f){ return f.type.startsWith('image/'); }));
+  });
+  input.addEventListener('change', function(){
+    addFiles(Array.from(input.files));
+    input.value = '';
+  });
+
+  function addFiles(newFiles){
+    newFiles.forEach(function(f){ files.push(f); });
+    renderList();
+  }
+
+  function renderList(){
+    var list = document.getElementById('fileList');
+    list.innerHTML = '';
+    files.forEach(function(f, i){
+      var div = document.createElement('div');
+      div.className = 'file-item';
+      var thumb = f.type.startsWith('image/') ? '<img class="file-thumb" src="' + URL.createObjectURL(f) + '" alt="">' : '<div class="file-thumb"></div>';
+      div.innerHTML = thumb +
+        '<span class="file-name">' + esc(f.name) + '</span>' +
+        '<span class="file-size">' + fmtBytes(f.size) + '</span>' +
+        '<button class="file-remove" data-i="' + i + '" title="Remove">✕</button>';
+      list.appendChild(div);
+    });
+    list.querySelectorAll('.file-remove').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        files.splice(parseInt(btn.dataset.i), 1); renderList();
+      });
+    });
+    document.getElementById('convertBtn').disabled = files.length === 0;
+    document.getElementById('resultArea').innerHTML = '';
+  }
+
+  // ── CONVERT ───────────────────────────────────────────────────
+  document.getElementById('convertBtn').addEventListener('click', function(){
+    if (!files.length) return;
+    var quality = parseFloat(document.getElementById('jpegQuality').value) / 100;
+    var resultArea = document.getElementById('resultArea');
+    var errEl = document.getElementById('convertError');
+    resultArea.innerHTML = '';
+    errEl.style.display = 'none';
+    var convertCount = 0;
+
+    files.forEach(function(file){
+      convertImage(file, selectedMime, quality, selectedExt, function(ok, name){
+        convertCount++;
+        if (ok) {
+          var d = document.createElement('div');
+          d.className = 'result-item';
+          d.innerHTML = '<span class="result-icon">✅</span> <strong>' + esc(name) + '</strong> downloaded successfully';
+          resultArea.appendChild(d);
+        }
+      });
+    });
+  });
+
+  function convertImage(file, targetMime, quality, ext, callback){
+    var reader = new FileReader();
+    reader.onload = function(e){
+      var img = new Image();
+      img.onload = function(){
+        var canvas = document.createElement('canvas');
+        canvas.width  = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext('2d');
+        // Fill white background for JPEG (no transparency support)
+        if (targetMime === 'image/jpeg') {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(function(blob){
+          if (!blob) { callback(false, file.name); return; }
+          var newName = file.name.replace(/\.[^/.]+$/, '') + '.' + ext;
+          var url = URL.createObjectURL(blob);
+          var a   = document.createElement('a');
+          a.href = url; a.download = newName; a.style.display = 'none';
+          document.body.appendChild(a); a.click();
+          setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+          callback(true, newName);
+        }, targetMime, quality);
+      };
+      img.onerror = function(){ callback(false, file.name); };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function fmtBytes(b){ if(b<1024)return b+' B'; if(b<1048576)return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(1)+' MB'; }
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+})();
+</script>
+
+</body>
+</html>
